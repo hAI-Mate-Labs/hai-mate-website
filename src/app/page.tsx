@@ -5,7 +5,9 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MarketReality from "@/components/MarketReality";
 import BeforeAfter from "@/components/BeforeAfter";
+import DocketSimulator from "@/components/DocketSimulator";
 import SolutionsHub from "@/components/SolutionsHub";
+import IntegrationsHub from "@/components/IntegrationsHub";
 import PhilosophySection from "@/components/PhilosophySection";
 import IroncladRules from "@/components/IroncladRules";
 import ComparisonTable from "@/components/ComparisonTable";
@@ -47,10 +49,16 @@ export default function Home() {
         {/* 4. Before vs After Comparison */}
         <BeforeAfter onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 5. Core Solutions Hub (4 High-Contrast Cards) */}
+        {/* 5. Live Interactive Docket Scanner & Price Creep Simulator */}
+        <DocketSimulator onOpenAuditModal={() => handleOpenAuditModal()} />
+
+        {/* 6. Core Solutions Hub (4 High-Contrast Cards) */}
         <SolutionsHub onOpenAuditModal={(solution) => handleOpenAuditModal(solution)} />
 
-        {/* 6. "The Open Aperture" Architecture (Why hAI Mate!) */}
+        {/* 7. Works With Your Setup (Interactive Integrations Hub) */}
+        <IntegrationsHub onOpenAuditModal={() => handleOpenAuditModal()} />
+
+        {/* 8. "The Open Aperture" Architecture (Why hAI Mate!) */}
         <PhilosophySection onOpenAuditModal={() => handleOpenAuditModal()} />
 
         {/* 7. Ironclad Rules: What hAI Mate! Will NEVER Do */}
