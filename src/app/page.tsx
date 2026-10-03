@@ -7,6 +7,7 @@ import MarketReality from "@/components/MarketReality";
 import BeforeAfter from "@/components/BeforeAfter";
 import SolutionsHub from "@/components/SolutionsHub";
 import PhilosophySection from "@/components/PhilosophySection";
+import IroncladRules from "@/components/IroncladRules";
 import ComparisonTable from "@/components/ComparisonTable";
 import FounderSpotlight from "@/components/FounderSpotlight";
 import ProcessSection from "@/components/ProcessSection";
@@ -15,6 +16,7 @@ import FaqSection from "@/components/FaqSection";
 import IntakeSection from "@/components/IntakeSection";
 import Footer from "@/components/Footer";
 import AuditModal from "@/components/AuditModal";
+import FloatingContact from "@/components/FloatingContact";
 
 export default function Home() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
@@ -51,27 +53,33 @@ export default function Home() {
         {/* 6. "The Open Aperture" Architecture (Why hAI Mate!) */}
         <PhilosophySection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 7. Comparison Table: Why a Dedicated Solo Partner Beats Apps & Agencies */}
+        {/* 7. Ironclad Rules: What hAI Mate! Will NEVER Do */}
+        <IroncladRules />
+
+        {/* 8. Comparison Table: Why a Dedicated Solo Partner Beats Apps & Agencies */}
         <ComparisonTable onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 8. Founder / Solo Practitioner Personal Spotlight */}
+        {/* 9. Founder / Solo Practitioner Personal Spotlight */}
         <FounderSpotlight onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 9. The 3-Step Go-To-Market Process */}
+        {/* 10. The 3-Step Go-To-Market Process */}
         <ProcessSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 10. WA Government Grant Accelerator (Callout Banner) */}
+        {/* 11. WA Government Grant Accelerator (Callout Banner) */}
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 11. Hospitality FAQ Section */}
+        {/* 12. Hospitality FAQ Section */}
         <FaqSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 12. Final CTA & Contact Intake Form */}
+        {/* 13. Final CTA & Contact Intake Form */}
         <IntakeSection />
       </main>
 
-      {/* 13. Footer */}
+      {/* 14. Footer */}
       <Footer />
+
+      {/* Floating Direct Contact Pill */}
+      <FloatingContact onOpenAuditModal={() => handleOpenAuditModal()} />
 
       {/* Interactive Booking & Diagnostic Audit Modal */}
       <AuditModal
