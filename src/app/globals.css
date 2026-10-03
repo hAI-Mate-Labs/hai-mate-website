@@ -62,3 +62,30 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #A1A1AA;
 }
+
+/* Print optimization for Executive Audit Dossier */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-audit-report,
+  #printable-audit-report * {
+    visibility: visible;
+  }
+  #printable-audit-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 8mm;
+    background: #FFFFFF !important;
+    color: #09090B !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+}
