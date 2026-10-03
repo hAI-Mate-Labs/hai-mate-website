@@ -3,10 +3,8 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import MarketReality from "@/components/MarketReality";
+import CompanyOverview from "@/components/CompanyOverview";
 import DocketSimulator from "@/components/DocketSimulator";
-import SolutionsHub from "@/components/SolutionsHub";
-import IntegrationsHub from "@/components/IntegrationsHub";
 import GrantCallout from "@/components/GrantCallout";
 import UnifiedProcessTimeline from "@/components/UnifiedProcessTimeline";
 import CompactFounderCard from "@/components/CompactFounderCard";
@@ -37,32 +35,28 @@ export default function Home() {
       <Navbar onOpenAuditModal={() => handleOpenAuditModal()} />
 
       <main>
-        {/* 1. Hero Section with Interactive Scenario Switcher */}
+        {/* 1. Hero Section: Clean, punchy headline + trust badges + interactive scenario */}
         <Hero onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 2. Streamlined Trust Metric Strip (4-8 Hrs, 100% Control, Zero Hardware, 50% Grant) */}
-        <MarketReality onOpenAuditModal={() => handleOpenAuditModal()} />
+        {/* 2. Company at a Glance: Purpose • Mission • Value • What We Offer */}
+        <CompanyOverview onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 3. Live Interactive Docket Scanner & Price Creep Simulator (with Real Custom Upload & Camera) */}
+        {/* 3. Live Interactive Proof: Docket Scanner & Price Creep Simulator */}
         <DocketSimulator onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 4. Core Solutions Hub & Connectivity */}
-        <SolutionsHub onOpenAuditModal={(solution) => handleOpenAuditModal(solution)} />
-        <IntegrationsHub onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 5. WA Government Grant & Payback Calculator */}
+        {/* 4. WA Government Grant & Payback Calculator */}
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 6. The 3-Step Process & 100% Value Guarantee */}
+        {/* 5. The 3-Step Process & 100% Value Guarantee */}
         <UnifiedProcessTimeline
           onOpenAuditModal={() => handleOpenAuditModal()}
           onOpenSampleAuditModal={() => setSampleAuditModalOpen(true)}
         />
 
-        {/* 7. Direct Solo Practitioner Trust Card */}
+        {/* 6. Direct Solo Practitioner Trust Card */}
         <CompactFounderCard onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 8. Direct Booking Intake & WhatsApp Line */}
+        {/* 7. Direct Booking Intake & WhatsApp Line */}
         <IntakeSection />
       </main>
 

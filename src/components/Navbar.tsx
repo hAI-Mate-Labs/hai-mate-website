@@ -26,12 +26,12 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
+    { name: t.overview, href: "/#overview" },
     { name: t.liveDemo, href: "/#simulator" },
     { name: t.solutions, href: "/#solutions" },
     { name: t.grants, href: "/#grants" },
     { name: t.howItWorks, href: "/#how-it-works" },
     { name: t.founder, href: "/founder" },
-    { name: t.mission, href: "/mission" },
   ];
 
   return (

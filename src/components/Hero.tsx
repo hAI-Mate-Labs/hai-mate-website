@@ -98,13 +98,12 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
         </div>
 
         {/* H1 Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] max-w-4xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#0F172A] leading-[1.12] max-w-4xl mx-auto">
           {t.titleStart}{" "}
-          <span className="relative inline-block text-[#0F172A]">
-            {language === "en" ? "Human Judgment" : "Le Jugement Humain"}
-            <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
-          </span>{" "}
-          {language === "en" ? "at the Center." : "au Centre."}
+          <span className="relative inline-block text-[#0096A3]">
+            {t.titleAccent}
+            <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/20 -z-10 rounded-sm" />
+          </span>
         </h1>
 
         {/* Subheadline */}
@@ -131,12 +130,33 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
           </a>
         </div>
 
-        {/* Reassurance note */}
-        <p className="mt-4 text-xs text-zinc-500 font-normal">
-          {language === "en"
-            ? "Works with Lightspeed, Square, Xero, MYOB & Deputy. No IT background or software installation needed."
-            : "Compatible avec Lightspeed, Square, Xero, MYOB & Deputy. Aucune compétence informatique requise."}
-        </p>
+        {/* Trust Badges Strip */}
+        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-semibold text-zinc-600">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            {language === "en"
+              ? "Plugs into Lightspeed, Square, Xero & MYOB"
+              : "Compatible Lightspeed, Square, Xero & MYOB"}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            {language === "en"
+              ? "Zero new apps for floor staff"
+              : "Zéro nouvelle application pour l'équipe"}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            {language === "en"
+              ? "100% human sign-off on every action"
+              : "Validation humaine à 100% sur chaque action"}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            {language === "en"
+              ? "50% WA Government co-funding"
+              : "50% subventionné par l'État du WA"}
+          </span>
+        </div>
 
         {/* Interactive Venue Scenario Switcher */}
         <div className="mt-14 max-w-2xl mx-auto">

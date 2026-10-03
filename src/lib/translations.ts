@@ -2,6 +2,7 @@ export const translations = {
   en: {
     nav: {
       brandSub: "Applied AI for Hospitality",
+      overview: "At a Glance",
       liveDemo: "Live Demo",
       solutions: "Solutions",
       grants: "WA Grants",
@@ -14,13 +15,16 @@ export const translations = {
       book14DayReview: "Book 14-Day Venue Review",
     },
     hero: {
-      badge: "Serving WA Hospitality Groups & Growing Venues",
-      titleStart: "Open Up Operational Flow.",
-      titleAccent: "Keep Human Judgment at the Center.",
+      badge: "Applied AI for Hospitality • WA Venues & Kitchens",
+      titleStart: "Less Paperwork.",
+      titleAccent: "More Hospitality.",
       subtitle:
-        "We build deterministic, applied AI workflows that eliminate paper docket entry, catch supplier overcharges, and stabilize labor margins—without forcing your chefs or floor staff to learn new software.",
+        "We build practical AI automations that eliminate docket typing, catch supplier overcharges, and protect your wage margins—without forcing your staff to learn new software.",
       bookAuditBtn: "Book 14-Day Diagnostic Review",
-      testScannerBtn: "Test Live Docket Scanner",
+      testScannerBtn: "Try Live Docket Scanner",
+      reassurance:
+        "Works with Lightspeed, Square, Xero, MYOB & Deputy. 100% human sign-off on every action.",
+      seeLiveExample: "See live scenario for:",
       scenarioHeading: "INTERACTIVE LIVE SCENARIO:",
       approveAction: "1-Tap Green Light",
       approvedBadge: "Approved & Synced to Xero",
@@ -82,6 +86,80 @@ export const translations = {
             "Instant WhatsApp alert sent to GM phone. 1-tap approval sends early-finish texts to casual floor crew.",
         },
       },
+    },
+    companyOverview: {
+      badge: "THE COMPANY AT A GLANCE",
+      titleStart: "Purpose • Mission • Value •",
+      titleAccent: "What We Offer",
+      subtitle:
+        "Everything you need to know about hAI Mate! in a few plain words.",
+      purpose: {
+        tag: "PURPOSE",
+        subtag: "Why We Exist",
+        headline: "Freeing hospitality owners from back-office burnout.",
+        description:
+          "Hospitality is about great food, warm service, and guest craft—not spending late nights typing oil-stained dockets into spreadsheets. We take the administrative drag away so you can focus on your craft and your floor.",
+        bullets: [
+          "Eliminate late-night receipt typing",
+          "Prevent administrative burnout",
+          "Return focus to food, service & guests",
+        ],
+      },
+      mission: {
+        tag: "MISSION",
+        subtag: "How We Do It",
+        headline: "Deploying quiet automations that respect the human craft.",
+        description:
+          "We never force floor staff or chefs to learn new software or look at iPads. We build reliable conduits directly between your existing tills, supplier dockets, and accounting—with strict 1-tap human approval on every single decision.",
+        bullets: [
+          "Zero new apps for floor staff or kitchen",
+          "Strict 1-tap operator sign-off on every bill & shift",
+          "Plugs into your current POS, Xero & MYOB",
+        ],
+      },
+      value: {
+        tag: "VALUE",
+        subtag: "What You Gain",
+        headline: "4–8 hours back each week, protected margins & 3x ROI.",
+        description:
+          "Stop supplier price creep before invoices are paid, lock labour targets against weather shifts, claim 50% WA Government co-funding, and rest easy with our 3x ROI Guarantee: if we don't find 3x our fee in value, you pay $0.",
+        bullets: [
+          "4–8 administrative hours saved every week",
+          "50% WA Government grant co-funding (LCF)",
+          "100% Value Guarantee: 3x ROI or you pay $0",
+        ],
+      },
+      offer: {
+        tag: "WHAT WE OFFER",
+        subtag: "Our 4 Core Conduits",
+        headline: "Four turnkey automations built specifically for venues.",
+        description:
+          "Battle-tested workflows ready to connect into your daily operations:",
+        services: [
+          {
+            num: "1",
+            title: "Docket & Invoice OCR",
+            desc: "Snap a photo on your phone ➔ line items & prices verified ➔ draft bill in Xero in seconds.",
+          },
+          {
+            num: "2",
+            title: "Wage & Roster Guard",
+            desc: "Syncs live till sales with weather forecasts to protect your labour margin percentage.",
+          },
+          {
+            num: "3",
+            title: "24/7 Table & Group Concierge",
+            desc: "Automated phone and SMS booking agent so you never lose group deposits during slammed service.",
+          },
+          {
+            num: "4",
+            title: "14-Day Diagnostic Review",
+            desc: "On-site walk-through during prep hours, bottleneck mapping & WA grant application scoping.",
+          },
+        ],
+      },
+      quickAuditCta: "Book 14-Day Diagnostic Review",
+      quickScannerCta: "Try Live Docket Scanner",
     },
     marketReality: {
       stat1: "4–8 Hrs",
@@ -357,6 +435,7 @@ export const translations = {
   fr: {
     nav: {
       brandSub: "IA Appliquée pour la Restauration",
+      overview: "En Bref",
       liveDemo: "Démo en Direct",
       solutions: "Solutions",
       grants: "Subventions WA",
@@ -369,13 +448,16 @@ export const translations = {
       book14DayReview: "Réserver un Audit (14 Jours)",
     },
     hero: {
-      badge: "Au service des restaurants et groupes d'hospitalité du WA",
-      titleStart: "Libérez Vos Flux Opérationnels.",
-      titleAccent: "Gardez le Jugement Humain au Centre.",
+      badge: "IA Appliquée pour la Restauration • Établissements du WA",
+      titleStart: "Moins de Paperasse.",
+      titleAccent: "Plus d'Hospitalité.",
       subtitle:
-        "Nous concevons des flux d'IA appliquée fiables et déterministes pour éliminer la saisie des bons de livraison, détecter les hausses de prix fournisseurs et stabiliser la masse salariale—sans imposer aucun nouveau logiciel à vos chefs ou équipes de salle.",
+        "Nous concevons des automatisations IA concrètes pour éliminer la saisie des bons, détecter les hausses fournisseurs et stabiliser votre masse salariale—sans imposer aucun nouveau logiciel à votre équipe.",
       bookAuditBtn: "Réserver l'Audit Diagnostique (14 Jours)",
       testScannerBtn: "Tester le Scanner de Bons en Direct",
+      reassurance:
+        "Compatible avec Lightspeed, Square, Xero, MYOB & Deputy. Validation humaine à 100% sur chaque action.",
+      seeLiveExample: "Voir le scénario en direct :",
       scenarioHeading: "SCÉNARIO INTERACTIF EN DIRECT :",
       approveAction: "Feu Vert en 1 Clic",
       approvedBadge: "Validé & Synchronisé sur Xero",
@@ -437,6 +519,80 @@ export const translations = {
             "Notification WhatsApp instantanée sur le téléphone du gérant. 1 clic pour envoyer les SMS de fin de service aux extras de salle.",
         },
       },
+    },
+    companyOverview: {
+      badge: "L'ENTREPRISE EN UN COUP D'ŒIL",
+      titleStart: "Raison d'Être • Mission • Valeur •",
+      titleAccent: "Ce Que Nous Proposons",
+      subtitle:
+        "Tout ce que vous devez savoir sur hAI Mate! en quelques mots clairs.",
+      purpose: {
+        tag: "RAISON D'ÊTRE",
+        subtag: "Pourquoi Nous Existons",
+        headline: "Libérer les restaurateurs de l'épuisement administratif.",
+        description:
+          "La restauration est faite pour cuisiner, accueillir et régaler ses clients—pas pour passer ses soirées à saisir des factures tachées de graisse dans des tableurs. Nous existons pour rendre leurs soirées et leur sérénité aux gérants et aux chefs.",
+        bullets: [
+          "Éliminer la saisie tardive des factures",
+          "Supprimer le burn-out administratif",
+          "Redonner la priorité à la cuisine et aux clients",
+        ],
+      },
+      mission: {
+        tag: "NOTRE MISSION",
+        subtag: "Comment Nous Procédons",
+        headline: "Déployer une IA discrète qui respecte le savoir-faire humain.",
+        description:
+          "Nous n'imposons aucun nouveau logiciel ni écran à votre équipe. Nous créons des conduits invisibles entre votre caisse actuelle, vos bons de livraison et votre comptabilité—avec une validation humaine en 1 clic sur chaque décision.",
+        bullets: [
+          "Zéro nouvelle application pour l'équipe en salle ou en cuisine",
+          "Validation humaine obligatoire en 1 clic sur chaque facture",
+          "S'intègre directement à votre caisse, Xero & MYOB actuels",
+        ],
+      },
+      value: {
+        tag: "LA VALEUR",
+        subtag: "Ce Que Vous Y Gagnez",
+        headline: "4 à 8h gagnées par semaine, marges protégées & ROI 3x.",
+        description:
+          "Stoppez les hausses fournisseurs avant le paiement des factures, ajustez les plannings selon la météo, bénéficiez de 50% de subvention WA et de notre garantie : 3x le montant de notre mission en économies, ou vous payez 0 $.",
+        bullets: [
+          "4 à 8 heures d'administration économisées par semaine",
+          "50% pris en charge par le Local Capability Fund du WA",
+          "Garantie 100% Valeur : 3x le ROI ou 0 $ d'honoraires",
+        ],
+      },
+      offer: {
+        tag: "NOS SOLUTIONS",
+        subtag: "Nos 4 Conduits Clés en Main",
+        headline: "Quatre automatisations prêtes à l'emploi pour les établissements.",
+        description:
+          "Des flux opérationnels conçus spécialement pour le rythme de la restauration :",
+        services: [
+          {
+            num: "1",
+            title: "Traitement OCR des Bons & Factures",
+            desc: "Une photo sur smartphone ➔ articles & tarifs vérifiés ➔ facture brouillon dans Xero en quelques secondes.",
+          },
+          {
+            num: "2",
+            title: "Verrouillage Masse Salariale & Météo",
+            desc: "Synchronise les ventes de caisse avec la météo pour bloquer les heures supplémentaires et tenir vos ratios.",
+          },
+          {
+            num: "3",
+            title: "Concierge Vocal & SMS 24/7",
+            desc: "Agent automatisé pour ne plus jamais manquer de réservations de groupe ou d'acomptes pendant le coup de feu.",
+          },
+          {
+            num: "4",
+            title: "Audit Diagnostique de 14 Jours",
+            desc: "Visite sur place pendant la mise en place, cartographie des flux et montage du dossier de subvention WA.",
+          },
+        ],
+      },
+      quickAuditCta: "Réserver l'Audit Diagnostique (14 Jours)",
+      quickScannerCta: "Tester le Scanner en Direct",
     },
     marketReality: {
       stat1: "4 à 8 H",
