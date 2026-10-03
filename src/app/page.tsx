@@ -7,6 +7,7 @@ import MarketReality from "@/components/MarketReality";
 import BeforeAfter from "@/components/BeforeAfter";
 import SolutionsHub from "@/components/SolutionsHub";
 import PhilosophySection from "@/components/PhilosophySection";
+import ComparisonTable from "@/components/ComparisonTable";
 import FounderSpotlight from "@/components/FounderSpotlight";
 import ProcessSection from "@/components/ProcessSection";
 import GrantCallout from "@/components/GrantCallout";
@@ -35,7 +36,7 @@ export default function Home() {
       <Navbar onOpenAuditModal={() => handleOpenAuditModal()} />
 
       <main>
-        {/* 2. Hero Section */}
+        {/* 2. Hero Section with Interactive Bakery, Restaurant & Pub Scenario Switcher */}
         <Hero onOpenAuditModal={() => handleOpenAuditModal()} />
 
         {/* 3. Market Reality & Trust Metric Bar */}
@@ -50,23 +51,26 @@ export default function Home() {
         {/* 6. "The Open Aperture" Architecture (Why hAI Mate!) */}
         <PhilosophySection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 7. Founder / Solo Practitioner Personal Spotlight */}
+        {/* 7. Comparison Table: Why a Dedicated Solo Partner Beats Apps & Agencies */}
+        <ComparisonTable onOpenAuditModal={() => handleOpenAuditModal()} />
+
+        {/* 8. Founder / Solo Practitioner Personal Spotlight */}
         <FounderSpotlight onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 8. The 3-Step Go-To-Market Process */}
+        {/* 9. The 3-Step Go-To-Market Process */}
         <ProcessSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 9. WA Government Grant Accelerator (Callout Banner) */}
+        {/* 10. WA Government Grant Accelerator (Callout Banner) */}
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 10. Hospitality FAQ Section */}
+        {/* 11. Hospitality FAQ Section */}
         <FaqSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 11. Final CTA & Contact Intake Form */}
+        {/* 12. Final CTA & Contact Intake Form */}
         <IntakeSection />
       </main>
 
-      {/* 12. Footer */}
+      {/* 13. Footer */}
       <Footer />
 
       {/* Interactive Booking & Diagnostic Audit Modal */}
