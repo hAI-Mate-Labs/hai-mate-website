@@ -2,23 +2,13 @@
 
 import React, { useState } from "react";
 import {
-  FileSpreadsheet,
   Users,
-  MessageSquare,
   Star,
   Check,
   ArrowRight,
-  Sparkles,
-  Zap,
-  Clock,
-  Shield,
-  Layers,
-  Terminal,
   Activity,
   Receipt,
-  PhoneCall,
-  Flame,
-  ChevronRight
+  PhoneCall
 } from "lucide-react";
 
 interface SolutionsHubProps {
@@ -102,7 +92,7 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
       description:
         "Conversational text and voice booking agents capturing after-hours reservations and table inquiries, recapturing 10–15% in lost booking revenue.",
       highlights: [
-        "Answers phone calls and SMS 24/7 with Perth-accented natural voice",
+        "Answers phone calls and SMS 24/7 with natural conversational flow",
         "Direct calendar synchronization with SevenRooms, OpenTable, and Resy",
         "Handles function pack inquiries, dietary questions, and large table deposits",
       ],
@@ -153,27 +143,23 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
   ];
 
   return (
-    <section id="solutions" className="relative py-20 md:py-32 bg-[#0B0F19] border-b border-[#232F48]">
-      
-      {/* Background accents */}
-      <div className="absolute top-1/2 right-0 w-80 h-80 bg-[#00F2FE]/5 rounded-full blur-[120px] pointer-events-none" />
-
+    <section id="solutions" className="relative py-20 md:py-28 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#151D2F] border border-[#232F48] text-xs font-mono text-[#00F2FE] mb-3">
-            <span>CORE SOLUTIONS HUB // EMBEDDED CONDUITS</span>
+        <div className="max-w-3xl mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
+            <span>CORE SOLUTIONS // APPLIED CONDUITS</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#FFFFFF] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Applied Agentic Workflows Engineered for Western Australian Venues.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#94A3B8]">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             We don’t replace your team; we eliminate the non-revenue-generating administrative friction so your venue managers can be on the floor delivering hospitality.
           </p>
         </div>
 
-        {/* Grid of 4 Interactive Cards */}
+        {/* Grid of 4 Minimalist White Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {solutions.map((item) => {
             const Icon = item.icon;
@@ -182,20 +168,20 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
             return (
               <div
                 key={item.id}
-                className="group rounded-xl bg-[#151D2F] border border-[#232F48] overflow-hidden hover:border-[#00F2FE]/70 transition-all duration-300 shadow-xl flex flex-col justify-between"
+                className="group rounded-xl bg-white border border-slate-200 overflow-hidden hover:border-slate-400 transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between"
               >
                 {/* Card Header */}
                 <div className="p-6 sm:p-8">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-3 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#00F2FE] group-hover:scale-105 group-hover:border-[#00F2FE]/50 transition-all">
-                        <Icon className="w-6 h-6" />
+                      <div className="p-2.5 rounded-lg bg-slate-100 text-slate-900 border border-slate-200 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
+                        <Icon className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#00F2FE] font-bold block">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#0096A3] font-bold block">
                           {item.category}
                         </span>
-                        <h3 className="text-xl sm:text-2xl font-bold text-[#FFFFFF]">
+                        <h3 className="text-lg sm:text-xl font-bold text-slate-900">
                           {item.title}
                         </h3>
                       </div>
@@ -203,21 +189,21 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                   </div>
 
                   {/* Core Description */}
-                  <p className="text-sm sm:text-base text-[#94A3B8] leading-relaxed mb-6 font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
                     {item.description}
                   </p>
 
-                  {/* Interactive Sub-Tabs: Spec vs Flow vs Payload */}
-                  <div className="flex items-center justify-between border-y border-[#232F48] py-2 mb-4 bg-[#0B0F19]/40 -mx-6 sm:-mx-8 px-6 sm:px-8">
-                    <span className="text-xs font-mono text-[#94A3B8]">Inspection View:</span>
+                  {/* Sub-Tabs: Spec vs Flow vs Payload */}
+                  <div className="flex items-center justify-between border-y border-slate-100 py-2 mb-4 bg-slate-50/70 -mx-6 sm:-mx-8 px-6 sm:px-8">
+                    <span className="text-xs font-mono text-slate-500">View:</span>
                     <div className="flex items-center gap-1">
                       <button
                         type="button"
                         onClick={() => toggleCardView(item.id, "spec")}
-                        className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
+                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
                           currentView === "spec"
-                            ? "bg-[#151D2F] text-[#00F2FE] border border-[#232F48] font-bold"
-                            : "text-[#94A3B8] hover:text-[#FFFFFF]"
+                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
+                            : "text-slate-500 hover:text-slate-900"
                         }`}
                       >
                         Feature Spec
@@ -225,10 +211,10 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                       <button
                         type="button"
                         onClick={() => toggleCardView(item.id, "flow")}
-                        className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
+                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
                           currentView === "flow"
-                            ? "bg-[#151D2F] text-[#00F2FE] border border-[#232F48] font-bold"
-                            : "text-[#94A3B8] hover:text-[#FFFFFF]"
+                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
+                            : "text-slate-500 hover:text-slate-900"
                         }`}
                       >
                         Workflow Steps
@@ -236,10 +222,10 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                       <button
                         type="button"
                         onClick={() => toggleCardView(item.id, "payload")}
-                        className={`px-2.5 py-1 text-xs font-mono rounded transition-colors ${
+                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
                           currentView === "payload"
-                            ? "bg-[#151D2F] text-[#00F2FE] border border-[#232F48] font-bold"
-                            : "text-[#94A3B8] hover:text-[#FFFFFF]"
+                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
+                            : "text-slate-500 hover:text-slate-900"
                         }`}
                       >
                         JSON Telemetry
@@ -248,12 +234,12 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                   </div>
 
                   {/* Tab Body */}
-                  <div className="min-h-[140px]">
+                  <div className="min-h-[130px]">
                     {currentView === "spec" && (
-                      <div className="space-y-2.5 animate-in fade-in duration-150">
+                      <div className="space-y-2 animate-in fade-in duration-150">
                         {item.highlights.map((bullet, i) => (
-                          <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#F8FAFC]">
-                            <div className="mt-1 flex-shrink-0 w-4 h-4 rounded-full bg-[#00F2FE]/10 text-[#00F2FE] flex items-center justify-center border border-[#00F2FE]/30">
+                          <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                            <div className="mt-0.5 flex-shrink-0 w-4 h-4 rounded bg-slate-100 text-slate-700 flex items-center justify-center">
                               <Check className="w-2.5 h-2.5" />
                             </div>
                             <span>{bullet}</span>
@@ -263,31 +249,31 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                     )}
 
                     {currentView === "flow" && (
-                      <div className="space-y-2 animate-in fade-in duration-150">
+                      <div className="space-y-1.5 animate-in fade-in duration-150">
                         {item.flowSteps.map((step, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs font-mono bg-[#0B0F19] p-2 rounded border border-[#232F48]">
-                            <span className="text-[#00F2FE] font-bold w-5">{idx + 1}.</span>
-                            <span className="text-[#FFFFFF] font-semibold">{step.label}:</span>
-                            <span className="text-[#94A3B8] truncate">{step.detail}</span>
+                          <div key={idx} className="flex items-center gap-2 text-xs font-mono bg-slate-50 p-2 rounded border border-slate-200">
+                            <span className="text-slate-900 font-bold w-4">{idx + 1}.</span>
+                            <span className="text-slate-900 font-semibold">{step.label}:</span>
+                            <span className="text-slate-600 truncate">{step.detail}</span>
                           </div>
                         ))}
                       </div>
                     )}
 
                     {currentView === "payload" && (
-                      <div className="bg-[#0B0F19] rounded p-3 text-[11px] font-mono text-cyan-200 border border-[#232F48] overflow-x-auto animate-in fade-in duration-150">
-                        <pre className="text-slate-300">{item.samplePayload}</pre>
+                      <div className="bg-slate-50 rounded p-3 text-[11px] font-mono text-slate-800 border border-slate-200 overflow-x-auto animate-in fade-in duration-150">
+                        <pre>{item.samplePayload}</pre>
                       </div>
                     )}
                   </div>
 
                   {/* Integration Tags */}
-                  <div className="mt-6 flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-mono text-[#94A3B8] mr-1">Integrates:</span>
+                  <div className="mt-5 flex flex-wrap items-center gap-1.5">
+                    <span className="text-xs font-mono text-slate-500 mr-1">Integrates:</span>
                     {item.integrations.map((badge) => (
                       <span
                         key={badge}
-                        className="text-xs font-mono px-2.5 py-1 rounded bg-[#0B0F19] text-[#F8FAFC] border border-[#232F48]"
+                        className="text-xs font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200"
                       >
                         {badge}
                       </span>
@@ -295,18 +281,18 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                   </div>
                 </div>
 
-                {/* Card Footer: Metric & Direct Action */}
-                <div className="px-6 sm:px-8 py-4 bg-[#0F172A] border-t border-[#232F48] flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono text-emerald-400">
-                    <Activity className="w-3.5 h-3.5 text-[#00F2FE]" />
+                {/* Card Footer */}
+                <div className="px-6 sm:px-8 py-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-slate-700">
+                    <Activity className="w-3.5 h-3.5 text-[#00BFCC]" />
                     <span>{item.metric}</span>
                   </div>
                   <button
                     type="button"
                     onClick={() => onOpenAuditModal(item.title)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-[#00F2FE] hover:text-[#FFFFFF] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-slate-900 hover:text-[#0096A3]"
                   >
-                    <span>Audit This Workflow</span>
+                    <span>Audit Workflow</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

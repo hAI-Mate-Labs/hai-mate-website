@@ -1,25 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FileText,
   AlertTriangle,
   CheckCircle2,
-  Play,
   RotateCcw,
   Terminal,
-  Clock,
   Shield,
   ArrowRight,
-  Sparkles,
   Cpu,
-  Layers,
-  ChevronRight,
-  ExternalLink,
-  DollarSign,
-  TrendingDown,
-  Check,
-  Code2
+  Check
 } from "lucide-react";
 
 interface HeroProps {
@@ -32,11 +23,9 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
   const [activeTab, setActiveTab] = useState<TabType>("pipeline");
   const [approved, setApproved] = useState(false);
   const [approving, setApproving] = useState(false);
-  const [activeStepIndex, setActiveStepIndex] = useState(2); // Step 3 (Center Anchor)
+  const [activeStepIndex, setActiveStepIndex] = useState(2);
   const [latency, setLatency] = useState("0.4s");
-  const [pulseLive, setPulseLive] = useState(true);
 
-  // Simulated live execution timer
   const handleApprove = () => {
     if (approving) return;
     setApproving(true);
@@ -50,122 +39,119 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
   const handleReset = () => {
     setApproved(false);
     setActiveStepIndex(0);
-    setTimeout(() => setActiveStepIndex(1), 800);
-    setTimeout(() => setActiveStepIndex(2), 1600);
+    setTimeout(() => setActiveStepIndex(1), 600);
+    setTimeout(() => setActiveStepIndex(2), 1200);
   };
 
   return (
-    <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden border-b border-[#232F48]">
-      {/* Background canvas effects */}
-      <div className="absolute inset-0 terminal-grid opacity-25 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00F2FE]/5 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#151D2F]/60 rounded-full blur-[100px] pointer-events-none" />
+    <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-white border-b border-slate-200">
+      {/* Minimal background grid */}
+      <div className="absolute inset-0 minimal-grid opacity-25 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
           
-          {/* Left Column: Headline & Value Proposition */}
+          {/* Left Column: Minimal Headline & Narrative */}
           <div className="lg:col-span-6 space-y-6 text-left">
+            
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#151D2F] border border-[#232F48] shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 shadow-2xs">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00F2FE] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00F2FE]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BFCC] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BFCC]" />
               </span>
-              <span className="text-xs font-mono font-semibold tracking-wide text-[#F8FAFC]">
-                Western Australia’s Applied Automation Agency
+              <span className="text-xs font-mono font-medium text-slate-800">
+                Western Australia’s Applied Automation Practice
               </span>
-              <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-[#00F2FE]/15 text-[#00F2FE] border border-[#00F2FE]/30 font-bold ml-1">
-                Perth • WA
+              <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-slate-200/80 text-slate-700 font-semibold">
+                Solo Practitioner
               </span>
             </div>
 
             {/* H1 Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight text-[#FFFFFF] leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight text-slate-900 leading-[1.14]">
               Opening Up Operational Flow While Keeping{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#E2E8F0] to-[#00F2FE] underline decoration-[#00F2FE]/50 decoration-wavy decoration-2">
+              <span className="relative inline-block text-slate-900">
                 Human Judgment
+                <span className="absolute bottom-1.5 left-0 w-full h-2 bg-[#00BFCC]/25 -z-10 rounded-sm" />
               </span>{" "}
               at the Center.
             </h1>
 
             {/* Subheadline */}
-            <p className="text-base sm:text-lg text-[#94A3B8] leading-relaxed max-w-2xl font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               We design, deploy, and manage embedded agentic workflows for hospitality groups and growing SMEs across WA. Eliminate manual back-office drag, protect your labor margins, and maintain complete operational control.
             </p>
 
-            {/* Key Value Micro-Chips */}
-            <div className="flex flex-wrap gap-2.5 pt-1 text-xs font-mono text-[#F8FAFC]">
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#151D2F]/80 border border-[#232F48]">
-                <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
-                Lightspeed & Square Native
+            {/* Clean Value Bullets */}
+            <div className="flex flex-wrap gap-2 pt-1 text-xs font-mono text-slate-700">
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
+                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
+                Lightspeed &amp; Square Native
               </span>
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#151D2F]/80 border border-[#232F48]">
-                <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
+                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
                 Zero Unreviewed General Ledger Posts
               </span>
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-[#151D2F]/80 border border-[#232F48]">
-                <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
-                Eligible for 50% WA State Grant
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
+                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
+                50% WA State Grant Eligible
               </span>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="relative inline-flex items-center justify-center px-6 py-4 text-base font-bold rounded-md bg-[#00F2FE] text-[#04101A] shadow-[0_0_25px_rgba(0,242,254,0.4)] hover:brightness-110 active:scale-[0.99] transition-all cursor-pointer font-sans group border border-[#00F2FE]"
+                className="relative inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.99] transition-all cursor-pointer font-sans group border border-[#0F172A] shadow-sm"
               >
                 <span>Get Your 14-Day AI Readiness Audit</span>
-                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
               </button>
 
               <a
                 href="#solutions"
-                className="inline-flex items-center justify-center px-6 py-4 text-base font-medium rounded-md bg-[#151D2F] text-[#F8FAFC] border border-[#232F48] hover:border-[#00F2FE]/60 hover:bg-[#1A243A] transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium rounded-lg bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all shadow-2xs"
               >
                 <span>Explore Applied Solutions</span>
               </a>
             </div>
 
-            {/* Real-time local status proof */}
-            <div className="pt-2 flex items-center gap-3 text-xs text-[#94A3B8]">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
-              <span>Available for on-site diagnostic audits across Perth CBD, Fremantle, Subiaco, and South West.</span>
+            {/* Solo Practitioner Local note */}
+            <div className="pt-2 text-xs text-slate-500 font-mono flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Direct engineer access: Direct solo practitioner engagement without account manager bloat.</span>
             </div>
           </div>
 
-          {/* Right Column: Interactive UI Preview Card */}
+          {/* Right Column: Minimalist Light Terminal Preview Card */}
           <div className="lg:col-span-6">
-            <div className="relative rounded-xl bg-[#151D2F] border border-[#232F48] shadow-2xl shadow-black/80 overflow-hidden backdrop-blur-xl">
+            <div className="relative rounded-xl bg-white border border-slate-200 shadow-xl overflow-hidden">
               
-              {/* Glassmorphic border glow */}
-              <div className="absolute inset-0 pointer-events-none rounded-xl border border-[#00F2FE]/20" />
-
               {/* Terminal Title Bar */}
-              <div className="flex items-center justify-between px-4 py-3 bg-[#0F172A] border-b border-[#232F48]">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200">
                 <div className="flex items-center gap-2">
                   <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
                   </div>
-                  <span className="text-xs font-mono text-[#94A3B8] ml-2 flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-[#00F2FE]" />
-                    <span>hAI-conduit::live_session_flow_v2.4</span>
+                  <span className="text-xs font-mono text-slate-500 ml-2 flex items-center gap-1.5">
+                    <Terminal className="w-3.5 h-3.5 text-[#00BFCC]" />
+                    <span>hAI-flow::perth_hospo_gateway</span>
                   </span>
                 </div>
 
                 {/* Tab Switcher */}
-                <div className="flex items-center gap-1 bg-[#0B0F19] p-1 rounded-md border border-[#232F48] text-xs font-mono">
+                <div className="flex items-center gap-1 bg-white p-0.5 rounded border border-slate-200 text-xs font-mono">
                   <button
                     type="button"
                     onClick={() => setActiveTab("pipeline")}
-                    className={`px-2.5 py-1 rounded transition-colors ${
+                    className={`px-2 py-0.5 rounded transition-colors ${
                       activeTab === "pipeline"
-                        ? "bg-[#151D2F] text-[#00F2FE] font-semibold"
-                        : "text-[#94A3B8] hover:text-[#F8FAFC]"
+                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
                     Workflow
@@ -173,10 +159,10 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                   <button
                     type="button"
                     onClick={() => setActiveTab("logs")}
-                    className={`px-2.5 py-1 rounded transition-colors ${
+                    className={`px-2 py-0.5 rounded transition-colors ${
                       activeTab === "logs"
-                        ? "bg-[#151D2F] text-[#00F2FE] font-semibold"
-                        : "text-[#94A3B8] hover:text-[#F8FAFC]"
+                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
                     Telemetry
@@ -184,10 +170,10 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                   <button
                     type="button"
                     onClick={() => setActiveTab("payload")}
-                    className={`px-2.5 py-1 rounded transition-colors ${
+                    className={`px-2 py-0.5 rounded transition-colors ${
                       activeTab === "payload"
-                        ? "bg-[#151D2F] text-[#00F2FE] font-semibold"
-                        : "text-[#94A3B8] hover:text-[#F8FAFC]"
+                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
                     JSON
@@ -196,221 +182,204 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
               </div>
 
               {/* Sub-header telemetry stats */}
-              <div className="grid grid-cols-3 border-b border-[#232F48] bg-[#0B0F19]/60 px-4 py-2 text-xs font-mono">
-                <div className="flex items-center gap-1.5 text-[#94A3B8]">
+              <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50/50 px-4 py-2 text-xs font-mono text-slate-600">
+                <div className="flex items-center gap-1.5">
                   <span>Status:</span>
-                  <span className="text-emerald-400 font-bold flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    CONDUIT_HEALTHY
+                  <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    HEALTHY
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#94A3B8] justify-center">
-                  <span>Target Wage:</span>
-                  <span className="text-[#00F2FE] font-bold">33.0%</span>
+                <div className="flex items-center gap-1.5 justify-center">
+                  <span>Wage Target:</span>
+                  <span className="text-slate-900 font-bold">33.0%</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[#94A3B8] justify-end">
-                  <span>Approval Latency:</span>
-                  <span className="text-[#FFFFFF] font-bold">{latency}</span>
+                <div className="flex items-center gap-1.5 justify-end">
+                  <span>Approval:</span>
+                  <span className="text-[#00BFCC] font-bold">{latency}</span>
                 </div>
               </div>
 
               {/* Interactive Content View */}
-              <div className="p-5 space-y-4">
+              <div className="p-4 sm:p-5 space-y-3">
                 {activeTab === "pipeline" && (
-                  <div className="space-y-3.5">
+                  <div className="space-y-3">
+                    
                     {/* Step 1 */}
                     <div
                       onClick={() => setActiveStepIndex(0)}
-                      className={`relative p-3.5 rounded-lg border transition-all duration-200 cursor-pointer ${
+                      className={`p-3 rounded-lg border transition-all cursor-pointer ${
                         activeStepIndex === 0
-                          ? "bg-[#1A243A] border-[#00F2FE]/70 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
-                          : "bg-[#0F172A]/70 border-[#232F48] hover:border-slate-600"
+                          ? "bg-slate-50 border-slate-400"
+                          : "bg-white border-slate-200 hover:border-slate-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
-                          <div className="p-1.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            <FileText className="w-4 h-4" />
+                          <div className="p-1 rounded bg-slate-100 text-slate-700">
+                            <FileText className="w-3.5 h-3.5" />
                           </div>
                           <div>
-                            <span className="text-[11px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
-                              Step 01 • Ingestion & OCR
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">
+                              Step 01 • Ingestion &amp; OCR
                             </span>
-                            <h4 className="text-sm font-semibold text-[#F8FAFC]">
+                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
                               Supplier Invoice Scanned via OCR
                             </h4>
                           </div>
                         </div>
-                        <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0F19] text-emerald-400 border border-emerald-900/60 font-medium">
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium">
                           100% Parsed
                         </span>
                       </div>
-                      <p className="text-xs text-[#94A3B8] pl-8">
-                        Seafood supplier docket: 14 line items extracted. Unit pricing verified against weekly price-cap schedule.
+                      <p className="text-xs text-slate-600 pl-6">
+                        Fresh produce docket: 14 line items extracted and verified against weekly price agreement.
                       </p>
-                      <div className="mt-2 pl-8 flex items-center gap-2 text-[11px] font-mono text-[#00F2FE]">
-                        <span>→ Parsed to Xero General Ledger: Draft Bills</span>
+                      <div className="mt-1.5 pl-6 text-[11px] font-mono text-[#0096A3] font-medium">
+                        → Line items parsed to Xero: Draft Bills
                       </div>
                     </div>
 
                     {/* Step 2 */}
                     <div
                       onClick={() => setActiveStepIndex(1)}
-                      className={`relative p-3.5 rounded-lg border transition-all duration-200 cursor-pointer ${
+                      className={`p-3 rounded-lg border transition-all cursor-pointer ${
                         activeStepIndex === 1
-                          ? "bg-[#1A243A] border-[#00F2FE]/70 shadow-[0_0_15px_rgba(0,242,254,0.15)]"
-                          : "bg-[#0F172A]/70 border-[#232F48] hover:border-slate-600"
+                          ? "bg-slate-50 border-slate-400"
+                          : "bg-white border-slate-200 hover:border-slate-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
-                          <div className="p-1.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                            <AlertTriangle className="w-4 h-4" />
+                          <div className="p-1 rounded bg-amber-50 text-amber-700">
+                            <AlertTriangle className="w-3.5 h-3.5" />
                           </div>
                           <div>
-                            <span className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold">
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 font-bold">
                               Step 02 • ML Discrepancy Gate
                             </span>
-                            <h4 className="text-sm font-semibold text-[#F8FAFC]">
+                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
                               POS Shift Discrepancy Flagged
                             </h4>
                           </div>
                         </div>
-                        <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-[#0B0F19] text-amber-400 border border-amber-900/60 font-medium">
+                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 font-medium">
                           Variance: +1.8%
                         </span>
                       </div>
-                      <p className="text-xs text-[#94A3B8] pl-8">
-                        Lightspeed POS real-time sales trending down 8% vs BOM rainfall surge. Predicted Saturday labor ratio exceeded threshold (34.8%).
+                      <p className="text-xs text-slate-600 pl-6">
+                        Lightspeed POS sales trending down vs local rain forecast. Saturday wage cost trending to 34.8%.
                       </p>
-                      <div className="mt-2 pl-8 flex items-center gap-2 text-[11px] font-mono text-amber-300">
-                        <span>→ Roster auto-adjusted to preserve 33% wage target (-1 floor shift suggested)</span>
+                      <div className="mt-1.5 pl-6 text-[11px] font-mono text-amber-800 font-medium">
+                        → Roster auto-adjusted to preserve 33% wage target
                       </div>
                     </div>
 
                     {/* Step 3 (Center Anchor - Human Review Required) */}
                     <div
                       onClick={() => setActiveStepIndex(2)}
-                      className={`relative p-4 rounded-lg border-2 transition-all duration-200 ${
+                      className={`p-3.5 rounded-lg border-2 transition-all ${
                         activeStepIndex === 2
-                          ? "bg-[#121E33] border-[#00F2FE] shadow-[0_0_20px_rgba(0,242,254,0.25)]"
-                          : "bg-[#0F172A] border-[#00F2FE]/50"
+                          ? "bg-slate-50/70 border-[#00BFCC]"
+                          : "bg-white border-slate-300"
                       }`}
                     >
-                      {/* Pulse beacon */}
-                      <div className="absolute -top-2.5 right-4 px-2 py-0.5 rounded-full bg-[#00F2FE] text-[#04101A] text-[10px] font-mono font-black tracking-wider uppercase flex items-center gap-1 shadow-md">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#04101A] animate-ping" />
-                        Center Anchor • Human Control Gate
-                      </div>
-
-                      <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2">
-                          <div className="p-1.5 rounded bg-[#00F2FE]/15 text-[#00F2FE] border border-[#00F2FE]/30">
-                            <Shield className="w-4 h-4" />
+                          <div className="p-1 rounded bg-[#00BFCC]/15 text-[#0096A3]">
+                            <Shield className="w-3.5 h-3.5" />
                           </div>
                           <div>
-                            <span className="text-[11px] font-mono uppercase tracking-wider text-[#00F2FE] font-bold">
-                              Step 03 • The Operator Checkpoint
+                            <span className="text-[10px] font-mono uppercase tracking-wider text-[#0096A3] font-bold">
+                              Step 03 • Center Anchor
                             </span>
-                            <h4 className="text-sm font-bold text-[#FFFFFF]">
+                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
                               Human Review Required
                             </h4>
                           </div>
                         </div>
                       </div>
 
-                      <p className="text-xs text-slate-300 pl-8 mb-3">
-                        No automated roster cut or ledger post executes without explicit operator signature. Dispatch push sent to Venue Manager via Slack.
+                      <p className="text-xs text-slate-600 pl-6 mb-2.5">
+                        No automated roster cut or ledger post executes without explicit operator signature.
                       </p>
 
                       {/* Interactive Button Badge: "Approved by Venue Manager (0.4s)" */}
-                      <div className="pl-8 flex flex-wrap items-center gap-3">
+                      <div className="pl-6 flex flex-wrap items-center gap-2.5">
                         <button
                           type="button"
                           onClick={handleApprove}
                           disabled={approving}
-                          className={`relative inline-flex items-center gap-2 px-3.5 py-2 rounded-md font-mono text-xs font-bold transition-all cursor-pointer border ${
+                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs font-bold transition-all cursor-pointer border ${
                             approved
-                              ? "bg-emerald-500/20 text-emerald-300 border-emerald-500/60 shadow-[0_0_12px_rgba(16,185,129,0.3)]"
-                              : "bg-[#00F2FE] text-[#04101A] border-[#00F2FE] hover:brightness-110 active:scale-95 shadow-[0_0_15px_rgba(0,242,254,0.4)]"
+                              ? "bg-emerald-50 text-emerald-800 border-emerald-300"
+                              : "bg-[#0F172A] text-white border-[#0F172A] hover:bg-slate-800 shadow-2xs"
                           }`}
                         >
-                          <CheckCircle2 className="w-4 h-4" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00BFCC]" />
                           <span>
                             {approving
                               ? "Verifying Token..."
                               : approved
                               ? "Approved by Venue Manager (0.4s)"
-                              : "Click to Approve as Venue Manager"}
+                              : "Approve as Venue Manager"}
                           </span>
                         </button>
 
                         <button
                           type="button"
                           onClick={handleReset}
-                          className="text-xs font-mono text-[#94A3B8] hover:text-[#00F2FE] flex items-center gap-1 transition-colors"
+                          className="text-xs font-mono text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors"
                         >
                           <RotateCcw className="w-3 h-3" />
-                          Reset flow
+                          Reset
                         </button>
                       </div>
 
-                      {/* Live verification token signature */}
-                      <div className="mt-3 pt-2.5 border-t border-[#232F48] pl-8 flex items-center justify-between text-[10px] font-mono text-[#94A3B8]">
-                        <span>Auth: RSA-4096 / Slack PIN</span>
-                        <span className="text-[#00F2FE]">
-                          {approved ? "STATE: COMMITTED_TO_LIGHTSPEED_XERO" : "STATE: AWAITING_OPERATOR_GATE"}
+                      <div className="mt-2.5 pt-2 border-t border-slate-200 pl-6 flex items-center justify-between text-[10px] font-mono text-slate-500">
+                        <span>Sign-off: Slack PIN / RSA-4096</span>
+                        <span className="text-[#0096A3] font-semibold">
+                          {approved ? "STATUS: COMMITTED TO XERO" : "STATUS: AWAITING_HUMAN"}
                         </span>
                       </div>
                     </div>
+
                   </div>
                 )}
 
-                {/* Telemetry / Raw Logs View */}
+                {/* Telemetry Tab */}
                 {activeTab === "logs" && (
-                  <div className="bg-[#0B0F19] rounded-lg p-3.5 font-mono text-xs text-slate-300 space-y-1.5 border border-[#232F48] max-h-64 overflow-y-auto">
-                    <div className="text-[#94A3B8]">[11:42:01.002] INGEST: supplier_invoice_6691.pdf received via webhook</div>
-                    <div className="text-emerald-400">[11:42:01.341] OCR_SUCCESS: 14 line items extracted (Confidence 99.8%)</div>
-                    <div className="text-[#94A3B8]">[11:42:01.390] XERO_SYNC: Draft bill #BILL-8891 staged. No ledger auto-commit.</div>
-                    <div className="text-amber-400">[11:42:02.100] POS_ALERT: Lightspeed hourly delta -8.4% vs Saturday baseline</div>
-                    <div className="text-amber-400">[11:42:02.140] BOM_METEOROLOGY: Rain event 14mm detected for Perth Metro (6000)</div>
-                    <div className="text-[#00F2FE]">[11:42:02.210] MODEL_PREDICTION: Wage cost will peak at 34.8% (Target: 33.0%)</div>
-                    <div className="text-cyan-200">[11:42:02.280] ROSTER_PROPOSAL: -1 Casual Floor shift (18:00 - 22:00)</div>
-                    <div className="text-[#FFFFFF] bg-[#151D2F] px-2 py-1 rounded border border-[#00F2FE]/40">
-                      [11:42:02.320] GATEWAY: HUMAN_REVIEW_REQUIRED dispatch sent to Venue Manager Slack channel #management
+                  <div className="bg-slate-50 rounded p-3 font-mono text-xs text-slate-700 space-y-1 border border-slate-200 max-h-56 overflow-y-auto">
+                    <div>[11:42:01.002] INGEST: supplier_invoice_6691.pdf received</div>
+                    <div className="text-emerald-700 font-medium">[11:42:01.341] OCR_SUCCESS: 14 line items extracted (Confidence 99.8%)</div>
+                    <div>[11:42:01.390] XERO_SYNC: Draft bill staged. No ledger auto-commit.</div>
+                    <div className="text-amber-700">[11:42:02.100] POS_ALERT: Lightspeed hourly delta -8.4% vs Saturday baseline</div>
+                    <div className="text-[#0096A3] font-semibold">[11:42:02.210] MODEL_PREDICTION: Wage cost will peak at 34.8% (Target: 33.0%)</div>
+                    <div className="p-1.5 rounded bg-white border border-slate-200 font-semibold text-slate-900">
+                      [11:42:02.320] GATEWAY: HUMAN_REVIEW_REQUIRED dispatch sent to Venue Manager
                     </div>
                     {approved && (
-                      <div className="text-emerald-300 font-bold bg-emerald-950/40 px-2 py-1 rounded border border-emerald-500/50">
-                        [11:42:02.720] AUTH_SUCCESS: Operator token verified. Approved in 0.4s. Changes executed.
+                      <div className="text-emerald-800 font-bold bg-emerald-50 p-1.5 rounded border border-emerald-300">
+                        [11:42:02.720] AUTH_SUCCESS: Approved by Venue Manager in 0.4s. Changes committed.
                       </div>
                     )}
                   </div>
                 )}
 
-                {/* JSON Payload View */}
+                {/* JSON Tab */}
                 {activeTab === "payload" && (
-                  <div className="bg-[#0B0F19] rounded-lg p-3.5 font-mono text-[11px] text-cyan-200 border border-[#232F48] max-h-64 overflow-y-auto">
-                    <pre className="text-slate-300">
+                  <div className="bg-slate-50 rounded p-3 font-mono text-[11px] text-slate-800 border border-slate-200 max-h-56 overflow-y-auto">
+                    <pre>
 {`{
-  "conduit_id": "wa_hospo_gateway_09",
-  "venue": "Cottesloe Beachside Bistro",
-  "postcode": 6011,
-  "timestamp": "2026-10-03T11:42:02+08:00",
+  "conduit": "wa_hospo_gateway_09",
+  "venue": "Cottesloe Bistro",
   "ocr_invoice": {
-    "supplier": "Kailis Bros Fremantle",
-    "invoice_no": "INV-4921",
+    "supplier": "Fremantle Produce Co",
     "total_aud": 2840.50,
-    "discrepancies": []
+    "pricing_variance": "0.00 AUD (Matched)"
   },
-  "labor_guard": {
-    "wage_target_pct": 33.0,
-    "predicted_without_adjustment": 34.8,
-    "suggested_saving_aud": 312.00,
-    "roster_delta": "Cut 1x Casual Runner (18:00-22:00)"
-  },
-  "review_gate": {
-    "required": true,
-    "approver": "Venue Manager (Slack #ops)",
+  "labor_target_pct": 33.0,
+  "human_gate": {
     "status": "${approved ? "APPROVED" : "AWAITING_HUMAN"}",
     "latency_seconds": ${approved ? 0.4 : "null"}
   }
@@ -420,15 +389,15 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                 )}
               </div>
 
-              {/* Terminal Bottom Action Bar */}
-              <div className="px-5 py-3 bg-[#0F172A] border-t border-[#232F48] flex items-center justify-between text-xs font-mono">
-                <div className="flex items-center gap-2 text-[#94A3B8]">
-                  <Cpu className="w-3.5 h-3.5 text-[#00F2FE]" />
-                  <span>Xero • Lightspeed • Square • Slack Connect</span>
+              {/* Card Footer */}
+              <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-600">
+                <div className="flex items-center gap-1.5">
+                  <Cpu className="w-3.5 h-3.5 text-[#00BFCC]" />
+                  <span>Lightspeed • Square • Xero • Slack</span>
                 </div>
-                <div className="text-[#00F2FE] flex items-center gap-1 font-semibold">
-                  <span>Audit Trail Guaranteed</span>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="text-slate-800 font-semibold flex items-center gap-1">
+                  <span>Cryptographic Review Gate</span>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
                 </div>
               </div>
             </div>

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "hAI Mate! | Western Australia's Applied AI & Automation Agency",
-  description: "Opening up operational flow while keeping human judgment at the center. Applied AI and agentic workflows for hospitality groups and growing SMEs across WA.",
-  keywords: ["applied AI WA", "hospitality automation Perth", "Western Australia AI agency", "human in the loop automation", "Xero Lightspeed AI integration", "Local Capability Fund AI"],
-  authors: [{ name: "hAI Mate! Pty Ltd" }],
+  title: "hAI Mate! | Applied AI & Automation Agency",
+  description: "Opening up operational flow while keeping human judgment at the center. Applied AI and agentic workflows for hospitality groups and growing SMEs across WA and Australia.",
+  keywords: ["applied AI WA", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "Sydney registered sole trader"],
+  authors: [{ name: "hAI Mate!" }],
   openGraph: {
-    title: "hAI Mate! | Applied Automation Agency WA",
+    title: "hAI Mate! | Applied Automation Agency",
     description: "Opening up operational flow while keeping human judgment at the center.",
     url: "https://haimate.com.au",
     siteName: "hAI Mate!",
@@ -22,11 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="light scroll-smooth">
       <head>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='180' fill='%23FFFFFF'/><circle cx='256' cy='256' r='12' fill='%2300F2FE'/></svg>" />
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><circle cx='256' cy='256' r='180' fill='%230F172A'/><circle cx='256' cy='256' r='12' fill='%2300BFCC'/></svg>"
+        />
       </head>
-      <body className="min-h-screen bg-[#0B0F19] text-[#F8FAFC] antialiased selection:bg-[#00F2FE] selection:text-[#04101A]">
+      <body className="min-h-screen bg-white text-[#0F172A] antialiased selection:bg-[#00BFCC] selection:text-white">
         {children}
       </body>
     </html>

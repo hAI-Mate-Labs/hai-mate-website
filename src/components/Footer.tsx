@@ -2,37 +2,37 @@
 
 import React from "react";
 import ApertureLogo from "./ApertureLogo";
-import { ShieldCheck, MapPin, Terminal, ExternalLink, Heart, Globe, Cpu } from "lucide-react";
+import { ShieldCheck, Cpu } from "lucide-react";
 
 export default function Footer() {
   const techBadges = [
-    { name: "Lightspeed", role: "POS Webhook Native" },
-    { name: "Square", role: "Direct API Ingestion" },
-    { name: "Xero", role: "General Ledger Staging" },
-    { name: "MYOB", role: "AP Automation" },
-    { name: "Slack", role: "Realtime Human Gates" },
+    { name: "Lightspeed", role: "POS Webhooks" },
+    { name: "Square", role: "Direct API Sync" },
+    { name: "Xero", role: "GL Draft Bills" },
+    { name: "MYOB", role: "AP Ingestion" },
+    { name: "Slack", role: "Human Review Gates" },
   ];
 
   return (
-    <footer className="relative bg-[#070A12] border-t border-[#232F48] text-[#94A3B8] font-sans">
+    <footer className="relative bg-slate-50 border-t border-slate-200 text-slate-600 font-sans">
       
-      {/* Top Banner: Tech Integration Badges */}
-      <div className="border-b border-[#232F48]/60 bg-[#0B0F19]/80 py-6">
+      {/* Ecosystem Badges Bar */}
+      <div className="border-b border-slate-200/80 bg-white py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#FFFFFF]">
-              <Cpu className="w-4 h-4 text-[#00F2FE]" />
-              <span>Certified Architecture Ecosystem:</span>
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-900 font-bold">
+              <Cpu className="w-4 h-4 text-[#00BFCC]" />
+              <span>Certified Integration Ecosystem:</span>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
               {techBadges.map((badge) => (
                 <div
                   key={badge.name}
-                  className="flex items-center gap-2 px-3 py-1 rounded bg-[#151D2F] border border-[#232F48] text-xs font-mono text-[#F8FAFC]"
+                  className="flex items-center gap-2 px-3 py-1 rounded bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800"
                 >
-                  <span className="font-bold text-[#FFFFFF]">{badge.name}</span>
-                  <span className="text-[#232F48]">|</span>
-                  <span className="text-[#94A3B8] text-[11px]">{badge.role}</span>
+                  <span className="font-bold text-slate-900">{badge.name}</span>
+                  <span className="text-slate-300">|</span>
+                  <span className="text-slate-500 text-[11px]">{badge.role}</span>
                 </div>
               ))}
             </div>
@@ -41,129 +41,126 @@ export default function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           
           {/* Brand & Corporate Details */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3">
-              <ApertureLogo className="h-8 w-8" glow />
+          <div className="lg:col-span-5 space-y-3.5">
+            <div className="flex items-center gap-2.5">
+              <ApertureLogo className="h-7 w-7" />
               <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tight text-[#FFFFFF] font-sans flex items-baseline">
+                <span className="text-xl font-black tracking-tight text-slate-900 font-sans flex items-baseline">
                   hAI Mate
                   <span className="inline-block relative">
                     !
                     <span
-                      className="absolute -bottom-0.5 right-0 w-1.5 h-1.5 rounded-full bg-[#00F2FE] shadow-[0_0_8px_#00F2FE]"
+                      className="absolute -bottom-0.5 right-0 w-1.5 h-1.5 rounded-full bg-[#00BFCC]"
                       style={{ bottom: "2px", right: "0px" }}
                     />
                   </span>
                 </span>
-                <span className="text-[10px] tracking-widest uppercase font-mono text-[#94A3B8] -mt-1 font-semibold">
-                  hAI Mate! Pty Ltd
+                <span className="text-[10px] tracking-widest uppercase font-mono text-slate-500 -mt-1 font-semibold">
+                  Applied AI &amp; Automation
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm">
-              Applied artificial intelligence and automated conduit engineering for hospitality groups, venues, and high-growth SMEs across Western Australia.
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
+              Applied artificial intelligence and automated conduit engineering for hospitality venues and growing SMEs. Direct solo practitioner delivery without agency overhead.
             </p>
 
-            <div className="space-y-1.5 text-xs font-mono text-slate-400 pt-1">
-              <div className="flex items-center gap-2 text-emerald-400">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Corporate Registration: Western Australia Registered Entity</span>
+            <div className="space-y-1 text-xs font-mono text-slate-600 pt-1">
+              <div className="flex items-center gap-1.5 text-emerald-800 font-medium">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Solo Trader • Registered in Sydney, NSW</span>
               </div>
-              <div className="text-[#94A3B8] pl-6">
-                ABN: 84 682 910 431 (Verified • Perth, WA)
-              </div>
-              <div className="flex items-center gap-2 text-[#94A3B8] pl-6">
-                <span>St Georges Terrace, Perth WA 6000</span>
+              <div className="text-slate-500 pl-5">
+                ABN Registered • Servicing Western Australia &amp; Nationally
               </div>
             </div>
           </div>
 
           {/* Navigation Links */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#FFFFFF] font-bold">
+          <div className="lg:col-span-3 space-y-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-900 font-bold">
               Navigation
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <a href="#solutions" className="hover:text-[#00F2FE] transition-colors">
+                <a href="#solutions" className="hover:text-slate-900 transition-colors">
                   Applied Solutions
                 </a>
               </li>
               <li>
-                <a href="#philosophy" className="hover:text-[#00F2FE] transition-colors">
+                <a href="#philosophy" className="hover:text-slate-900 transition-colors">
                   The Open Aperture Architecture
                 </a>
               </li>
               <li>
-                <a href="#process" className="hover:text-[#00F2FE] transition-colors">
+                <a href="#process" className="hover:text-slate-900 transition-colors">
                   14-Day Diagnostic Audit
                 </a>
               </li>
               <li>
-                <a href="#grants" className="hover:text-[#00F2FE] transition-colors">
-                  WA State Government Grants (LCF)
+                <a href="#grants" className="hover:text-slate-900 transition-colors">
+                  WA State Grants (LCF)
                 </a>
               </li>
               <li>
-                <a href="#intake" className="hover:text-[#00F2FE] transition-colors">
-                  Request Intake &amp; Scoping
+                <a href="#intake" className="hover:text-slate-900 transition-colors">
+                  Intake &amp; Direct Scoping
                 </a>
               </li>
             </ul>
           </div>
 
           {/* Legal & Security */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-[#FFFFFF] font-bold">
+          <div className="lg:col-span-4 space-y-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-900 font-bold">
               Security Architecture &amp; Legal
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs sm:text-sm">
               <li>
-                <a href="#" className="hover:text-[#00F2FE] transition-colors flex items-center justify-between">
+                <a href="#" className="hover:text-slate-900 transition-colors flex items-center justify-between">
                   <span>Security Architecture</span>
-                  <span className="text-[10px] font-mono text-[#00F2FE] border border-[#00F2FE]/30 px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] font-mono text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded bg-white">
                     Zero-Data Retention
                   </span>
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#00F2FE] transition-colors">
+                <a href="#" className="hover:text-slate-900 transition-colors">
                   Privacy Policy (Australia Privacy Act 1988)
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#00F2FE] transition-colors">
+                <a href="#" className="hover:text-slate-900 transition-colors">
                   Terms of Service &amp; Retainer SLA
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#00F2FE] transition-colors">
-                  Human-in-the-Loop Governance Framework
+                <a href="#" className="hover:text-slate-900 transition-colors">
+                  Human-in-the-Loop Governance
                 </a>
               </li>
             </ul>
 
-            <div className="p-3 rounded-lg bg-[#151D2F] border border-[#232F48] text-xs font-mono text-[#94A3B8] mt-4">
-              <span className="text-[#00F2FE] font-bold block mb-1">DATA LOCALITY GUARANTEE:</span>
-              All Australian customer payloads are processed strictly via Australian sovereign regions (Sydney/Melbourne AWS/Azure) with local encryption keys.
+            <div className="p-3 rounded-lg bg-white border border-slate-200 text-xs font-mono text-slate-600 mt-3">
+              <span className="text-slate-900 font-bold block mb-1">SOVEREIGN CLOUD PROCESSING:</span>
+              All Australian customer payloads are routed through Australian sovereign cloud data centers with local encryption.
             </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-[#232F48] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#94A3B8]">
+        <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-500">
           <div>
-            &copy; {new Date().getFullYear()} hAI Mate! Pty Ltd. All rights reserved. Registered in Western Australia.
+            &copy; {new Date().getFullYear()} hAI Mate! Sole Trader. Registered in Sydney, NSW.
           </div>
           <div className="flex items-center gap-2">
-            <span>Built with precision in Perth, Western Australia</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]" />
+            <span>Delivering applied automation across Australia</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ShieldCheck, Clock, TrendingUp, Calculator, ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
+import { ShieldCheck, Clock, TrendingUp, Calculator, ArrowRight, ChevronDown } from "lucide-react";
 
 interface MarketRealityProps {
   onOpenAuditModal: () => void;
@@ -10,10 +10,8 @@ interface MarketRealityProps {
 export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) {
   const [calculatorOpen, setCalculatorOpen] = useState(false);
   const [venues, setVenues] = useState(2);
-  const [weeklyWages, setWeeklyWages] = useState(18000); // AUD
+  const [weeklyWages, setWeeklyWages] = useState(18000);
 
-  // Calculations:
-  // 4% labor savings average
   const annualWageBill = weeklyWages * 52;
   const annualLaborSavings = Math.round(annualWageBill * 0.04);
   const hoursRecoveredWeekly = venues * 6;
@@ -53,88 +51,88 @@ export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) 
   ];
 
   return (
-    <section className="relative py-16 md:py-24 bg-[#0B0F19] border-b border-[#232F48]">
+    <section className="relative py-16 md:py-24 bg-white border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#151D2F] border border-[#232F48] text-xs font-mono text-[#00F2FE] mb-3">
-              <span>MARKET REALITY // PROBLEM-SOLUTION BENCHMARK</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
+              <span>MARKET REALITY // PROBLEM-SOLUTION FIT</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#FFFFFF] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
               Why Applied Automation Beats Generic AI Wrappers.
             </h2>
           </div>
-          <p className="mt-3 md:mt-0 text-sm sm:text-base text-[#94A3B8] max-w-md font-sans">
-            Western Australian operators don’t need another conversational toy. You need deterministic pipelines that protect your P&amp;L every single week.
+          <p className="mt-3 md:mt-0 text-sm sm:text-base text-slate-600 max-w-md font-sans">
+            Western Australian operators don’t need another chatbot. You need deterministic conduits that protect your P&amp;L every single week.
           </p>
         </div>
 
         {/* 3-Column Data Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {metrics.map((metric, idx) => {
+          {metrics.map((metric) => {
             const Icon = metric.icon;
             return (
               <div
                 key={metric.label}
-                className="group relative rounded-xl bg-[#151D2F] border border-[#232F48] p-6 lg:p-8 hover:border-[#00F2FE]/60 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,242,254,0.12)] flex flex-col justify-between"
+                className="group rounded-xl bg-white border border-slate-200 p-6 lg:p-8 hover:border-slate-400 transition-all duration-200 hover:shadow-md flex flex-col justify-between"
               >
-                {/* Subtle top indicator */}
+                {/* Top Badge */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="p-3 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#00F2FE] group-hover:scale-105 transition-transform">
-                    <Icon className="w-6 h-6" />
+                  <div className="p-2.5 rounded-lg bg-slate-100 text-slate-900 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-[#0B0F19] text-[#94A3B8] border border-[#232F48]">
+                  <span className="text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 font-medium">
                     {metric.badge}
                   </span>
                 </div>
 
                 {/* Big Stat */}
                 <div>
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#FFFFFF] tracking-tight font-mono mb-2 group-hover:text-[#00F2FE] transition-colors">
+                  <div className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight font-mono mb-1">
                     {metric.stat}
                   </div>
-                  <div className="text-sm font-mono uppercase tracking-wider text-[#00F2FE] font-bold mb-3">
+                  <div className="text-xs font-mono uppercase tracking-wider text-[#0096A3] font-bold mb-3">
                     {metric.label}
                   </div>
-                  <h3 className="text-lg font-bold text-[#F8FAFC] mb-2 font-sans">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">
                     {metric.headline}
                   </h3>
-                  <p className="text-sm text-[#94A3B8] leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     {metric.description}
                   </p>
                 </div>
 
-                {/* Card Subtext / Footnote */}
-                <div className="mt-6 pt-4 border-t border-[#232F48] flex items-center justify-between text-xs font-mono text-[#94A3B8]">
-                  <span>{metric.subtext}</span>
+                {/* Footnote */}
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-slate-500">
+                  {metric.subtext}
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Interactive WA Operator Drag Calculator Drawer */}
-        <div className="mt-10 rounded-xl bg-[#151D2F] border border-[#232F48] overflow-hidden">
+        {/* Minimalist Savings Calculator Drawer */}
+        <div className="mt-8 rounded-xl bg-slate-50 border border-slate-200 overflow-hidden">
           <button
             type="button"
             onClick={() => setCalculatorOpen(!calculatorOpen)}
-            className="w-full px-6 py-4 flex items-center justify-between text-left bg-[#101625] hover:bg-[#151D2F] transition-colors"
+            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-slate-100/70 transition-colors"
           >
             <div className="flex items-center gap-3">
-              <Calculator className="w-5 h-5 text-[#00F2FE]" />
+              <Calculator className="w-4 h-4 text-slate-700" />
               <div>
-                <span className="text-sm font-bold text-[#FFFFFF] block">
-                  WA Hospitality &amp; SME Drag Calculator
+                <span className="text-sm font-bold text-slate-900 block">
+                  WA Operator Drag &amp; Margin Calculator
                 </span>
-                <span className="text-xs text-[#94A3B8] font-mono">
-                  Input your weekly wage run to project annual margin recovery
+                <span className="text-xs text-slate-500 font-mono">
+                  Calculate estimated annual savings and recovered admin hours
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#00F2FE]">
-              <span>{calculatorOpen ? "Collapse Calculator" : "Calculate My Venue's Upside"}</span>
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-700 font-semibold">
+              <span>{calculatorOpen ? "Close Calculator" : "Estimate Upside"}</span>
               <ChevronDown
                 className={`w-4 h-4 transition-transform duration-200 ${
                   calculatorOpen ? "rotate-180" : ""
@@ -144,13 +142,12 @@ export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) 
           </button>
 
           {calculatorOpen && (
-            <div className="p-6 lg:p-8 border-t border-[#232F48] bg-[#0B0F19]/60 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-in fade-in duration-300">
-              
-              <div className="lg:col-span-6 space-y-6">
+            <div className="p-6 border-t border-slate-200 bg-white grid grid-cols-1 lg:grid-cols-12 gap-8 items-center animate-in fade-in duration-200">
+              <div className="lg:col-span-6 space-y-5">
                 <div>
-                  <div className="flex justify-between text-xs font-mono text-[#94A3B8] mb-2">
-                    <span>Number of Venues / Operating Sites:</span>
-                    <span className="text-[#00F2FE] font-bold">{venues} Sites</span>
+                  <div className="flex justify-between text-xs font-mono text-slate-700 mb-2">
+                    <span>Number of Venues / Sites:</span>
+                    <span className="font-bold text-slate-900">{venues} Sites</span>
                   </div>
                   <input
                     type="range"
@@ -159,19 +156,14 @@ export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) 
                     step="1"
                     value={venues}
                     onChange={(e) => setVenues(Number(e.target.value))}
-                    className="w-full accent-[#00F2FE] bg-[#151D2F] h-2 rounded-lg cursor-pointer"
+                    className="w-full accent-slate-900 h-1.5 bg-slate-200 rounded cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] font-mono text-[#64748B] mt-1">
-                    <span>1 Single Venue</span>
-                    <span>5 Multi-Site</span>
-                    <span>10 Group Operations</span>
-                  </div>
                 </div>
 
                 <div>
-                  <div className="flex justify-between text-xs font-mono text-[#94A3B8] mb-2">
-                    <span>Estimated Total Weekly Wages (AUD):</span>
-                    <span className="text-[#00F2FE] font-bold">${weeklyWages.toLocaleString()} / week</span>
+                  <div className="flex justify-between text-xs font-mono text-slate-700 mb-2">
+                    <span>Estimated Weekly Wages (AUD):</span>
+                    <span className="font-bold text-slate-900">${weeklyWages.toLocaleString()} / week</span>
                   </div>
                   <input
                     type="range"
@@ -180,54 +172,47 @@ export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) 
                     step="2500"
                     value={weeklyWages}
                     onChange={(e) => setWeeklyWages(Number(e.target.value))}
-                    className="w-full accent-[#00F2FE] bg-[#151D2F] h-2 rounded-lg cursor-pointer"
+                    className="w-full accent-slate-900 h-1.5 bg-slate-200 rounded cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] font-mono text-[#64748B] mt-1">
-                    <span>$5k (Boutique Cafe)</span>
-                    <span>$25k (Busy Pub/Restaurant)</span>
-                    <span>$80k (Hospitality Group)</span>
-                  </div>
                 </div>
               </div>
 
-              {/* Output Results */}
-              <div className="lg:col-span-6 rounded-lg bg-[#151D2F] border border-[#232F48] p-5 space-y-4">
-                <div className="text-xs font-mono uppercase tracking-wider text-[#00F2FE]">
-                  Estimated Annual Yield (4% Labor Savings + Docket Recovery)
+              <div className="lg:col-span-6 rounded-lg bg-slate-50 border border-slate-200 p-5 space-y-4">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">
+                  Estimated Annual Recovery (4% Margin Lift)
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3.5 rounded bg-[#0B0F19] border border-[#232F48]">
-                    <div className="text-[11px] font-mono text-[#94A3B8]">Est. Labor Margin Saved</div>
-                    <div className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono mt-1">
+                  <div className="p-3 rounded bg-white border border-slate-200">
+                    <div className="text-[11px] font-mono text-slate-500">Est. Wage Cost Saved</div>
+                    <div className="text-2xl font-black text-slate-900 font-mono mt-1">
                       ${annualLaborSavings.toLocaleString()}
                     </div>
-                    <div className="text-[10px] font-mono text-[#94A3B8] mt-1">per year directly to EBITDA</div>
+                    <div className="text-[10px] text-slate-500 mt-1">per year directly to margin</div>
                   </div>
 
-                  <div className="p-3.5 rounded bg-[#0B0F19] border border-[#232F48]">
-                    <div className="text-[11px] font-mono text-[#94A3B8]">Admin Time Eliminated</div>
-                    <div className="text-2xl sm:text-3xl font-black text-[#00F2FE] font-mono mt-1">
+                  <div className="p-3 rounded bg-white border border-slate-200">
+                    <div className="text-[11px] font-mono text-slate-500">Admin Eliminated</div>
+                    <div className="text-2xl font-black text-[#0096A3] font-mono mt-1">
                       {annualHoursRecovered} hrs
                     </div>
-                    <div className="text-[10px] font-mono text-[#94A3B8] mt-1">~{hoursRecoveredWeekly} hrs / week saved</div>
+                    <div className="text-[10px] text-slate-500 mt-1">~{hoursRecoveredWeekly} hrs / week</div>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-xs text-[#94A3B8]">
-                    Includes WA Local Capability Fund 50% co-funding eligibility.
+                <div className="flex items-center justify-between pt-1">
+                  <span className="text-xs text-slate-500">
+                    WA Local Capability Fund 50% co-funding eligible.
                   </span>
                   <button
                     type="button"
                     onClick={onOpenAuditModal}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold font-mono text-[#00F2FE] hover:underline"
+                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-slate-900 hover:text-[#0096A3]"
                   >
-                    Lock in Audit Scoping <ArrowRight className="w-3.5 h-3.5" />
+                    Scope in Audit <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
-
             </div>
           )}
         </div>

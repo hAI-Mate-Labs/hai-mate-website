@@ -27,7 +27,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0F19] text-[#F8FAFC] selection:bg-[#00F2FE] selection:text-[#04101A] font-sans antialiased">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-[#00BFCC] selection:text-white font-sans antialiased">
       {/* 1. Sticky Navigation Header */}
       <Navbar onOpenAuditModal={() => handleOpenAuditModal()} />
 

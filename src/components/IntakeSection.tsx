@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Send, CheckCircle2, MessageSquare, Mail, Copy, Check, Sparkles, Terminal, Shield, ArrowRight } from "lucide-react";
+import { CheckCircle2, MessageSquare, Copy, Check, Shield, ArrowRight } from "lucide-react";
 
 export default function IntakeSection() {
   const [formData, setFormData] = useState({
@@ -19,11 +19,10 @@ export default function IntakeSection() {
     if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
-    // Simulate API dispatch to local backend / Slack webhook
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 800);
+    }, 700);
   };
 
   const handleCopyEmail = () => {
@@ -33,46 +32,41 @@ export default function IntakeSection() {
   };
 
   return (
-    <section id="intake" className="relative py-20 md:py-32 bg-[#0B0F19] border-b border-[#232F48]">
-      
-      {/* Background terminal ambiance */}
-      <div className="absolute inset-0 terminal-grid opacity-20 pointer-events-none" />
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#00F2FE]/5 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="intake" className="relative py-20 md:py-28 bg-white border-b border-slate-200">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#151D2F] border border-[#232F48] text-xs font-mono text-[#00F2FE] mb-3">
-            <span>INTAKE CONSOLE // ON-BOARDING GATEWAY</span>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
+            <span>INTAKE // DIRECT TECHNICAL ENGAGEMENT</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#FFFFFF] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Ready to Cut Away Operational Friction?
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#94A3B8]">
+          <p className="mt-4 text-base sm:text-lg text-slate-600">
             Schedule your on-site 14-day diagnostic audit. We’ll map your workflows, inspect your POS/Xero pipelines, and calculate your exact ROI.
           </p>
         </div>
 
         {/* The Intake Card */}
-        <div className="rounded-2xl bg-[#151D2F] border border-[#232F48] p-6 sm:p-10 shadow-2xl shadow-black/80 backdrop-blur-xl">
+        <div className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm">
           
           {isSubmitted ? (
-            <div className="py-12 text-center space-y-4 animate-in fade-in duration-300">
-              <div className="w-16 h-16 rounded-full bg-[#00F2FE]/15 text-[#00F2FE] flex items-center justify-center mx-auto border border-[#00F2FE]/40">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="py-10 text-center space-y-4 animate-in fade-in duration-200">
+              <div className="w-14 h-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center mx-auto border border-slate-300">
+                <CheckCircle2 className="w-7 h-7 text-[#0096A3]" />
               </div>
-              <h3 className="text-2xl font-bold text-[#FFFFFF]">
-                Audit Request Logged Successfully
+              <h3 className="text-2xl font-bold text-slate-900">
+                Audit Request Logged
               </h3>
-              <p className="text-sm text-[#94A3B8] max-w-md mx-auto">
-                Thank you, <span className="text-[#FFFFFF] font-bold">{formData.name}</span>. A principal automation engineer from Perth will review your bottleneck and contact you within 4 business hours to lock in your on-site diagnostic walk-through.
+              <p className="text-sm text-slate-600 max-w-md mx-auto">
+                Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. As a solo practitioner, I will personally review your operational bottleneck and email you at <span className="font-semibold text-slate-900">{formData.email}</span> within 4 hours to coordinate our diagnostic walk-through.
               </p>
-              <div className="pt-4 flex items-center justify-center gap-3">
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="px-4 py-2 rounded bg-[#0B0F19] text-xs font-mono text-[#00F2FE] border border-[#232F48] hover:border-[#00F2FE]"
+                  className="px-4 py-2 rounded bg-slate-100 text-xs font-mono text-slate-800 border border-slate-200 hover:bg-slate-200"
                 >
                   Submit Another Inquiry
                 </button>
@@ -82,47 +76,47 @@ export default function IntakeSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               
               {/* Form Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 
                 {/* Name */}
-                <div className="space-y-2">
-                  <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8]">
-                    Your Name <span className="text-[#00F2FE]">*</span>
+                <div className="space-y-1.5">
+                  <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                    Your Name <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="name"
                     type="text"
                     required
-                    placeholder="e.g. Liam Henderson"
+                    placeholder="Liam Henderson"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#F8FAFC] placeholder-slate-600 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-colors font-sans text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                   />
                 </div>
 
                 {/* Work Email */}
-                <div className="space-y-2">
-                  <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8]">
-                    Work Email <span className="text-[#00F2FE]">*</span>
+                <div className="space-y-1.5">
+                  <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                    Work Email <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="email"
                     type="email"
                     required
-                    placeholder="e.g. liam@cottesloegroup.com.au"
+                    placeholder="liam@cottesloegroup.com.au"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#F8FAFC] placeholder-slate-600 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-colors font-sans text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                   />
                 </div>
               </div>
 
               {/* Business Type */}
-              <div className="space-y-2">
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8]">
-                  Business Type <span className="text-[#00F2FE]">*</span>
+              <div className="space-y-1.5">
+                <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                  Business Type <span className="text-[#0096A3]">*</span>
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                   {[
                     "Hospitality",
                     "Professional Services",
@@ -133,10 +127,10 @@ export default function IntakeSection() {
                       key={type}
                       type="button"
                       onClick={() => setFormData({ ...formData, businessType: type })}
-                      className={`px-3 py-2.5 rounded-lg text-xs font-mono font-medium border text-center transition-all ${
+                      className={`px-3 py-2 rounded-lg text-xs font-mono transition-all text-center ${
                         formData.businessType === type
-                          ? "bg-[#00F2FE]/15 text-[#00F2FE] border-[#00F2FE] shadow-[0_0_12px_rgba(0,242,254,0.25)] font-bold"
-                          : "bg-[#0B0F19] text-[#94A3B8] border-[#232F48] hover:border-slate-500"
+                          ? "bg-[#0F172A] text-white font-bold border border-[#0F172A]"
+                          : "bg-white text-slate-700 border border-slate-300 hover:border-slate-400"
                       }`}
                     >
                       {type}
@@ -146,52 +140,52 @@ export default function IntakeSection() {
               </div>
 
               {/* Current Weekly Admin Bottleneck */}
-              <div className="space-y-2">
-                <label htmlFor="bottleneck" className="block text-xs font-mono uppercase tracking-wider text-[#94A3B8]">
+              <div className="space-y-1.5">
+                <label htmlFor="bottleneck" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
                   Current Weekly Admin Bottleneck
                 </label>
                 <textarea
                   id="bottleneck"
                   rows={3}
-                  placeholder="e.g. Spending 6 hours every Monday entering supplier invoices into Xero and manually checking penalty rate rosters against weather."
+                  placeholder="e.g. Spending 6 hours every Monday entering supplier invoices into Xero and checking staff penalty rates against weekend weather shifts."
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#F8FAFC] placeholder-slate-600 focus:outline-none focus:border-[#00F2FE] focus:ring-1 focus:ring-[#00F2FE] transition-colors font-sans text-sm"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                 />
               </div>
 
-              {/* Submit CTA Button */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-lg bg-[#00F2FE] text-[#04101A] font-bold text-base hover:brightness-110 shadow-[0_0_25px_rgba(0,242,254,0.35)] transition-all cursor-pointer font-sans border border-[#00F2FE]"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-lg bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer font-sans shadow-sm"
               >
                 {isSubmitting ? (
-                  <span className="font-mono">Processing Gateway Dispatch...</span>
+                  <span className="font-mono">Logging Audit Request...</span>
                 ) : (
                   <>
                     <span>Request 14-Day Diagnostic Audit</span>
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
                   </>
                 )}
               </button>
 
-              <div className="flex items-center justify-center gap-2 text-xs font-mono text-[#94A3B8] text-center pt-2">
-                <Shield className="w-3.5 h-3.5 text-[#00F2FE]" />
-                <span>Zero spam. Strict non-disclosure. SOC2 compliant pipeline assessment.</span>
+              <div className="flex items-center justify-center gap-2 text-xs font-mono text-slate-500 text-center pt-1">
+                <Shield className="w-3.5 h-3.5 text-slate-500" />
+                <span>Confidential diagnostic review. Zero spam. Strict non-disclosure.</span>
               </div>
             </form>
           )}
 
           {/* Direct Contact Alternative */}
-          <div className="mt-8 pt-6 border-t border-[#232F48] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#94A3B8]">
+          <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-600">
             <div className="flex items-center gap-2 text-center sm:text-left">
-              <MessageSquare className="w-4 h-4 text-[#00F2FE] flex-shrink-0" />
+              <MessageSquare className="w-4 h-4 text-slate-500 flex-shrink-0" />
               <span>
                 Prefer direct access? Reach us via Slack Connect or email{" "}
                 <a
                   href="mailto:founder@haimate.com.au"
-                  className="text-[#00F2FE] underline hover:text-[#FFFFFF]"
+                  className="text-slate-900 font-bold underline hover:text-[#0096A3]"
                 >
                   founder@haimate.com.au
                 </a>
@@ -201,12 +195,12 @@ export default function IntakeSection() {
             <button
               type="button"
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#0B0F19] text-[#94A3B8] border border-[#232F48] hover:text-[#00F2FE] hover:border-[#00F2FE] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-100 text-slate-700 border border-slate-200 hover:text-slate-900 hover:bg-slate-200 transition-colors"
             >
               {copiedEmail ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400">Copied to Clipboard</span>
+                  <Check className="w-3.5 h-3.5 text-emerald-600" />
+                  <span className="text-emerald-700">Copied to Clipboard</span>
                 </>
               ) : (
                 <>
