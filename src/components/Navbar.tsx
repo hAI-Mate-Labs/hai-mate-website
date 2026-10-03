@@ -22,12 +22,13 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
+    { name: "Live Demo", href: "/#simulator" },
     { name: "Solutions", href: "/#solutions" },
-    { name: "How It Works", href: "/#philosophy" },
-    { name: "14-Day Audit", href: "/#process" },
-    { name: "Our Mission", href: "/mission" },
-    { name: "The Founder", href: "/founder" },
+    { name: "Integrations", href: "/#integrations" },
     { name: "WA Grants", href: "/#grants" },
+    { name: "How It Works", href: "/#how-it-works" },
+    { name: "The Founder", href: "/founder" },
+    { name: "Our Mission", href: "/mission" },
   ];
 
   return (

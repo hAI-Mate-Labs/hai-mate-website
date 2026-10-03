@@ -4,19 +4,12 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MarketReality from "@/components/MarketReality";
-import BeforeAfter from "@/components/BeforeAfter";
 import DocketSimulator from "@/components/DocketSimulator";
 import SolutionsHub from "@/components/SolutionsHub";
 import IntegrationsHub from "@/components/IntegrationsHub";
-import PhilosophySection from "@/components/PhilosophySection";
-import IroncladRules from "@/components/IroncladRules";
-import ComparisonTable from "@/components/ComparisonTable";
-import FounderSpotlight from "@/components/FounderSpotlight";
-import ProcessSection from "@/components/ProcessSection";
-import AuditTimeline from "@/components/AuditTimeline";
 import GrantCallout from "@/components/GrantCallout";
-import FaqSection from "@/components/FaqSection";
-import VenueDiagnosticQuiz from "@/components/VenueDiagnosticQuiz";
+import UnifiedProcessTimeline from "@/components/UnifiedProcessTimeline";
+import CompactFounderCard from "@/components/CompactFounderCard";
 import IntakeSection from "@/components/IntakeSection";
 import Footer from "@/components/Footer";
 import AuditModal from "@/components/AuditModal";
@@ -42,61 +35,36 @@ export default function Home() {
       <Navbar onOpenAuditModal={() => handleOpenAuditModal()} />
 
       <main>
-        {/* 2. Hero Section with Interactive Bakery, Restaurant & Pub Scenario Switcher */}
+        {/* 1. Hero Section with Interactive Scenario Switcher */}
         <Hero onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 3. Market Reality & Trust Metric Bar */}
+        {/* 2. Streamlined Trust Metric Strip (4-8 Hrs, 100% Control, Zero Hardware, 50% Grant) */}
         <MarketReality onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 4. Before vs After Comparison */}
-        <BeforeAfter onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 5. Live Interactive Docket Scanner & Price Creep Simulator */}
+        {/* 3. Live Interactive Docket Scanner & Price Creep Simulator */}
         <DocketSimulator onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 6. Core Solutions Hub (4 High-Contrast Cards) */}
+        {/* 4. Core Solutions Hub & Connectivity */}
         <SolutionsHub onOpenAuditModal={(solution) => handleOpenAuditModal(solution)} />
-
-        {/* 7. Works With Your Setup (Interactive Integrations Hub) */}
         <IntegrationsHub onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 8. "The Open Aperture" Architecture (Why hAI Mate!) */}
-        <PhilosophySection onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 7. Ironclad Rules: What hAI Mate! Will NEVER Do */}
-        <IroncladRules />
-
-        {/* 8. Comparison Table: Why a Dedicated Solo Partner Beats Apps & Agencies */}
-        <ComparisonTable onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 9. Founder / Solo Practitioner Personal Spotlight */}
-        <FounderSpotlight onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 10. The 3-Step Go-To-Market Process */}
-        <ProcessSection onOpenAuditModal={() => handleOpenAuditModal()} />
-
-        {/* 11. Inside the 14-Day Audit (Timeline & 100% Value Guarantee) */}
-        <AuditTimeline onOpenAuditModal={() => handleOpenAuditModal("14-Day Diagnostic Readiness Audit")} />
-
-        {/* 12. WA Government Grant Accelerator (Callout Banner) */}
+        {/* 5. WA Government Grant & Payback Calculator */}
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 13. Hospitality FAQ Section */}
-        <FaqSection onOpenAuditModal={() => handleOpenAuditModal()} />
+        {/* 6. The 3-Step Process & 100% Value Guarantee */}
+        <UnifiedProcessTimeline onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 14. 60-Second Venue Admin Leakage Assessment Quiz */}
-        <VenueDiagnosticQuiz
-          onOpenAuditModalWithDetails={(details) => handleOpenAuditModal(details)}
-        />
+        {/* 7. Direct Solo Practitioner Trust Card */}
+        <CompactFounderCard onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 15. Final CTA & Contact Intake Form */}
+        {/* 8. Direct Booking Intake & WhatsApp Line */}
         <IntakeSection />
       </main>
 
-      {/* 14. Footer */}
+      {/* Footer */}
       <Footer />
 
-      {/* Floating Direct Contact Pill */}
+      {/* Floating Direct Contact Pill (WhatsApp + Between-Service Hours) */}
       <FloatingContact onOpenAuditModal={() => handleOpenAuditModal()} />
 
       {/* Interactive Booking & Diagnostic Audit Modal */}

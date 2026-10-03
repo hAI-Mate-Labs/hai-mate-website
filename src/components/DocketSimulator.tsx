@@ -219,7 +219,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
   };
 
   return (
-    <section className="relative py-20 md:py-28 bg-white border-b border-zinc-100 overflow-hidden">
+    <section id="simulator" className="relative py-20 md:py-28 bg-white border-b border-zinc-100 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

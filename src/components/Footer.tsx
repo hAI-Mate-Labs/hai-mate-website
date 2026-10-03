@@ -78,13 +78,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#philosophy" className="hover:text-zinc-950 transition-colors">
-                  The Open Aperture
-                </Link>
-              </li>
-              <li>
                 <Link href="/mission" className="hover:text-zinc-950 transition-colors">
-                  Our Mission &amp; Vision
+                  Our Mission &amp; Philosophy
                 </Link>
               </li>
               <li>
@@ -93,8 +88,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#process" className="hover:text-zinc-950 transition-colors">
-                  14-Day Audit
+                <Link href="/#how-it-works" className="hover:text-zinc-950 transition-colors">
+                  How It Works (14-Day Audit)
                 </Link>
               </li>
               <li>
