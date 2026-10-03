@@ -13,8 +13,10 @@ import IroncladRules from "@/components/IroncladRules";
 import ComparisonTable from "@/components/ComparisonTable";
 import FounderSpotlight from "@/components/FounderSpotlight";
 import ProcessSection from "@/components/ProcessSection";
+import AuditTimeline from "@/components/AuditTimeline";
 import GrantCallout from "@/components/GrantCallout";
 import FaqSection from "@/components/FaqSection";
+import VenueDiagnosticQuiz from "@/components/VenueDiagnosticQuiz";
 import IntakeSection from "@/components/IntakeSection";
 import Footer from "@/components/Footer";
 import AuditModal from "@/components/AuditModal";
@@ -73,13 +75,21 @@ export default function Home() {
         {/* 10. The 3-Step Go-To-Market Process */}
         <ProcessSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 11. WA Government Grant Accelerator (Callout Banner) */}
+        {/* 11. Inside the 14-Day Audit (Timeline & 100% Value Guarantee) */}
+        <AuditTimeline onOpenAuditModal={() => handleOpenAuditModal("14-Day Diagnostic Readiness Audit")} />
+
+        {/* 12. WA Government Grant Accelerator (Callout Banner) */}
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 12. Hospitality FAQ Section */}
+        {/* 13. Hospitality FAQ Section */}
         <FaqSection onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 13. Final CTA & Contact Intake Form */}
+        {/* 14. 60-Second Venue Admin Leakage Assessment Quiz */}
+        <VenueDiagnosticQuiz
+          onOpenAuditModalWithDetails={(details) => handleOpenAuditModal(details)}
+        />
+
+        {/* 15. Final CTA & Contact Intake Form */}
         <IntakeSection />
       </main>
 
