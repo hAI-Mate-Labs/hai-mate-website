@@ -188,23 +188,35 @@ export default function IntakeSection() {
               </span>
             </div>
 
-            <button
-              type="button"
-              onClick={handleCopyEmail}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-zinc-700 border border-zinc-200 hover:bg-zinc-100 transition-colors shadow-2xs"
-            >
-              {copiedEmail ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700 font-medium">Copied</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5" />
-                  <span>Copy Direct Email</span>
-                </>
-              )}
-            </button>
+            <div className="flex flex-wrap items-center gap-2">
+              <a
+                href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20applied%20automation%20for%20my%20venue."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 hover:bg-emerald-100 transition-colors shadow-2xs text-xs font-semibold"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span>WhatsApp (+61 402 472 262)</span>
+              </a>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-zinc-700 border border-zinc-200 hover:bg-zinc-100 transition-colors shadow-2xs text-xs font-medium cursor-pointer"
+              >
+                {copiedEmail ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-emerald-600" />
+                    <span className="text-emerald-700 font-medium">Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    <span>Copy Email</span>
+                  </>
+                )}
+              </button>
+            </div>
           </div>
 
         </div>

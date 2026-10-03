@@ -233,6 +233,23 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                 />
               </div>
 
+              {/* Between-Service Call Window */}
+              <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
+                <div className="space-y-0.5 pr-2">
+                  <span className="text-xs font-bold text-zinc-900 block">
+                    Contact Me Between-Service (2:30 PM – 4:30 PM)
+                  </span>
+                  <span className="text-[11px] text-zinc-500 block">
+                    We reach out during your quiet afternoon kitchen break so floor service is never interrupted.
+                  </span>
+                </div>
+                <input
+                  type="checkbox"
+                  defaultChecked
+                  className="w-4 h-4 accent-zinc-900 rounded cursor-pointer"
+                />
+              </div>
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -248,6 +265,19 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                   </>
                 )}
               </button>
+
+              {/* Direct WhatsApp Alternative */}
+              <div className="pt-1 text-center">
+                <a
+                  href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20a%2014-day%20readiness%20audit%20for%20my%20venue."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                  <span>Prefer instant chat? WhatsApp Mallory directly</span>
+                </a>
+              </div>
 
               <div className="text-[11px] text-zinc-400 text-center">
                 100% confidential. No spam, no obligation.

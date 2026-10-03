@@ -73,6 +73,33 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
               <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
             </button>
 
+            {/* WhatsApp Direct Action */}
+            <a
+              href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20a%20venue%20operator%20interested%20in%20applied%20automation%20for%20my%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-semibold hover:bg-emerald-100 transition-colors group"
+            >
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                Chat on WhatsApp (+61 402 472 262)
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-emerald-700 group-hover:translate-x-0.5 transition-transform" />
+            </a>
+
+            {/* Direct Phone / Between-Service */}
+            <a
+              href="tel:0402472262"
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-medium hover:bg-zinc-100 transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-zinc-600" />
+                <span>Call 0402 472 262 <span className="text-[10px] text-zinc-400 font-mono">(Between-Service: 2:30–4:30 PM)</span></span>
+              </span>
+              <span className="text-[10px] font-mono text-zinc-500">Call/SMS</span>
+            </a>
+
+            {/* Email Option */}
             <a
               href="mailto:founder@haimate.com.au?subject=Quick%20Hospitality%20Question"
               className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-medium hover:bg-zinc-100 transition-colors"
@@ -83,7 +110,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
               </span>
               <button
                 onClick={handleCopyEmail}
-                className="text-[11px] text-zinc-500 hover:text-zinc-900 bg-white px-2 py-0.5 rounded border border-zinc-200 transition-colors"
+                className="text-[11px] text-zinc-500 hover:text-zinc-900 bg-white px-2 py-0.5 rounded border border-zinc-200 transition-colors cursor-pointer"
                 title="Copy email to clipboard"
               >
                 {copiedEmail ? (
@@ -97,8 +124,9 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
             </a>
           </div>
 
-          <div className="mt-3 pt-2 border-t border-zinc-100 text-[10px] text-zinc-400 text-center font-mono">
-            Direct response within 2 hours during venue service hours
+          <div className="mt-3 pt-2 border-t border-zinc-100 flex items-center justify-between text-[10px] text-zinc-400 font-mono">
+            <span>Direct to Founder</span>
+            <span className="text-[#0096A3]">Between-Service Priority (2:30–4:30 PM)</span>
           </div>
         </div>
       )}
