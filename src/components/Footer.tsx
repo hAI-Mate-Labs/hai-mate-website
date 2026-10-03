@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
 
 export default function Footer() {
@@ -36,7 +37,7 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3 inline-flex">
               <ApertureLogo className="h-7 w-7" />
               <div className="flex flex-col">
                 <span className="text-xl font-bold tracking-tight text-zinc-950 font-sans flex items-baseline">
@@ -53,7 +54,7 @@ export default function Footer() {
                   Applied Automation Agency
                 </span>
               </div>
-            </div>
+            </Link>
 
             <p className="text-sm text-zinc-500 max-w-sm leading-relaxed">
               Applied artificial intelligence and automated back-office workflows for hospitality groups and growing businesses.
@@ -72,29 +73,34 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#solutions" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#solutions" className="hover:text-zinc-950 transition-colors">
                   Solutions
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#philosophy" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#philosophy" className="hover:text-zinc-950 transition-colors">
                   The Open Aperture
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#process" className="hover:text-zinc-950 transition-colors">
+                <Link href="/mission" className="hover:text-zinc-950 transition-colors text-zinc-950 font-medium">
+                  Our Mission &amp; Vision
+                </Link>
+              </li>
+              <li>
+                <Link href="/#process" className="hover:text-zinc-950 transition-colors">
                   14-Day Audit
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#grants" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#grants" className="hover:text-zinc-950 transition-colors">
                   WA State Grants
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#intake" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#intake" className="hover:text-zinc-950 transition-colors">
                   Contact &amp; Scoping
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

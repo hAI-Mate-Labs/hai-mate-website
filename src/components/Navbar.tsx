@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 
@@ -21,10 +22,11 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Solutions", href: "#solutions" },
-    { name: "How It Works", href: "#philosophy" },
-    { name: "14-Day Audit", href: "#process" },
-    { name: "WA Grants", href: "#grants" },
+    { name: "Solutions", href: "/#solutions" },
+    { name: "How It Works", href: "/#philosophy" },
+    { name: "14-Day Audit", href: "/#process" },
+    { name: "Our Mission", href: "/mission" },
+    { name: "WA Grants", href: "/#grants" },
   ];
 
   return (
@@ -39,8 +41,8 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Mark + Wordmark */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-3 group focus:outline-none"
             aria-label="hAI Mate! Home"
           >
@@ -63,18 +65,18 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 Applied AI for Hospitality
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Center Links - Clean & Minimal */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -115,14 +117,14 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-zinc-100 bg-white px-5 py-6 space-y-4 shadow-lg animate-in slide-in-from-top-2 duration-150">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="block text-base font-medium text-zinc-800 hover:text-zinc-950"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div className="pt-2">
             <button
