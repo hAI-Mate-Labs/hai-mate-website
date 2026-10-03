@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
 
 interface NavbarProps {
   onOpenAuditModal: () => void;
@@ -24,11 +24,10 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   const navLinks = [
     { name: "Live Demo", href: "/#simulator" },
     { name: "Solutions", href: "/#solutions" },
-    { name: "Integrations", href: "/#integrations" },
     { name: "WA Grants", href: "/#grants" },
     { name: "How It Works", href: "/#how-it-works" },
-    { name: "The Founder", href: "/founder" },
-    { name: "Our Mission", href: "/mission" },
+    { name: "Founder", href: "/founder" },
+    { name: "Mission", href: "/mission" },
   ];
 
   return (
@@ -39,13 +38,13 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
           : "bg-white border-b border-zinc-100"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
           {/* Brand Mark + Wordmark */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none"
+            className="flex items-center gap-3 group focus:outline-none shrink-0"
             aria-label="hAI Mate! Home"
           >
             <ApertureLogo
@@ -69,33 +68,41 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             </div>
           </Link>
 
-          {/* Center Links - Clean & Minimal */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Center Links - Limova Floating Pill Dock */}
+          <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/80 border border-zinc-200/90 p-1.5 rounded-full shadow-2xs backdrop-blur-xs">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors"
+                className="px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-white hover:shadow-2xs rounded-full transition-all"
               >
                 {link.name}
               </Link>
             ))}
           </nav>
 
-          {/* Right CTA */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Right Action */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <a
+              href="tel:0402472262"
+              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-2"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
+              <span>0402 472 262</span>
+            </a>
+
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="inline-flex items-center justify-center px-4.5 py-2.5 text-sm font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group"
             >
               <span>Book an Audit</span>
-              <ArrowUpRight className="w-4 h-4 ml-1.5 text-[#00BFCC] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#00BFCC] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
 
           {/* Mobile menu toggle */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <button
               type="button"
               onClick={onOpenAuditModal}
@@ -106,7 +113,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100"
+              className="p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -117,25 +124,36 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-100 bg-white px-5 py-6 space-y-4 shadow-lg animate-in slide-in-from-top-2 duration-150">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-base font-medium text-zinc-800 hover:text-zinc-950"
+        <div className="lg:hidden border-t border-zinc-100 bg-white px-5 py-6 space-y-4 shadow-lg animate-in slide-in-from-top-2 duration-150">
+          <div className="grid grid-cols-2 gap-2 pb-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100 text-sm font-semibold text-zinc-800 hover:text-zinc-950 hover:bg-zinc-100 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="pt-2 border-t border-zinc-100 space-y-2">
+            <a
+              href="tel:0402472262"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-bold text-zinc-800"
             >
-              {link.name}
-            </Link>
-          ))}
-          <div className="pt-2">
+              <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
+              <span>Call Mallory: 0402 472 262</span>
+            </a>
+
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenAuditModal();
               }}
-              className="w-full py-3 rounded-full bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-800"
+              className="w-full py-3 rounded-full bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 shadow-sm"
             >
               Book 14-Day Venue Review
             </button>
