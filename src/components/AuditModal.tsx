@@ -16,10 +16,9 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     contactName: "",
     email: "",
     phone: "",
-    venuesCount: "1-2 Venues",
     selectedTech: ["Lightspeed", "Xero"] as string[],
     grantInterest: true,
-    workflowFocus: initialSolution || "Full 14-Day Diagnostic Readiness Audit",
+    workflowFocus: initialSolution || "Full 14-Day Venue Review",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,7 +35,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     "Deputy",
     "SevenRooms",
     "OpenTable",
-    "Slack",
+    "Paper / Pen",
   ];
 
   const handleToggleTech = (tech: string) => {
@@ -56,8 +55,8 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      setAuditId(`WA-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`);
-    }, 600);
+      setAuditId(`WA-VENUE-${Math.floor(1000 + Math.random() * 9000)}`);
+    }, 500);
   };
 
   const handleResetAndClose = () => {
@@ -70,29 +69,29 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
       {/* Backdrop */}
       <div
         onClick={handleResetAndClose}
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-xl rounded-2xl bg-white border border-slate-200 shadow-2xl overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-150">
+      <div className="relative w-full max-w-lg rounded-3xl bg-white border border-slate-200 shadow-2xl overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-150">
         
         {/* Modal Header */}
         <div className="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <ApertureLogo className="h-6 w-6" />
-            <div className="flex flex-col">
-              <span className="text-sm font-bold text-slate-900 font-mono">
-                hAI Mate! // 14-DAY AUDIT INTAKE
+            <div>
+              <span className="text-sm font-bold text-slate-900 block">
+                hAI Mate! • 14-Day Venue Review
               </span>
-              <span className="text-[10px] font-mono text-slate-500">
-                Direct Solo Practitioner Scoping
+              <span className="text-[11px] text-slate-500">
+                On-site in Perth &amp; Western Australia
               </span>
             </div>
           </div>
           <button
             type="button"
             onClick={handleResetAndClose}
-            className="p-1 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -102,80 +101,79 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
         <div className="p-6 sm:p-7">
           {isSuccess ? (
             <div className="py-6 text-center space-y-3.5">
-              <div className="w-14 h-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center mx-auto border border-slate-300">
-                <CheckCircle2 className="w-7 h-7 text-[#0096A3]" />
+              <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#0096A3] block font-bold">
-                DIAGNOSTIC QUEUE COMMITTED
+              <span className="text-xs uppercase tracking-wider text-emerald-800 font-bold block">
+                Review Request Received
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                Docket #{auditId} Confirmed
+              <h3 className="text-2xl font-bold text-slate-900">
+                Booking #{auditId} Confirmed
               </h3>
-              <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                Thank you, <span className="text-slate-900 font-bold">{formData.contactName}</span>. Your venue diagnostic request for{" "}
-                <span className="text-slate-900 font-bold">{formData.businessName}</span> has been assigned. I will reach out to{" "}
-                <span className="font-semibold text-slate-900">{formData.email}</span> within 4 hours.
+              <p className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
+                Thank you, <span className="text-slate-900 font-bold">{formData.contactName}</span>. I have received your request for{" "}
+                <span className="text-slate-900 font-bold">{formData.businessName}</span>. I will personally review your setup and contact you at{" "}
+                <span className="font-semibold text-slate-900">{formData.email}</span> within 4 business hours to lock in our walk-through.
               </p>
 
-              <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-mono text-left max-w-md mx-auto space-y-1 text-slate-700">
-                <div className="text-slate-900 font-bold mb-1">AUDIT SUMMARY:</div>
-                <div>• Target: {formData.workflowFocus}</div>
-                <div>• Connected Stack: {formData.selectedTech.join(", ")}</div>
-                <div>• WA Grant Co-Funding: {formData.grantInterest ? "Assistance Requested (50% Matched)" : "Self-Funded"}</div>
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-left max-w-sm mx-auto space-y-1 text-slate-700">
+                <div>• <strong>Venue Focus:</strong> {formData.workflowFocus}</div>
+                <div>• <strong>Current Tools:</strong> {formData.selectedTech.join(", ")}</div>
+                <div>• <strong>WA 50% Grant:</strong> {formData.grantInterest ? "Assistance Requested" : "Not Required"}</div>
               </div>
 
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="px-5 py-2.5 rounded-lg bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800"
+                  className="px-5 py-2.5 rounded-xl bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800"
                 >
-                  Return to Page
+                  Close &amp; Return
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="text-xs font-mono text-slate-500 border-b border-slate-100 pb-2.5">
-                Lock in an on-site technical inspection of your back-office &amp; POS workflow. Fixed scope.
-              </div>
+              <p className="text-xs text-slate-600 border-b border-slate-100 pb-3 leading-relaxed">
+                We'll visit your venue, look at where hours are being lost on dockets, rosters, and phone calls, and give you a simple action plan.
+              </p>
 
-              {/* Business Name & Contact Name */}
+              {/* Venue Name & Your Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
-                    Business / Venue <span className="text-[#0096A3]">*</span>
+                  <label className="block text-xs font-bold text-slate-700">
+                    Venue or Restaurant Name <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Cottesloe Beach Bistro"
+                    placeholder="e.g. Northbridge Taphouse"
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                  <label className="block text-xs font-bold text-slate-700">
                     Your Name <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Sarah Jenkins"
+                    placeholder="e.g. Sarah Jenkins"
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
                   />
                 </div>
               </div>
 
-              {/* Email & Phone */}
+              {/* Email & Mobile */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
-                    Work Email <span className="text-[#0096A3]">*</span>
+                  <label className="block text-xs font-bold text-slate-700">
+                    Email Address <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="email"
@@ -183,28 +181,28 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                     placeholder="sarah@venue.com.au"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
-                    Mobile / Phone
+                  <label className="block text-xs font-bold text-slate-700">
+                    Mobile Number (For SMS)
                   </label>
                   <input
                     type="tel"
                     placeholder="0412 345 678"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 text-sm"
                   />
                 </div>
               </div>
 
-              {/* Software Stack Chips */}
-              <div className="space-y-1">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
-                  Software Stack
+              {/* Software Stack */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-slate-700">
+                  What till &amp; accounting tools do you currently use?
                 </label>
                 <div className="flex flex-wrap gap-1.5 pt-0.5">
                   {techOptions.map((tech) => {
@@ -214,10 +212,10 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                         key={tech}
                         type="button"
                         onClick={() => handleToggleTech(tech)}
-                        className={`px-2.5 py-1 rounded text-xs font-mono transition-colors ${
+                        className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
                           isSelected
-                            ? "bg-[#0F172A] text-white font-bold border border-[#0F172A]"
-                            : "bg-white text-slate-700 border border-slate-300 hover:border-slate-400"
+                            ? "bg-[#0F172A] text-white font-bold"
+                            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                         }`}
                       >
                         {isSelected ? `✓ ${tech}` : tech}
@@ -228,13 +226,13 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               </div>
 
               {/* WA Grant Checkbox */}
-              <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-between">
+              <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div className="space-y-0.5 pr-2">
-                  <span className="text-xs font-mono font-bold text-slate-900 block">
-                    Include WA Government Grant Scoping (50% Matched LCF)
+                  <span className="text-xs font-bold text-slate-900 block">
+                    Include WA Government Grant Scoping (50% Off)
                   </span>
                   <span className="text-[11px] text-slate-600 block">
-                    Check if you want technical scoping documents prepared for the grant round.
+                    We prepare the application paperwork for the Local Capability Fund round.
                   </span>
                 </div>
                 <input
@@ -249,20 +247,20 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-lg bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer font-sans shadow-sm"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer font-sans shadow-xs"
               >
                 {isSubmitting ? (
-                  <span className="font-mono">Assigning Diagnostic Docket...</span>
+                  <span>Booking Your Review...</span>
                 ) : (
                   <>
-                    <span>Confirm 14-Day Diagnostic Audit Intake</span>
+                    <span>Confirm 14-Day Venue Review Request</span>
                     <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
                   </>
                 )}
               </button>
 
-              <div className="text-[11px] font-mono text-slate-500 text-center">
-                Confidential solo practitioner review. Non-disclosure guaranteed.
+              <div className="text-[11px] text-slate-500 text-center">
+                100% confidential. No spam, no obligation.
               </div>
             </form>
           )}

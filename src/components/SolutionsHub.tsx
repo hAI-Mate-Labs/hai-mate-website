@@ -6,139 +6,134 @@ import {
   Star,
   Check,
   ArrowRight,
-  Activity,
   Receipt,
-  PhoneCall
+  PhoneCall,
+  Clock,
+  Sparkles,
+  Smartphone
 } from "lucide-react";
+import ApertureLogo from "./ApertureLogo";
 
 interface SolutionsHubProps {
   onOpenAuditModal: (solutionTitle?: string) => void;
 }
 
 export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
-  const [activeCardView, setActiveCardView] = useState<{ [key: string]: "spec" | "flow" | "payload" }>({
-    boh: "spec",
-    labor: "spec",
-    foh: "spec",
-    sentinel: "spec",
+  const [activeCardTab, setActiveCardTab] = useState<{ [key: string]: "benefits" | "steps" | "example" }>({
+    boh: "benefits",
+    labor: "benefits",
+    foh: "benefits",
+    sentinel: "benefits",
   });
 
-  const toggleCardView = (cardId: string, view: "spec" | "flow" | "payload") => {
-    setActiveCardView((prev) => ({ ...prev, [cardId]: view }));
+  const toggleTab = (id: string, tab: "benefits" | "steps" | "example") => {
+    setActiveCardTab((prev) => ({ ...prev, [id]: tab }));
   };
 
   const solutions = [
     {
       id: "boh",
       title: "BOH Procurement & Invoice Processing",
-      category: "Back-of-House Automation",
+      plainSubtitle: "Kitchen, Bar & Supplier Invoices Handled Automatically",
+      category: "Back-of-House Support",
       icon: Receipt,
       description:
         "Optical Character Recognition (OCR) combined with autonomous parsing agents. Automatically checks line-item supplier pricing against contracts and updates Xero/MYOB ledgers in real time.",
-      highlights: [
-        "Eliminates 100% of manual paper docket and PDF invoice data entry",
-        "Flags stealth price creeps on fresh produce, seafood, and liquor contracts",
-        "Staged drafts in Xero/MYOB requiring single-click manager sign-off",
+      plainDescription:
+        "Snap a photo of paper dockets or forward supplier PDFs. It reads every line item, catches unannounced price increases on meat, seafood or produce, and puts draft bills into Xero or MYOB ready for approval.",
+      benefits: [
+        "Saves 4 to 8 hours of tedious data entry every single week",
+        "Flags price creeps: alerts you when a supplier charges more than contracted",
+        "Nothing gets paid without your manager's 1-tap sign-off",
       ],
-      integrations: ["Xero", "MYOB", "PDF / OCR", "Gmail / Outlook"],
-      metric: "0.2s Parsing Latency • 99.8% Field Extraction",
-      flowSteps: [
-        { label: "Docket Ingestion", detail: "Scan from mobile camera or supplier PDF email" },
-        { label: "Line-Item Match", detail: "Cross-checks prices vs Master Supplier Contract" },
-        { label: "Draft Generation", detail: "Creates balanced draft AP bill with account codes" },
-        { label: "Approval Gate", detail: "Manager approves via Slack or web console" },
+      steps: [
+        "1. Snap docket photo on kitchen phone or forward supplier email",
+        "2. System matches prices against your agreed supplier rates",
+        "3. Draft bill is created in Xero/MYOB with proper tax & account codes",
+        "4. Manager taps 'Approve' on their phone in 2 seconds",
       ],
-      samplePayload: `{
-  "supplier": "Bannister Downs Dairy",
-  "docket_id": "DOCK-10492",
-  "contract_variance": "0.00 AUD (Compliant)",
-  "xero_bill_status": "DRAFT_READY_FOR_APPROVAL",
-  "gl_account": "310 - Cost of Goods: Dairy"
-}`,
+      exampleTitle: "What you see on your phone:",
+      exampleContent: "“Kailis Bros Invoice ($2,840.50): 14 line items verified. Price per kg matches contract. Draft created in Xero. [Tap to Approve]”",
+      worksWith: ["Xero", "MYOB", "Email", "Phone Camera"],
+      badge: "Saves ~6 Hours / Week",
     },
     {
       id: "labor",
       title: "Dynamic Labor & Roster Optimization",
-      category: "Margin & Wage Control",
+      plainSubtitle: "Smart Rostering That Protects Your Profit Margins",
+      category: "Wage & Profit Guard",
       icon: Users,
       description:
         "POS-integrated machine learning models predicting shift surges from local weather, reservations, and events. Protects hospitality profit margins against penalty-rate blowouts.",
-      highlights: [
-        "Guards the 33% hospitality wage ratio in real time",
-        "Ingests Bureau of Meteorology (BOM) rainfall/heat alerts for WA postcodes",
-        "Predicts trade volume deltas before costly penalty-rate shifts commence",
+      plainDescription:
+        "Connects to your till (Lightspeed or Square) and checks local weather, reservations, and local events to forecast how busy you'll be. It warns managers before costly penalty-rate shifts get out of hand.",
+      benefits: [
+        "Locks in your 33% wage target so you don't overspend on quiet shifts",
+        "Checks Bureau of Meteorology rain and heat forecasts automatically",
+        "Helps managers make roster adjustments before penalty rates kick in",
       ],
-      integrations: ["Lightspeed", "Square", "Deputy", "BOM Weather API"],
-      metric: "3%–5% Direct Labor Cost Protection",
-      flowSteps: [
-        { label: "Hourly POS Pull", detail: "Pulls sales cadence directly from Lightspeed or Square" },
-        { label: "Weather & Event ML", detail: "Correlates Optus Stadium events & BOM weather" },
-        { label: "Shift Threshold Warning", detail: "Alerts when labor exceeds 33% target threshold" },
-        { label: "Roster Recommendation", detail: "Suggests floor adjustments with 1-click execution" },
+      steps: [
+        "1. Reads your hourly till sales directly from Lightspeed or Square",
+        "2. Factors in local weather, table bookings, and stadium/weekend events",
+        "3. Alerts manager if payroll is heading above your 33% target",
+        "4. Suggests specific shift trims (e.g. cut 1 runner early) to save money",
       ],
-      samplePayload: `{
-  "venue": "Northbridge Taphouse",
-  "current_labor_pct": "34.6% (Surge Warning)",
-  "bom_forecast": "Rain squall 17:00-21:00 (Perth)",
-  "recommended_action": "Trim 1 floor runner from 18:00",
-  "projected_savings": "$348.00 AUD tonight"
-}`,
+      exampleTitle: "What you see on your phone:",
+      exampleContent: "“Rain Alert for Saturday dinner: Bookings down 12%. Suggest cutting 1 casual floor runner at 18:00 to protect 33% wage target. Saves $312.”",
+      worksWith: ["Lightspeed", "Square", "Deputy", "Weather API"],
+      badge: "3%–5% Wage Savings",
     },
     {
       id: "foh",
       title: "Front-of-House Communication Agents",
-      category: "Revenue & Guest Inquiries",
+      plainSubtitle: "24/7 Phone & SMS Table Booking Assistant",
+      category: "Guest Bookings & Functions",
       icon: PhoneCall,
       description:
         "Conversational text and voice booking agents capturing after-hours reservations and table inquiries, recapturing 10–15% in lost booking revenue.",
-      highlights: [
-        "Answers phone calls and SMS 24/7 with natural conversational flow",
-        "Direct calendar synchronization with SevenRooms, OpenTable, and Resy",
-        "Handles function pack inquiries, dietary questions, and large table deposits",
+      plainDescription:
+        "Never miss a booking again because staff were slammed during dinner service or the venue was closed. Answers calls and SMS in a friendly, natural voice, handles dietary questions, and books tables directly into your diary.",
+      benefits: [
+        "Recaptures 10% to 15% in lost reservations from missed calls",
+        "Takes table bookings 24/7 directly into SevenRooms, OpenTable, or Resy",
+        "Answers common guest questions (parking, dress code, function packages)",
       ],
-      integrations: ["SevenRooms", "OpenTable", "Twilio Voice", "SMS Gateway"],
-      metric: "10%–15% Recaptured Booking Revenue",
-      flowSteps: [
-        { label: "After-Hours Call/SMS", detail: "Guest calls during prep or late night after close" },
-        { label: "Intelligent Booking Concierge", detail: "Answers instant availability and seating zones" },
-        { label: "Dietary & Deposit Protocol", detail: "Captures card pre-authorizations securely" },
-        { label: "Confirmation & Diary Lock", detail: "Direct commit to booking system + SMS confirmation" },
+      steps: [
+        "1. Guest calls or texts while staff are busy or after closing time",
+        "2. Friendly automated voice answers instant questions & checks table availability",
+        "3. Captures guest details, dietaries, and deposit pre-authorizations",
+        "4. Books directly into your reservation book and sends guest an SMS confirmation",
       ],
-      samplePayload: `{
-  "caller": "+61 412 *** 890",
-  "intent": "Function Inquiry / 14 Guests",
-  "status": "TENTATIVE_HOLD_CREATED",
-  "system": "SevenRooms API v2",
-  "action": "Sent private dining brochure & deposit link"
-}`,
+      exampleTitle: "What a guest hears:",
+      exampleContent: "“Hi there! Thanks for calling Cottesloe Beach Club. I can reserve a table for 4 this Friday at 7:30pm out on the deck. May I take your name?”",
+      worksWith: ["SevenRooms", "OpenTable", "Resy", "Phone & SMS"],
+      badge: "+10%–15% More Bookings",
     },
     {
       id: "sentinel",
       title: "Reputation & Review Sentinel",
-      category: "Brand Protection & Feedback",
+      plainSubtitle: "Instant Review Alerts & Polite Response Helper",
+      category: "Guest Satisfaction",
       icon: Star,
       description:
         "Multi-platform review aggregator with sentiment classification, drafting context-aware responses and surfacing service bottlenecks early.",
-      highlights: [
-        "Unifies Google Reviews, TripAdvisor, OpenTable, and Facebook in one stream",
-        "Instant Slack notification for any rating below 4 stars with Root-Cause analysis",
-        "Pre-drafts human-voiced responses referencing specific dishes and staff members",
+      plainDescription:
+        "Brings Google, TripAdvisor, and social reviews together in one place. If a guest leaves a poor rating, your venue manager is notified immediately so you can fix the issue before other customers see it.",
+      benefits: [
+        "Immediate alert when someone rates your venue below 4 stars",
+        "Pinpoints recurring kitchen or service bottlenecks early",
+        "Pre-writes polite, helpful responses ready for your manager to review",
       ],
-      integrations: ["Google Business", "TripAdvisor", "OpenTable", "Slack Alerts"],
-      metric: "Sub-2 min Alert on Detractor Reviews",
-      flowSteps: [
-        { label: "Cross-Platform Listen", detail: "Aggregates new public reviews every 5 minutes" },
-        { label: "Sentiment & Category Tag", detail: "Isolates issues: Kitchen delay, Sound levels, Service" },
-        { label: "Manager Intervention", detail: "Surfaces critical reviews immediately to Slack #alerts" },
-        { label: "Human-Approved Response", detail: "GM approves tailored response with 1 click" },
+      steps: [
+        "1. Monitors Google, TripAdvisor, and OpenTable automatically",
+        "2. Identifies the issue (e.g. food wait time or noise level)",
+        "3. Sends an immediate text or message to the general manager",
+        "4. Manager approves a thoughtful response or reaches out to the guest",
       ],
-      samplePayload: `{
-  "platform": "Google Reviews (Perth CBD)",
-  "rating": 2,
-  "issue_detected": "Steak temperature & 35min wait time",
-  "slack_channel": "#venue-alerts",
-  "ai_draft": "Ready for GM review with comp offer code"
-}`,
+      exampleTitle: "What you see on your phone:",
+      exampleContent: "“Alert: 2-Star Google Review left 5 mins ago re: steak temperature. Pre-drafted response with manager apology ready for your sign-off.”",
+      worksWith: ["Google Reviews", "TripAdvisor", "OpenTable", "SMS"],
+      badge: "Under 2-Min Alerts",
     },
   ];
 
@@ -148,37 +143,37 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
         
         {/* Section Heading */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
-            <span>CORE SOLUTIONS // APPLIED CONDUITS</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 mb-3">
+            <span>SOLUTIONS BUILT FOR VENUES</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Applied Agentic Workflows Engineered for Western Australian Venues.
+            Applied Automation Engineered for Western Australian Venues.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600">
             We don’t replace your team; we eliminate the non-revenue-generating administrative friction so your venue managers can be on the floor delivering hospitality.
           </p>
         </div>
 
-        {/* Grid of 4 Minimalist White Cards */}
+        {/* 4 Clean Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {solutions.map((item) => {
             const Icon = item.icon;
-            const currentView = activeCardView[item.id] || "spec";
+            const currentTab = activeCardTab[item.id] || "benefits";
 
             return (
               <div
                 key={item.id}
-                className="group rounded-xl bg-white border border-slate-200 overflow-hidden hover:border-slate-400 transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between"
+                className="group rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 hover:border-slate-400 transition-all duration-200 shadow-xs hover:shadow-md flex flex-col justify-between"
               >
-                {/* Card Header */}
-                <div className="p-6 sm:p-8">
+                <div>
+                  {/* Top Bar */}
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-2.5 rounded-lg bg-slate-100 text-slate-900 border border-slate-200 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
+                      <div className="p-3 rounded-xl bg-slate-100 text-slate-900 group-hover:bg-[#0F172A] group-hover:text-white transition-colors">
                         <Icon className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-[#0096A3] font-bold block">
+                        <span className="text-xs uppercase tracking-wider text-[#0096A3] font-bold block">
                           {item.category}
                         </span>
                         <h3 className="text-lg sm:text-xl font-bold text-slate-900">
@@ -186,113 +181,116 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                         </h3>
                       </div>
                     </div>
+                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap">
+                      {item.badge}
+                    </span>
                   </div>
 
-                  {/* Core Description */}
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                    {item.description}
+                  {/* Plain English Description */}
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    {item.plainDescription}
                   </p>
 
-                  {/* Sub-Tabs: Spec vs Flow vs Payload */}
-                  <div className="flex items-center justify-between border-y border-slate-100 py-2 mb-4 bg-slate-50/70 -mx-6 sm:-mx-8 px-6 sm:px-8">
-                    <span className="text-xs font-mono text-slate-500">View:</span>
-                    <div className="flex items-center gap-1">
-                      <button
-                        type="button"
-                        onClick={() => toggleCardView(item.id, "spec")}
-                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
-                          currentView === "spec"
-                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
-                            : "text-slate-500 hover:text-slate-900"
-                        }`}
-                      >
-                        Feature Spec
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => toggleCardView(item.id, "flow")}
-                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
-                          currentView === "flow"
-                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
-                            : "text-slate-500 hover:text-slate-900"
-                        }`}
-                      >
-                        Workflow Steps
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => toggleCardView(item.id, "payload")}
-                        className={`px-2 py-0.5 text-xs font-mono rounded transition-colors ${
-                          currentView === "payload"
-                            ? "bg-white text-slate-900 border border-slate-200 font-bold shadow-2xs"
-                            : "text-slate-500 hover:text-slate-900"
-                        }`}
-                      >
-                        JSON Telemetry
-                      </button>
-                    </div>
+                  {/* Sub-tabs */}
+                  <div className="flex items-center gap-1.5 border-b border-slate-200 pb-2 mb-4 text-xs">
+                    <button
+                      type="button"
+                      onClick={() => toggleTab(item.id, "benefits")}
+                      className={`px-3 py-1 rounded-md transition-colors ${
+                        currentTab === "benefits"
+                          ? "bg-slate-100 text-slate-900 font-bold"
+                          : "text-slate-500 hover:text-slate-900"
+                      }`}
+                    >
+                      Key Benefits
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleTab(item.id, "steps")}
+                      className={`px-3 py-1 rounded-md transition-colors ${
+                        currentTab === "steps"
+                          ? "bg-slate-100 text-slate-900 font-bold"
+                          : "text-slate-500 hover:text-slate-900"
+                      }`}
+                    >
+                      How It Works
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleTab(item.id, "example")}
+                      className={`px-3 py-1 rounded-md transition-colors ${
+                        currentTab === "example"
+                          ? "bg-slate-100 text-slate-900 font-bold"
+                          : "text-slate-500 hover:text-slate-900"
+                      }`}
+                    >
+                      Sample Alert
+                    </button>
                   </div>
 
                   {/* Tab Body */}
                   <div className="min-h-[130px]">
-                    {currentView === "spec" && (
-                      <div className="space-y-2 animate-in fade-in duration-150">
-                        {item.highlights.map((bullet, i) => (
-                          <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                            <div className="mt-0.5 flex-shrink-0 w-4 h-4 rounded bg-slate-100 text-slate-700 flex items-center justify-center">
-                              <Check className="w-2.5 h-2.5" />
+                    {currentTab === "benefits" && (
+                      <div className="space-y-2">
+                        {item.benefits.map((b, i) => (
+                          <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                            <div className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center">
+                              <Check className="w-2.5 h-2.5 stroke-[2.5]" />
                             </div>
-                            <span>{bullet}</span>
+                            <span>{b}</span>
                           </div>
                         ))}
                       </div>
                     )}
 
-                    {currentView === "flow" && (
-                      <div className="space-y-1.5 animate-in fade-in duration-150">
-                        {item.flowSteps.map((step, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-xs font-mono bg-slate-50 p-2 rounded border border-slate-200">
-                            <span className="text-slate-900 font-bold w-4">{idx + 1}.</span>
-                            <span className="text-slate-900 font-semibold">{step.label}:</span>
-                            <span className="text-slate-600 truncate">{step.detail}</span>
+                    {currentTab === "steps" && (
+                      <div className="space-y-1.5">
+                        {item.steps.map((s, i) => (
+                          <div key={i} className="p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700">
+                            {s}
                           </div>
                         ))}
                       </div>
                     )}
 
-                    {currentView === "payload" && (
-                      <div className="bg-slate-50 rounded p-3 text-[11px] font-mono text-slate-800 border border-slate-200 overflow-x-auto animate-in fade-in duration-150">
-                        <pre>{item.samplePayload}</pre>
+                    {currentTab === "example" && (
+                      <div className="p-3.5 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+                        <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-700">
+                          <Smartphone className="w-3.5 h-3.5 text-[#0096A3]" />
+                          <span>{item.exampleTitle}</span>
+                        </div>
+                        <p className="text-xs text-slate-700 italic">
+                          {item.exampleContent}
+                        </p>
                       </div>
                     )}
                   </div>
 
-                  {/* Integration Tags */}
-                  <div className="mt-5 flex flex-wrap items-center gap-1.5">
-                    <span className="text-xs font-mono text-slate-500 mr-1">Integrates:</span>
-                    {item.integrations.map((badge) => (
+                  {/* Connects with */}
+                  <div className="mt-6 flex flex-wrap items-center gap-1.5 pt-3 border-t border-slate-100">
+                    <span className="text-xs text-slate-400 mr-1 font-medium">Works with:</span>
+                    {item.worksWith.map((tool) => (
                       <span
-                        key={badge}
-                        className="text-xs font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200"
+                        key={tool}
+                        className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 font-medium"
                       >
-                        {badge}
+                        {tool}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Card Footer */}
-                <div className="px-6 sm:px-8 py-3.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono text-slate-700">
-                    <Activity className="w-3.5 h-3.5 text-[#00BFCC]" />
-                    <span>{item.metric}</span>
-                  </div>
+                {/* Footer Action */}
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs text-slate-500">
+                    Setup included in 14-Day Audit
+                  </span>
                   <button
                     type="button"
                     onClick={() => onOpenAuditModal(item.title)}
-                    className="inline-flex items-center gap-1 text-xs font-bold font-mono text-slate-900 hover:text-[#0096A3]"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-900 hover:text-[#0096A3] transition-colors"
                   >
-                    <span>Audit Workflow</span>
+                    <span>Check this for my venue</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

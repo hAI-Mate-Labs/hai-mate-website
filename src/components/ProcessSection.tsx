@@ -1,63 +1,70 @@
 "use client";
 
-import React, { useState } from "react";
-import { Search, GitPullRequest, Headphones, Check, Clock, ArrowRight } from "lucide-react";
+import React from "react";
+import { Search, Wrench, PhoneCall, Check, Clock, ArrowRight } from "lucide-react";
 
 interface ProcessSectionProps {
   onOpenAuditModal: () => void;
 }
 
 export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps) {
-  const [selectedStep, setSelectedStep] = useState(0);
-
   const steps = [
     {
       number: "01",
       title: "14-Day Diagnostic Readiness Audit",
+      subtitle: "On-site review of your manual bottlenecks",
       duration: "Days 1–14",
       icon: Search,
       summary:
         "Fixed-fee on-site review mapping manual bottlenecks, existing software stacks (Lightspeed, Square, Xero), and high-ROI automation targets.",
+      plainSummary:
+        "We visit your venue, walk your floor, and look at how invoices, rosters, and bookings currently get handled. We calculate your exact hours lost and show you a plain-English roadmap with guaranteed ROI.",
       deliverables: [
-        "On-site venue walk-through and manager interviews in Perth/WA",
-        "Full API audit of POS, accounting, payroll, and reservation feeds",
-        "P&L bottleneck heat-map calculating exact annual administrative drag",
-        "Executive Automation Blueprint with prioritized ROI timeline",
-        "WA State Grant (LCF) technical co-funding scoping documentation",
+        "In-person visit to your Perth / WA venue or hotel",
+        "Full review of your till (Lightspeed / Square) and books (Xero / MYOB)",
+        "Calculation of hours lost every week to manual paperwork",
+        "Prioritized list of automations that save money immediately",
+        "WA Government 50% grant application assistance included",
       ],
-      deliverableTag: "Deliverable: Executive Roadmap & Grant Application Pack",
+      deliverableTag: "Outcome: Clear Action Plan & Grant Paperwork Ready",
     },
     {
       number: "02",
       title: "Embedded Pipeline Deployment",
+      subtitle: "Done-for-you connection into your daily tools",
       duration: "Weeks 3–6",
-      icon: GitPullRequest,
+      icon: Wrench,
       summary:
         "Rapid custom integration connecting APIs, webhooks, and prompt agents into your daily tools.",
+      plainSummary:
+        "We connect everything quietly behind the scenes. Your staff don't have to learn new complicated software—invoices simply flow into Xero, and rosters match your busy times automatically.",
       deliverables: [
-        "Direct webhook bridges between Lightspeed/Square and Xero/MYOB",
-        "OCR calibration on specific WA supplier dockets and fresh produce formats",
-        "Custom human review gate setup in Slack, email, or manager portal",
-        "End-to-end sandbox testing with historic data before production cutover",
-        "Staff onboarding and floor manager briefing session",
+        "Direct connection to your existing Lightspeed, Square, and Xero accounts",
+        "Trained on your specific WA meat, seafood, produce, and wine supplier dockets",
+        "Simple 1-tap phone approval buttons set up for your managers",
+        "Tested thoroughly with your past records before going live",
+        "Short, friendly briefing for your floor and kitchen managers",
       ],
-      deliverableTag: "Deliverable: Production Gateways with 99.8% Test Verification",
+      deliverableTag: "Outcome: Live Automation With 1-Tap Manager Approvals",
     },
     {
       number: "03",
-      title: "Managed Retainer & Direct Slack Connect",
+      title: "Managed Retainer & Slack Connect",
+      subtitle: "Direct access to your dedicated automation partner",
       duration: "Ongoing Partnership",
-      icon: Headphones,
+      icon: PhoneCall,
       summary:
         "Direct, real-time developer access via Slack Connect, continuous model tuning, and proactive uptime monitoring.",
+      plainSummary:
+        "You get my direct phone number and a private Slack channel. If your menu changes, suppliers update their docket formats, or you need adjustments before a big public holiday, I take care of it immediately.",
       deliverables: [
-        "Direct Slack Connect channel with dedicated solo automation engineer",
-        "Sub-15 minute direct response SLA during high-volume shift windows",
-        "Continuous prompt and schema adjustments as POS or menus evolve",
-        "Monthly review of hours saved, margin shifts, and recovered dollars",
-        "Proactive 24/7 uptime and webhook heartbeat monitoring",
+        "Direct mobile & Slack access to your solo automation engineer",
+        "Fast response during busy weekend and dinner shifts",
+        "Continuous adjustments as menus, suppliers, and rosters evolve",
+        "Monthly summary of hours saved and wage dollars protected",
+        "24/7 background monitoring so everything runs seamlessly",
       ],
-      deliverableTag: "Deliverable: Zero Maintenance Burden on Venue Management",
+      deliverableTag: "Outcome: Total Peace of Mind & Zero Maintenance Work for You",
     },
   ];
 
@@ -67,45 +74,39 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
         
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
-            <span>ENGAGEMENT METHODOLOGY // 3-STEP ROADMAP</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 mb-3">
+            <span>HOW WE WORK WITH YOU</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            From Audit to Autonomous Guardrails in 3 Structured Steps.
+            From First Chat to Running Smoothly in 3 Simple Steps.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600">
-            No open-ended consulting hours or vague milestones. Every step has fixed deliverables, defined security parameters, and quantifiable margin impact.
+            No confusing IT jargon, no unexpected hourly bills. Every step has clear deliverables, fixed pricing, and immediate returns for your venue.
           </p>
         </div>
 
         {/* 3 Step Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, index) => {
+          {steps.map((step) => {
             const Icon = step.icon;
-            const isHovered = selectedStep === index;
 
             return (
               <div
                 key={step.number}
-                onMouseEnter={() => setSelectedStep(index)}
-                className={`relative rounded-xl bg-white border p-6 sm:p-8 transition-all duration-200 flex flex-col justify-between ${
-                  isHovered
-                    ? "border-slate-900 shadow-md"
-                    : "border-slate-200 hover:border-slate-400"
-                }`}
+                className="relative rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 transition-all duration-200 hover:border-slate-400 hover:shadow-md flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-3xl sm:text-4xl font-black font-mono text-slate-900">
+                    <span className="text-3xl sm:text-4xl font-black text-slate-900 font-sans">
                       {step.number}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-slate-100 text-xs font-mono text-slate-700 border border-slate-200">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold text-slate-700">
                       <Clock className="w-3.5 h-3.5 text-slate-500" />
                       {step.duration}
                     </span>
                   </div>
 
-                  <div className="p-2.5 rounded-lg bg-slate-100 text-slate-900 w-fit mb-4">
+                  <div className="p-3 rounded-xl bg-slate-100 text-slate-900 w-fit mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
 
@@ -114,12 +115,12 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
                   </h3>
 
                   <p className="text-sm text-slate-600 leading-relaxed mb-5">
-                    {step.summary}
+                    {step.plainSummary}
                   </p>
 
                   <div className="space-y-2 pt-3 border-t border-slate-100">
-                    <span className="text-xs font-mono uppercase text-slate-900 tracking-wider font-semibold block mb-2">
-                      Key Deliverables:
+                    <span className="text-xs uppercase text-slate-900 font-bold tracking-wider block mb-2">
+                      What's Included:
                     </span>
                     {step.deliverables.map((item, dIdx) => (
                       <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700">
@@ -130,7 +131,7 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-mono text-slate-600">
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-slate-700">
                   {step.deliverableTag}
                 </div>
               </div>
@@ -138,14 +139,14 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
           })}
         </div>
 
-        {/* CTA */}
+        {/* Action Button */}
         <div className="mt-12 text-center">
           <button
             type="button"
             onClick={onOpenAuditModal}
-            className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-bold font-mono rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-4 text-sm font-bold rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 transition-all shadow-sm cursor-pointer"
           >
-            <span>Book Your 14-Day Diagnostic Audit</span>
+            <span>Book a 14-Day Review for Your Venue</span>
             <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
           </button>
         </div>

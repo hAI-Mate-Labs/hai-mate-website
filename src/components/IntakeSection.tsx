@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { CheckCircle2, MessageSquare, Copy, Check, Shield, ArrowRight } from "lucide-react";
+import ApertureLogo from "./ApertureLogo";
 
 export default function IntakeSection() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ export default function IntakeSection() {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 700);
+    }, 600);
   };
 
   const handleCopyEmail = () => {
@@ -37,38 +38,38 @@ export default function IntakeSection() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-mono text-slate-800 mb-3">
-            <span>INTAKE // DIRECT TECHNICAL ENGAGEMENT</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 mb-3">
+            <span>GET IN TOUCH // 14-DAY VENUE REVIEW</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
             Ready to Cut Away Operational Friction?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600">
-            Schedule your on-site 14-day diagnostic audit. We’ll map your workflows, inspect your POS/Xero pipelines, and calculate your exact ROI.
+            Tell us about your venue. We’ll organize an on-site visit to inspect your dockets, rosters, and till setup, and calculate your exact hours and dollars saved.
           </p>
         </div>
 
         {/* The Intake Card */}
-        <div className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm">
+        <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-10 shadow-sm relative overflow-hidden">
           
           {isSubmitted ? (
             <div className="py-10 text-center space-y-4 animate-in fade-in duration-200">
-              <div className="w-14 h-14 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center mx-auto border border-slate-300">
-                <CheckCircle2 className="w-7 h-7 text-[#0096A3]" />
+              <div className="w-16 h-16 rounded-full bg-slate-100 text-slate-900 flex items-center justify-center mx-auto border border-slate-200">
+                <CheckCircle2 className="w-8 h-8 text-[#0096A3]" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">
-                Audit Request Logged
+                Thank You, {formData.name}!
               </h3>
-              <p className="text-sm text-slate-600 max-w-md mx-auto">
-                Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. As a solo practitioner, I will personally review your operational bottleneck and email you at <span className="font-semibold text-slate-900">{formData.email}</span> within 4 hours to coordinate our diagnostic walk-through.
+              <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                I have received your note regarding your {formData.businessType.toLowerCase()} business. I will personally review your details and send you an email at <span className="font-semibold text-slate-900">{formData.email}</span> within 4 hours to introduce myself and lock in a convenient time to meet.
               </p>
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="px-4 py-2 rounded bg-slate-100 text-xs font-mono text-slate-800 border border-slate-200 hover:bg-slate-200"
+                  className="px-5 py-2.5 rounded-lg bg-slate-100 text-xs font-bold text-slate-800 border border-slate-200 hover:bg-slate-200"
                 >
-                  Submit Another Inquiry
+                  Send Another Inquiry
                 </button>
               </div>
             </div>
@@ -80,40 +81,40 @@ export default function IntakeSection() {
                 
                 {/* Name */}
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                     Your Name <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="name"
                     type="text"
                     required
-                    placeholder="Liam Henderson"
+                    placeholder="e.g. Liam Henderson"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                   />
                 </div>
 
                 {/* Work Email */}
                 <div className="space-y-1.5">
-                  <label htmlFor="email" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                  <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                     Work Email <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="email"
                     type="email"
                     required
-                    placeholder="liam@cottesloegroup.com.au"
+                    placeholder="e.g. liam@cottesloegroup.com.au"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                   />
                 </div>
               </div>
 
               {/* Business Type */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Business Type <span className="text-[#0096A3]">*</span>
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -127,9 +128,9 @@ export default function IntakeSection() {
                       key={type}
                       type="button"
                       onClick={() => setFormData({ ...formData, businessType: type })}
-                      className={`px-3 py-2 rounded-lg text-xs font-mono transition-all text-center ${
+                      className={`px-3 py-2.5 rounded-xl text-xs font-semibold transition-all text-center ${
                         formData.businessType === type
-                          ? "bg-[#0F172A] text-white font-bold border border-[#0F172A]"
+                          ? "bg-[#0F172A] text-white font-bold border border-[#0F172A] shadow-xs"
                           : "bg-white text-slate-700 border border-slate-300 hover:border-slate-400"
                       }`}
                     >
@@ -141,16 +142,16 @@ export default function IntakeSection() {
 
               {/* Current Weekly Admin Bottleneck */}
               <div className="space-y-1.5">
-                <label htmlFor="bottleneck" className="block text-xs font-mono uppercase tracking-wider text-slate-700">
+                <label htmlFor="bottleneck" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
                   Current Weekly Admin Bottleneck
                 </label>
                 <textarea
                   id="bottleneck"
                   rows={3}
-                  placeholder="e.g. Spending 6 hours every Monday entering supplier invoices into Xero and checking staff penalty rates against weekend weather shifts."
+                  placeholder="e.g. Entering fresh produce and liquor dockets into Xero every Monday, or managing staff rosters when the weather turns bad."
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
+                  className="w-full px-4 py-3 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-sm"
                 />
               </div>
 
@@ -158,27 +159,27 @@ export default function IntakeSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-lg bg-[#0F172A] text-white font-bold text-sm hover:bg-slate-800 transition-all cursor-pointer font-sans shadow-sm"
+                className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-[#0F172A] text-white font-bold text-base hover:bg-slate-800 transition-all cursor-pointer font-sans shadow-xs"
               >
                 {isSubmitting ? (
-                  <span className="font-mono">Logging Audit Request...</span>
+                  <span>Sending Your Request...</span>
                 ) : (
                   <>
-                    <span>Request 14-Day Diagnostic Audit</span>
-                    <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
+                    <span>Request Your 14-Day Diagnostic Audit</span>
+                    <ArrowRight className="w-5 h-5 text-[#00BFCC]" />
                   </>
                 )}
               </button>
 
-              <div className="flex items-center justify-center gap-2 text-xs font-mono text-slate-500 text-center pt-1">
+              <div className="flex items-center justify-center gap-2 text-xs text-slate-500 text-center pt-1">
                 <Shield className="w-3.5 h-3.5 text-slate-500" />
-                <span>Confidential diagnostic review. Zero spam. Strict non-disclosure.</span>
+                <span>Strict privacy guarantee. No spam, no sales pressure.</span>
               </div>
             </form>
           )}
 
           {/* Direct Contact Alternative */}
-          <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-600">
+          <div className="mt-8 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
             <div className="flex items-center gap-2 text-center sm:text-left">
               <MessageSquare className="w-4 h-4 text-slate-500 flex-shrink-0" />
               <span>
@@ -195,12 +196,12 @@ export default function IntakeSection() {
             <button
               type="button"
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-100 text-slate-700 border border-slate-200 hover:text-slate-900 hover:bg-slate-200 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200 hover:text-slate-900 hover:bg-slate-200 transition-colors"
             >
               {copiedEmail ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700">Copied to Clipboard</span>
+                  <span className="text-emerald-700 font-medium">Copied!</span>
                 </>
               ) : (
                 <>

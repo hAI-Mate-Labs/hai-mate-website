@@ -6,25 +6,27 @@ import {
   AlertTriangle,
   CheckCircle2,
   RotateCcw,
-  Terminal,
   Shield,
   ArrowRight,
-  Cpu,
-  Check
+  Check,
+  Smartphone,
+  Sparkles,
+  TrendingDown,
+  DollarSign
 } from "lucide-react";
+import ApertureLogo from "./ApertureLogo";
 
 interface HeroProps {
   onOpenAuditModal: () => void;
 }
 
-type TabType = "pipeline" | "logs" | "payload";
+type TabType = "pipeline" | "message" | "savings";
 
 export default function Hero({ onOpenAuditModal }: HeroProps) {
   const [activeTab, setActiveTab] = useState<TabType>("pipeline");
   const [approved, setApproved] = useState(false);
   const [approving, setApproving] = useState(false);
   const [activeStepIndex, setActiveStepIndex] = useState(2);
-  const [latency, setLatency] = useState("0.4s");
 
   const handleApprove = () => {
     if (approving) return;
@@ -32,71 +34,85 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
     setTimeout(() => {
       setApproved(!approved);
       setApproving(false);
-      setLatency(approved ? "Pending" : "0.4s");
-    }, 300);
+    }, 250);
   };
 
   const handleReset = () => {
     setApproved(false);
     setActiveStepIndex(0);
-    setTimeout(() => setActiveStepIndex(1), 600);
-    setTimeout(() => setActiveStepIndex(2), 1200);
+    setTimeout(() => setActiveStepIndex(1), 500);
+    setTimeout(() => setActiveStepIndex(2), 1000);
   };
 
   return (
-    <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-white border-b border-slate-200">
-      {/* Minimal background grid */}
-      <div className="absolute inset-0 minimal-grid opacity-25 pointer-events-none" />
+    <section className="relative pt-10 pb-20 md:pt-16 md:pb-28 bg-white border-b border-slate-200 overflow-hidden">
+      
+      {/* Subtle brand vector mark watermark in the background */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none">
+        <ApertureLogo size={800} color="#0F172A" />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
-          {/* Left Column: Minimal Headline & Narrative */}
+          {/* Left Column: Non-technical Hospitality Narrative */}
           <div className="lg:col-span-6 space-y-6 text-left">
             
             {/* Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-2xs">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00BFCC] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00BFCC]" />
               </span>
-              <span className="text-xs font-mono font-medium text-slate-800">
-                Western Australia’s Applied Automation Practice
+              <span className="text-xs font-semibold text-slate-800">
+                Western Australia’s Applied Automation Agency
               </span>
-              <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-slate-200/80 text-slate-700 font-semibold">
-                Solo Practitioner
+              <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                For Hospitality &amp; SMEs
               </span>
             </div>
 
             {/* H1 Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight text-slate-900 leading-[1.14]">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black tracking-tight text-slate-900 leading-[1.12]">
               Opening Up Operational Flow While Keeping{" "}
               <span className="relative inline-block text-slate-900">
                 Human Judgment
-                <span className="absolute bottom-1.5 left-0 w-full h-2 bg-[#00BFCC]/25 -z-10 rounded-sm" />
+                <span className="absolute bottom-1 left-0 w-full h-2.5 bg-[#00BFCC]/30 -z-10 rounded-sm" />
               </span>{" "}
               at the Center.
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline tailored for hospitality */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               We design, deploy, and manage embedded agentic workflows for hospitality groups and growing SMEs across WA. Eliminate manual back-office drag, protect your labor margins, and maintain complete operational control.
             </p>
 
-            {/* Clean Value Bullets */}
-            <div className="flex flex-wrap gap-2 pt-1 text-xs font-mono text-slate-700">
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
-                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
-                Lightspeed &amp; Square Native
-              </span>
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
-                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
-                Zero Unreviewed General Ledger Posts
-              </span>
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded bg-slate-50 border border-slate-200">
-                <Check className="w-3.5 h-3.5 text-[#00BFCC]" />
-                50% WA State Grant Eligible
-              </span>
+            {/* Non-technical value highlights */}
+            <div className="space-y-2 pt-1 text-sm text-slate-700">
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#00BFCC]/15 text-[#0096A3] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>
+                  <strong>Connects with what you already use:</strong> Lightspeed, Square, Xero, MYOB &amp; Deputy.
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#00BFCC]/15 text-[#0096A3] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>
+                  <strong>Zero tech skills required:</strong> Done-for-you setup with zero complicated menus for staff.
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-5 h-5 rounded-full bg-[#00BFCC]/15 text-[#0096A3] flex items-center justify-center flex-shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>
+                  <strong>You stay in control:</strong> No bill is paid and no roster is altered without your 1-tap approval.
+                </span>
+              </div>
             </div>
 
             {/* CTAs */}
@@ -104,7 +120,7 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="relative inline-flex items-center justify-center px-6 py-3.5 text-sm font-bold rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.99] transition-all cursor-pointer font-sans group border border-[#0F172A] shadow-sm"
+                className="relative inline-flex items-center justify-center px-6 py-4 text-base font-bold rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 active:scale-[0.99] transition-all cursor-pointer font-sans group shadow-sm"
               >
                 <span>Get Your 14-Day AI Readiness Audit</span>
                 <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
@@ -112,234 +128,230 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
 
               <a
                 href="#solutions"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-medium rounded-lg bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 hover:border-slate-400 transition-all shadow-2xs"
+                className="inline-flex items-center justify-center px-6 py-4 text-base font-semibold rounded-lg bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 transition-all shadow-2xs"
               >
                 <span>Explore Applied Solutions</span>
               </a>
             </div>
 
-            {/* Solo Practitioner Local note */}
-            <div className="pt-2 text-xs text-slate-500 font-mono flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              <span>Direct engineer access: Direct solo practitioner engagement without account manager bloat.</span>
+            {/* Friendly reassurance */}
+            <div className="pt-2 text-xs text-slate-500 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span>We walk your venue floor with you in Perth, Fremantle, or South West WA.</span>
             </div>
           </div>
 
-          {/* Right Column: Minimalist Light Terminal Preview Card */}
+          {/* Right Column: Friendly Venue Manager UI Preview Card */}
           <div className="lg:col-span-6">
-            <div className="relative rounded-xl bg-white border border-slate-200 shadow-xl overflow-hidden">
+            <div className="relative rounded-2xl bg-white border border-slate-200 shadow-xl overflow-hidden">
               
-              {/* Terminal Title Bar */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+              {/* Card Header: Friendly Venue Manager View */}
+              <div className="flex items-center justify-between px-5 py-3.5 bg-slate-50 border-b border-slate-200">
+                <div className="flex items-center gap-3">
+                  <div className="p-1.5 rounded-md bg-white border border-slate-200">
+                    <ApertureLogo className="h-4 w-4" />
                   </div>
-                  <span className="text-xs font-mono text-slate-500 ml-2 flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-[#00BFCC]" />
-                    <span>hAI-flow::perth_hospo_gateway</span>
-                  </span>
+                  <div>
+                    <h3 className="text-xs font-bold text-slate-900">
+                      Cottesloe Beachside Bistro • Live Venue Assistant
+                    </h3>
+                    <span className="text-[11px] text-slate-500">
+                      Saturday Shift Protection
+                    </span>
+                  </div>
                 </div>
 
-                {/* Tab Switcher */}
-                <div className="flex items-center gap-1 bg-white p-0.5 rounded border border-slate-200 text-xs font-mono">
+                {/* Tabs */}
+                <div className="flex items-center gap-1 bg-white p-1 rounded-lg border border-slate-200 text-xs">
                   <button
                     type="button"
                     onClick={() => setActiveTab("pipeline")}
-                    className={`px-2 py-0.5 rounded transition-colors ${
+                    className={`px-2.5 py-1 rounded transition-colors ${
                       activeTab === "pipeline"
-                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        ? "bg-slate-100 text-slate-900 font-bold"
                         : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
-                    Workflow
+                    Live Workflow
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActiveTab("logs")}
-                    className={`px-2 py-0.5 rounded transition-colors ${
-                      activeTab === "logs"
-                        ? "bg-slate-100 text-slate-900 font-semibold"
+                    onClick={() => setActiveTab("message")}
+                    className={`px-2.5 py-1 rounded transition-colors ${
+                      activeTab === "message"
+                        ? "bg-slate-100 text-slate-900 font-bold"
                         : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
-                    Telemetry
+                    Manager View
                   </button>
                   <button
                     type="button"
-                    onClick={() => setActiveTab("payload")}
-                    className={`px-2 py-0.5 rounded transition-colors ${
-                      activeTab === "payload"
-                        ? "bg-slate-100 text-slate-900 font-semibold"
+                    onClick={() => setActiveTab("savings")}
+                    className={`px-2.5 py-1 rounded transition-colors ${
+                      activeTab === "savings"
+                        ? "bg-slate-100 text-slate-900 font-bold"
                         : "text-slate-500 hover:text-slate-800"
                     }`}
                   >
-                    JSON
+                    Wage Target
                   </button>
                 </div>
               </div>
 
-              {/* Sub-header telemetry stats */}
-              <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50/50 px-4 py-2 text-xs font-mono text-slate-600">
-                <div className="flex items-center gap-1.5">
-                  <span>Status:</span>
-                  <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    HEALTHY
-                  </span>
+              {/* Status bar */}
+              <div className="grid grid-cols-3 border-b border-slate-200 bg-slate-50/60 px-5 py-2 text-xs text-slate-600">
+                <div>
+                  <span className="text-slate-400">Till:</span>{" "}
+                  <span className="font-semibold text-slate-800">Lightspeed POS</span>
                 </div>
-                <div className="flex items-center gap-1.5 justify-center">
-                  <span>Wage Target:</span>
-                  <span className="text-slate-900 font-bold">33.0%</span>
+                <div className="text-center">
+                  <span className="text-slate-400">Books:</span>{" "}
+                  <span className="font-semibold text-slate-800">Xero Connected</span>
                 </div>
-                <div className="flex items-center gap-1.5 justify-end">
-                  <span>Approval:</span>
-                  <span className="text-[#00BFCC] font-bold">{latency}</span>
+                <div className="text-right">
+                  <span className="text-slate-400">Wage Target:</span>{" "}
+                  <span className="font-bold text-[#0096A3]">33.0%</span>
                 </div>
               </div>
 
-              {/* Interactive Content View */}
-              <div className="p-4 sm:p-5 space-y-3">
+              {/* Main Content */}
+              <div className="p-5 space-y-3.5">
                 {activeTab === "pipeline" && (
                   <div className="space-y-3">
                     
                     {/* Step 1 */}
                     <div
                       onClick={() => setActiveStepIndex(0)}
-                      className={`p-3 rounded-lg border transition-all cursor-pointer ${
+                      className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                         activeStepIndex === 0
-                          ? "bg-slate-50 border-slate-400"
+                          ? "bg-slate-50 border-slate-400 shadow-2xs"
                           : "bg-white border-slate-200 hover:border-slate-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2">
-                          <div className="p-1 rounded bg-slate-100 text-slate-700">
-                            <FileText className="w-3.5 h-3.5" />
+                          <div className="p-1.5 rounded-md bg-emerald-50 text-emerald-700">
+                            <FileText className="w-4 h-4" />
                           </div>
                           <div>
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">
-                              Step 01 • Ingestion &amp; OCR
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-700">
+                              Step 01 • Kitchen Invoices
                             </span>
-                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
+                            <h4 className="text-sm font-bold text-slate-900">
                               Supplier Invoice Scanned via OCR
                             </h4>
                           </div>
                         </div>
-                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium">
-                          100% Parsed
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                          Matched Contract
                         </span>
                       </div>
-                      <p className="text-xs text-slate-600 pl-6">
-                        Fresh produce docket: 14 line items extracted and verified against weekly price agreement.
+                      <p className="text-xs text-slate-600 pl-7">
+                        Seafood supplier invoice: 14 line items checked. Price per kg matched to your agreed rate. Staged in Xero ready for approval.
                       </p>
-                      <div className="mt-1.5 pl-6 text-[11px] font-mono text-[#0096A3] font-medium">
-                        → Line items parsed to Xero: Draft Bills
-                      </div>
                     </div>
 
                     {/* Step 2 */}
                     <div
                       onClick={() => setActiveStepIndex(1)}
-                      className={`p-3 rounded-lg border transition-all cursor-pointer ${
+                      className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
                         activeStepIndex === 1
-                          ? "bg-slate-50 border-slate-400"
+                          ? "bg-slate-50 border-slate-400 shadow-2xs"
                           : "bg-white border-slate-200 hover:border-slate-300"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center justify-between mb-1.5">
                         <div className="flex items-center gap-2">
-                          <div className="p-1 rounded bg-amber-50 text-amber-700">
-                            <AlertTriangle className="w-3.5 h-3.5" />
+                          <div className="p-1.5 rounded-md bg-amber-50 text-amber-700">
+                            <AlertTriangle className="w-4 h-4" />
                           </div>
                           <div>
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 font-bold">
-                              Step 02 • ML Discrepancy Gate
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-amber-700">
+                              Step 02 • Wage Guard
                             </span>
-                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
+                            <h4 className="text-sm font-bold text-slate-900">
                               POS Shift Discrepancy Flagged
                             </h4>
                           </div>
                         </div>
-                        <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 font-medium">
-                          Variance: +1.8%
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                          Rain Warning
                         </span>
                       </div>
-                      <p className="text-xs text-slate-600 pl-6">
-                        Lightspeed POS sales trending down vs local rain forecast. Saturday wage cost trending to 34.8%.
+                      <p className="text-xs text-slate-600 pl-7">
+                        Rain alert from Bureau of Meteorology + quiet Saturday lunch detected on till. Roster auto-adjusted to preserve 33% wage target.
                       </p>
-                      <div className="mt-1.5 pl-6 text-[11px] font-mono text-amber-800 font-medium">
-                        → Roster auto-adjusted to preserve 33% wage target
-                      </div>
                     </div>
 
                     {/* Step 3 (Center Anchor - Human Review Required) */}
                     <div
                       onClick={() => setActiveStepIndex(2)}
-                      className={`p-3.5 rounded-lg border-2 transition-all ${
+                      className={`p-4 rounded-xl border-2 transition-all ${
                         activeStepIndex === 2
-                          ? "bg-slate-50/70 border-[#00BFCC]"
-                          : "bg-white border-slate-300"
+                          ? "bg-slate-50 border-[#00BFCC] shadow-xs"
+                          : "bg-white border-slate-200"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <div className="p-1 rounded bg-[#00BFCC]/15 text-[#0096A3]">
-                            <Shield className="w-3.5 h-3.5" />
+                          <div className="p-1.5 rounded-md bg-[#00BFCC]/15 text-[#0096A3]">
+                            <Shield className="w-4 h-4" />
                           </div>
                           <div>
-                            <span className="text-[10px] font-mono uppercase tracking-wider text-[#0096A3] font-bold">
-                              Step 03 • Center Anchor
+                            <span className="text-[10px] uppercase font-bold tracking-wider text-[#0096A3]">
+                              Step 03 • You're Always in Control
                             </span>
-                            <h4 className="text-xs sm:text-sm font-bold text-slate-900">
+                            <h4 className="text-sm font-bold text-slate-900">
                               Human Review Required
                             </h4>
                           </div>
                         </div>
+                        <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+                          Center Anchor
+                        </span>
                       </div>
 
-                      <p className="text-xs text-slate-600 pl-6 mb-2.5">
-                        No automated roster cut or ledger post executes without explicit operator signature.
+                      <p className="text-xs text-slate-600 pl-7 mb-3">
+                        Nothing changes in your books or roster without you. Your venue manager receives a simple prompt on their phone to approve with 1 tap.
                       </p>
 
-                      {/* Interactive Button Badge: "Approved by Venue Manager (0.4s)" */}
-                      <div className="pl-6 flex flex-wrap items-center gap-2.5">
+                      {/* Interactive Button Badge */}
+                      <div className="pl-7 flex flex-wrap items-center gap-2.5">
                         <button
                           type="button"
                           onClick={handleApprove}
                           disabled={approving}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs font-bold transition-all cursor-pointer border ${
+                          className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer border ${
                             approved
-                              ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                              : "bg-[#0F172A] text-white border-[#0F172A] hover:bg-slate-800 shadow-2xs"
+                              ? "bg-emerald-50 text-emerald-800 border-emerald-300 shadow-xs"
+                              : "bg-[#0F172A] text-white border-[#0F172A] hover:bg-slate-800 shadow-sm"
                           }`}
                         >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00BFCC]" />
+                          <CheckCircle2 className="w-4 h-4 text-[#00BFCC]" />
                           <span>
                             {approving
-                              ? "Verifying Token..."
+                              ? "Processing..."
                               : approved
                               ? "Approved by Venue Manager (0.4s)"
-                              : "Approve as Venue Manager"}
+                              : "Tap to Simulate Approval"}
                           </span>
                         </button>
 
                         <button
                           type="button"
                           onClick={handleReset}
-                          className="text-xs font-mono text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors"
+                          className="text-xs text-slate-500 hover:text-slate-900 flex items-center gap-1 transition-colors"
                         >
                           <RotateCcw className="w-3 h-3" />
                           Reset
                         </button>
                       </div>
 
-                      <div className="mt-2.5 pt-2 border-t border-slate-200 pl-6 flex items-center justify-between text-[10px] font-mono text-slate-500">
-                        <span>Sign-off: Slack PIN / RSA-4096</span>
-                        <span className="text-[#0096A3] font-semibold">
-                          {approved ? "STATUS: COMMITTED TO XERO" : "STATUS: AWAITING_HUMAN"}
+                      <div className="mt-3 pt-2 border-t border-slate-200 pl-7 flex items-center justify-between text-[11px] text-slate-500">
+                        <span>Venue Manager Sign-off</span>
+                        <span className="font-semibold text-emerald-700">
+                          {approved ? "✓ Safe: Updated in Xero & Deputy" : "Waiting for manager 1-tap sign-off"}
                         </span>
                       </div>
                     </div>
@@ -347,58 +359,59 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                   </div>
                 )}
 
-                {/* Telemetry Tab */}
-                {activeTab === "logs" && (
-                  <div className="bg-slate-50 rounded p-3 font-mono text-xs text-slate-700 space-y-1 border border-slate-200 max-h-56 overflow-y-auto">
-                    <div>[11:42:01.002] INGEST: supplier_invoice_6691.pdf received</div>
-                    <div className="text-emerald-700 font-medium">[11:42:01.341] OCR_SUCCESS: 14 line items extracted (Confidence 99.8%)</div>
-                    <div>[11:42:01.390] XERO_SYNC: Draft bill staged. No ledger auto-commit.</div>
-                    <div className="text-amber-700">[11:42:02.100] POS_ALERT: Lightspeed hourly delta -8.4% vs Saturday baseline</div>
-                    <div className="text-[#0096A3] font-semibold">[11:42:02.210] MODEL_PREDICTION: Wage cost will peak at 34.8% (Target: 33.0%)</div>
-                    <div className="p-1.5 rounded bg-white border border-slate-200 font-semibold text-slate-900">
-                      [11:42:02.320] GATEWAY: HUMAN_REVIEW_REQUIRED dispatch sent to Venue Manager
+                {/* Manager Message View */}
+                {activeTab === "message" && (
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                      <Smartphone className="w-4 h-4 text-[#00BFCC]" />
+                      <span>Phone Notification Sent to Manager:</span>
                     </div>
-                    {approved && (
-                      <div className="text-emerald-800 font-bold bg-emerald-50 p-1.5 rounded border border-emerald-300">
-                        [11:42:02.720] AUTH_SUCCESS: Approved by Venue Manager in 0.4s. Changes committed.
+                    <div className="bg-white p-3.5 rounded-lg border border-slate-200 text-xs text-slate-800 space-y-2 shadow-2xs">
+                      <p className="font-bold text-slate-900">
+                        hAI Mate! Roster &amp; Invoice Summary:
+                      </p>
+                      <p>
+                        • <strong>Kailis Bros Invoice #4921:</strong> $2,840.50 matched. Staged in Xero drafts.
+                      </p>
+                      <p>
+                        • <strong>Rain Alert:</strong> Shift labor trending to 34.8%. Suggested cutting 1 floor runner from 18:00 to save $312 and maintain 33% target.
+                      </p>
+                      <div className="pt-1">
+                        <span className="inline-block px-2 py-1 bg-slate-100 rounded text-slate-700 font-semibold">
+                          Status: {approved ? "Approved via Phone (0.4s)" : "Tap 'Approve' to confirm"}
+                        </span>
                       </div>
-                    )}
+                    </div>
                   </div>
                 )}
 
-                {/* JSON Tab */}
-                {activeTab === "payload" && (
-                  <div className="bg-slate-50 rounded p-3 font-mono text-[11px] text-slate-800 border border-slate-200 max-h-56 overflow-y-auto">
-                    <pre>
-{`{
-  "conduit": "wa_hospo_gateway_09",
-  "venue": "Cottesloe Bistro",
-  "ocr_invoice": {
-    "supplier": "Fremantle Produce Co",
-    "total_aud": 2840.50,
-    "pricing_variance": "0.00 AUD (Matched)"
-  },
-  "labor_target_pct": 33.0,
-  "human_gate": {
-    "status": "${approved ? "APPROVED" : "AWAITING_HUMAN"}",
-    "latency_seconds": ${approved ? 0.4 : "null"}
-  }
-}`}
-                    </pre>
+                {/* Savings View */}
+                {activeTab === "savings" && (
+                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                    <div className="text-xs font-bold text-slate-700">
+                      Shift Impact Summary:
+                    </div>
+                    <div className="grid grid-cols-2 gap-3 text-center">
+                      <div className="bg-white p-3 rounded-lg border border-slate-200">
+                        <span className="text-[11px] text-slate-500 block">Wage Target Locked</span>
+                        <span className="text-xl font-black text-slate-900">33.0%</span>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg border border-slate-200">
+                        <span className="text-[11px] text-slate-500 block">Tonight's Saved Wages</span>
+                        <span className="text-xl font-black text-emerald-700">$312 AUD</span>
+                      </div>
+                    </div>
+                    <p className="text-xs text-slate-600 text-center">
+                      Calculated automatically from your till sales and local weather forecast.
+                    </p>
                   </div>
                 )}
               </div>
 
-              {/* Card Footer */}
-              <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-600">
-                <div className="flex items-center gap-1.5">
-                  <Cpu className="w-3.5 h-3.5 text-[#00BFCC]" />
-                  <span>Lightspeed • Square • Xero • Slack</span>
-                </div>
-                <div className="text-slate-800 font-semibold flex items-center gap-1">
-                  <span>Cryptographic Review Gate</span>
-                  <Check className="w-3.5 h-3.5 text-emerald-600" />
-                </div>
+              {/* Bottom Reassurance */}
+              <div className="px-5 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-600">
+                <span>Works with Lightspeed, Square, Xero, MYOB &amp; Deputy</span>
+                <span className="font-bold text-slate-800">100% Human Approved</span>
               </div>
             </div>
           </div>
