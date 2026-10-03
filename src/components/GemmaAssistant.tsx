@@ -50,8 +50,8 @@ export default function GemmaAssistant({
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I am your hAI Mate assistant running on Gemma 4 4B with a 150-token guardrail. Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
-      tokensUsed: 42,
+      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (running on Gemma 4 4B with a 150-token guardrail). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
+      tokensUsed: 44,
     },
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -333,13 +333,13 @@ export default function GemmaAssistant({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold tracking-tight">hAI Mate Assistant</span>
+              <span className="text-xs font-bold tracking-tight">Mallo // AI Assistant</span>
               <span className="text-[10px] font-mono font-bold text-[#00BFCC] bg-[#00BFCC]/15 px-2 py-0.5 rounded-full border border-[#00BFCC]/30">
                 Gemma 4 4B
               </span>
             </div>
             <p className="text-[10px] text-zinc-400">
-              Token Capped (150 max) • Human-in-the-Loop Active
+              150 Token Guardrail • Human-in-the-Loop Active
             </p>
           </div>
         </div>
