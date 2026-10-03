@@ -74,7 +74,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
               The 14-Day Diagnostic Audit
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Inside the Audit: Exactly What Happens.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600">
@@ -101,7 +101,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
                       <Icon className="w-5 h-5 text-[#0096A3]" />
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-xs font-bold text-zinc-950 font-mono">
+                      <span className="text-xs font-bold text-[#0F172A] font-mono">
                         {item.days}
                       </span>
                       <span className="text-[10px] text-zinc-400 font-mono">
@@ -112,7 +112,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
 
                   {/* Title & Subtitle */}
                   <div>
-                    <h3 className="text-lg font-bold text-zinc-950 leading-snug">
+                    <h3 className="text-lg font-bold text-[#0F172A] leading-snug">
                       {item.title}
                     </h3>
                     <p className="text-xs text-zinc-500 mt-1 leading-relaxed">
@@ -148,12 +148,12 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
         </div>
 
         {/* 100% Value Guarantee Box */}
-        <div className="rounded-3xl bg-white border-2 border-zinc-950 p-8 sm:p-10 shadow-sm relative overflow-hidden">
+        <div className="rounded-3xl bg-white border-2 border-[#0F172A] p-8 sm:p-10 shadow-sm relative overflow-hidden">
           
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative">
             
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-zinc-950 text-[#00BFCC] flex items-center justify-center shrink-0 p-3 shadow-2xs">
+              <div className="w-12 h-12 rounded-2xl bg-[#0F172A] text-[#00BFCC] flex items-center justify-center shrink-0 p-3 shadow-2xs">
                 <Award className="w-6 h-6" />
               </div>
               <div className="space-y-1">
@@ -161,7 +161,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
                   <ShieldCheck className="w-3 h-3 text-emerald-600" />
                   <span>THE 100% VALUE GUARANTEE</span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-zinc-950">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F172A]">
                   Find at Least 4 Hours/Week, or Pay Nothing.
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed max-w-2xl font-normal">
@@ -176,7 +176,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-zinc-950 text-white text-xs sm:text-sm font-semibold hover:bg-zinc-800 transition-all shadow-sm cursor-pointer group"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#0F172A] text-white text-xs sm:text-sm font-semibold hover:bg-[#1E293B] transition-all shadow-sm cursor-pointer group"
               >
                 <span>Book 14-Day Venue Review</span>
                 <ArrowRight className="w-4 h-4 text-[#00BFCC] transition-transform group-hover:translate-x-1" />

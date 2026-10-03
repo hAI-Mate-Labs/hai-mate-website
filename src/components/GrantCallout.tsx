@@ -36,7 +36,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
           
           {/* Subtle watermark */}
           <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.025] pointer-events-none">
-            <ApertureLogo size={400} color="#09090B" />
+            <ApertureLogo size={400} color="#0F172A" />
           </div>
 
           <div className="relative space-y-8">
@@ -48,7 +48,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 <span>WA STATE GOVERNMENT // LOCAL CAPABILITY FUND (LCF)</span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight">
                 Co-Fund 50% of Your Automation with WA State Grants.
               </h2>
 
@@ -68,7 +68,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                     <Calculator className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-zinc-950">
+                    <h3 className="text-sm font-bold text-[#0F172A]">
                       Grant &amp; Out-of-Pocket Payback Calculator
                     </h3>
                     <p className="text-xs text-zinc-500">
@@ -84,8 +84,8 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                     onClick={() => handleStreamChange(1)}
                     className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                       selectedStream === 1
-                        ? "bg-zinc-950 text-white shadow-xs"
-                        : "text-zinc-600 hover:text-zinc-950"
+                        ? "bg-[#0F172A] text-white shadow-xs"
+                        : "text-zinc-600 hover:text-[#0F172A]"
                     }`}
                   >
                     Stream 1: Single Venue (Max $25k)
@@ -95,8 +95,8 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                     onClick={() => handleStreamChange(2)}
                     className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                       selectedStream === 2
-                        ? "bg-zinc-950 text-white shadow-xs"
-                        : "text-zinc-600 hover:text-zinc-950"
+                        ? "bg-[#0F172A] text-white shadow-xs"
+                        : "text-zinc-600 hover:text-[#0F172A]"
                     }`}
                   >
                     Stream 2: Group (Max $50k)
@@ -110,7 +110,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   <label htmlFor="grant-slider" className="text-xs font-bold uppercase tracking-wider text-zinc-700">
                     Total Estimated Automation Project Scope:
                   </label>
-                  <span className="text-lg font-black font-mono text-zinc-950">
+                  <span className="text-lg font-black font-mono text-[#0F172A]">
                     ${scopeInvestment.toLocaleString("en-AU")}
                   </span>
                 </div>
@@ -123,7 +123,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   step={1000}
                   value={scopeInvestment}
                   onChange={(e) => setScopeInvestment(Number(e.target.value))}
-                  className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-zinc-950"
+                  className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-[#0F172A]"
                 />
 
                 <div className="flex justify-between text-[11px] font-mono text-zinc-400">
@@ -139,7 +139,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 {/* Column 1 */}
                 <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/70 space-y-1">
                   <span className="text-[11px] font-mono text-zinc-400 uppercase">Total Scope</span>
-                  <div className="text-xl font-bold font-mono text-zinc-950">
+                  <div className="text-xl font-bold font-mono text-[#0F172A]">
                     ${scopeInvestment.toLocaleString("en-AU")}
                   </div>
                   <p className="text-[10px] text-zinc-500">Fixed-price custom integration</p>
@@ -157,11 +157,11 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 </div>
 
                 {/* Column 3 */}
-                <div className="p-4 rounded-2xl bg-white border-2 border-zinc-950 shadow-2xs space-y-1">
+                <div className="p-4 rounded-2xl bg-white border-2 border-[#0F172A] shadow-2xs space-y-1">
                   <span className="text-[11px] font-mono text-zinc-500 uppercase font-semibold">
                     Your Net Out-of-Pocket
                   </span>
-                  <div className="text-xl font-black font-mono text-zinc-950">
+                  <div className="text-xl font-black font-mono text-[#0F172A]">
                     ${netOutOfPocket.toLocaleString("en-AU")}
                   </div>
                   <p className="text-[10px] text-zinc-600">Actual investment after grant</p>
@@ -172,7 +172,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   <span className="text-[11px] font-mono text-[#0096A3] uppercase font-bold flex items-center gap-1">
                     <Sparkles className="w-3 h-3" /> Estimated Payback
                   </span>
-                  <div className="text-xl font-black font-mono text-zinc-950">
+                  <div className="text-xl font-black font-mono text-[#0F172A]">
                     ~{paybackWeeks} <span className="text-sm font-normal text-zinc-600">weeks</span>
                   </div>
                   <p className="text-[10px] text-zinc-600">Reclaims ~${annualSavings.toLocaleString("en-AU")}/yr</p>
@@ -197,7 +197,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 <button
                   type="button"
                   onClick={onOpenAuditModal}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-950 text-white font-semibold text-xs sm:text-sm hover:bg-zinc-800 transition-all shadow-xs cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs sm:text-sm hover:bg-[#1E293B] transition-all shadow-xs cursor-pointer"
                 >
                   <span>Apply With 50% WA Grant Support</span>
                   <ArrowRight className="w-4 h-4 text-[#00BFCC]" />

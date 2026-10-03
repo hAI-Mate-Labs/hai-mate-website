@@ -112,8 +112,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("overview")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "overview"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
               }`}
             >
               1. Executive Scorecard
@@ -124,8 +124,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("heatmap")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "heatmap"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
               }`}
             >
               2. Admin Bottleneck Heatmap
@@ -136,8 +136,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("priceCreep")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "priceCreep"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
               }`}
             >
               3. Caught Supplier Price-Creep ($17.4k/yr)
@@ -148,8 +148,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("grantRoi")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "grantRoi"
-                  ? "bg-zinc-950 text-white shadow-xs"
-                  : "text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
               }`}
             >
               4. WA Grant Dossier &amp; 3-Year ROI
@@ -526,10 +526,10 @@ export default function SampleAuditModal({
       {/* 2. Dedicated Hidden Container Printed Exclusively via window.print() */}
       <div id="printable-audit-report" className="hidden">
         {/* Letterhead Header */}
-        <div style={{ borderBottom: "2px solid #09090B", paddingBottom: "12px", marginBottom: "16px" }}>
+        <div style={{ borderBottom: "2px solid #0F172A", paddingBottom: "12px", marginBottom: "16px" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <div>
-              <h1 style={{ fontSize: "20px", fontWeight: "900", letterSpacing: "-0.5px", margin: 0, color: "#09090B" }}>
+              <h1 style={{ fontSize: "20px", fontWeight: "900", letterSpacing: "-0.5px", margin: 0, color: "#0F172A" }}>
                 hAI Mate! <span style={{ fontSize: "12px", fontWeight: "600", color: "#0096A3" }}>// APPLIED AI FOR HOSPITALITY</span>
               </h1>
               <p style={{ fontSize: "11px", color: "#52525B", margin: "2px 0 0 0" }}>
@@ -553,15 +553,15 @@ export default function SampleAuditModal({
             <tbody>
               <tr>
                 <td style={{ width: "25%", color: "#71717A", fontWeight: "600" }}>Client Reference:</td>
-                <td style={{ width: "35%", fontWeight: "700", color: "#09090B" }}>Cottesloe Beachside Bistro &amp; Kitchen (WA)</td>
+                <td style={{ width: "35%", fontWeight: "700", color: "#0F172A" }}>Cottesloe Beachside Bistro &amp; Kitchen (WA)</td>
                 <td style={{ width: "20%", color: "#71717A", fontWeight: "600" }}>Venue Capacity:</td>
-                <td style={{ width: "20%", fontWeight: "700", color: "#09090B" }}>120 Seats • Bistro &amp; Bar</td>
+                <td style={{ width: "20%", fontWeight: "700", color: "#0F172A" }}>120 Seats • Bistro &amp; Bar</td>
               </tr>
               <tr>
                 <td style={{ color: "#71717A", fontWeight: "600", paddingTop: "4px" }}>Lead Practitioner:</td>
-                <td style={{ fontWeight: "700", color: "#09090B", paddingTop: "4px" }}>Mallory Antomarchi (Founder)</td>
+                <td style={{ fontWeight: "700", color: "#0F172A", paddingTop: "4px" }}>Mallory Antomarchi (Founder)</td>
                 <td style={{ color: "#71717A", fontWeight: "600", paddingTop: "4px" }}>Audited Systems:</td>
-                <td style={{ fontWeight: "700", color: "#09090B", paddingTop: "4px" }}>Lightspeed POS • Xero • Deputy</td>
+                <td style={{ fontWeight: "700", color: "#0F172A", paddingTop: "4px" }}>Lightspeed POS • Xero • Deputy</td>
               </tr>
             </tbody>
           </table>
@@ -569,7 +569,7 @@ export default function SampleAuditModal({
 
         {/* Section 1: Executive Scorecard */}
         <div style={{ marginBottom: "16px" }}>
-          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#09090B", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
+          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#0F172A", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
             1. Executive Scorecard: Identified Annual Operational Leakage
           </h2>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "11px" }}>
@@ -623,7 +623,7 @@ export default function SampleAuditModal({
 
         {/* Section 2: Caught Price Creep Breakdown */}
         <div style={{ marginBottom: "16px" }}>
-          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#09090B", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
+          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#0F172A", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
             2. Itemized Caught Supplier Price-Creep Audit (Sample of 45 Dockets)
           </h2>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "10px" }}>
@@ -671,7 +671,7 @@ export default function SampleAuditModal({
 
         {/* Section 3: WA Government Grant Co-Funding & ROI */}
         <div style={{ marginBottom: "16px", pageBreakInside: "avoid" }}>
-          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#09090B", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
+          <h2 style={{ fontSize: "13px", fontWeight: "800", textTransform: "uppercase", color: "#0F172A", borderBottom: "1px solid #E4E4E7", paddingBottom: "4px", marginBottom: "8px" }}>
             3. WA State Government (LCF) Grant Co-Funding &amp; Payback Model
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", fontSize: "11px" }}>
@@ -714,8 +714,8 @@ export default function SampleAuditModal({
         </div>
 
         {/* Section 4: Covenant & Guarantee */}
-        <div style={{ border: "1.5px solid #09090B", borderRadius: "8px", padding: "10px", fontSize: "10px", background: "#FFFFFF", pageBreakInside: "avoid" }}>
-          <div style={{ fontWeight: "800", textTransform: "uppercase", marginBottom: "4px", color: "#09090B" }}>
+        <div style={{ border: "1.5px solid #0F172A", borderRadius: "8px", padding: "10px", fontSize: "10px", background: "#FFFFFF", pageBreakInside: "avoid" }}>
+          <div style={{ fontWeight: "800", textTransform: "uppercase", marginBottom: "4px", color: "#0F172A" }}>
             The hAI Mate! 100% Value Guarantee &amp; Human-in-the-Loop Covenant
           </div>
           <p style={{ margin: 0, color: "#3F3F46", lineHeight: 1.5 }}>

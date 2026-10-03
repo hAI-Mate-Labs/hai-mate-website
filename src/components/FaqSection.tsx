@@ -56,7 +56,7 @@ export default function FaqSection({ onOpenAuditModal }: FaqSectionProps) {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
             Frequently Asked Questions
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Clear Answers for Busy Venue Owners.
           </h2>
           <p className="mt-3 text-base text-zinc-600">
@@ -78,13 +78,13 @@ export default function FaqSection({ onOpenAuditModal }: FaqSectionProps) {
                   onClick={() => toggleFaq(index)}
                   className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-zinc-100/50 transition-colors"
                 >
-                  <span className="text-sm sm:text-base font-bold text-zinc-950 pr-4">
+                  <span className="text-sm sm:text-base font-bold text-[#0F172A] pr-4">
                     {faq.question}
                   </span>
                   <div className="p-1 rounded-full bg-white border border-zinc-200 text-zinc-600 flex-shrink-0">
                     <ChevronDown
                       className={`w-4 h-4 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-zinc-950" : ""
+                        isOpen ? "rotate-180 text-[#0F172A]" : ""
                       }`}
                     />
                   </div>
@@ -106,7 +106,7 @@ export default function FaqSection({ onOpenAuditModal }: FaqSectionProps) {
           <button
             type="button"
             onClick={onOpenAuditModal}
-            className="font-bold text-zinc-950 underline hover:text-[#0096A3]"
+            className="font-bold text-[#0F172A] underline hover:text-[#0096A3]"
           >
             Ask during your 14-day review
           </button>

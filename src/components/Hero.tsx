@@ -116,7 +116,7 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
       
       {/* Subtle background aperture watermark */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-[0.025] pointer-events-none">
-        <ApertureLogo size={700} color="#09090B" />
+        <ApertureLogo size={700} color="#0F172A" />
       </div>
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -130,9 +130,9 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
         </div>
 
         {/* H1 Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] max-w-4xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] max-w-4xl mx-auto">
           Opening Up Operational Flow While Keeping{" "}
-          <span className="relative inline-block text-zinc-950">
+          <span className="relative inline-block text-[#0F172A]">
             Human Judgment
             <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
           </span>{" "}

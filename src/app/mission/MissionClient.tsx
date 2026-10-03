@@ -37,7 +37,7 @@ export default function MissionClient() {
         <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 bg-white overflow-hidden border-b border-zinc-100">
           {/* Subtle watermark logo */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-[0.025] pointer-events-none">
-            <ApertureLogo size={700} color="#09090B" />
+            <ApertureLogo size={700} color="#0F172A" />
           </div>
 
           <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -50,9 +50,9 @@ export default function MissionClient() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] max-w-4xl mx-auto">
               Technology Should Quietly Serve the Human Craft—
-              <span className="relative inline-block text-zinc-950">
+              <span className="relative inline-block text-[#0F172A]">
                 Never Displace It.
                 <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
               </span>
@@ -61,7 +61,7 @@ export default function MissionClient() {
             {/* Subtitle */}
             <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto leading-relaxed font-normal">
               Hospitality is fundamentally an art of generosity, sensory craft, and human connection.
-              We started <strong className="font-semibold text-zinc-900">hAI Mate!</strong> to build
+              We started <strong className="font-semibold text-[#0F172A]">hAI Mate!</strong> to build
               invisible, reliable automation that strips away back-office paperwork—giving independent
               operators their time, peace of mind, and margins back.
             </p>
@@ -71,7 +71,7 @@ export default function MissionClient() {
               <button
                 type="button"
                 onClick={() => setAuditModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-sm group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-sm group cursor-pointer"
               >
                 <span>Book a 14-Day Diagnostic Review</span>
                 <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
@@ -91,7 +91,7 @@ export default function MissionClient() {
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-zinc-950">The Core Conviction</h4>
+                  <h4 className="text-sm font-bold text-[#0F172A]">The Core Conviction</h4>
                   <p className="mt-1 text-xs sm:text-sm text-zinc-600 leading-relaxed">
                     “A head chef should be at the pass perfecting flavour, not squinting at crumpled
                     delivery dockets at midnight. A venue manager should be on the floor inspiring
@@ -111,7 +111,7 @@ export default function MissionClient() {
               <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
                 The Ground Reality
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
                 The Silent Weight Crushing Independent Venues.
               </h2>
               <p className="mt-3 text-base text-zinc-600 leading-relaxed">
@@ -129,7 +129,7 @@ export default function MissionClient() {
                   <div className="w-12 h-12 rounded-2xl bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-600">
                     <Clock className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-bold text-zinc-950">
+                  <h3 className="text-lg font-bold text-[#0F172A]">
                     The 70-Hour Week Trap
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
@@ -149,7 +149,7 @@ export default function MissionClient() {
                   <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600">
                     <Store className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-bold text-zinc-950">
+                  <h3 className="text-lg font-bold text-[#0F172A]">
                     Unnoticed Supplier Price Creep
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
@@ -169,7 +169,7 @@ export default function MissionClient() {
                   <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
                     <Layers className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-bold text-zinc-950">
+                  <h3 className="text-lg font-bold text-[#0F172A]">
                     The Silicon Valley Hype Gap
                   </h3>
                   <p className="text-sm text-zinc-600 leading-relaxed">
@@ -193,7 +193,7 @@ export default function MissionClient() {
               <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
                 Our Operating Manifesto
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
                 The Three Pillars of hAI Mate!
               </h2>
               <p className="mt-3 text-base text-zinc-600">
@@ -212,7 +212,7 @@ export default function MissionClient() {
                   <span className="text-xs font-mono font-black text-zinc-400">PILLAR 01</span>
                 </div>
                 <div className="space-y-3 flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-zinc-950">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A]">
                     Human Dignity &amp; Sovereignty at the Center
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
@@ -237,7 +237,7 @@ export default function MissionClient() {
                   <span className="text-xs font-mono font-black text-zinc-400">PILLAR 02</span>
                 </div>
                 <div className="space-y-3 flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-zinc-950">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A]">
                     Reclaiming 4 to 8 Hours Every Single Week
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
@@ -262,7 +262,7 @@ export default function MissionClient() {
                   <span className="text-xs font-mono font-black text-zinc-400">PILLAR 03</span>
                 </div>
                 <div className="space-y-3 flex-1">
-                  <h3 className="text-xl sm:text-2xl font-bold text-zinc-950">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A]">
                     Radical Simplicity &amp; Sovereign Data Privacy
                   </h3>
                   <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
@@ -290,7 +290,7 @@ export default function MissionClient() {
               {/* Left Column: Visual Geometry */}
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative p-12 rounded-3xl bg-white border border-zinc-200/80 shadow-md flex items-center justify-center">
-                  <ApertureLogo size={240} color="#09090B" glow />
+                  <ApertureLogo size={240} color="#0F172A" glow />
                 </div>
               </div>
 
@@ -300,7 +300,7 @@ export default function MissionClient() {
                   <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-1">
                     Brand Symbolism
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                     The Geometry of The Open Aperture.
                   </h2>
                   <p className="mt-2 text-sm sm:text-base text-zinc-600 leading-relaxed">
@@ -311,8 +311,8 @@ export default function MissionClient() {
 
                 <div className="space-y-4">
                   <div className="p-4 rounded-2xl bg-white border border-zinc-200/70 shadow-2xs">
-                    <h4 className="text-sm font-bold text-zinc-950 flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-zinc-900" />
+                    <h4 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#0F172A]" />
                       The Outer White &amp; Dark Circle (The Whole Venue)
                     </h4>
                     <p className="mt-1 text-xs text-zinc-600 leading-relaxed pl-4.5">
@@ -322,7 +322,7 @@ export default function MissionClient() {
                   </div>
 
                   <div className="p-4 rounded-2xl bg-white border border-zinc-200/70 shadow-2xs">
-                    <h4 className="text-sm font-bold text-zinc-950 flex items-center gap-2">
+                    <h4 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#00BFCC]" />
                       The 45° Conduit (Cutting Administrative Weight)
                     </h4>
@@ -333,7 +333,7 @@ export default function MissionClient() {
                   </div>
 
                   <div className="p-4 rounded-2xl bg-white border border-zinc-200/70 shadow-2xs">
-                    <h4 className="text-sm font-bold text-zinc-950 flex items-center gap-2">
+                    <h4 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-[#00BFCC] animate-pulse" />
                       The Central Cyan Node (Human Judgment)
                     </h4>
@@ -356,7 +356,7 @@ export default function MissionClient() {
               <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
                 Our Long-Term Horizon
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
                 Where We Are Heading by 2030.
               </h2>
               <p className="mt-3 text-base text-zinc-600">
@@ -368,10 +368,10 @@ export default function MissionClient() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Goal 1 */}
               <div className="p-8 rounded-3xl bg-zinc-50/70 border border-zinc-200/90 shadow-2xs space-y-4">
-                <div className="text-3xl sm:text-4xl font-black text-zinc-950 font-sans flex items-baseline gap-1">
+                <div className="text-3xl sm:text-4xl font-black text-[#0F172A] font-sans flex items-baseline gap-1">
                   100,000<span className="text-lg text-[#0096A3] font-bold">hrs</span>
                 </div>
-                <h3 className="text-base font-bold text-zinc-950">
+                <h3 className="text-base font-bold text-[#0F172A]">
                   Unpaid Admin Burden Eliminated
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
@@ -383,10 +383,10 @@ export default function MissionClient() {
 
               {/* Goal 2 */}
               <div className="p-8 rounded-3xl bg-zinc-50/70 border border-zinc-200/90 shadow-2xs space-y-4">
-                <div className="text-3xl sm:text-4xl font-black text-zinc-950 font-sans flex items-baseline gap-1">
+                <div className="text-3xl sm:text-4xl font-black text-[#0F172A] font-sans flex items-baseline gap-1">
                   500<span className="text-lg text-[#0096A3] font-bold">Venues</span>
                 </div>
-                <h3 className="text-base font-bold text-zinc-950">
+                <h3 className="text-base font-bold text-[#0F172A]">
                   Independent Venues Protected
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
@@ -398,10 +398,10 @@ export default function MissionClient() {
 
               {/* Goal 3 */}
               <div className="p-8 rounded-3xl bg-zinc-50/70 border border-zinc-200/90 shadow-2xs space-y-4">
-                <div className="text-3xl sm:text-4xl font-black text-zinc-950 font-sans flex items-baseline gap-1">
+                <div className="text-3xl sm:text-4xl font-black text-[#0F172A] font-sans flex items-baseline gap-1">
                   100%<span className="text-lg text-[#0096A3] font-bold">HITL</span>
                 </div>
-                <h3 className="text-base font-bold text-zinc-950">
+                <h3 className="text-base font-bold text-[#0F172A]">
                   Human-in-the-Loop Standard
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
@@ -420,11 +420,11 @@ export default function MissionClient() {
             <div className="p-8 sm:p-12 rounded-3xl bg-white border border-zinc-200/90 shadow-sm space-y-6">
               
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center p-2 shadow-xs">
+                <div className="w-10 h-10 rounded-full bg-[#0F172A] flex items-center justify-center p-2 shadow-xs">
                   <ApertureLogo size={24} color="#FFFFFF" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-zinc-950">
+                  <h3 className="text-base font-bold text-[#0F172A]">
                     A Solo Practice by Design
                   </h3>
                   <p className="text-xs text-zinc-500">
@@ -476,7 +476,7 @@ export default function MissionClient() {
         {/* Final CTA Banner */}
         <section className="py-20 md:py-24 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
               Ready to Partner with Someone Who Values Your Craft?
             </h2>
             <p className="text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed">
@@ -487,7 +487,7 @@ export default function MissionClient() {
               <button
                 type="button"
                 onClick={() => setAuditModalOpen(true)}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all shadow-md group cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 transition-all shadow-md group cursor-pointer"
               >
                 <span>Book a 14-Day Diagnostic Review</span>
                 <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />

@@ -84,7 +84,7 @@ export default function UnifiedProcessTimeline({
             <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
             <span>PROVEN 3-STEP METHODOLOGY</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
             From Back-Office Chaos to 1-Tap Control in 14 Days.
           </h2>
           <p className="mt-3 text-base text-zinc-600">
@@ -104,7 +104,7 @@ export default function UnifiedProcessTimeline({
                 {/* Step pill & duration */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="inline-flex items-center gap-2">
-                    <span className="text-2xl font-black text-zinc-950 tracking-tight">
+                    <span className="text-2xl font-black text-[#0F172A] tracking-tight">
                       {s.step}
                     </span>
                     <span className="text-[11px] font-bold text-[#0096A3] bg-[#00BFCC]/10 px-2.5 py-0.5 rounded-full">
@@ -122,7 +122,7 @@ export default function UnifiedProcessTimeline({
                     <div className="p-2 rounded-xl bg-zinc-50 border border-zinc-200/80 text-zinc-900 group-hover:text-[#0096A3] group-hover:border-[#00BFCC]/30 transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-zinc-950 leading-snug">
+                    <h3 className="text-lg font-bold text-[#0F172A] leading-snug">
                       {s.title}
                     </h3>
                   </div>
@@ -183,19 +183,19 @@ export default function UnifiedProcessTimeline({
         {/* 100% Value Guarantee & Operator Covenant Banner */}
         <div className="rounded-3xl bg-zinc-50 border border-zinc-200/90 p-6 sm:p-8 relative overflow-hidden shadow-xs">
           <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-[0.03] pointer-events-none">
-            <ApertureLogo size={320} color="#09090B" />
+            <ApertureLogo size={320} color="#0F172A" />
           </div>
 
           <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-[#0096A3]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-zinc-950">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
                   The hAI Mate! 100% Value Guarantee &amp; Covenant
                 </span>
               </div>
               <p className="text-sm text-zinc-700 leading-relaxed">
-                If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-zinc-950">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
+                If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-[#0F172A]">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
               </p>
               <div className="pt-1">
                 <Link

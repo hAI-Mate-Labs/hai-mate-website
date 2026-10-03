@@ -43,12 +43,12 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
   const [activeTab, setActiveTab] = useState<"ai" | "founder">("ai");
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  // Mallo (Gemma 4 4B) State
+  // Mallo (AI Assistant) State
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I'm Mallo, your virtual assistant trained on Mallory's hospitality workflows (running on Gemma 4 4B with a strict 150-token cap). Ask me anything about docket automation, WA grants, or till integrations.",
+      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about docket automation, WA state grants, or how our 14-day audit works.",
       tokensUsed: 44,
     },
   ]);
@@ -261,7 +261,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
 
     // Fallback response
     return {
-      text: "I am Mallo, your lightweight assistant powered by Gemma 4 4B (capped at 150 tokens). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
+      text: "I am Mallo, your lightweight operational assistant (strictly capped at 150 tokens for concise answers). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
       action: {
         label: "WhatsApp Mallory (0402 472 262)",
         onClick: () => {
@@ -321,7 +321,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       {
         id: "welcome",
         sender: "assistant",
-        text: "G'day! I'm Mallo, your virtual assistant trained on Mallory's hospitality workflows (running on Gemma 4 4B with a strict 150-token cap). Ask me anything about docket automation, WA grants, or till integrations.",
+        text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about docket automation, WA state grants, or how our 14-day audit works.",
         tokensUsed: 44,
       },
     ]);
@@ -335,7 +335,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
         <div className="mb-3 w-[calc(100vw-2.5rem)] max-w-sm sm:max-w-md rounded-3xl bg-white border border-zinc-200 shadow-2xl transition-all duration-200 animate-in fade-in slide-in-from-bottom-3 overflow-hidden flex flex-col h-[540px] max-h-[82vh]">
           
           {/* Header Bar with Mode Switcher */}
-          <div className="px-4 py-3 bg-zinc-950 text-white flex items-center justify-between shrink-0">
+          <div className="px-4 py-3 bg-[#0F172A] text-white flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center p-1 shadow-xs">
                 <ApertureLogo size={18} color="#00BFCC" glow />
@@ -346,7 +346,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   onClick={() => setActiveTab("ai")}
                   className={`px-3 py-1 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     activeTab === "ai"
-                      ? "bg-white text-zinc-950 shadow-xs font-bold"
+                      ? "bg-white text-[#0F172A] shadow-xs font-bold"
                       : "text-zinc-300 hover:text-white"
                   }`}
                 >
@@ -358,7 +358,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   onClick={() => setActiveTab("founder")}
                   className={`px-3 py-1 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
                     activeTab === "founder"
-                      ? "bg-white text-zinc-950 shadow-xs font-bold"
+                      ? "bg-white text-[#0F172A] shadow-xs font-bold"
                       : "text-zinc-300 hover:text-white"
                   }`}
                 >
@@ -390,13 +390,13 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
             </div>
           </div>
 
-          {/* TAB 1: MALLO (GEMMA 4 4B AI ASSISTANT) */}
+          {/* TAB 1: MALLO (AI ASSISTANT) */}
           {activeTab === "ai" && (
             <div className="flex-1 flex flex-col overflow-hidden">
               {/* Mallo Architecture Banner */}
               <div className="px-3.5 py-1.5 bg-zinc-100/80 border-b border-zinc-200 flex items-center justify-between text-[10px] text-zinc-600 font-mono shrink-0">
                 <span className="flex items-center gap-1 text-[#0096A3] font-bold">
-                  <Sparkles className="w-3 h-3" /> Mallo • Gemma 4 4B Architecture
+                  <Sparkles className="w-3 h-3" /> Mallo // AI Operational Assistant
                 </span>
                 <span>Max Tokens: 150</span>
               </div>
@@ -413,7 +413,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     <div
                       className={`max-w-[88%] p-3 rounded-2xl leading-relaxed shadow-2xs ${
                         m.sender === "user"
-                          ? "bg-zinc-950 text-white rounded-br-xs"
+                          ? "bg-[#0F172A] text-white rounded-br-xs"
                           : "bg-white text-zinc-800 border border-zinc-200/90 rounded-bl-xs"
                       }`}
                     >
@@ -425,7 +425,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                           <button
                             type="button"
                             onClick={m.action.onClick}
-                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-950 text-white font-bold text-[10px] hover:bg-zinc-800 transition-colors shadow-2xs cursor-pointer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0F172A] text-white font-bold text-[10px] hover:bg-[#1E293B] transition-colors shadow-2xs cursor-pointer"
                           >
                             {m.action.icon && <m.action.icon className="w-3 h-3 text-[#00BFCC]" />}
                             <span>{m.action.label}</span>
@@ -437,7 +437,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
 
                     {m.sender === "assistant" && m.tokensUsed && (
                       <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1">
-                        Mallo (Gemma 4 4B) • {m.tokensUsed} / {MAX_TOKENS} tokens
+                        Mallo AI • {m.tokensUsed} / {MAX_TOKENS} tokens
                       </span>
                     )}
                   </div>
@@ -451,7 +451,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                       <span className="inline-block w-1.5 h-3 bg-[#00BFCC] animate-pulse ml-1 -mb-0.5" />
                     </div>
                     <span className="text-[9px] text-[#0096A3] font-mono mt-1 px-1 animate-pulse">
-                      Mallo is thinking (via Gemma 4 4B)...
+                      Mallo is typing...
                     </span>
                   </div>
                 )}
@@ -492,12 +492,12 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Ask Mallo about dockets, WA grants, or tills..."
                     disabled={isStreaming}
-                    className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-zinc-950 bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
+                    className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
                   />
                   <button
                     type="submit"
                     disabled={!inputValue.trim() || isStreaming}
-                    className="p-2 rounded-full bg-zinc-950 text-white disabled:opacity-30 hover:bg-zinc-800 transition-colors shrink-0 shadow-xs cursor-pointer"
+                    className="p-2 rounded-full bg-[#0F172A] text-white disabled:opacity-30 hover:bg-[#1E293B] transition-colors shrink-0 shadow-xs cursor-pointer"
                     aria-label="Send query to Mallo"
                   >
                     <Send className="w-3.5 h-3.5 text-[#00BFCC]" />
@@ -526,11 +526,11 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
             <div className="p-5 flex-1 flex flex-col justify-between overflow-y-auto space-y-4">
               <div className="space-y-3">
                 <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
-                  <div className="w-10 h-10 rounded-full bg-zinc-950 flex items-center justify-center p-2 shadow-xs">
+                  <div className="w-10 h-10 rounded-full bg-[#0F172A] flex items-center justify-center p-2 shadow-xs">
                     <ApertureLogo size={22} color="#00BFCC" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-zinc-950 flex items-center gap-1.5">
+                    <h4 className="text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
                       Mallory Antomarchi
                       <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                         Online
@@ -554,7 +554,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                       setIsOpen(false);
                       onOpenAuditModal();
                     }}
-                    className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-950 text-white text-xs font-semibold hover:bg-zinc-800 transition-all shadow-xs group cursor-pointer"
+                    className="w-full flex items-center justify-between p-2.5 rounded-xl bg-[#0F172A] text-white text-xs font-semibold hover:bg-[#1E293B] transition-all shadow-xs group cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
                       <Calendar className="w-3.5 h-3.5 text-[#00BFCC]" />
@@ -626,7 +626,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-zinc-950 text-white shadow-xl hover:shadow-2xl hover:bg-zinc-800 transition-all cursor-pointer group active:scale-95 border border-white/20"
+        className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-[#0F172A] text-white shadow-xl hover:shadow-2xl hover:bg-[#1E293B] transition-all cursor-pointer group active:scale-95 border border-white/20"
         aria-label="Open Mallo AI Assistant & Mallory's Desk"
       >
         <div className="relative flex items-center justify-center">

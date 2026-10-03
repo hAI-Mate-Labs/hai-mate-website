@@ -18,7 +18,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
       title: "The complete business ecosystem operating in balance.",
       detail:
         "Represents your entire venue—kitchen, floor staff, suppliers, POS till, and accounting ledgers. Technology should stabilize your team, never complicate service.",
-      color: "#09090B",
+      color: "#0F172A",
     },
     {
       id: "conduit" as const,
@@ -50,7 +50,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
               Operational Philosophy
             </span>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
               Most AI Tools Add Clutter. We Build Applied, Reliable Conduits Through Repetitive Back-Office Drag.
             </h2>
 
@@ -61,7 +61,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
               <p>
                 In hospitality, you don't need a novelty conversational bot. You need deterministic, reliable conduits that do the boring administrative work quietly in the background.
               </p>
-              <p className="text-zinc-950 font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
+              <p className="text-[#0F172A] font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
                 “We believe artificial intelligence in hospitality should be silent, accurate, and completely accountable to human judgment.”
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-950 hover:text-[#0096A3] transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0F172A] hover:text-[#0096A3] transition-colors"
               >
                 <span>Book a walk-through for your venue</span>
                 <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
@@ -83,7 +83,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
             <div className="rounded-3xl bg-white border border-zinc-200/90 p-8 shadow-xs">
               
               <div className="flex items-center justify-between border-b border-zinc-100 pb-4 mb-6">
-                <span className="text-xs font-bold text-zinc-800">
+                <span className="text-xs font-bold text-[#0F172A]">
                   OUR LOGO: THE OPEN APERTURE
                 </span>
                 <button
@@ -91,8 +91,8 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
                   onClick={() => setActiveSegment("all")}
                   className={`text-xs px-2.5 py-1 rounded-full transition-colors ${
                     activeSegment === "all"
-                      ? "bg-zinc-900 text-white font-semibold"
-                      : "bg-zinc-100 text-zinc-600 hover:text-zinc-900"
+                      ? "bg-[#0F172A] text-white font-semibold"
+                      : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A]"
                   }`}
                 >
                   View All
@@ -123,7 +123,7 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
                       onClick={() => setActiveSegment(pt.id)}
                       className={`p-4 rounded-2xl border transition-all cursor-pointer ${
                         isActive
-                          ? "bg-zinc-50 border-zinc-900 shadow-2xs"
+                          ? "bg-zinc-50 border-[#0F172A] shadow-2xs"
                           : "bg-white border-zinc-100 hover:border-zinc-200"
                       }`}
                     >
@@ -133,13 +133,13 @@ export default function PhilosophySection({ onOpenAuditModal }: PhilosophySectio
                             className="w-2 h-2 rounded-full"
                             style={{ backgroundColor: pt.color }}
                           />
-                          <h4 className="text-sm font-bold text-zinc-900">{pt.name}</h4>
+                          <h4 className="text-sm font-bold text-[#0F172A]">{pt.name}</h4>
                         </div>
                         <span className="text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
                           {isActive ? "ACTIVE" : "VIEW"}
                         </span>
                       </div>
-                      <p className="text-xs font-semibold text-zinc-800 mb-0.5">{pt.title}</p>
+                      <p className="text-xs font-semibold text-[#0F172A] mb-0.5">{pt.title}</p>
                       <p className="text-xs text-zinc-600 leading-relaxed">{pt.detail}</p>
                     </div>
                   );

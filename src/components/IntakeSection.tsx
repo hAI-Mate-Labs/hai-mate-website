@@ -40,7 +40,7 @@ export default function IntakeSection() {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
             Get Started
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Ready to Cut Away Operational Friction?
           </h2>
           <p className="mt-3 text-base text-zinc-600">
@@ -56,11 +56,11 @@ export default function IntakeSection() {
               <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-bold text-zinc-950">
+              <h3 className="text-2xl font-bold text-[#0F172A]">
                 Audit Request Logged
               </h3>
               <p className="text-sm text-zinc-600 max-w-md mx-auto leading-relaxed">
-                Thank you, <span className="font-semibold text-zinc-950">{formData.name}</span>. I have received your request. I will personally review your operational bottleneck and reach out to <span className="font-semibold text-zinc-950">{formData.email}</span> within 4 hours to coordinate our walk-through.
+                Thank you, <span className="font-semibold text-[#0F172A]">{formData.name}</span>. I have received your request. I will personally review your operational bottleneck and reach out to <span className="font-semibold text-[#0F172A]">{formData.email}</span> within 4 hours to coordinate our walk-through.
               </p>
               <div className="pt-2">
                 <button
@@ -88,7 +88,7 @@ export default function IntakeSection() {
                     placeholder="Liam Henderson"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
+                    className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
                   />
                 </div>
 
@@ -103,7 +103,7 @@ export default function IntakeSection() {
                     placeholder="liam@venue.com.au"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
+                    className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
                   />
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function IntakeSection() {
                   placeholder="e.g. Entering supplier invoices into Xero manually every Monday, or managing staff rosters when the weather turns bad."
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                  className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
+                  className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
                 />
               </div>
 
@@ -155,7 +155,7 @@ export default function IntakeSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-zinc-900 text-white font-semibold text-sm hover:bg-zinc-800 transition-all cursor-pointer shadow-sm"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#0F172A] text-white font-semibold text-sm hover:bg-[#1E293B] transition-all cursor-pointer shadow-sm"
               >
                 {isSubmitting ? (
                   <span>Submitting...</span>

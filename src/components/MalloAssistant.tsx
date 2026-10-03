@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 
-interface GemmaAssistantProps {
+interface MalloAssistantProps {
   isOpen: boolean;
   onClose: () => void;
   onOpenAuditModal: () => void;
@@ -41,16 +41,16 @@ interface Message {
 
 const MAX_TOKENS = 150;
 
-export default function GemmaAssistant({
+export default function MalloAssistant({
   isOpen,
   onClose,
   onOpenAuditModal,
-}: GemmaAssistantProps) {
+}: MalloAssistantProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (running on Gemma 4 4B with a 150-token guardrail). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
+      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
       tokensUsed: 44,
     },
   ]);
@@ -83,7 +83,7 @@ export default function GemmaAssistant({
     }
   }, [isOpen]);
 
-  const generateGemmaResponse = (query: string): { text: string; action?: any } => {
+  const generateMalloResponse = (query: string): { text: string; action?: any } => {
     const q = query.toLowerCase();
 
     // 1. Staff software & learning curve
@@ -254,7 +254,7 @@ export default function GemmaAssistant({
 
     // Fallback response
     return {
-      text: "I am a lightweight Gemma 4 4B assistant capped at 150 tokens. For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
+      text: "I am Mallo, your lightweight operational assistant (strictly capped at 150 tokens for concise answers). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
       action: {
         label: "WhatsApp Mallory (0402 472 262)",
         onClick: () => {
@@ -278,7 +278,7 @@ export default function GemmaAssistant({
     setInputValue("");
     setIsStreaming(true);
 
-    const { text: fullResponse, action } = generateGemmaResponse(query);
+    const { text: fullResponse, action } = generateMalloResponse(query);
     const tokens = Math.round(fullResponse.split(" ").length * 1.3);
 
     // Stream response word-by-word
@@ -314,8 +314,8 @@ export default function GemmaAssistant({
       {
         id: "welcome",
         sender: "assistant",
-        text: "G'day! I am your hAI Mate assistant running on Gemma 4 4B with a 150-token guardrail. Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
-        tokensUsed: 42,
+        text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
+        tokensUsed: 44,
       },
     ]);
   };
@@ -326,7 +326,7 @@ export default function GemmaAssistant({
     <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2.5rem)] max-w-sm sm:max-w-md bg-white rounded-3xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col max-h-[85vh] h-[580px] animate-in fade-in slide-in-from-bottom-3 duration-200 select-none">
       
       {/* Header Bar */}
-      <div className="px-4 py-3 bg-zinc-950 text-white flex items-center justify-between shrink-0">
+      <div className="px-4 py-3 bg-[#0F172A] text-white flex items-center justify-between shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center p-1.5 shadow-xs">
             <ApertureLogo size={20} color="#00BFCC" glow />
@@ -335,7 +335,7 @@ export default function GemmaAssistant({
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold tracking-tight">Mallo // AI Assistant</span>
               <span className="text-[10px] font-mono font-bold text-[#00BFCC] bg-[#00BFCC]/15 px-2 py-0.5 rounded-full border border-[#00BFCC]/30">
-                Gemma 4 4B
+                AI Assistant
               </span>
             </div>
             <p className="text-[10px] text-zinc-400">
@@ -376,7 +376,7 @@ export default function GemmaAssistant({
             <div
               className={`max-w-[88%] p-3.5 rounded-2xl leading-relaxed shadow-2xs ${
                 m.sender === "user"
-                  ? "bg-zinc-950 text-white rounded-br-xs"
+                  ? "bg-[#0F172A] text-white rounded-br-xs"
                   : "bg-white text-zinc-800 border border-zinc-200/90 rounded-bl-xs"
               }`}
             >
@@ -388,7 +388,7 @@ export default function GemmaAssistant({
                   <button
                     type="button"
                     onClick={m.action.onClick}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-zinc-950 text-white font-bold text-[11px] hover:bg-zinc-800 transition-colors shadow-2xs cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0F172A] text-white font-bold text-[11px] hover:bg-[#1E293B] transition-colors shadow-2xs cursor-pointer"
                   >
                     {m.action.icon && <m.action.icon className="w-3 h-3 text-[#00BFCC]" />}
                     <span>{m.action.label}</span>
@@ -401,7 +401,7 @@ export default function GemmaAssistant({
             {/* Token Badge for Assistant Messages */}
             {m.sender === "assistant" && m.tokensUsed && (
               <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1">
-                Gemma 4 4B • {m.tokensUsed} / {MAX_TOKENS} tokens
+                Mallo AI • {m.tokensUsed} / {MAX_TOKENS} tokens
               </span>
             )}
           </div>
@@ -415,7 +415,7 @@ export default function GemmaAssistant({
               <span className="inline-block w-1.5 h-3 bg-[#00BFCC] animate-pulse ml-1 -mb-0.5" />
             </div>
             <span className="text-[9px] text-[#0096A3] font-mono mt-1 px-1 animate-pulse">
-              Streaming via Gemma 4 4B...
+              Mallo is typing...
             </span>
           </div>
         )}
@@ -456,12 +456,12 @@ export default function GemmaAssistant({
             onChange={(e) => setInputValue(e.target.value)}
             placeholder="Ask about dockets, WA grants, or till setup..."
             disabled={isStreaming}
-            className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-zinc-950 bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
+            className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
           />
           <button
             type="submit"
             disabled={!inputValue.trim() || isStreaming}
-            className="p-2 rounded-full bg-zinc-950 text-white disabled:opacity-30 hover:bg-zinc-800 transition-colors shrink-0 shadow-xs cursor-pointer"
+            className="p-2 rounded-full bg-[#0F172A] text-white disabled:opacity-30 hover:bg-[#1E293B] transition-colors shrink-0 shadow-xs cursor-pointer"
             aria-label="Send query"
           >
             <Send className="w-3.5 h-3.5 text-[#00BFCC]" />
@@ -477,7 +477,7 @@ export default function GemmaAssistant({
             href="https://wa.me/61402472262"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-600 hover:text-zinc-950 font-semibold"
+            className="text-zinc-600 hover:text-[#0F172A] font-semibold"
           >
             Prefer WhatsApp? Call Mallory →
           </a>

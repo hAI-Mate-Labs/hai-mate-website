@@ -318,7 +318,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               Live Interactive Simulator
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             See the 5-Second Docket Audit in Action.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600">
@@ -334,8 +334,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("seafood")}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
               activeDocket === "seafood"
-                ? "bg-zinc-950 text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/70"
+                ? "bg-[#0F172A] text-white shadow-sm"
+                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
             }`}
           >
             <Utensils className="w-3.5 h-3.5" />
@@ -347,8 +347,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("bakery")}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
               activeDocket === "bakery"
-                ? "bg-zinc-950 text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/70"
+                ? "bg-[#0F172A] text-white shadow-sm"
+                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
             }`}
           >
             <Croissant className="w-3.5 h-3.5" />
@@ -360,8 +360,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("meat")}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
               activeDocket === "meat"
-                ? "bg-zinc-950 text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-zinc-950 hover:bg-zinc-200/70"
+                ? "bg-[#0F172A] text-white shadow-sm"
+                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
             }`}
           >
             <Beer className="w-3.5 h-3.5" />
@@ -380,7 +380,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }}
             className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
               activeDocket === "custom"
-                ? "bg-zinc-950 text-white shadow-sm ring-2 ring-[#00BFCC]/30"
+                ? "bg-[#0F172A] text-white shadow-sm ring-2 ring-[#00BFCC]/30"
                 : "bg-[#00BFCC]/10 text-zinc-900 border border-[#00BFCC]/30 hover:bg-[#00BFCC]/20"
             }`}
           >
@@ -399,7 +399,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               <Upload className="w-6 h-6 text-[#0096A3]" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-zinc-950">
+              <h3 className="text-lg font-bold text-[#0F172A]">
                 Upload Any Receipt or Delivery Docket
               </h3>
               <p className="text-xs text-zinc-500 max-w-md mx-auto">
@@ -410,7 +410,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 transition-colors shadow-xs"
+                className="px-5 py-2.5 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-[#1E293B] transition-colors shadow-xs"
               >
                 Browse File (JPG / PDF)
               </button>
@@ -439,7 +439,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             
             {/* Subtle watermark */}
             <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.025] pointer-events-none">
-              <ApertureLogo size={400} color="#09090B" />
+              <ApertureLogo size={400} color="#0F172A" />
             </div>
 
             <div className="relative space-y-6">
@@ -452,7 +452,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-zinc-950">{current.supplierName}</span>
+                      <span className="text-sm font-bold text-[#0F172A]">{current.supplierName}</span>
                       <span className="text-[10px] font-mono text-zinc-500 bg-white px-2 py-0.5 rounded border border-zinc-200">
                         {current.docketNumber}
                       </span>
@@ -512,7 +512,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     className="w-16 h-16 object-cover rounded-xl border border-zinc-200 shadow-2xs"
                   />
                   <div className="text-xs">
-                    <span className="font-bold text-zinc-950 block">Your Scanned Receipt Preview</span>
+                    <span className="font-bold text-[#0F172A] block">Your Scanned Receipt Preview</span>
                     <span className="text-zinc-500">
                       {customFile.name} • Live OCR pipeline calibrated to your supplier layout
                     </span>
@@ -549,7 +549,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-xs sm:text-sm font-bold text-zinc-950">
+                            <span className="text-xs sm:text-sm font-bold text-[#0F172A]">
                               {item.name}
                             </span>
                             <span className="text-xs text-zinc-500 font-mono">
@@ -568,7 +568,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
                         {/* Right column result */}
                         <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center">
-                          <span className="text-sm font-bold font-mono text-zinc-950">
+                          <span className="text-sm font-bold font-mono text-[#0F172A]">
                             ${billedTotal.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
                           </span>
 
@@ -609,7 +609,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                 <div className="flex items-center gap-6">
                   <div>
                     <span className="text-[11px] text-zinc-400 font-mono uppercase block">Total Docket</span>
-                    <span className="text-base sm:text-lg font-bold font-mono text-zinc-950">
+                    <span className="text-base sm:text-lg font-bold font-mono text-[#0F172A]">
                       ${totalBilled.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
                     </span>
                   </div>
@@ -650,7 +650,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <button
                       type="button"
                       onClick={handleStartScan}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-950 text-white font-semibold text-xs hover:bg-zinc-800 transition-all shadow-sm w-full md:w-auto cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs hover:bg-[#1E293B] transition-all shadow-sm w-full md:w-auto cursor-pointer"
                     >
                       <Scan className="w-4 h-4 text-[#00BFCC]" />
                       <span>Run 5-Second OCR Scan</span>
@@ -696,7 +696,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       <button
                         type="button"
                         onClick={onOpenAuditModal}
-                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-zinc-950 text-white font-bold text-xs hover:bg-zinc-800 transition-all shadow-xs"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-bold text-xs hover:bg-[#1E293B] transition-all shadow-xs"
                       >
                         <span>Audit All My Invoices</span>
                         <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />

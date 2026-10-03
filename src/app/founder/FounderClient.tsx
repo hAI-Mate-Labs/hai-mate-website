@@ -41,7 +41,7 @@ export default function FounderClient() {
         <section className="relative pt-16 pb-20 md:pt-28 md:pb-32 bg-white overflow-hidden border-b border-zinc-100">
           {/* Subtle Aperture Watermark */}
           <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 opacity-[0.02] pointer-events-none">
-            <ApertureLogo size={800} color="#09090B" />
+            <ApertureLogo size={800} color="#0F172A" />
           </div>
 
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -62,8 +62,8 @@ export default function FounderClient() {
                   onClick={() => setLang("en")}
                   className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                     lang === "en"
-                      ? "bg-white text-zinc-950 shadow-xs"
-                      : "text-zinc-500 hover:text-zinc-950"
+                      ? "bg-white text-[#0F172A] shadow-xs"
+                      : "text-zinc-500 hover:text-[#0F172A]"
                   }`}
                 >
                   🇦🇺 English
@@ -73,8 +73,8 @@ export default function FounderClient() {
                   onClick={() => setLang("fr")}
                   className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                     lang === "fr"
-                      ? "bg-white text-zinc-950 shadow-xs"
-                      : "text-zinc-500 hover:text-zinc-950"
+                      ? "bg-white text-[#0F172A] shadow-xs"
+                      : "text-zinc-500 hover:text-[#0F172A]"
                   }`}
                 >
                   🇫🇷 Français
@@ -83,11 +83,11 @@ export default function FounderClient() {
             </div>
 
             {/* Visionary Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.12] max-w-3xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] max-w-3xl mx-auto">
               {lang === "en" ? (
                 <>
                   We were not put on this earth to spend our lives{" "}
-                  <span className="relative inline-block text-zinc-950">
+                  <span className="relative inline-block text-[#0F172A]">
                     filing paperwork.
                     <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
                   </span>
@@ -95,7 +95,7 @@ export default function FounderClient() {
               ) : (
                 <>
                   Nous ne sommes pas nés pour passer nos vies à{" "}
-                  <span className="relative inline-block text-zinc-950">
+                  <span className="relative inline-block text-[#0F172A]">
                     remplir de la paperasse.
                     <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
                   </span>
@@ -156,7 +156,7 @@ export default function FounderClient() {
             
             {/* Opening Manifest */}
             <div className="space-y-6 text-base sm:text-lg text-zinc-700 leading-relaxed font-normal">
-              <p className="text-xl sm:text-2xl font-serif italic text-zinc-950 leading-snug">
+              <p className="text-xl sm:text-2xl font-serif italic text-[#0F172A] leading-snug">
                 {lang === "en" ? (
                   "“Ever since I can remember, I have been a dreamer. I have always looked at the world not merely as it is, but as it could be when we remove friction and unlock human potential.”"
                 ) : (
@@ -213,7 +213,7 @@ export default function FounderClient() {
                 <div className="w-10 h-10 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#0096A3] shadow-2xs">
                   <Sparkles className="w-5 h-5" />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-950">
+                <h3 className="text-lg font-bold text-[#0F172A]">
                   {lang === "en" ? "The Catalyst: A Bicycle for the Modern Mind" : "Le Déclic : Un Vélo pour l'Esprit Moderne"}
                 </h3>
               </div>
@@ -244,7 +244,7 @@ export default function FounderClient() {
 
             {/* Chapter 2: The Australian Chapter */}
             <div className="space-y-6 text-base sm:text-lg text-zinc-700 leading-relaxed font-normal">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight font-sans">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight font-sans">
                 {lang === "en" ? "The Journey to Australia & The Birth of hAI Mate!" : "L'Arrivée en Australie & La Naissance de hAI Mate!"}
               </h2>
 
@@ -261,7 +261,7 @@ export default function FounderClient() {
                     conduits for the neighborhood bakery, the coastal bistro, or the suburban pub.
                   </p>
                   <p>
-                    That is why I created <strong className="font-semibold text-zinc-950">hAI Mate!</strong> as an applied
+                    That is why I created <strong className="font-semibold text-[#0F172A]">hAI Mate!</strong> as an applied
                     solo practice registered in Sydney. I didn’t want to build an ivory tower agency with
                     account managers and sales reps. I wanted to sit directly across the table from venue
                     owners, understand their till systems, look at their supplier dockets, and build systems
@@ -283,7 +283,7 @@ export default function FounderClient() {
                     ou le pub artisanal.
                   </p>
                   <p>
-                    C'est ainsi qu'est né <strong className="font-semibold text-zinc-950">hAI Mate!</strong>, sous forme
+                    C'est ainsi qu'est né <strong className="font-semibold text-[#0F172A]">hAI Mate!</strong>, sous forme
                     d'une pratique solo dédiée enregistrée à Sydney. Je ne voulais pas créer une agence
                     tentaculaire avec des intermédiaires. Je voulais m'asseoir directement en face des
                     propriétaires, comprendre leurs caisses enregistreuses, examiner leurs dockets de livraison
@@ -295,7 +295,7 @@ export default function FounderClient() {
 
             {/* Chapter 3: What I Deeply Believe (Jobs/Altman Credo) */}
             <div className="space-y-6">
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight font-sans">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight font-sans">
                 {lang === "en" ? "The Four Tenets I Live By" : "Les Quatre Principes Fondamentaux"}
               </h2>
 
@@ -304,7 +304,7 @@ export default function FounderClient() {
                 <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200/80 shadow-2xs space-y-2">
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-                    <h3 className="text-base font-bold text-zinc-950 font-sans">
+                    <h3 className="text-base font-bold text-[#0F172A] font-sans">
                       {lang === "en" ? "1. Time Is Non-Renewable" : "1. Le Temps Ne Se Renouvelle Pas"}
                     </h3>
                   </div>
@@ -321,7 +321,7 @@ export default function FounderClient() {
                 <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200/80 shadow-2xs space-y-2">
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-                    <h3 className="text-base font-bold text-zinc-950 font-sans">
+                    <h3 className="text-base font-bold text-[#0F172A] font-sans">
                       {lang === "en" ? "2. Humans at the Center, Always" : "2. L'Humain au Centre, Toujours"}
                     </h3>
                   </div>
@@ -338,7 +338,7 @@ export default function FounderClient() {
                 <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200/80 shadow-2xs space-y-2">
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-                    <h3 className="text-base font-bold text-zinc-950 font-sans">
+                    <h3 className="text-base font-bold text-[#0F172A] font-sans">
                       {lang === "en" ? "3. Simplicity Is the Ultimate Sophistication" : "3. La Simplicité est la Sophistication Suprême"}
                     </h3>
                   </div>
@@ -355,7 +355,7 @@ export default function FounderClient() {
                 <div className="p-6 rounded-2xl bg-zinc-50/70 border border-zinc-200/80 shadow-2xs space-y-2">
                   <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-                    <h3 className="text-base font-bold text-zinc-950 font-sans">
+                    <h3 className="text-base font-bold text-[#0F172A] font-sans">
                       {lang === "en" ? "4. High Craft & Personal Responsibility" : "4. Haute Exigence Artisanale & Responsabilité Personnelle"}
                     </h3>
                   </div>
@@ -380,7 +380,7 @@ export default function FounderClient() {
               <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
                 {lang === "en" ? "Proven Foundation" : "Fondations & Expérience"}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
                 {lang === "en" ? "Operational Rigor Meets Modern AI Engineering." : "La Rigueur Opérationnelle au Service de l'IA Appliquée."}
               </h2>
               <p className="mt-3 text-base text-zinc-600">
@@ -401,7 +401,7 @@ export default function FounderClient() {
                     <Layers className="w-5 h-5 text-[#0096A3]" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-zinc-950">
+                    <h3 className="text-lg font-bold text-[#0F172A]">
                       {lang === "en" ? "10+ Years in Operations" : "10+ Ans en Opérations"}
                     </h3>
                     <p className="text-xs text-zinc-500">
@@ -448,7 +448,7 @@ export default function FounderClient() {
                     <GraduationCap className="w-5 h-5 text-[#0096A3]" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-zinc-950">
+                    <h3 className="text-lg font-bold text-[#0F172A]">
                       {lang === "en" ? "Technical & AI Credentials" : "Titres & Certifications en IA"}
                     </h3>
                     <p className="text-xs text-zinc-500">
@@ -459,28 +459,28 @@ export default function FounderClient() {
 
                 <div className="space-y-3">
                   <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200/60">
-                    <p className="text-xs font-bold text-zinc-950">
+                    <p className="text-xs font-bold text-[#0F172A]">
                       Bachelor of Science in Computer Science
                     </p>
                     <p className="text-[11px] text-zinc-500">University of the People</p>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200/60">
-                    <p className="text-xs font-bold text-zinc-950">
+                    <p className="text-xs font-bold text-[#0F172A]">
                       AI Agent Developer Specialisation
                     </p>
                     <p className="text-[11px] text-zinc-500">Vanderbilt University</p>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200/60">
-                    <p className="text-xs font-bold text-zinc-950">
+                    <p className="text-xs font-bold text-[#0F172A]">
                       IBM Generative AI Engineering &amp; Data Science Certificates
                     </p>
                     <p className="text-[11px] text-zinc-500">IBM Professional Certificates</p>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200/60">
-                    <p className="text-xs font-bold text-zinc-950">
+                    <p className="text-xs font-bold text-[#0F172A]">
                       Google Data Analytics Professional Certificate
                     </p>
                     <p className="text-[11px] text-zinc-500">Google</p>
@@ -493,7 +493,7 @@ export default function FounderClient() {
             {/* Technical Tooling Badge Strip */}
             <div className="mt-8 p-6 rounded-3xl bg-white border border-zinc-200/80 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-zinc-900 block">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0F172A] block">
                   {lang === "en" ? "Core Technical Capability" : "Capacité Technique Clé"}
                 </span>
                 <p className="text-xs text-zinc-500 mt-0.5">

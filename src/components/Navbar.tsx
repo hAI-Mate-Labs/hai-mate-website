@@ -52,7 +52,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
               glow
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-zinc-950 font-sans flex items-baseline">
+              <span className="text-xl font-bold tracking-tight text-[#0F172A] font-sans flex items-baseline">
                 hAI Mate
                 <span className="inline-block relative">
                   !
@@ -74,7 +74,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-white hover:shadow-2xs rounded-full transition-all"
+                className="px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-[#0F172A] hover:bg-white hover:shadow-2xs rounded-full transition-all"
               >
                 {link.name}
               </Link>
@@ -113,7 +113,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100"
+              className="p-2 rounded-lg text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -131,7 +131,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100 text-sm font-semibold text-zinc-800 hover:text-zinc-950 hover:bg-zinc-100 transition-colors"
+                className="px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100 text-sm font-semibold text-zinc-800 hover:text-[#0F172A] hover:bg-zinc-100 transition-colors"
               >
                 {link.name}
               </Link>

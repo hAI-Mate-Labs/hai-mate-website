@@ -17,7 +17,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
           
           {/* Subtle brand vector mark watermark */}
           <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-[0.03] pointer-events-none">
-            <ApertureLogo size={350} color="#09090B" />
+            <ApertureLogo size={350} color="#0F172A" />
           </div>
 
           <div className="relative space-y-6">
@@ -29,7 +29,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
             </div>
 
             {/* Title & Message */}
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
               A Personal Note from the Founder.
             </h2>
 
@@ -40,7 +40,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
               <p>
                 As an independent solo practitioner, I work directly with you. When we start a 14-day audit, I am the one walking your venue floor, reviewing your dockets, and configuring your workflows. Every conduit is tailored specifically to your venue’s unique till, suppliers, and menu rules.
               </p>
-              <p className="text-zinc-950 font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
+              <p className="text-[#0F172A] font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
                 “You get reliable, proven automation built to do the heavy lifting in the background, backed by my personal phone number whenever you need adjustments.”
               </p>
             </div>
@@ -48,21 +48,21 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
             {/* Direct Guarantees */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-zinc-50/70 border border-zinc-100 space-y-1">
-                <span className="text-xs font-bold text-zinc-950 block">Direct Access</span>
+                <span className="text-xs font-bold text-[#0F172A] block">Direct Access</span>
                 <p className="text-xs text-zinc-500">
                   You get my direct mobile and private Slack channel. No middle layers.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-zinc-50/70 border border-zinc-100 space-y-1">
-                <span className="text-xs font-bold text-zinc-950 block">Proven &amp; Reliable</span>
+                <span className="text-xs font-bold text-[#0F172A] block">Proven &amp; Reliable</span>
                 <p className="text-xs text-zinc-500">
                   Built on battle-tested pipelines that run quietly without staff headache.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-zinc-50/70 border border-zinc-100 space-y-1">
-                <span className="text-xs font-bold text-zinc-950 block">Australian Registered</span>
+                <span className="text-xs font-bold text-[#0F172A] block">Australian Registered</span>
                 <p className="text-xs text-zinc-500">
                   Solo Trader registered in Sydney, NSW • Working with venues across WA &amp; Australia.
                 </p>
@@ -75,7 +75,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
                 Want to discuss your venue before booking? Email{" "}
                 <a
                   href="mailto:founder@haimate.com.au"
-                  className="font-bold text-zinc-950 underline hover:text-[#0096A3]"
+                  className="font-bold text-[#0F172A] underline hover:text-[#0096A3]"
                 >
                   founder@haimate.com.au
                 </a>
@@ -84,7 +84,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 text-white font-semibold text-xs hover:bg-zinc-800 transition-all shadow-xs"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-semibold text-xs hover:bg-[#1E293B] transition-all shadow-xs"
               >
                 <span>Book a 14-Day Walk-Through</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />

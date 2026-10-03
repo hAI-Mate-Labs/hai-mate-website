@@ -79,7 +79,7 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
             Applied Agentic Workflows
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Four Applied Solutions Built for WA Venues.
           </h2>
           <p className="mt-3 text-base text-zinc-600">
@@ -105,7 +105,7 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                       <span className="text-xs uppercase tracking-wider text-[#0096A3] font-bold block">
                         {item.category}
                       </span>
-                      <h3 className="text-xl font-bold text-zinc-950">
+                      <h3 className="text-xl font-bold text-[#0F172A]">
                         {item.title}
                       </h3>
                     </div>

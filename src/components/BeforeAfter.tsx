@@ -47,7 +47,7 @@ export default function BeforeAfter({ onOpenAuditModal }: BeforeAfterProps) {
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
             The Difference
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             How Your Week Changes With hAI Mate!
           </h2>
           <p className="mt-3 text-base text-zinc-600">
@@ -65,7 +65,7 @@ export default function BeforeAfter({ onOpenAuditModal }: BeforeAfterProps) {
                 <XCircle className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-zinc-950">
+                <h3 className="text-base font-bold text-[#0F172A]">
                   The Old Way (Manual Drag)
                 </h3>
                 <span className="text-xs text-zinc-500">
@@ -98,7 +98,7 @@ export default function BeforeAfter({ onOpenAuditModal }: BeforeAfterProps) {
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-zinc-950">
+                  <h3 className="text-base font-bold text-[#0F172A]">
                     With hAI Mate! (Automated Flow)
                   </h3>
                   <span className="text-xs text-zinc-500">
@@ -131,7 +131,7 @@ export default function BeforeAfter({ onOpenAuditModal }: BeforeAfterProps) {
               <button
                 type="button"
                 onClick={onOpenAuditModal}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-zinc-950 hover:text-[#0096A3] transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F172A] hover:text-[#0096A3] transition-colors"
               >
                 <span>Audit my venue</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />

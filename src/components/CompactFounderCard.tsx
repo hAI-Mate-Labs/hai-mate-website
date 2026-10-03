@@ -18,7 +18,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
           
           {/* Subtle watermark */}
           <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-[0.025] pointer-events-none">
-            <ApertureLogo size={360} color="#09090B" />
+            <ApertureLogo size={360} color="#0F172A" />
           </div>
 
           <div className="relative space-y-6">
@@ -38,7 +38,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-8 space-y-4">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight leading-snug">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight leading-snug">
                   You Deal Directly With the Founder. No Account Managers. No Ticket Queues.
                 </h2>
                 
@@ -46,7 +46,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                   In hospitality, every minute between lunch and dinner service counts. You don’t need an agency pitching senior directors only to hand your venue over to junior coordinators or overseas support desks.
                 </p>
 
-                <p className="text-zinc-950 font-medium border-l-2 border-[#00BFCC] pl-4 italic text-sm sm:text-base leading-relaxed">
+                <p className="text-[#0F172A] font-medium border-l-2 border-[#00BFCC] pl-4 italic text-sm sm:text-base leading-relaxed">
                   “When we start your 14-day audit, I am the one walking your venue floor, reviewing your dockets, and tuning your workflows. You get battle-tested automation backed by my personal phone number whenever you need adjustments.”
                 </p>
                 <div className="text-xs text-zinc-500 font-semibold">
@@ -61,7 +61,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <Phone className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-zinc-950 block">Direct Mobile &amp; WhatsApp</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">Direct Mobile &amp; WhatsApp</span>
                     <a
                       href="tel:0402472262"
                       className="text-xs font-semibold text-[#0096A3] hover:underline"
@@ -76,7 +76,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <ShieldCheck className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-zinc-950 block">100% Human Sign-Off</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">100% Human Sign-Off</span>
                     <p className="text-[11px] text-zinc-500">
                       No automated ledger post or roster cut happens unapproved.
                     </p>
@@ -88,7 +88,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <Award className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-zinc-950 block">50% WA Grant Support</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">50% WA Grant Support</span>
                     <p className="text-[11px] text-zinc-500">
                       Eligible for WA Local Capability Fund co-funding.
                     </p>
@@ -103,7 +103,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
               <div className="flex items-center gap-3">
                 <Link
                   href="/founder"
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-zinc-950 hover:text-[#0096A3] transition-colors group"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#0F172A] hover:text-[#0096A3] transition-colors group"
                 >
                   <span>Read Mallory’s Vision &amp; Story (🇦🇺 EN | 🇫🇷 FR)</span>
                   <ArrowRight className="w-4 h-4 text-[#00BFCC] group-hover:translate-x-0.5 transition-transform" />

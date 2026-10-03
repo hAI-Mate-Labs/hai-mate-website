@@ -40,7 +40,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 inline-flex">
               <ApertureLogo className="h-7 w-7" />
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-zinc-950 font-sans flex items-baseline">
+                <span className="text-xl font-bold tracking-tight text-[#0F172A] font-sans flex items-baseline">
                   hAI Mate
                   <span className="inline-block relative">
                     !
@@ -68,37 +68,37 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-950">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
               Navigation
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/#solutions" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#solutions" className="hover:text-[#0F172A] transition-colors">
                   Solutions
                 </Link>
               </li>
               <li>
-                <Link href="/mission" className="hover:text-zinc-950 transition-colors">
+                <Link href="/mission" className="hover:text-[#0F172A] transition-colors">
                   Our Mission &amp; Philosophy
                 </Link>
               </li>
               <li>
-                <Link href="/founder" className="hover:text-zinc-950 transition-colors text-zinc-950 font-medium">
+                <Link href="/founder" className="hover:text-[#0F172A] transition-colors text-[#0F172A] font-medium">
                   The Founder (Mallory)
                 </Link>
               </li>
               <li>
-                <Link href="/#how-it-works" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#how-it-works" className="hover:text-[#0F172A] transition-colors">
                   How It Works (14-Day Audit)
                 </Link>
               </li>
               <li>
-                <Link href="/#grants" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#grants" className="hover:text-[#0F172A] transition-colors">
                   WA State Grants
                 </Link>
               </li>
               <li>
-                <Link href="/#intake" className="hover:text-zinc-950 transition-colors">
+                <Link href="/#intake" className="hover:text-[#0F172A] transition-colors">
                   Contact &amp; Scoping
                 </Link>
               </li>
@@ -107,22 +107,22 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-950">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
               Legal &amp; Trust
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="hover:text-zinc-950 transition-colors">
+                <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
                   Security &amp; Architecture
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-zinc-950 transition-colors">
+                <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
                   Privacy Policy (AU &amp; GDPR)
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-zinc-950 transition-colors">
+                <Link href="/terms" className="hover:text-[#0F172A] transition-colors">
                   Terms of Service (ACL)
                 </Link>
               </li>

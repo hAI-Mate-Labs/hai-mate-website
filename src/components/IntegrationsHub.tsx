@@ -179,7 +179,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
               Seamless Connectivity
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             Works With Your Everyday Venue Tools.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600">
@@ -197,8 +197,8 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? "bg-zinc-950 text-white shadow-sm"
-                  : "bg-white text-zinc-600 border border-zinc-200 hover:text-zinc-950 hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-sm"
+                  : "bg-white text-zinc-600 border border-zinc-200 hover:text-[#0F172A] hover:bg-zinc-100"
               }`}
             >
               {cat.label}
@@ -219,12 +219,12 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
                   onClick={() => setSelectedToolId(tool.id)}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer text-left ${
                     isSelected
-                      ? "bg-white border-zinc-950 shadow-md ring-2 ring-zinc-950/5"
+                      ? "bg-white border-[#0F172A] shadow-md ring-2 ring-[#0F172A]/5"
                       : "bg-white border-zinc-200/80 hover:border-zinc-300 shadow-2xs hover:shadow-xs"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-bold text-zinc-950">{tool.name}</span>
+                    <span className="text-sm font-bold text-[#0F172A]">{tool.name}</span>
                     <span className="text-[10px] font-semibold text-zinc-500 bg-zinc-50 px-2 py-0.5 rounded border border-zinc-200/60">
                       {tool.categoryLabel}
                     </span>
@@ -251,7 +251,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
               
               {/* Subtle aperture watermark */}
               <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.03] pointer-events-none">
-                <ApertureLogo size={300} color="#09090B" />
+                <ApertureLogo size={300} color="#0F172A" />
               </div>
 
               <div className="relative space-y-4">
@@ -262,7 +262,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
                     <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-wider block">
                       Integration Profile
                     </span>
-                    <h3 className="text-xl font-extrabold text-zinc-950 mt-0.5">
+                    <h3 className="text-xl font-extrabold text-[#0F172A] mt-0.5">
                       {selectedTool.name}
                     </h3>
                   </div>
@@ -273,7 +273,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
 
                 {/* How hAI Mate Works With It */}
                 <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-950 flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-[#0096A3]" />
                     How hAI Mate! Connects With {selectedTool.name}:
                   </h4>
@@ -289,7 +289,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
                 </div>
 
                 {/* Security Guarantee Box */}
-                <div className="p-3.5 rounded-2xl bg-zinc-950 text-white space-y-1">
+                <div className="p-3.5 rounded-2xl bg-[#0F172A] text-white space-y-1">
                   <div className="flex items-center gap-2">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#00BFCC]" />
                     <span className="text-xs font-bold">100% Read/Draft Scoped Access</span>
@@ -305,7 +305,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
                   <button
                     type="button"
                     onClick={onOpenAuditModal}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-zinc-900 text-white text-xs sm:text-sm font-semibold hover:bg-zinc-800 transition-all shadow-xs group cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#0F172A] text-white text-xs sm:text-sm font-semibold hover:bg-[#1E293B] transition-all shadow-xs group cursor-pointer"
                   >
                     <span>Audit Your {selectedTool.name} Setup</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
@@ -326,7 +326,7 @@ export default function IntegrationsHub({ onOpenAuditModal }: IntegrationsHubPro
               <Cpu className="w-5 h-5 text-[#0096A3]" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-zinc-950">Don't see your specific system?</h4>
+              <h4 className="text-sm font-bold text-[#0F172A]">Don't see your specific system?</h4>
               <p className="text-xs text-zinc-600">
                 We support any system with an open REST API, webhook, or simple CSV/email export (Toast, Clover, QuickBooks, etc.).
               </p>

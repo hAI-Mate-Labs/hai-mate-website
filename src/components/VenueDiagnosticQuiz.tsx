@@ -215,7 +215,7 @@ export default function VenueDiagnosticQuiz({
               60-Second Venue Assessment
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
             How Much Time &amp; Margin Is Your Venue Leaking?
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600">
@@ -229,7 +229,7 @@ export default function VenueDiagnosticQuiz({
           
           {/* Watermark logo */}
           <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.025] pointer-events-none">
-            <ApertureLogo size={350} color="#09090B" />
+            <ApertureLogo size={350} color="#0F172A" />
           </div>
 
           {!isCompleted ? (
@@ -243,7 +243,7 @@ export default function VenueDiagnosticQuiz({
                 </div>
                 <div className="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-zinc-950 transition-all duration-300 rounded-full"
+                    className="h-full bg-[#0F172A] transition-all duration-300 rounded-full"
                     style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
                   />
                 </div>
@@ -251,7 +251,7 @@ export default function VenueDiagnosticQuiz({
 
               {/* Current Question */}
               <div className="space-y-1 text-left">
-                <h3 className="text-xl sm:text-2xl font-bold text-zinc-950 tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] tracking-tight">
                   {currentQ.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600">
@@ -272,7 +272,7 @@ export default function VenueDiagnosticQuiz({
                       onClick={() => handleSelectOption(idx)}
                       className={`p-4 sm:p-5 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between gap-4 group ${
                         isSelected
-                          ? "bg-white border-zinc-950 shadow-md ring-2 ring-zinc-950/5"
+                          ? "bg-white border-[#0F172A] shadow-md ring-2 ring-[#0F172A]/5"
                           : "bg-white border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50/50 shadow-2xs"
                       }`}
                     >
@@ -287,7 +287,7 @@ export default function VenueDiagnosticQuiz({
                           </div>
                         )}
                         <div>
-                          <div className="text-sm font-bold text-zinc-950 group-hover:text-black">
+                          <div className="text-sm font-bold text-[#0F172A] group-hover:text-[#0F172A]">
                             {opt.label}
                           </div>
                           <div className="text-xs text-zinc-500 mt-0.5 leading-relaxed">
@@ -296,7 +296,7 @@ export default function VenueDiagnosticQuiz({
                         </div>
                       </div>
 
-                      <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:translate-x-0.5 group-hover:text-zinc-950 transition-all shrink-0" />
+                      <ChevronRight className="w-4 h-4 text-zinc-400 group-hover:translate-x-0.5 group-hover:text-[#0F172A] transition-all shrink-0" />
                     </button>
                   );
                 })}
@@ -308,7 +308,7 @@ export default function VenueDiagnosticQuiz({
                   <button
                     type="button"
                     onClick={() => setCurrentStep(currentStep - 1)}
-                    className="text-xs font-semibold text-zinc-500 hover:text-zinc-950 transition-colors"
+                    className="text-xs font-semibold text-zinc-500 hover:text-[#0F172A] transition-colors"
                   >
                     ← Back to Previous Question
                   </button>
@@ -325,7 +325,7 @@ export default function VenueDiagnosticQuiz({
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                   Assessment Complete
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                   Your Venue's Diagnostic Score
                 </h3>
                 <p className="text-xs sm:text-sm text-zinc-600 max-w-lg mx-auto">
@@ -343,7 +343,7 @@ export default function VenueDiagnosticQuiz({
                     <span className="text-xs font-semibold text-zinc-500 font-mono">RECOVERABLE TIME</span>
                     <Clock className="w-4 h-4 text-[#0096A3]" />
                   </div>
-                  <div className="text-3xl font-black text-zinc-950 font-sans">
+                  <div className="text-3xl font-black text-[#0F172A] font-sans">
                     ~{calculatedHours.toFixed(1)} <span className="text-sm font-normal text-zinc-500">hrs/wk</span>
                   </div>
                   <p className="text-[11px] text-zinc-600 leading-snug">
@@ -371,7 +371,7 @@ export default function VenueDiagnosticQuiz({
                     <span className="text-xs font-semibold text-zinc-500 font-mono">AUTOMATION FIT</span>
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   </div>
-                  <div className="text-3xl font-black text-zinc-950 font-sans">
+                  <div className="text-3xl font-black text-[#0F172A] font-sans">
                     96% <span className="text-sm font-normal text-emerald-600 font-bold">High Fit</span>
                   </div>
                   <p className="text-[11px] text-zinc-600 leading-snug">
@@ -382,7 +382,7 @@ export default function VenueDiagnosticQuiz({
               </div>
 
               {/* Action Banner */}
-              <div className="p-6 rounded-2xl bg-zinc-950 text-white flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <div className="p-6 rounded-2xl bg-[#0F172A] text-white flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
                 <div>
                   <h4 className="text-base font-bold text-white">
                     Eliminate this drag in your next 14 days.
@@ -404,7 +404,7 @@ export default function VenueDiagnosticQuiz({
                   <button
                     type="button"
                     onClick={handleBookWithDetails}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#00BFCC] text-zinc-950 font-bold text-xs sm:text-sm hover:brightness-105 transition-all shadow-sm cursor-pointer"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#00BFCC] text-[#0F172A] font-bold text-xs sm:text-sm hover:brightness-105 transition-all shadow-sm cursor-pointer"
                   >
                     <span>Apply to My 14-Day Audit</span>
                     <ArrowRight className="w-4 h-4" />

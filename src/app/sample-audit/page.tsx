@@ -33,7 +33,7 @@ export default function SampleAuditPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 hover:text-zinc-950 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 hover:text-[#0F172A] transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Back to hAI Mate!</span>
@@ -57,7 +57,7 @@ export default function SampleAuditPage() {
           <button
             type="button"
             onClick={() => setAuditModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 transition-all shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-[#1E293B] transition-all shadow-xs cursor-pointer"
           >
             <span>Book Audit for My Venue</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />
@@ -84,7 +84,7 @@ export default function SampleAuditPage() {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-2xl sm:text-3xl font-black text-zinc-950 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight">
               14-Day Diagnostic Automation Teardown &amp; WA Grant Scoping
             </h1>
             <p className="text-sm text-zinc-600 leading-relaxed">
@@ -102,7 +102,7 @@ export default function SampleAuditPage() {
 
             <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-100 space-y-1">
               <span className="text-[10px] font-bold uppercase text-zinc-400 block">Weekly Admin Recovered</span>
-              <span className="text-2xl font-black text-zinc-950">12.0 Hours</span>
+              <span className="text-2xl font-black text-[#0F172A]">12.0 Hours</span>
               <p className="text-[11px] text-zinc-500">Returned to general manager floor service</p>
             </div>
 
@@ -117,7 +117,7 @@ export default function SampleAuditPage() {
         {/* Section 1: Drag Heatmap */}
         <div className="rounded-3xl bg-white border border-zinc-200/90 p-8 shadow-xs space-y-6">
           <div className="border-b border-zinc-100 pb-3">
-            <h2 className="text-lg font-bold text-zinc-950">
+            <h2 className="text-lg font-bold text-[#0F172A]">
               1. Back-Office Administrative Drag Heatmap
             </h2>
             <p className="text-xs text-zinc-500">
@@ -128,33 +128,33 @@ export default function SampleAuditPage() {
           <div className="space-y-3">
             <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row justify-between gap-3">
               <div>
-                <span className="text-sm font-bold text-zinc-950 block">Delivery Docket Line-Item Entry &amp; Price Checks</span>
+                <span className="text-sm font-bold text-[#0F172A] block">Delivery Docket Line-Item Entry &amp; Price Checks</span>
                 <p className="text-xs text-zinc-600">Typing messy sauce-stained receipts into Xero bills every Monday morning.</p>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-base font-black text-zinc-950">5.5 hrs / wk</span>
+                <span className="text-base font-black text-[#0F172A]">5.5 hrs / wk</span>
                 <span className="text-xs text-red-600 block font-semibold">$14,300/yr cost</span>
               </div>
             </div>
 
             <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row justify-between gap-3">
               <div>
-                <span className="text-sm font-bold text-zinc-950 block">Sunday Penalty Roster Restructuring &amp; Weather Guesswork</span>
+                <span className="text-sm font-bold text-[#0F172A] block">Sunday Penalty Roster Restructuring &amp; Weather Guesswork</span>
                 <p className="text-xs text-zinc-600">Floor overstaffed during rain and understaffed during beach weather surges.</p>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-base font-black text-zinc-950">2.5 hrs / wk</span>
+                <span className="text-base font-black text-[#0F172A]">2.5 hrs / wk</span>
                 <span className="text-xs text-red-600 block font-semibold">$6,500/yr cost</span>
               </div>
             </div>
 
             <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row justify-between gap-3">
               <div>
-                <span className="text-sm font-bold text-zinc-950 block">Unanswered Dinner Reservation Calls &amp; Large Group Chasing</span>
+                <span className="text-sm font-bold text-[#0F172A] block">Unanswered Dinner Reservation Calls &amp; Large Group Chasing</span>
                 <p className="text-xs text-zinc-600">Unanswered calls during slammed dinner services leading to lost table bookings.</p>
               </div>
               <div className="text-right shrink-0">
-                <span className="text-base font-black text-zinc-950">4.0 hrs / wk</span>
+                <span className="text-base font-black text-[#0F172A]">4.0 hrs / wk</span>
                 <span className="text-xs text-red-600 block font-semibold">$10,400/yr cost</span>
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function SampleAuditPage() {
         <div className="rounded-3xl bg-white border border-zinc-200/90 p-8 shadow-xs space-y-6">
           <div className="border-b border-zinc-100 pb-3 flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-bold text-zinc-950">
+              <h2 className="text-lg font-bold text-[#0F172A]">
                 2. Itemized Supplier Rate Overcharges Caught ($17,460 / yr)
               </h2>
               <p className="text-xs text-zinc-500">
@@ -192,25 +192,25 @@ export default function SampleAuditPage() {
                   <td className="p-3 font-medium text-zinc-900">Local Barramundi Fillets (Skin-on)</td>
                   <td className="p-3 text-zinc-600">$28.50 / kg</td>
                   <td className="p-3 font-bold text-red-600">$31.00 / kg (+$2.50)</td>
-                  <td className="p-3 font-bold text-zinc-950">$520 / mo</td>
+                  <td className="p-3 font-bold text-[#0F172A]">$520 / mo</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-medium text-zinc-900">Black Angus Grain-Fed Sirloin (YG)</td>
                   <td className="p-3 text-zinc-600">$33.50 / kg</td>
                   <td className="p-3 font-bold text-red-600">$36.50 / kg (+$3.00)</td>
-                  <td className="p-3 font-bold text-zinc-950">$495 / mo</td>
+                  <td className="p-3 font-bold text-[#0F172A]">$495 / mo</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-medium text-zinc-900">Pure Dairy Whipping Cream (2L Jugs)</td>
                   <td className="p-3 text-zinc-600">$10.50 / jug</td>
                   <td className="p-3 font-bold text-red-600">$11.80 / jug (+$1.30)</td>
-                  <td className="p-3 font-bold text-zinc-950">$280 / mo</td>
+                  <td className="p-3 font-bold text-[#0F172A]">$280 / mo</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-medium text-zinc-900">Single Malt Craft Kegs (Promotional Rebate)</td>
                   <td className="p-3 text-zinc-600">$290 / keg</td>
                   <td className="p-3 font-bold text-red-600">$330 / keg (Rebate dropped)</td>
-                  <td className="p-3 font-bold text-zinc-950">$160 / mo</td>
+                  <td className="p-3 font-bold text-[#0F172A]">$160 / mo</td>
                 </tr>
               </tbody>
             </table>
@@ -220,7 +220,7 @@ export default function SampleAuditPage() {
         {/* Section 3: WA Government Grant Scoping & ROI */}
         <div className="rounded-3xl bg-white border border-zinc-200/90 p-8 shadow-xs space-y-6">
           <div className="border-b border-zinc-100 pb-3">
-            <h2 className="text-lg font-bold text-zinc-950">
+            <h2 className="text-lg font-bold text-[#0F172A]">
               3. WA State Government (LCF) Grant Co-Funding &amp; Payback Blueprint
             </h2>
             <p className="text-xs text-zinc-500">
@@ -230,30 +230,30 @@ export default function SampleAuditPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2 text-xs">
-              <span className="font-bold text-zinc-950 block text-sm">Engineering Investment</span>
+              <span className="font-bold text-[#0F172A] block text-sm">Engineering Investment</span>
               <div className="flex justify-between">
                 <span className="text-zinc-600">Total Scoped Pipelines:</span>
-                <span className="font-semibold text-zinc-950">$22,000</span>
+                <span className="font-semibold text-[#0F172A]">$22,000</span>
               </div>
               <div className="flex justify-between text-emerald-700 font-semibold">
                 <span>WA Gov LCF Matched Rebate (50%):</span>
                 <span>-$11,000</span>
               </div>
-              <div className="pt-2 border-t border-zinc-200 flex justify-between font-bold text-sm text-zinc-950">
+              <div className="pt-2 border-t border-zinc-200 flex justify-between font-bold text-sm text-[#0F172A]">
                 <span>Net Venue Investment:</span>
                 <span>$11,000</span>
               </div>
             </div>
 
             <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-2 text-xs">
-              <span className="font-bold text-zinc-950 block text-sm">Recovered Value &amp; Payback</span>
+              <span className="font-bold text-[#0F172A] block text-sm">Recovered Value &amp; Payback</span>
               <div className="flex justify-between">
                 <span className="text-zinc-600">Admin Hours Recovered:</span>
-                <span className="font-semibold text-zinc-950">$31,200 / yr</span>
+                <span className="font-semibold text-[#0F172A]">$31,200 / yr</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-zinc-600">Supplier Overcharges Caught:</span>
-                <span className="font-semibold text-zinc-950">$17,460 / yr</span>
+                <span className="font-semibold text-[#0F172A]">$17,460 / yr</span>
               </div>
               <div className="pt-2 border-t border-zinc-200 flex justify-between font-bold text-sm text-emerald-700">
                 <span>Projected Net Payback Speed:</span>
@@ -264,7 +264,7 @@ export default function SampleAuditPage() {
         </div>
 
         {/* Final Covenant & Action Box */}
-        <div className="rounded-3xl bg-zinc-900 text-white p-8 space-y-6 shadow-sm">
+        <div className="rounded-3xl bg-[#0F172A] text-white p-8 space-y-6 shadow-sm">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-[#00BFCC]" />
@@ -284,7 +284,7 @@ export default function SampleAuditPage() {
             <button
               type="button"
               onClick={() => setAuditModalOpen(true)}
-              className="px-6 py-3 rounded-full bg-white text-zinc-950 font-bold text-xs hover:bg-zinc-100 transition-colors shadow-xs"
+              className="px-6 py-3 rounded-full bg-white text-[#0F172A] font-bold text-xs hover:bg-zinc-100 transition-colors shadow-xs"
             >
               Book Audit for My Venue
             </button>

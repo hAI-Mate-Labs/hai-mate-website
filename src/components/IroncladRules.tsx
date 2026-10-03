@@ -38,7 +38,7 @@ export default function IroncladRules() {
           
           {/* Subtle logo watermark */}
           <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.03] pointer-events-none">
-            <ApertureLogo size={350} color="#09090B" />
+            <ApertureLogo size={350} color="#0F172A" />
           </div>
 
           <div className="relative space-y-8">
@@ -49,7 +49,7 @@ export default function IroncladRules() {
                 <ShieldCheck className="w-3.5 h-3.5 text-[#0096A3]" />
                 <span>SAFETY, CONTROL &amp; PEACE OF MIND</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                 What hAI Mate! Will <span className="underline decoration-[#00BFCC] decoration-2">NEVER</span> Do.
               </h2>
               <p className="mt-2 text-sm sm:text-base text-zinc-600">
@@ -75,7 +75,7 @@ export default function IroncladRules() {
                       </span>
                     </div>
 
-                    <h3 className="text-base font-bold text-zinc-950 leading-snug">
+                    <h3 className="text-base font-bold text-[#0F172A] leading-snug">
                       {rule.title}
                     </h3>
 
