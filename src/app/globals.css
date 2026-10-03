@@ -3,38 +3,36 @@
 @theme {
   --color-canvas: #FFFFFF;
   --color-surface: #FFFFFF;
-  --color-surface-subtle: #F8FAFC;
-  --color-surface-muted: #F1F5F9;
-  --color-border-structural: #E2E8F0;
-  --color-border-subtle: #F1F5F9;
-  --color-text-primary: #0F172A;
-  --color-text-secondary: #64748B;
-  --color-brand-navy: #0F172A;
+  --color-surface-subtle: #FAFAFA;
+  --color-surface-muted: #F4F4F5;
+  --color-border-structural: #E4E4E7;
+  --color-border-subtle: #F4F4F5;
+  --color-text-primary: #09090B;
+  --color-text-secondary: #71717A;
+  --color-brand-navy: #09090B;
   --color-accent-cyan: #00BFCC;
   --color-accent-cyan-dark: #0096A3;
-  --color-accent-cyan-light: #E6FAFC;
-  --color-contrast-light: #FFFFFF;
+  --color-accent-cyan-light: #ECFEFF;
 }
 
 :root {
   --bg-canvas: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --border-structural: #E2E8F0;
-  --text-primary: #0F172A;
-  --text-muted: #64748B;
-  --brand-navy: #0F172A;
+  --border-structural: #E4E4E7;
+  --text-primary: #09090B;
+  --text-muted: #71717A;
   --accent-cyan: #00BFCC;
 }
 
 html {
   scroll-behavior: smooth;
   background-color: #FFFFFF;
-  color: #0F172A;
+  color: #09090B;
 }
 
 body {
   background-color: #FFFFFF;
-  color: #0F172A;
+  color: #09090B;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
   selection-background-color: #00BFCC;
@@ -46,7 +44,7 @@ body {
   color: #FFFFFF;
 }
 
-/* Minimalist light scrollbars */
+/* Subtle clean scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -57,33 +55,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 3px;
+  background: #E4E4E7;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
-}
-
-/* Subtle architectural grid pattern for minimalist canvas */
-.minimal-grid {
-  background-size: 48px 48px;
-  background-image: 
-    linear-gradient(to right, rgba(226, 232, 240, 0.6) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.6) 1px, transparent 1px);
-}
-
-.minimal-dots {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.3) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Crisp cyan accents for light theme */
-.cyan-glow-light {
-  box-shadow: 0 4px 20px -2px rgba(0, 191, 204, 0.2);
-}
-
-.cyan-border-light {
-  border-color: #00BFCC;
-  box-shadow: 0 0 0 1px #00BFCC;
+  background: #A1A1AA;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Search, Wrench, PhoneCall, Check, Clock, ArrowRight } from "lucide-react";
+import { Check, Clock, ArrowRight } from "lucide-react";
 
 interface ProcessSectionProps {
   onOpenAuditModal: () => void;
@@ -12,142 +12,115 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
     {
       number: "01",
       title: "14-Day Diagnostic Readiness Audit",
-      subtitle: "On-site review of your manual bottlenecks",
       duration: "Days 1–14",
-      icon: Search,
       summary:
         "Fixed-fee on-site review mapping manual bottlenecks, existing software stacks (Lightspeed, Square, Xero), and high-ROI automation targets.",
-      plainSummary:
-        "We visit your venue, walk your floor, and look at how invoices, rosters, and bookings currently get handled. We calculate your exact hours lost and show you a plain-English roadmap with guaranteed ROI.",
       deliverables: [
-        "In-person visit to your Perth / WA venue or hotel",
-        "Full review of your till (Lightspeed / Square) and books (Xero / MYOB)",
-        "Calculation of hours lost every week to manual paperwork",
-        "Prioritized list of automations that save money immediately",
-        "WA Government 50% grant application assistance included",
+        "In-person venue walk-through and manager interviews in WA",
+        "Full review of POS till, accounting, and staff roster setups",
+        "Heat-map of weekly admin hours lost to paperwork",
+        "Clear Executive Automation Roadmap with guaranteed ROI",
+        "WA State Grant (LCF) 50% co-funding application assistance",
       ],
-      deliverableTag: "Outcome: Clear Action Plan & Grant Paperwork Ready",
     },
     {
       number: "02",
       title: "Embedded Pipeline Deployment",
-      subtitle: "Done-for-you connection into your daily tools",
       duration: "Weeks 3–6",
-      icon: Wrench,
       summary:
         "Rapid custom integration connecting APIs, webhooks, and prompt agents into your daily tools.",
-      plainSummary:
-        "We connect everything quietly behind the scenes. Your staff don't have to learn new complicated software—invoices simply flow into Xero, and rosters match your busy times automatically.",
       deliverables: [
-        "Direct connection to your existing Lightspeed, Square, and Xero accounts",
-        "Trained on your specific WA meat, seafood, produce, and wine supplier dockets",
-        "Simple 1-tap phone approval buttons set up for your managers",
-        "Tested thoroughly with your past records before going live",
-        "Short, friendly briefing for your floor and kitchen managers",
+        "Quiet connection into your existing Lightspeed, Square, and Xero accounts",
+        "Trained on your specific WA food, liquor, and produce supplier formats",
+        "Simple 1-tap phone review approvals configured for venue managers",
+        "Thorough historic simulation testing before go-live",
+        "Short, friendly manager walk-through—no complex staff training",
       ],
-      deliverableTag: "Outcome: Live Automation With 1-Tap Manager Approvals",
     },
     {
       number: "03",
       title: "Managed Retainer & Slack Connect",
-      subtitle: "Direct access to your dedicated automation partner",
-      duration: "Ongoing Partnership",
-      icon: PhoneCall,
+      duration: "Ongoing",
       summary:
         "Direct, real-time developer access via Slack Connect, continuous model tuning, and proactive uptime monitoring.",
-      plainSummary:
-        "You get my direct phone number and a private Slack channel. If your menu changes, suppliers update their docket formats, or you need adjustments before a big public holiday, I take care of it immediately.",
       deliverables: [
-        "Direct mobile & Slack access to your solo automation engineer",
+        "Direct mobile & Slack Connect channel with your dedicated solo engineer",
         "Fast response during busy weekend and dinner shifts",
         "Continuous adjustments as menus, suppliers, and rosters evolve",
-        "Monthly summary of hours saved and wage dollars protected",
-        "24/7 background monitoring so everything runs seamlessly",
+        "Monthly executive review of saved hours and protected wage dollars",
+        "24/7 background uptime monitoring for zero maintenance drag",
       ],
-      deliverableTag: "Outcome: Total Peace of Mind & Zero Maintenance Work for You",
     },
   ];
 
   return (
-    <section id="process" className="relative py-20 md:py-28 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" className="relative py-20 md:py-28 bg-white border-b border-zinc-100">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-xs font-semibold text-slate-800 mb-3">
-            <span>HOW WE WORK WITH YOU</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            From First Chat to Running Smoothly in 3 Simple Steps.
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
+            Engagement Methodology
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+            The 3-Step Go-To-Market Process.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600">
-            No confusing IT jargon, no unexpected hourly bills. Every step has clear deliverables, fixed pricing, and immediate returns for your venue.
+          <p className="mt-3 text-base text-zinc-600">
+            No open-ended consulting hours or vague milestones. Every step has fixed deliverables, defined security parameters, and quantifiable margin impact.
           </p>
         </div>
 
         {/* 3 Step Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step) => {
-            const Icon = step.icon;
-
-            return (
-              <div
-                key={step.number}
-                className="relative rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 transition-all duration-200 hover:border-slate-400 hover:shadow-md flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-3xl sm:text-4xl font-black text-slate-900 font-sans">
-                      {step.number}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-xs font-semibold text-slate-700">
-                      <Clock className="w-3.5 h-3.5 text-slate-500" />
-                      {step.duration}
-                    </span>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-slate-100 text-slate-900 w-fit mb-4">
-                    <Icon className="w-5 h-5" />
-                  </div>
-
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed mb-5">
-                    {step.plainSummary}
-                  </p>
-
-                  <div className="space-y-2 pt-3 border-t border-slate-100">
-                    <span className="text-xs uppercase text-slate-900 font-bold tracking-wider block mb-2">
-                      What's Included:
-                    </span>
-                    {step.deliverables.map((item, dIdx) => (
-                      <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                        <Check className="w-3.5 h-3.5 text-[#0096A3] flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
+          {steps.map((step) => (
+            <div
+              key={step.number}
+              className="rounded-3xl bg-white border border-zinc-200/90 p-8 shadow-xs hover:border-zinc-300 hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-4xl font-black text-zinc-950 font-sans">
+                    {step.number}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-semibold text-zinc-700">
+                    <Clock className="w-3.5 h-3.5 text-zinc-500" />
+                    {step.duration}
+                  </span>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-slate-700">
-                  {step.deliverableTag}
+                <h3 className="text-xl font-bold text-zinc-950 mb-3">
+                  {step.title}
+                </h3>
+
+                <p className="text-sm text-zinc-600 leading-relaxed mb-6 font-normal">
+                  {step.summary}
+                </p>
+
+                <div className="space-y-2.5 pt-4 border-t border-zinc-100">
+                  <span className="text-xs uppercase text-zinc-900 font-bold tracking-wider block mb-2">
+                    Key Deliverables:
+                  </span>
+                  {step.deliverables.map((item, dIdx) => (
+                    <div key={dIdx} className="flex items-start gap-2 text-xs text-zinc-700">
+                      <Check className="w-3.5 h-3.5 text-[#0096A3] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
-        {/* Action Button */}
-        <div className="mt-12 text-center">
+        {/* CTA */}
+        <div className="mt-14 text-center">
           <button
             type="button"
             onClick={onOpenAuditModal}
-            className="inline-flex items-center gap-2 px-6 py-4 text-sm font-bold rounded-lg bg-[#0F172A] text-white hover:bg-slate-800 transition-all shadow-sm cursor-pointer"
+            className="inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all shadow-sm group"
           >
-            <span>Book a 14-Day Review for Your Venue</span>
-            <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
+            <span>Book Your 14-Day Diagnostic Audit</span>
+            <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
           </button>
         </div>
 
