@@ -83,8 +83,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/mission" className="hover:text-zinc-950 transition-colors text-zinc-950 font-medium">
+                <Link href="/mission" className="hover:text-zinc-950 transition-colors">
                   Our Mission &amp; Vision
+                </Link>
+              </li>
+              <li>
+                <Link href="/founder" className="hover:text-zinc-950 transition-colors text-zinc-950 font-medium">
+                  The Founder (Mallory)
                 </Link>
               </li>
               <li>

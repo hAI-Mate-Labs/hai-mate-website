@@ -26,6 +26,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
     { name: "How It Works", href: "/#philosophy" },
     { name: "14-Day Audit", href: "/#process" },
     { name: "Our Mission", href: "/mission" },
+    { name: "The Founder", href: "/founder" },
     { name: "WA Grants", href: "/#grants" },
   ];
 
