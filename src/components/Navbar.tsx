@@ -73,12 +73,12 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
           </Link>
 
           {/* Center Links - Limova Floating Pill Dock */}
-          <nav className="hidden lg:flex items-center gap-1 bg-zinc-100/80 border border-zinc-200/90 p-1.5 rounded-full shadow-2xs backdrop-blur-xs">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-zinc-100/80 border border-zinc-200/90 p-1.5 rounded-full shadow-2xs backdrop-blur-xs shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-[#0F172A] hover:bg-white hover:shadow-2xs rounded-full transition-all"
+                className="px-3 xl:px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-[#0F172A] hover:bg-white hover:shadow-2xs rounded-full transition-all whitespace-nowrap shrink-0"
               >
                 {link.name}
               </Link>
@@ -86,13 +86,13 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
           </nav>
 
           {/* Right Action */}
-          <div className="hidden md:flex items-center gap-3 shrink-0">
+          <div className="hidden md:flex items-center gap-2.5 xl:gap-3 shrink-0">
             {/* Bilingual Segmented Toggle */}
-            <div className="inline-flex items-center p-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold shadow-2xs">
+            <div className="inline-flex items-center p-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold shadow-2xs shrink-0">
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
-                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   language === "en"
                     ? "bg-white text-[#0F172A] shadow-xs font-bold"
                     : "text-zinc-500 hover:text-[#0F172A]"
@@ -104,7 +104,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => setLanguage("fr")}
-                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   language === "fr"
                     ? "bg-white text-[#0F172A] shadow-xs font-bold"
                     : "text-zinc-500 hover:text-[#0F172A]"
@@ -117,7 +117,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
             <a
               href="tel:0402472262"
-              className="hidden xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-2"
+              className="hidden 2xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-1 whitespace-nowrap shrink-0"
             >
               <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
               <span>0402 472 262</span>
@@ -126,7 +126,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group"
+              className="inline-flex items-center justify-center px-4 xl:px-5 py-2.5 text-xs font-bold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group whitespace-nowrap shrink-0"
             >
               <span>{t.bookAudit}</span>
               <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#00BFCC] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

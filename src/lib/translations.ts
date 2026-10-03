@@ -435,13 +435,13 @@ export const translations = {
   fr: {
     nav: {
       brandSub: "IA Appliquée pour la Restauration",
-      overview: "En Bref",
-      liveDemo: "Démo en Direct",
+      overview: "Aperçu",
+      liveDemo: "Démo Live",
       solutions: "Solutions",
-      grants: "Subventions WA",
+      grants: "Subventions",
       howItWorks: "Méthode",
-      founder: "Le Fondateur",
-      mission: "Notre Mission",
+      founder: "Fondateur",
+      mission: "Mission",
       callMallory: "Appeler Mallory : 0402 472 262",
       bookAudit: "Réserver un Audit",
       bookAuditMobile: "Réserver Audit",
