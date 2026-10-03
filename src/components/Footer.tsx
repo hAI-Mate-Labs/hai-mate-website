@@ -3,8 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function Footer() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const techBadges = ["Lightspeed", "Square", "Xero", "MYOB", "Slack"];
 
   return (
@@ -15,7 +20,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
-              Integrates with your existing tech:
+              {language === "en" ? "Integrates with your existing tech:" : "S'intègre à vos outils existants :"}
             </span>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {techBadges.map((badge) => (
@@ -51,55 +56,59 @@ export default function Footer() {
                   </span>
                 </span>
                 <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-medium -mt-1">
-                  Applied Automation Agency
+                  {t.footer.tagline}
                 </span>
               </div>
             </Link>
 
             <p className="text-sm text-zinc-500 max-w-sm leading-relaxed">
-              Applied artificial intelligence and automated back-office workflows for hospitality groups and growing businesses.
+              {t.footer.disclaimer}
             </p>
 
             <div className="text-xs text-zinc-500 space-y-1 pt-1">
-              <p className="font-medium text-zinc-700">Solo Trader • Registered in Sydney, NSW</p>
-              <p>Operating across Western Australia &amp; Nationally</p>
+              <p className="font-medium text-zinc-700">
+                {language === "en" ? "Solo Trader • Registered in Sydney, NSW" : "Artisan Indépendant (Solo Trader) • Enregistré à Sydney, NSW"}
+              </p>
+              <p>
+                {language === "en" ? "Operating across Western Australia & Nationally" : "Activité en Australie-Occidentale & à l'Échelle Nationale"}
+              </p>
             </div>
           </div>
 
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
-              Navigation
+              {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/#solutions" className="hover:text-[#0F172A] transition-colors">
-                  Solutions
+                  {t.nav.solutions}
                 </Link>
               </li>
               <li>
                 <Link href="/mission" className="hover:text-[#0F172A] transition-colors">
-                  Our Mission &amp; Philosophy
+                  {t.nav.mission}
                 </Link>
               </li>
               <li>
                 <Link href="/founder" className="hover:text-[#0F172A] transition-colors text-[#0F172A] font-medium">
-                  The Founder (Mallory)
+                  {t.nav.founder}
                 </Link>
               </li>
               <li>
                 <Link href="/#how-it-works" className="hover:text-[#0F172A] transition-colors">
-                  How It Works (14-Day Audit)
+                  {t.nav.howItWorks}
                 </Link>
               </li>
               <li>
                 <Link href="/#grants" className="hover:text-[#0F172A] transition-colors">
-                  WA State Grants
+                  {t.nav.grants}
                 </Link>
               </li>
               <li>
                 <Link href="/#intake" className="hover:text-[#0F172A] transition-colors">
-                  Contact &amp; Scoping
+                  {language === "en" ? "Contact & Scoping" : "Contact & Cadrage"}
                 </Link>
               </li>
             </ul>
@@ -108,22 +117,22 @@ export default function Footer() {
           {/* Legal Links */}
           <div className="md:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
-              Legal &amp; Trust
+              {t.footer.legal}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
-                  Security &amp; Architecture
+                  {language === "en" ? "Security & Architecture" : "Sécurité & Architecture"}
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
-                  Privacy Policy (AU &amp; GDPR)
+                  {language === "en" ? "Privacy Policy (AU & GDPR)" : "Politique de Confidentialité (AU & RGPD)"}
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="hover:text-[#0F172A] transition-colors">
-                  Terms of Service (ACL)
+                  {language === "en" ? "Terms of Service (ACL)" : "Conditions Générales (ACL)"}
                 </Link>
               </li>
             </ul>
@@ -134,10 +143,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
           <div>
-            &copy; {new Date().getFullYear()} hAI Mate! Solo Trader. Registered in Sydney, NSW.
+            &copy; {new Date().getFullYear()} hAI Mate! {language === "en" ? "Solo Trader. Registered in Sydney, NSW." : "Solo Trader. Enregistré à Sydney, NSW."}
           </div>
           <div className="flex items-center gap-2">
-            <span>Western Australia &amp; National Engagements</span>
+            <span>{language === "en" ? "Western Australia & National Engagements" : "Interventions en Australie-Occidentale & Nationales"}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
           </div>
         </div>

@@ -13,6 +13,8 @@ import {
   ExternalLink,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface UnifiedProcessTimelineProps {
   onOpenAuditModal: () => void;
@@ -23,54 +25,96 @@ export default function UnifiedProcessTimeline({
   onOpenAuditModal,
   onOpenSampleAuditModal,
 }: UnifiedProcessTimelineProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const steps = [
     {
       step: "01",
-      duration: "Days 1–14",
-      tag: "Free Diagnostic Audit",
-      title: "Zero-Disruption Paperwork & Till Audit",
+      duration: language === "en" ? "Days 1–14" : "Jours 1 à 14",
+      tag: language === "en" ? "Free Diagnostic Audit" : "Audit Diagnostique Offert",
+      title: language === "en" ? "Zero-Disruption Paperwork & Till Audit" : "Audit Paperasse & Caisse Sans Perturbation",
       description:
-        "Conducted during quiet morning prep hours before guests arrive. We observe your paperwork trail and map high-ROI automation targets.",
+        language === "en"
+          ? "Conducted during quiet morning prep hours before guests arrive. We observe your paperwork trail and map high-ROI automation targets."
+          : "Réalisé le matin pendant la mise en place avant l'arrivée des clients. Nous analysons vos flux papier et identifions les gains immédiats.",
       icon: Clock,
-      bullets: [
-        "In-person venue walk-through and manager interviews in WA",
-        "OCR line-item test on 20+ of your historical delivery dockets",
-        "Read-only review of POS till (Lightspeed, Square) & Xero/MYOB codes",
-        "Pre-filled WA Government 50% co-funding grant application package",
-      ],
-      deliverable: "Executive Automation Roadmap with Guaranteed ROI",
+      bullets:
+        language === "en"
+          ? [
+              "In-person venue walk-through and manager interviews in WA",
+              "OCR line-item test on 20+ of your historical delivery dockets",
+              "Read-only review of POS till (Lightspeed, Square) & Xero/MYOB codes",
+              "Pre-filled WA Government 50% co-funding grant application package",
+            ]
+          : [
+              "Visite sur site de votre établissement et entretiens de cadrage en WA",
+              "Test OCR ligne par ligne sur plus de 20 de vos bons de livraison récents",
+              "Revue en lecture seule de votre caisse (Lightspeed, Square) et plan comptable Xero/MYOB",
+              "Dossier de subvention d'État WA (50% de prise en charge) pré-rempli",
+            ],
+      deliverable:
+        language === "en"
+          ? "Executive Automation Roadmap with Guaranteed ROI"
+          : "Rapport de Faisabilité Exécutif & ROI Garanti",
     },
     {
       step: "02",
-      duration: "Weeks 3–5",
-      tag: "Custom Conduit Build",
-      title: "Off-Site Engineering & Supplier Tuning",
+      duration: language === "en" ? "Weeks 3–5" : "Semaines 3 à 5",
+      tag: language === "en" ? "Custom Conduit Build" : "Développement du Conduit Sur-Mesure",
+      title: language === "en" ? "Off-Site Engineering & Supplier Tuning" : "Ingénierie Hors-Site & Paramétrage Fournisseurs",
       description:
-        "Built completely off-site by Mallory. Your live tills and accounting ledgers remain untouched until fully verified.",
+        language === "en"
+          ? "Built completely off-site by Mallory. Your live tills and accounting ledgers remain untouched until fully verified."
+          : "Développé entièrement hors-site par Mallory. Vos caisses et écritures comptables restent intactes jusqu'à vérification complète.",
       icon: Zap,
-      bullets: [
-        "Quiet connection to your existing Xero, Lightspeed, and Deputy accounts",
-        "Trained on your specific WA food, liquor, and produce supplier price agreements",
-        "Zero new apps for staff: simple phone photos and email PDF forwarding",
-        "Rigorous historical simulation testing before live activation",
-      ],
-      deliverable: "Working Private Conduit & Contract Price Guard",
+      bullets:
+        language === "en"
+          ? [
+              "Quiet connection to your existing Xero, Lightspeed, and Deputy accounts",
+              "Trained on your specific WA food, liquor, and produce supplier price agreements",
+              "Zero new apps for staff: simple phone photos and email PDF forwarding",
+              "Rigorous historical simulation testing before live activation",
+            ]
+          : [
+              "Connexion discrète à vos comptes existants Xero, Lightspeed et Deputy",
+              "Paramétré sur vos accords tarifaires spécifiques de marée, viande et boissons",
+              "Zéro nouvelle application : simples photos sur smartphone ou transferts PDF par email",
+              "Tests rigoureux de simulation historique avant activation définitive",
+            ],
+      deliverable:
+        language === "en"
+          ? "Working Private Conduit & Contract Price Guard"
+          : "Passerelle Privée Opérationnelle & Surveillance des Prix Fournisseurs",
     },
     {
       step: "03",
-      duration: "Ongoing",
-      tag: "1-Tap Mobile Control",
-      title: "Human-in-the-Loop Handover & Retainer",
+      duration: language === "en" ? "Ongoing" : "Accompagnement Continu",
+      tag: language === "en" ? "1-Tap Mobile Control" : "Contrôle Mobile en 1 Clic",
+      title: language === "en" ? "Human-in-the-Loop Handover & Retainer" : "Déploiement Contrôlé & Suivi Personnalisé",
       description:
-        "No automated action runs unapproved. Managers review and green-light draft bills or roster trims with 1 tap on their phone.",
+        language === "en"
+          ? "No automated action runs unapproved. Managers review and green-light draft bills or roster trims with 1 tap on their phone."
+          : "Aucune action automatisée ne s'exécute sans accord. Vos managers valident les factures brouillons ou ajustements en 1 clic sur mobile.",
       icon: Smartphone,
-      bullets: [
-        "Direct mobile & WhatsApp line to Mallory during busy dinner shifts",
-        "Draft bills staged in Xero ready for instant 1-tap review",
-        "Continuous adjustments as menus, suppliers, and rosters change",
-        "Monthly executive review of saved admin hours and protected wage dollars",
-      ],
-      deliverable: "Direct Solo Engineer Retainer & Zero Maintenance Drag",
+      bullets:
+        language === "en"
+          ? [
+              "Direct mobile & WhatsApp line to Mallory during busy dinner shifts",
+              "Draft bills staged in Xero ready for instant 1-tap review",
+              "Continuous adjustments as menus, suppliers, and rosters change",
+              "Monthly executive review of saved admin hours and protected wage dollars",
+            ]
+          : [
+              "Ligne mobile & WhatsApp directe avec Mallory disponible pendant vos services",
+              "Brouillons préparés dans Xero prêts pour validation instantanée en 1 clic",
+              "Ajustements continus lors des changements de cartes, fournisseurs et équipes",
+              "Bilan mensuel des heures administratives économisées et des marges protégées",
+            ],
+      deliverable:
+        language === "en"
+          ? "Direct Solo Engineer Retainer & Zero Maintenance Drag"
+          : "Partenariat Direct avec l'Ingénieur & Zéro Charge de Maintenance",
     },
   ];
 
@@ -82,13 +126,15 @@ export default function UnifiedProcessTimeline({
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-800 mb-3 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-            <span>PROVEN 3-STEP METHODOLOGY</span>
+            <span>{language === "en" ? "PROVEN 3-STEP METHODOLOGY" : "MÉTHODOLOGIE ÉPROUVÉE EN 3 ÉTAPES"}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-            From Back-Office Chaos to 1-Tap Control in 14 Days.
+            {language === "en" ? "From Back-Office Chaos to 1-Tap Control in 14 Days." : "Du Chaos Administratif au Contrôle en 1 Clic en 14 Jours."}
           </h2>
           <p className="mt-3 text-base text-zinc-600">
-            Zero disruption to your floor staff or kitchen prep. Everything is mapped and built in the background, tailored specifically to your venue.
+            {language === "en"
+              ? "Zero disruption to your floor staff or kitchen prep. Everything is mapped and built in the background, tailored specifically to your venue."
+              : "Zéro perturbation pour vos équipes de salle ou de cuisine. Tout est analysé et conçu en arrière-plan, sur-mesure pour votre établissement."}
           </p>
         </div>
 
@@ -144,7 +190,7 @@ export default function UnifiedProcessTimeline({
                 {/* Deliverable badge */}
                 <div className="mt-6 pt-4 border-t border-zinc-100 space-y-2">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
-                    Key Deliverable
+                    {language === "en" ? "Key Deliverable" : "Livrable Majeur"}
                   </span>
                   <div className="text-xs font-semibold text-zinc-900 bg-zinc-50 p-2.5 rounded-xl border border-zinc-100">
                     {s.deliverable}
@@ -156,7 +202,7 @@ export default function UnifiedProcessTimeline({
                       className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#0096A3] hover:text-[#00818c] bg-[#00BFCC]/10 hover:bg-[#00BFCC]/20 py-2 rounded-xl transition-colors cursor-pointer"
                     >
                       <FileText className="w-3.5 h-3.5" />
-                      <span>Inspect Sample Report Teardown →</span>
+                      <span>{language === "en" ? "Inspect Sample Report Teardown →" : "Consulter l'Exemple de Rapport Exécutif →"}</span>
                     </button>
                   )}
                 </div>
@@ -174,7 +220,11 @@ export default function UnifiedProcessTimeline({
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-zinc-200 text-zinc-900 text-xs sm:text-sm font-bold hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-xs group cursor-pointer"
             >
               <FileText className="w-4 h-4 text-[#0096A3]" />
-              <span>Inspect Sample 14-Day Audit Teardown Report (Confidential Executive Deliverable)</span>
+              <span>
+                {language === "en"
+                  ? "Inspect Sample 14-Day Audit Teardown Report (Confidential Executive Deliverable)"
+                  : "Consulter l'Exemple de Rapport d'Audit de 14 Jours (Livrable Exécutif Confidentiel)"}
+              </span>
               <ArrowRight className="w-4 h-4 text-[#00BFCC] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -191,18 +241,26 @@ export default function UnifiedProcessTimeline({
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-[#0096A3]" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
-                  The hAI Mate! 100% Value Guarantee &amp; Covenant
+                  {language === "en" ? "The hAI Mate! 100% Value Guarantee & Covenant" : "L'Engagement hAI Mate! : Garantie de Valeur à 100%"}
                 </span>
               </div>
               <p className="text-sm text-zinc-700 leading-relaxed">
-                If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-[#0F172A]">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
+                {language === "en" ? (
+                  <>
+                    If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-[#0F172A]">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
+                  </>
+                ) : (
+                  <>
+                    Si notre audit diagnostique de 14 jours n'identifie pas au minimum <strong>3x sa valeur en heures administratives récupérables ou surfacturations fournisseurs</strong>, vous payez <span className="font-bold text-[#0F172A]">0 $</span>. Zéro engagement. Aucune action automatisée ne s'exécute sans votre validation en 1 clic.
+                  </>
+                )}
               </p>
               <div className="pt-1">
                 <Link
                   href="/mission"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0096A3] hover:text-[#00818c] transition-colors"
                 >
-                  <span>Read our full Operational Philosophy &amp; 2030 Mission</span>
+                  <span>{language === "en" ? "Read our full Operational Philosophy & 2030 Mission" : "Découvrir notre Philosophie Opérationnelle & Mission 2030"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -213,7 +271,7 @@ export default function UnifiedProcessTimeline({
               onClick={onOpenAuditModal}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-900 text-white font-semibold text-xs sm:text-sm hover:bg-zinc-800 transition-all shadow-sm shrink-0 w-full sm:w-auto"
             >
-              <span>Book Your 14-Day Audit</span>
+              <span>{t.process.title ? (language === "en" ? "Book Your 14-Day Audit" : "Réserver Votre Audit de 14 Jours") : ""}</span>
               <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
             </button>
           </div>

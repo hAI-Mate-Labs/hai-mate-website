@@ -13,6 +13,8 @@ import {
   Beer
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface HeroProps {
   onOpenAuditModal: () => void;
@@ -21,6 +23,8 @@ interface HeroProps {
 type VenueType = "bakery" | "restaurant" | "pub";
 
 export default function Hero({ onOpenAuditModal }: HeroProps) {
+  const { language } = useLanguage();
+  const t = translations[language].hero;
   const [selectedVenue, setSelectedVenue] = useState<VenueType>("restaurant");
   const [approvedState, setApprovedState] = useState<{ [key in VenueType]: boolean }>({
     bakery: false,
@@ -50,61 +54,25 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
 
   const venueScenarios = {
     restaurant: {
-      tag: "Bistro & Restaurant",
-      name: "Cottesloe Beachside Bistro",
+      ...t.venues.restaurant,
       icon: Utensils,
-      till: "Lightspeed POS",
-      books: "Xero Connected",
-      target: "33.0% Wage Lock",
-      step1Title: "Step 1: Supplier Invoice Scanned via OCR",
-      step1Tag: "Fresh Seafood",
-      step1Detail:
-        "Seafood supplier docket parsed. 14 line items verified against contracted rate. Staged in Xero as ready-to-approve draft bill.",
-      step2Title: "Step 2: POS Shift Discrepancy Flagged",
-      step2Tag: "Rain Alert",
-      step2Detail:
-        "Saturday rain forecast + quiet lunch detected on Lightspeed POS. Roster auto-adjusted to preserve 33% wage target (-1 casual shift cut, saves $312).",
-      step3Role: "Venue Manager",
-      step3Detail:
-        "No automated roster cut or ledger post executes without explicit operator signature.",
+      till: t.venues.restaurant.till,
+      books: t.venues.restaurant.books,
+      target: t.venues.restaurant.target,
     },
     bakery: {
-      tag: "Bakery & Wholesale Kitchen",
-      name: "Mount Lawley Artisan Bakery",
+      ...t.venues.bakery,
       icon: Croissant,
-      till: "Square Register",
-      books: "Xero Connected",
-      target: "Early Shift Guard",
-      step1Title: "Step 1: Ingredient Invoices & Orders Parsed",
-      step1Tag: "Flour & Dairy",
-      step1Detail:
-        "Butter and flour delivery dockets scanned. Catches unannounced $1.20/kg flour price creep. Wholesale cafe standing orders synced.",
-      step2Title: "Step 2: Early Morning Penalty Shift Guard",
-      step2Tag: "2 AM Shift Check",
-      step2Detail:
-        "Matches 2 AM baker roster against Saturday wholesale pastry orders. Flags 1.5 excess overtime hours before expensive early morning penalty rates kick in.",
-      step3Role: "Head Baker / Owner",
-      step3Detail:
-        "Nothing enters your accounting ledgers or production batch sheets without owner approval.",
+      till: t.venues.bakery.till,
+      books: t.venues.bakery.books,
+      target: t.venues.bakery.target,
     },
     pub: {
-      tag: "Pub & Craft Brewery",
-      name: "Fremantle Taphouse & Brewery",
+      ...t.venues.pub,
       icon: Beer,
-      till: "OrderMate Till",
-      books: "MYOB Connected",
-      target: "Optus Stadium Surge",
-      step1Title: "Step 1: Keg & Food Delivery Dockets Ingested",
-      step1Tag: "Keg Discount Match",
-      step1Detail:
-        "Beer keg delivery matched against tiered volume rebates. Automatically catches $380 missing promotional credit from supplier.",
-      step2Title: "Step 2: Event Crowd & Shift Optimization",
-      step2Tag: "Event Footy Surge",
-      step2Detail:
-        "Detects Saturday afternoon footy crowds at Optus Stadium. Auto-suggests +2 casual bar staff from 17:00 to maximize evening beverage margin.",
-      step3Role: "General Manager",
-      step3Detail:
-        "Manager confirms shift alert directly on their phone with a single tap.",
+      till: t.venues.pub.till,
+      books: t.venues.pub.books,
+      target: t.venues.pub.target,
     },
   };
 
@@ -125,23 +93,23 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-50 border border-zinc-200/80 mb-6 shadow-2xs">
           <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
           <span className="text-xs font-medium text-zinc-800">
-            For Restaurants, Bakeries, Cafes &amp; Pubs Across WA
+            {t.badge}
           </span>
         </div>
 
         {/* H1 Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#0F172A] leading-[1.12] max-w-4xl mx-auto">
-          Opening Up Operational Flow While Keeping{" "}
+          {t.titleStart}{" "}
           <span className="relative inline-block text-[#0F172A]">
-            Human Judgment
+            {language === "en" ? "Human Judgment" : "Le Jugement Humain"}
             <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#00BFCC]/25 -z-10 rounded-sm" />
           </span>{" "}
-          at the Center.
+          {language === "en" ? "at the Center." : "au Centre."}
         </h1>
 
         {/* Subheadline */}
         <p className="mt-6 text-base sm:text-lg md:text-xl text-zinc-600 max-w-3xl mx-auto leading-relaxed font-normal">
-          We design, deploy, and manage embedded agentic workflows for hospitality groups and growing SMEs across WA. Eliminate manual back-office drag, protect your labor margins, and maintain complete operational control.
+          {t.subtitle}
         </p>
 
         {/* CTAs */}
@@ -149,23 +117,25 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
           <button
             type="button"
             onClick={onOpenAuditModal}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-sm group"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 active:scale-[0.99] transition-all shadow-sm group cursor-pointer"
           >
-            <span>Get Your 14-Day AI Readiness Audit</span>
+            <span>{t.bookAuditBtn}</span>
             <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
           </button>
 
           <a
-            href="#solutions"
+            href="#simulator"
             className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-base font-medium rounded-full bg-white text-zinc-700 border border-zinc-200 hover:bg-zinc-50 transition-all shadow-2xs"
           >
-            <span>Explore Applied Solutions</span>
+            <span>{t.testScannerBtn}</span>
           </a>
         </div>
 
         {/* Reassurance note */}
         <p className="mt-4 text-xs text-zinc-500 font-normal">
-          Works with Lightspeed, Square, Xero, MYOB &amp; Deputy. No IT background or software installation needed.
+          {language === "en"
+            ? "Works with Lightspeed, Square, Xero, MYOB & Deputy. No IT background or software installation needed."
+            : "Compatible avec Lightspeed, Square, Xero, MYOB & Deputy. Aucune compétence informatique requise."}
         </p>
 
         {/* Interactive Venue Scenario Switcher */}
@@ -173,43 +143,45 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
           
           {/* Switcher Pills */}
           <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="text-xs text-zinc-400 mr-1 hidden sm:inline">See live example for:</span>
+            <span className="text-xs text-zinc-400 mr-1 hidden sm:inline">
+              {language === "en" ? "See live example for:" : "Voir l'exemple en direct :"}
+            </span>
             <div className="inline-flex p-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setSelectedVenue("restaurant")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   selectedVenue === "restaurant"
-                    ? "bg-white text-zinc-950 shadow-xs"
-                    : "text-zinc-600 hover:text-zinc-950"
+                    ? "bg-white text-[#0F172A] shadow-xs"
+                    : "text-zinc-600 hover:text-[#0F172A]"
                 }`}
               >
                 <Utensils className="w-3.5 h-3.5" />
-                <span>Restaurant / Bistro</span>
+                <span>{language === "en" ? "Restaurant / Bistro" : "Restaurant / Bistrot"}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedVenue("bakery")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   selectedVenue === "bakery"
-                    ? "bg-white text-zinc-950 shadow-xs"
-                    : "text-zinc-600 hover:text-zinc-950"
+                    ? "bg-white text-[#0F172A] shadow-xs"
+                    : "text-zinc-600 hover:text-[#0F172A]"
                 }`}
               >
                 <Croissant className="w-3.5 h-3.5" />
-                <span>Bakery &amp; Kitchen</span>
+                <span>{language === "en" ? "Bakery & Kitchen" : "Boulangerie & Fournil"}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedVenue("pub")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all ${
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
                   selectedVenue === "pub"
-                    ? "bg-white text-zinc-950 shadow-xs"
-                    : "text-zinc-600 hover:text-zinc-950"
+                    ? "bg-white text-[#0F172A] shadow-xs"
+                    : "text-zinc-600 hover:text-[#0F172A]"
                 }`}
               >
                 <Beer className="w-3.5 h-3.5" />
-                <span>Pub &amp; Brewery</span>
+                <span>{language === "en" ? "Pub & Brewery" : "Pub & Brasserie"}</span>
               </button>
             </div>
           </div>
@@ -222,11 +194,11 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
               <div className="flex items-center gap-2.5">
                 <ApertureLogo className="h-5 w-5" />
                 <div>
-                  <span className="text-xs font-bold text-zinc-900 block">
+                  <span className="text-xs font-bold text-[#0F172A] block">
                     {current.name}
                   </span>
                   <span className="text-[11px] text-zinc-500">
-                    Live Operational Assistant
+                    {language === "en" ? "Live Operational Assistant" : "Assistant Opérationnel en Direct"}
                   </span>
                 </div>
               </div>
@@ -245,7 +217,7 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     <div className="p-1 rounded-md bg-emerald-50 text-emerald-700">
                       <FileText className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-xs font-bold text-zinc-900">
+                    <span className="text-xs font-bold text-[#0F172A]">
                       {current.step1Title}
                     </span>
                   </div>
@@ -265,7 +237,7 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     <div className="p-1 rounded-md bg-amber-50 text-amber-700">
                       <AlertTriangle className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-xs font-bold text-zinc-900">
+                    <span className="text-xs font-bold text-[#0F172A]">
                       {current.step2Title}
                     </span>
                   </div>
@@ -285,8 +257,10 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     <div className="p-1 rounded-md bg-[#00BFCC]/15 text-[#0096A3]">
                       <Shield className="w-3.5 h-3.5" />
                     </div>
-                    <span className="text-xs font-bold text-zinc-950">
-                      Step 3: Human Review Required (Center Anchor)
+                    <span className="text-xs font-bold text-[#0F172A]">
+                      {language === "en"
+                        ? "Step 3: Human Review Required (Center Anchor)"
+                        : "Étape 3 : Validation Humaine Requise (Ancrage Central)"}
                     </span>
                   </div>
                 </div>
@@ -303,16 +277,16 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                       isApproved
                         ? "bg-emerald-50 text-emerald-800 border border-emerald-300 shadow-xs"
-                        : "bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm"
+                        : "bg-[#0F172A] text-white hover:bg-zinc-800 shadow-sm"
                     }`}
                   >
                     <CheckCircle2 className="w-4 h-4 text-[#00BFCC]" />
                     <span>
                       {approving
-                        ? "Verifying..."
+                        ? language === "en" ? "Verifying..." : "Vérification..."
                         : isApproved
-                        ? `Approved by ${current.step3Role} (0.4s)`
-                        : `Tap to Approve as ${current.step3Role}`}
+                        ? language === "en" ? `Approved by ${current.step3Role} (0.4s)` : `Validé par ${current.step3Role} (0.4s)`
+                        : language === "en" ? `Tap to Approve as ${current.step3Role}` : `Valider en 1 clic (${current.step3Role})`}
                     </span>
                   </button>
 
@@ -320,10 +294,10 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="text-xs text-zinc-400 hover:text-zinc-700 flex items-center gap-1"
+                      className="text-xs text-zinc-400 hover:text-zinc-700 flex items-center gap-1 cursor-pointer"
                     >
                       <RotateCcw className="w-3 h-3" />
-                      Reset
+                      {language === "en" ? "Reset" : "Réinitialiser"}
                     </button>
                   )}
                 </div>
@@ -334,7 +308,9 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
             {/* Reassurance footer inside preview */}
             <div className="mt-4 pt-3 border-t border-zinc-200/60 flex items-center justify-between text-[11px] text-zinc-500">
               <span>{current.till} • {current.books}</span>
-              <span className="font-medium text-zinc-700">100% Human Controlled</span>
+              <span className="font-medium text-zinc-700">
+                {language === "en" ? "100% Human Controlled" : "100% Contrôlé par l'Humain"}
+              </span>
             </div>
 
           </div>

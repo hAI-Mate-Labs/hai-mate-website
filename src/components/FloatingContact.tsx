@@ -19,6 +19,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface FloatingContactProps {
   onOpenAuditModal: () => void;
@@ -39,6 +41,9 @@ interface Message {
 const MAX_TOKENS = 150;
 
 export default function FloatingContact({ onOpenAuditModal }: FloatingContactProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"ai" | "founder">("ai");
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -48,24 +53,35 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about docket automation, WA state grants, or how our 14-day audit works.",
+      text: t.mallo.welcome,
       tokensUsed: 44,
     },
   ]);
+
+  // Update welcome message if user switches language and hasn't started chatting
+  useEffect(() => {
+    setMessages((prev) => {
+      if (prev.length === 1 && prev[0].id === "welcome") {
+        return [
+          {
+            id: "welcome",
+            sender: "assistant",
+            text: t.mallo.welcome,
+            tokensUsed: 44,
+          },
+        ];
+      }
+      return prev;
+    });
+  }, [language, t.mallo.welcome]);
+
   const [inputValue, setInputValue] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const quickQuestions = [
-    "Do chefs need new apps or iPads?",
-    "How does the 50% WA grant work?",
-    "Will AI pay bills without my approval?",
-    "Which POS & Xero tools work?",
-    "How does docket OCR catch price creep?",
-    "How do I reach Mallory directly?",
-  ];
+  const quickQuestions = t.mallo.quickPrompts;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -103,12 +119,22 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("screen") ||
       q.includes("chef") ||
       q.includes("learn") ||
-      q.includes("training")
+      q.includes("training") ||
+      q.includes("équipe") ||
+      q.includes("equipe") ||
+      q.includes("personnel") ||
+      q.includes("matériel") ||
+      q.includes("materiel") ||
+      q.includes("logiciel") ||
+      q.includes("formation")
     ) {
       return {
-        text: "Zero new software or hardware for your kitchen or floor staff. Chefs simply snap a phone photo of paper dockets or forward supplier PDF emails. Managers receive a simple 1-tap mobile prompt to approve staged bills in seconds. No training manuals or new dashboards required.",
+        text:
+          language === "en"
+            ? "Zero new software or hardware for your kitchen or floor staff. Chefs simply snap a phone photo of paper dockets or forward supplier PDF emails. Managers receive a simple 1-tap mobile prompt to approve staged bills in seconds. No training manuals or new dashboards required."
+            : "Zéro nouveau logiciel ni matériel pour votre cuisine ou équipe de salle. Les chefs prennent simplement une photo sur smartphone ou transfèrent les factures PDF par email. Les gérants valident les brouillons dans Xero en 1 clic sur leur téléphone. Aucune formation ni tableau de bord complexe requis.",
         action: {
-          label: "Book 14-Day Audit",
+          label: language === "en" ? "Book 14-Day Audit" : "Réserver l'Audit (14 Jours)",
           onClick: onOpenAuditModal,
           icon: Calendar,
         },
@@ -123,12 +149,18 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("50%") ||
       q.includes("fund") ||
       q.includes("subsidy") ||
-      q.includes("wa state")
+      q.includes("wa state") ||
+      q.includes("subvention") ||
+      q.includes("aide") ||
+      q.includes("financement")
     ) {
       return {
-        text: "Eligible WA businesses can claim up to 50% matched co-funding ($25,000 for single venues, $50,000 for groups) through the WA Local Capability Fund (LCF) Digital Round. During our 14-day audit, Mallory prepares the complete technical scoping dossier and ROI paperwork ready for submission.",
+        text:
+          language === "en"
+            ? "Eligible WA businesses can claim up to 50% matched co-funding ($25,000 for single venues, $50,000 for groups) through the WA Local Capability Fund (LCF) Digital Round. During our 14-day audit, Mallory prepares the complete technical scoping dossier and ROI paperwork ready for submission."
+            : "Les établissements éligibles du WA peuvent bénéficier d'une prise en charge de 50% (jusqu'à 25 000 $ pour un site unique, 50 000 $ pour un groupe) via le Local Capability Fund (LCF). Lors de notre audit de 14 jours, Mallory prépare l'intégralité du dossier technique et des calculs de ROI prêts pour soumission.",
         action: {
-          label: "Explore WA Grant Calculator",
+          label: language === "en" ? "Explore WA Grant Calculator" : "Calculateur de Subvention WA",
           onClick: () => {
             const el = document.getElementById("grants");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -148,12 +180,23 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("pay") ||
       q.includes("cut") ||
       q.includes("roster") ||
-      q.includes("approval")
+      q.includes("approval") ||
+      q.includes("contrôle") ||
+      q.includes("controle") ||
+      q.includes("humain") ||
+      q.includes("erreur") ||
+      q.includes("payer") ||
+      q.includes("planning") ||
+      q.includes("accord") ||
+      q.includes("validation")
     ) {
       return {
-        text: "Strict Human-in-the-Loop is our ironclad covenant. No automated action executes unapproved. No bills are paid, no ledgers posted in Xero, and no shifts cut without your venue manager's explicit 1-tap mobile sign-off. You maintain 100% control over every single dollar.",
+        text:
+          language === "en"
+            ? "Strict Human-in-the-Loop is our ironclad covenant. No automated action executes unapproved. No bills are paid, no ledgers posted in Xero, and no shifts cut without your venue manager's explicit 1-tap mobile sign-off. You maintain 100% control over every single dollar."
+            : "Le contrôle humain strict (Human-in-the-Loop) est notre engagement absolu. Aucune action automatisée ne s'exécute sans accord préalable. Aucune facture n'est payée, aucune écriture n'est validée dans Xero, et aucun planning n'est modifié sans la validation explicite en 1 clic de votre responsable. Vous conservez 100% du contrôle.",
         action: {
-          label: "Read Operator Covenant",
+          label: language === "en" ? "Read Operator Covenant" : "Lire l'Engagement Valeur",
           onClick: () => {
             const el = document.getElementById("how-it-works");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -176,12 +219,20 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("tanda") ||
       q.includes("sevenrooms") ||
       q.includes("integrate") ||
-      q.includes("system")
+      q.includes("system") ||
+      q.includes("caisse") ||
+      q.includes("logiciel") ||
+      q.includes("compatible") ||
+      q.includes("comptabilité") ||
+      q.includes("compta")
     ) {
       return {
-        text: "We support Lightspeed, Square, OrderMate, Toast, Xero, MYOB, Deputy, Tanda, SevenRooms, OpenTable, and Resy out of the box. We connect quietly via standard APIs and webhooks with zero changes to your physical till hardware.",
+        text:
+          language === "en"
+            ? "We support Lightspeed, Square, OrderMate, Toast, Xero, MYOB, Deputy, Tanda, SevenRooms, OpenTable, and Resy out of the box. We connect quietly via standard APIs and webhooks with zero changes to your physical till hardware."
+            : "Nous prenons en charge nativement Lightspeed, Square, OrderMate, Toast, Xero, MYOB, Deputy, Tanda, SevenRooms, OpenTable et Resy. Nous nous connectons discrètement via des APIs standard et webhooks sans modifier votre matériel de caisse.",
         action: {
-          label: "View All Integrations",
+          label: language === "en" ? "View All Integrations" : "Voir Toutes les Intégrations",
           onClick: () => {
             const el = document.getElementById("integrations");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -200,12 +251,23 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("timeline") ||
       q.includes("process") ||
       q.includes("14-day") ||
-      q.includes("guarantee")
+      q.includes("guarantee") ||
+      q.includes("14 jours") ||
+      q.includes("prix") ||
+      q.includes("coût") ||
+      q.includes("cout") ||
+      q.includes("tarif") ||
+      q.includes("garantie") ||
+      q.includes("délai") ||
+      q.includes("delai")
     ) {
       return {
-        text: "The 14-day diagnostic audit is fixed-fee and runs during quiet morning prep hours with zero disruption to floor service. Backed by our 100% Value Guarantee: If we don't identify at least 3x the audit cost in recoverable admin hours or supplier overcharges, you pay $0.",
+        text:
+          language === "en"
+            ? "The 14-day diagnostic audit is fixed-fee and runs during quiet morning prep hours with zero disruption to floor service. Backed by our 100% Value Guarantee: If we don't identify at least 3x the audit cost in recoverable admin hours or supplier overcharges, you pay $0."
+            : "L'audit diagnostique de 14 jours est à tarif fixe et s'effectue le matin sans aucune perturbation du service. Soutenu par notre Garantie Valeur 100% : Si nous n'identifions pas au minimum 3x le coût de l'audit en heures administratives ou surfacturations récupérables, vous ne payez rien (0 $).",
         action: {
-          label: "Book Your 14-Day Audit",
+          label: language === "en" ? "Book Your 14-Day Audit" : "Réserver Votre Audit (14 Jours)",
           onClick: onOpenAuditModal,
           icon: Calendar,
         },
@@ -222,14 +284,30 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("whatsapp") ||
       q.includes("call") ||
       q.includes("perth") ||
-      q.includes("sydney")
+      q.includes("sydney") ||
+      q.includes("fondateur") ||
+      q.includes("qui") ||
+      q.includes("téléphone") ||
+      q.includes("telephone") ||
+      q.includes("appeler") ||
+      q.includes("joindre")
     ) {
       return {
-        text: "hAI Mate! was founded by Mallory Antomarchi, an independent solo practitioner blending European hospitality standards with Silicon-grade AI pipelines. Based in WA and registered as a Solo Trader in Sydney, NSW. You deal directly with Mallory on 0402 472 262—no junior ticket queues.",
+        text:
+          language === "en"
+            ? "hAI Mate! was founded by Mallory Antomarchi, an independent solo practitioner blending European hospitality standards with Silicon-grade AI pipelines. Based in WA and registered as a Solo Trader in Sydney, NSW. You deal directly with Mallory on 0402 472 262—no junior ticket queues."
+            : "hAI Mate! a été fondé par Mallory Antomarchi, praticien indépendant alliant les standards de l'hospitalité européenne à une ingénierie d'IA rigoureuse. Basé dans le WA et enregistré comme Solo Trader à Sydney, NSW. Vous échangez directement avec Mallory au 0402 472 262—aucun intermédiaire ni ticket d'attente.",
         action: {
-          label: "Chat with Mallory on WhatsApp",
+          label: language === "en" ? "Chat with Mallory on WhatsApp" : "Discuter avec Mallory sur WhatsApp",
           onClick: () => {
-            window.open("https://wa.me/61402472262?text=Hi%20Mallory,%20I%20have%20a%20question%20about%20hAI%20Mate.", "_blank");
+            window.open(
+              `https://wa.me/61402472262?text=${encodeURIComponent(
+                language === "en"
+                  ? "Hi Mallory, I have a question about hAI Mate."
+                  : "Bonjour Mallory, j'ai une question sur hAI Mate."
+              )}`,
+              "_blank"
+            );
           },
           icon: MessageSquare,
         },
@@ -243,12 +321,22 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       q.includes("ocr") ||
       q.includes("price creep") ||
       q.includes("overcharge") ||
-      q.includes("supplier")
+      q.includes("supplier") ||
+      q.includes("bon") ||
+      q.includes("facture") ||
+      q.includes("fournisseur") ||
+      q.includes("surfacturation") ||
+      q.includes("hausse") ||
+      q.includes("marée") ||
+      q.includes("viande")
     ) {
       return {
-        text: "Our OCR pipeline parses crumpled paper receipts in 5 seconds. It cross-checks every billed line item against your contracted supplier price agreement, flags hidden price creep in red, and stages verified draft bills directly into Xero/MYOB.",
+        text:
+          language === "en"
+            ? "Our OCR pipeline parses crumpled paper receipts in 5 seconds. It cross-checks every billed line item against your contracted supplier price agreement, flags hidden price creep in red, and stages verified draft bills directly into Xero/MYOB."
+            : "Notre passerelle OCR extrait les bons de livraison papier même froissés en 5 secondes. Elle croise chaque ligne d'article avec vos tarifs contractuels négociés, signale immédiatement les hausses en rouge, et prépare les écritures directement dans Xero/MYOB.",
         action: {
-          label: "Try Live Docket Simulator",
+          label: language === "en" ? "Try Live Docket Simulator" : "Tester le Simulateur de Bons",
           onClick: () => {
             const el = document.getElementById("simulator");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -261,11 +349,21 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
 
     // Fallback response
     return {
-      text: "I am Mallo, your lightweight operational assistant (strictly capped at 150 tokens for concise answers). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
+      text:
+        language === "en"
+          ? "I am Mallo, your lightweight operational assistant (strictly capped at 150 tokens for concise answers). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp."
+          : "Je suis Mallo, votre assistant opérationnel (strictement limité à 150 jetons par réponse pour aller droit au but). Pour un cadrage technique sur-mesure ou découvrir comment éliminer 4 à 8h par semaine sur vos bons, réservez un audit de 14 jours ou échangez directement avec Mallory sur WhatsApp.",
       action: {
-        label: "WhatsApp Mallory (0402 472 262)",
+        label: "WhatsApp (+61 402 472 262)",
         onClick: () => {
-          window.open("https://wa.me/61402472262?text=Hi%20Mallory,%20I'd%20like%20to%20discuss%20automation%20for%20my%20venue.", "_blank");
+          window.open(
+            `https://wa.me/61402472262?text=${encodeURIComponent(
+              language === "en"
+                ? "Hi Mallory, I'd like to discuss automation for my venue."
+                : "Bonjour Mallory, je souhaite échanger sur l'automatisation de mon établissement."
+            )}`,
+            "_blank"
+          );
         },
         icon: MessageSquare,
       },
@@ -321,7 +419,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       {
         id: "welcome",
         sender: "assistant",
-        text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about docket automation, WA state grants, or how our 14-day audit works.",
+        text: t.mallo.welcome,
         tokensUsed: 44,
       },
     ]);
@@ -351,7 +449,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   }`}
                 >
                   <Bot className="w-3.5 h-3.5 text-[#00BFCC]" />
-                  <span>Mallo (AI)</span>
+                  <span>{language === "en" ? "Mallo (AI)" : "Mallo (IA)"}</span>
                 </button>
                 <button
                   type="button"
@@ -363,7 +461,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   }`}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span>Mallory (Direct)</span>
+                  <span>{language === "en" ? "Mallory (Direct)" : "Mallory (Direct)"}</span>
                 </button>
               </div>
             </div>
@@ -374,7 +472,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   type="button"
                   onClick={handleResetChat}
                   className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
-                  title="Reset assistant chat"
+                  title={t.mallo.reset}
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                 </button>
@@ -382,7 +480,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Close concierge"
               >
                 <X className="w-4 h-4" />
@@ -396,9 +494,9 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
               {/* Mallo Architecture Banner */}
               <div className="px-3.5 py-1.5 bg-zinc-100/80 border-b border-zinc-200 flex items-center justify-between text-[10px] text-zinc-600 font-mono shrink-0">
                 <span className="flex items-center gap-1 text-[#0096A3] font-bold">
-                  <Sparkles className="w-3 h-3" /> Mallo // AI Operational Assistant
+                  <Sparkles className="w-3 h-3" /> {t.mallo.title}
                 </span>
-                <span>Max Tokens: 150</span>
+                <span>{language === "en" ? "Max Tokens: 150" : "Max Jetons : 150"}</span>
               </div>
 
               {/* Chat Messages */}
@@ -437,7 +535,9 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
 
                     {m.sender === "assistant" && m.tokensUsed && (
                       <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1">
-                        Mallo AI • {m.tokensUsed} / {MAX_TOKENS} tokens
+                        {language === "en"
+                          ? `Mallo AI • ${m.tokensUsed} / ${MAX_TOKENS} tokens`
+                          : `Mallo IA • ${m.tokensUsed} / ${MAX_TOKENS} jetons`}
                       </span>
                     )}
                   </div>
@@ -451,7 +551,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                       <span className="inline-block w-1.5 h-3 bg-[#00BFCC] animate-pulse ml-1 -mb-0.5" />
                     </div>
                     <span className="text-[9px] text-[#0096A3] font-mono mt-1 px-1 animate-pulse">
-                      Mallo is typing...
+                      {t.mallo.typing}
                     </span>
                   </div>
                 )}
@@ -490,7 +590,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Ask Mallo about dockets, WA grants, or tills..."
+                    placeholder={t.mallo.placeholder}
                     disabled={isStreaming}
                     className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
                   />
@@ -498,7 +598,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     type="submit"
                     disabled={!inputValue.trim() || isStreaming}
                     className="p-2 rounded-full bg-[#0F172A] text-white disabled:opacity-30 hover:bg-[#1E293B] transition-colors shrink-0 shadow-xs cursor-pointer"
-                    aria-label="Send query to Mallo"
+                    aria-label={language === "en" ? "Send query to Mallo" : "Envoyer la question à Mallo"}
                   >
                     <Send className="w-3.5 h-3.5 text-[#00BFCC]" />
                   </button>
@@ -507,14 +607,14 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                 <div className="mt-1.5 flex items-center justify-between text-[10px] text-zinc-400 px-1">
                   <span className="flex items-center gap-1">
                     <ShieldCheck className="w-3 h-3 text-[#0096A3]" />
-                    Non-Training AI Covenant
+                    {language === "en" ? "Non-Training AI Covenant" : "Engagement Confidentialité IA"}
                   </span>
                   <button
                     type="button"
                     onClick={() => setActiveTab("founder")}
                     className="text-zinc-700 font-semibold hover:underline cursor-pointer"
                   >
-                    Talk with Mallory directly →
+                    {language === "en" ? "Talk with Mallory directly →" : "Échanger directement avec Mallory →"}
                   </button>
                 </div>
               </div>
@@ -533,17 +633,21 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     <h4 className="text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
                       Mallory Antomarchi
                       <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                        Online
+                        {language === "en" ? "Online" : "En Ligne"}
                       </span>
                     </h4>
                     <p className="text-[11px] text-zinc-500">
-                      Founder &amp; Applied AI Engineer • Sydney NSW &amp; WA
+                      {language === "en"
+                        ? "Founder & Applied AI Engineer • Sydney NSW & WA"
+                        : "Fondateur & Ingénieur IA Appliquée • Sydney NSW & WA"}
                     </p>
                   </div>
                 </div>
 
                 <p className="text-xs text-zinc-600 leading-relaxed">
-                  No sales reps or ticket queues. You connect directly with the engineer who walks your floor and builds your pipelines.
+                  {language === "en"
+                    ? "No sales reps or ticket queues. You connect directly with the engineer who walks your floor and builds your pipelines."
+                    : "Aucun commercial ni ticket d'attente. Vous échangez directement avec l'ingénieur qui audite votre établissement et conçoit vos flux."}
                 </p>
 
                 {/* Direct Options */}
@@ -558,20 +662,24 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   >
                     <span className="flex items-center gap-2">
                       <Calendar className="w-3.5 h-3.5 text-[#00BFCC]" />
-                      Book 14-Day Readiness Audit
+                      {t.mallo.bookAuditBtn}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
                   </button>
 
                   <a
-                    href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20a%20venue%20operator%20interested%20in%20applied%20automation%20for%20my%20business."
+                    href={`https://wa.me/61402472262?text=${encodeURIComponent(
+                      language === "en"
+                        ? "Hi Mallory, I'm a venue operator interested in applied automation for my business."
+                        : "Bonjour Mallory, je gère un établissement et je souhaite échanger sur l'automatisation pour mon activité."
+                    )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-semibold hover:bg-emerald-100 transition-colors group"
                   >
                     <span className="flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      Chat on WhatsApp (0402 472 262)
+                      {t.mallo.whatsappBtn}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-emerald-700 group-hover:translate-x-0.5 transition-transform" />
                   </a>
@@ -582,9 +690,11 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   >
                     <span className="flex items-center gap-2">
                       <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
-                      <span>Call 0402 472 262</span>
+                      <span>{t.mallo.callBtn}</span>
                     </span>
-                    <span className="text-[10px] text-zinc-500 font-mono">2:30–4:30 PM Priority</span>
+                    <span className="text-[10px] text-zinc-500 font-mono">
+                      {language === "en" ? "2:30–4:30 PM Priority" : "14h30–16h30 Prioritaire"}
+                    </span>
                   </a>
 
                   <a
@@ -600,20 +710,28 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                       onClick={handleCopyEmail}
                       className="text-[10px] text-zinc-500 hover:text-zinc-900 bg-white px-2 py-0.5 rounded border border-zinc-200 transition-colors cursor-pointer"
                     >
-                      {copiedEmail ? <span className="text-emerald-600 font-bold">Copied</span> : "Copy"}
+                      {copiedEmail ? (
+                        <span className="text-emerald-600 font-bold">{language === "en" ? "Copied" : "Copié"}</span>
+                      ) : (
+                        language === "en" ? "Copy" : "Copier"
+                      )}
                     </button>
                   </a>
                 </div>
               </div>
 
               <div className="pt-3 border-t border-zinc-100 flex items-center justify-between text-[10px] text-zinc-500">
-                <span>Between-Service Priority (2:30–4:30 PM AWST)</span>
+                <span>
+                  {language === "en"
+                    ? "Between-Service Priority (2:30–4:30 PM AWST)"
+                    : "Créneau Entre-Services (14h30–16h30 AWST)"}
+                </span>
                 <button
                   type="button"
                   onClick={() => setActiveTab("ai")}
                   className="text-[#0096A3] font-bold hover:underline cursor-pointer"
                 >
-                  ← Ask Mallo (AI)
+                  {language === "en" ? "← Ask Mallo (AI)" : "← Demander à Mallo (IA)"}
                 </button>
               </div>
             </div>
@@ -634,8 +752,10 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
           <span className="absolute -bottom-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 border border-zinc-950" />
         </div>
         <span className="text-xs font-bold text-white flex items-center gap-1.5">
-          <span>Ask Mallo</span>
-          <span className="hidden sm:inline text-zinc-400 font-normal">• Mallory's AI</span>
+          <span>{language === "en" ? "Ask Mallo" : "Demander à Mallo"}</span>
+          <span className="hidden sm:inline text-zinc-400 font-normal">
+            {language === "en" ? "• Mallory's AI" : "• IA de Mallory"}
+          </span>
         </span>
       </button>
 

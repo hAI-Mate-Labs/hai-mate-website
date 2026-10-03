@@ -2,43 +2,44 @@
 
 import React from "react";
 import { ShieldCheck, Clock, TrendingUp, Cpu, Award } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface MarketRealityProps {
   onOpenAuditModal: () => void;
 }
 
 export default function MarketReality({ onOpenAuditModal }: MarketRealityProps) {
+  const { language } = useLanguage();
+  const t = translations[language].marketReality;
+
   const metrics = [
     {
-      stat: "4–8 Hrs",
-      label: "Saved Every Week",
-      headline: "Weekly Admin Eliminated",
-      description:
-        "Time saved from manual paper dockets, supplier bill entry into Xero, and late-night roster fixes.",
+      stat: t.stat1,
+      label: t.label1,
+      headline: t.headline1,
+      description: t.desc1,
       icon: Clock,
     },
     {
-      stat: "100%",
-      label: "Operator Control",
-      headline: "Strict Human-in-the-Loop",
-      description:
-        "No automated bill payment, roster cut, or ledger post executes without your explicit 1-tap review.",
+      stat: t.stat2,
+      label: t.label2,
+      headline: t.headline2,
+      description: t.desc2,
       icon: ShieldCheck,
     },
     {
-      stat: "0",
-      label: "Hardware Changes",
-      headline: "Plugs Into Your Stack",
-      description:
-        "Zero new apps for chefs or floor staff. Plugs quietly into your existing Lightspeed, Square, and Xero.",
+      stat: t.stat3,
+      label: t.label3,
+      headline: t.headline3,
+      description: t.desc3,
       icon: Cpu,
     },
     {
-      stat: "50%",
-      label: "WA Gov Co-Funded",
-      headline: "Local Capability Grant",
-      description:
-        "Eligible WA venues can claim up to 50% matched funding ($25k–$50k) under the state digital fund.",
+      stat: t.stat4,
+      label: t.label4,
+      headline: t.headline4,
+      description: t.desc4,
       icon: Award,
     },
   ];

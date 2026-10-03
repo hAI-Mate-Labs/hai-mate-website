@@ -27,9 +27,11 @@ import {
   Languages,
 } from "lucide-react";
 
+import { useLanguage } from "@/context/LanguageContext";
+
 export default function FounderClient() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
-  const [lang, setLang] = useState<"en" | "fr">("en");
+  const { language: lang, setLanguage: setLang } = useLanguage();
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 selection:bg-[#00BFCC] selection:text-white font-sans antialiased">

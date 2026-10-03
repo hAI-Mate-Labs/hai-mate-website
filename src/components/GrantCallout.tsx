@@ -3,12 +3,17 @@
 import React, { useState } from "react";
 import { Landmark, ArrowRight, Check, DollarSign, Calculator, Clock, Sparkles } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface GrantCalloutProps {
   onOpenAuditModal: () => void;
 }
 
 export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const [selectedStream, setSelectedStream] = useState<1 | 2>(1);
   const [scopeInvestment, setScopeInvestment] = useState<number>(12000);
 
@@ -45,17 +50,27 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
             <div className="max-w-3xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-800 shadow-2xs">
                 <Landmark className="w-3.5 h-3.5 text-[#0096A3]" />
-                <span>WA STATE GOVERNMENT // LOCAL CAPABILITY FUND (LCF)</span>
+                <span>{language === "en" ? "WA STATE GOVERNMENT // LOCAL CAPABILITY FUND (LCF)" : "GOUVERNEMENT DU WA // LOCAL CAPABILITY FUND (LCF)"}</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-                Co-Fund 50% of Your Automation with WA State Grants.
+                {t.grant.title}
               </h2>
 
               <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
-                Eligible Western Australian SMEs can access up to <strong>50% matched funding</strong> through
-                the Local Capability Fund (LCF) Digital Transformation Round. We handle the complete
-                technical scoping, architecture blueprints, and ROI documentation for your application.
+                {language === "en" ? (
+                  <>
+                    Eligible Western Australian SMEs can access up to <strong>50% matched funding</strong> through
+                    the Local Capability Fund (LCF) Digital Transformation Round. We handle the complete
+                    technical scoping, architecture blueprints, and ROI documentation for your application.
+                  </>
+                ) : (
+                  <>
+                    Les PME éligibles en Australie-Occidentale peuvent bénéficier d'une prise en charge allant jusqu'à <strong>50%</strong> via
+                    le volet transformation numérique du Local Capability Fund (LCF). Nous prenons en charge l'ensemble
+                    du cadrage technique, les plans d'architecture et les dossiers de ROI pour votre candidature.
+                  </>
+                )}
               </p>
             </div>
 
@@ -69,10 +84,12 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-[#0F172A]">
-                      Grant &amp; Out-of-Pocket Payback Calculator
+                      {t.grant.calcTitle}
                     </h3>
                     <p className="text-xs text-zinc-500">
-                      Toggle grant streams and slide to see your exact net investment and payback speed.
+                      {language === "en"
+                        ? "Toggle grant streams and slide to see your exact net investment and payback speed."
+                        : "Changez de volet et ajustez le curseur pour voir votre investissement net et délai de rentabilisation."}
                     </p>
                   </div>
                 </div>
@@ -88,7 +105,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                         : "text-zinc-600 hover:text-[#0F172A]"
                     }`}
                   >
-                    Stream 1: Single Venue (Max $25k)
+                    {language === "en" ? "Stream 1: Single Venue (Max $25k)" : "Volet 1 : Établissement Unique (Max 25k$)"}
                   </button>
                   <button
                     type="button"
@@ -99,7 +116,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                         : "text-zinc-600 hover:text-[#0F172A]"
                     }`}
                   >
-                    Stream 2: Group (Max $50k)
+                    {language === "en" ? "Stream 2: Group (Max $50k)" : "Volet 2 : Groupe Multi-Sites (Max 50k$)"}
                   </button>
                 </div>
               </div>
@@ -108,7 +125,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <label htmlFor="grant-slider" className="text-xs font-bold uppercase tracking-wider text-zinc-700">
-                    Total Estimated Automation Project Scope:
+                    {t.grant.sliderLabel}
                   </label>
                   <span className="text-lg font-black font-mono text-[#0F172A]">
                     ${scopeInvestment.toLocaleString("en-AU")}
@@ -128,7 +145,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
 
                 <div className="flex justify-between text-[11px] font-mono text-zinc-400">
                   <span>Min: ${selectedStream === 1 ? "6,000" : "15,000"}</span>
-                  <span>Typical Venue Project</span>
+                  <span>{language === "en" ? "Typical Venue Project" : "Projet Restauration Type"}</span>
                   <span>Max: ${selectedStream === 1 ? "40,000" : "80,000"}</span>
                 </div>
               </div>
@@ -138,44 +155,56 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 
                 {/* Column 1 */}
                 <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/70 space-y-1">
-                  <span className="text-[11px] font-mono text-zinc-400 uppercase">Total Scope</span>
+                  <span className="text-[11px] font-mono text-zinc-400 uppercase">
+                    {language === "en" ? "Total Scope" : "Budget Total"}
+                  </span>
                   <div className="text-xl font-bold font-mono text-[#0F172A]">
                     ${scopeInvestment.toLocaleString("en-AU")}
                   </div>
-                  <p className="text-[10px] text-zinc-500">Fixed-price custom integration</p>
+                  <p className="text-[10px] text-zinc-500">
+                    {language === "en" ? "Fixed-price custom integration" : "Ingénierie sur-mesure forfaitaire"}
+                  </p>
                 </div>
 
                 {/* Column 2 */}
                 <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 space-y-1">
                   <span className="text-[11px] font-mono text-emerald-700 uppercase font-semibold">
-                    WA Govt 50% Co-Funding
+                    {t.grant.grantRebate}
                   </span>
                   <div className="text-xl font-extrabold font-mono text-emerald-700">
                     -${grantAmount.toLocaleString("en-AU")}
                   </div>
-                  <p className="text-[10px] text-emerald-800">State grant contribution</p>
+                  <p className="text-[10px] text-emerald-800">
+                    {language === "en" ? "State grant contribution" : "Prise en charge subvention d'État"}
+                  </p>
                 </div>
 
                 {/* Column 3 */}
                 <div className="p-4 rounded-2xl bg-white border-2 border-[#0F172A] shadow-2xs space-y-1">
                   <span className="text-[11px] font-mono text-zinc-500 uppercase font-semibold">
-                    Your Net Out-of-Pocket
+                    {t.grant.netCost}
                   </span>
                   <div className="text-xl font-black font-mono text-[#0F172A]">
                     ${netOutOfPocket.toLocaleString("en-AU")}
                   </div>
-                  <p className="text-[10px] text-zinc-600">Actual investment after grant</p>
+                  <p className="text-[10px] text-zinc-600">
+                    {language === "en" ? "Actual investment after grant" : "Investissement net après subvention"}
+                  </p>
                 </div>
 
                 {/* Column 4 - Payback Speed */}
                 <div className="p-4 rounded-2xl bg-[#00BFCC]/10 border border-[#00BFCC]/30 space-y-1">
                   <span className="text-[11px] font-mono text-[#0096A3] uppercase font-bold flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" /> Estimated Payback
+                    <Sparkles className="w-3 h-3" /> {t.grant.paybackPeriod}
                   </span>
                   <div className="text-xl font-black font-mono text-[#0F172A]">
-                    ~{paybackWeeks} <span className="text-sm font-normal text-zinc-600">weeks</span>
+                    ~{paybackWeeks} <span className="text-sm font-normal text-zinc-600">{t.grant.weeks}</span>
                   </div>
-                  <p className="text-[10px] text-zinc-600">Reclaims ~${annualSavings.toLocaleString("en-AU")}/yr</p>
+                  <p className="text-[10px] text-zinc-600">
+                    {language === "en"
+                      ? `Reclaims ~$${annualSavings.toLocaleString("en-AU")}/yr`
+                      : `Économise ~$${annualSavings.toLocaleString("en-AU")}/an`}
+                  </p>
                 </div>
 
               </div>
@@ -184,13 +213,13 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
               <div className="pt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-600 font-medium">
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-600" /> Operating in WA
+                    <Check className="w-3.5 h-3.5 text-emerald-600" /> {language === "en" ? "Operating in WA" : "Activité en WA"}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-600" /> Active ABN
+                    <Check className="w-3.5 h-3.5 text-emerald-600" /> {language === "en" ? "Active ABN" : "Numéro d'entreprise actif"}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-600" /> &lt;200 Employees
+                    <Check className="w-3.5 h-3.5 text-emerald-600" /> {language === "en" ? "<200 Employees" : "< 200 Salariés"}
                   </span>
                 </div>
 
@@ -199,7 +228,7 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   onClick={onOpenAuditModal}
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs sm:text-sm hover:bg-[#1E293B] transition-all shadow-xs cursor-pointer"
                 >
-                  <span>Apply With 50% WA Grant Support</span>
+                  <span>{t.grant.cta}</span>
                   <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
                 </button>
               </div>

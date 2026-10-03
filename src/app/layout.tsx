@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "hAI Mate! | Applied AI & Automation Agency",
@@ -70,7 +71,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-white text-[#0F172A] antialiased selection:bg-[#00BFCC] selection:text-white">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

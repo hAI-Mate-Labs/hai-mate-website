@@ -4,12 +4,17 @@ import React from "react";
 import Link from "next/link";
 import { MessageSquare, Phone, ArrowRight, ShieldCheck, Award } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface CompactFounderCardProps {
   onOpenAuditModal: () => void;
 }
 
 export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderCardProps) {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="founder" className="relative py-20 md:py-24 bg-zinc-50/50 border-b border-zinc-100">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,10 +32,10 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-800">
                 <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-                <span>🇦🇺 🇫🇷 DIRECT PRACTITIONER PARTNERSHIP</span>
+                <span>🇦🇺 🇫🇷 {t.founderCard.badge.toUpperCase()}</span>
               </div>
               <span className="text-xs text-zinc-500 font-medium">
-                Solo Trader Registered in Sydney, NSW • Serving WA Venues
+                {t.founderCard.location}
               </span>
             </div>
 
@@ -39,18 +44,18 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
               
               <div className="lg:col-span-8 space-y-4">
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight leading-snug">
-                  You Deal Directly With the Founder. No Account Managers. No Ticket Queues.
+                  {t.founderCard.title}
                 </h2>
                 
                 <p className="text-base text-zinc-600 leading-relaxed font-normal">
-                  In hospitality, every minute between lunch and dinner service counts. You don’t need an agency pitching senior directors only to hand your venue over to junior coordinators or overseas support desks.
+                  {t.founderCard.p1}
                 </p>
 
                 <p className="text-[#0F172A] font-medium border-l-2 border-[#00BFCC] pl-4 italic text-sm sm:text-base leading-relaxed">
-                  “When we start your 14-day audit, I am the one walking your venue floor, reviewing your dockets, and tuning your workflows. You get battle-tested automation backed by my personal phone number whenever you need adjustments.”
+                  {t.founderCard.quote}
                 </p>
                 <div className="text-xs text-zinc-500 font-semibold">
-                  — Mallory Antomarchi, Founder &amp; Applied AI Engineer
+                  {t.founderCard.signature}
                 </div>
               </div>
 
@@ -61,7 +66,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <Phone className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-[#0F172A] block">Direct Mobile &amp; WhatsApp</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">{t.founderCard.phoneLabel}</span>
                     <a
                       href="tel:0402472262"
                       className="text-xs font-semibold text-[#0096A3] hover:underline"
@@ -76,9 +81,9 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <ShieldCheck className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-[#0F172A] block">100% Human Sign-Off</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">{t.founderCard.humanSignoff}</span>
                     <p className="text-[11px] text-zinc-500">
-                      No automated ledger post or roster cut happens unapproved.
+                      {t.founderCard.humanSignoffDesc}
                     </p>
                   </div>
                 </div>
@@ -88,9 +93,9 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     <Award className="w-4 h-4 text-[#0096A3]" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-[#0F172A] block">50% WA Grant Support</span>
+                    <span className="text-xs font-bold text-[#0F172A] block">{t.founderCard.grantSupport}</span>
                     <p className="text-[11px] text-zinc-500">
-                      Eligible for WA Local Capability Fund co-funding.
+                      {t.founderCard.grantSupportDesc}
                     </p>
                   </div>
                 </div>
@@ -105,20 +110,24 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                   href="/founder"
                   className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#0F172A] hover:text-[#0096A3] transition-colors group"
                 >
-                  <span>Read Mallory’s Vision &amp; Story (🇦🇺 EN | 🇫🇷 FR)</span>
+                  <span>{language === "en" ? "Read Mallory’s Vision & Story (🇦🇺 EN | 🇫🇷 FR)" : "Découvrir la Vision & le Parcours de Mallory (🇦🇺 EN | 🇫🇷 FR)"}</span>
                   <ArrowRight className="w-4 h-4 text-[#00BFCC] group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
 
               <div className="flex items-center gap-3">
                 <a
-                  href="https://wa.me/61402472262?text=Hi%20Mallory,%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
+                  href={`https://wa.me/61402472262?text=${encodeURIComponent(
+                    language === "en"
+                      ? "Hi Mallory, I run a venue in WA and want to chat about automating dockets and admin."
+                      : "Bonjour Mallory, je gère un établissement dans le WA et souhaite échanger sur l'automatisation des bons et de l'administratif."
+                  )}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold hover:bg-emerald-100 transition-colors"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Chat on WhatsApp</span>
+                  <span>{language === "en" ? "Chat on WhatsApp" : "Discuter sur WhatsApp"}</span>
                 </a>
 
                 <button
@@ -126,7 +135,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                   onClick={onOpenAuditModal}
                   className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-zinc-900 text-white font-semibold text-xs hover:bg-zinc-800 transition-all shadow-xs"
                 >
-                  <span>Book 14-Day Audit</span>
+                  <span>{language === "en" ? "Book 14-Day Audit" : "Réserver l'Audit 14 Jours"}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />
                 </button>
               </div>

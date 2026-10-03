@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { X, CheckCircle2, ArrowRight } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface AuditModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface AuditModalProps {
 }
 
 export default function AuditModal({ isOpen, onClose, initialSolution }: AuditModalProps) {
+  const { t, language } = useLanguage();
+
   const [formData, setFormData] = useState({
     businessName: "",
     contactName: "",
@@ -63,6 +66,11 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     onClose();
   };
 
+  const whatsappHref =
+    language === "fr"
+      ? "https://wa.me/61402472262?text=Bonjour%20Mallory,%20je%20souhaite%20r%C3%A9server%20un%20audit%20diagnostique%20de%2014%20jours%20pour%20mon%20%C3%A9tablissement."
+      : "https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20a%2014-day%20readiness%20audit%20for%20my%20venue.";
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
@@ -79,18 +87,18 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
           <div className="flex items-center gap-2.5">
             <ApertureLogo className="h-6 w-6" />
             <div>
-              <span className="text-sm font-bold text-zinc-950 block">
-                hAI Mate! • 14-Day Readiness Audit
+              <span className="text-sm font-bold text-[#0F172A] block">
+                {t.auditModal.headerTitle}
               </span>
               <span className="text-xs text-zinc-500">
-                On-site in Perth &amp; Western Australia
+                {t.auditModal.headerSubtitle}
               </span>
             </div>
           </div>
           <button
             type="button"
             onClick={handleResetAndClose}
-            className="p-1 rounded-full text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors"
+            className="p-1 rounded-full text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -103,41 +111,51 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
                 <CheckCircle2 className="w-7 h-7" />
               </div>
-              <h3 className="text-2xl font-bold text-zinc-950">
-                Audit #{auditId} Reserved
+              <h3 className="text-2xl font-bold text-[#0F172A]">
+                {t.auditModal.reservedTitle.replace("{auditId}", auditId)}
               </h3>
               <p className="text-sm text-zinc-600 max-w-sm mx-auto leading-relaxed">
-                Thank you, <span className="text-zinc-950 font-bold">{formData.contactName}</span>. Your venue diagnostic walk-through for{" "}
-                <span className="text-zinc-950 font-bold">{formData.businessName}</span> has been assigned. I will personally review your setup and contact you at{" "}
-                <span className="font-semibold text-zinc-950">{formData.email}</span> within 4 hours.
+                {language === "fr" ? (
+                  <>
+                    Merci, <span className="text-[#0F172A] font-bold">{formData.contactName}</span>. Le diagnostic opérationnel pour{" "}
+                    <span className="text-[#0F172A] font-bold">{formData.businessName}</span> a été pris en compte. J&apos;examinerai personnellement votre configuration et vous contacterai à{" "}
+                    <span className="font-semibold text-[#0F172A]">{formData.email}</span> sous 4 heures.
+                  </>
+                ) : (
+                  <>
+                    Thank you, <span className="text-[#0F172A] font-bold">{formData.contactName}</span>. Your venue diagnostic walk-through for{" "}
+                    <span className="text-[#0F172A] font-bold">{formData.businessName}</span> has been assigned. I will personally review your setup and contact you at{" "}
+                    <span className="font-semibold text-[#0F172A]">{formData.email}</span> within 4 hours.
+                  </>
+                )}
               </p>
 
               <div className="pt-3">
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="px-6 py-2.5 rounded-full bg-zinc-900 text-white font-semibold text-sm hover:bg-zinc-800"
+                  className="px-6 py-2.5 rounded-full bg-[#0F172A] text-white font-semibold text-sm hover:bg-zinc-800 cursor-pointer transition-colors"
                 >
-                  Close &amp; Return
+                  {t.auditModal.closeReturn}
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <p className="text-xs text-zinc-500 border-b border-zinc-100 pb-3">
-                Fixed-fee on-site review mapping manual bottlenecks, existing software stacks (Lightspeed, Square, Xero), and high-ROI automation targets.
+                {t.auditModal.description}
               </p>
 
               {/* Venue Name & Your Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
                   <label className="block text-xs font-bold text-zinc-700">
-                    Business / Venue <span className="text-[#0096A3]">*</span>
+                    {t.auditModal.businessLabel} <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Cottesloe Bistro"
+                    placeholder={t.auditModal.businessPlaceholder}
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
@@ -146,12 +164,12 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
 
                 <div className="space-y-1">
                   <label className="block text-xs font-bold text-zinc-700">
-                    Your Name <span className="text-[#0096A3]">*</span>
+                    {t.auditModal.nameLabel} <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Sarah Jenkins"
+                    placeholder={t.auditModal.namePlaceholder}
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
@@ -163,12 +181,12 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
                   <label className="block text-xs font-bold text-zinc-700">
-                    Email Address <span className="text-[#0096A3]">*</span>
+                    {t.auditModal.emailLabel} <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     type="email"
                     required
-                    placeholder="sarah@venue.com.au"
+                    placeholder={t.auditModal.emailPlaceholder}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
@@ -177,11 +195,11 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
 
                 <div className="space-y-1">
                   <label className="block text-xs font-bold text-zinc-700">
-                    Mobile Number
+                    {t.auditModal.phoneLabel}
                   </label>
                   <input
                     type="tel"
-                    placeholder="0412 345 678"
+                    placeholder={t.auditModal.phonePlaceholder}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 text-sm shadow-2xs"
@@ -192,7 +210,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               {/* Software Stack */}
               <div className="space-y-1.5">
                 <label className="block text-xs font-bold text-zinc-700">
-                  Current Software Stack
+                  {t.auditModal.stackLabel}
                 </label>
                 <div className="flex flex-wrap gap-1.5">
                   {techOptions.map((tech) => {
@@ -202,9 +220,9 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                         key={tech}
                         type="button"
                         onClick={() => handleToggleTech(tech)}
-                        className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                        className={`px-3 py-1 rounded-full text-xs font-medium transition-colors cursor-pointer ${
                           isSelected
-                            ? "bg-zinc-900 text-white font-bold"
+                            ? "bg-[#0F172A] text-white font-bold"
                             : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
                         }`}
                       >
@@ -218,35 +236,35 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               {/* WA Grant Checkbox */}
               <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
                 <div className="space-y-0.5 pr-2">
-                  <span className="text-xs font-bold text-zinc-900 block">
-                    Include WA Government Grant Scoping (50% Off)
+                  <span className="text-xs font-bold text-[#0F172A] block">
+                    {t.auditModal.grantLabel}
                   </span>
                   <span className="text-[11px] text-zinc-500 block">
-                    Check if you want technical scoping documents prepared for the grant round.
+                    {t.auditModal.grantSub}
                   </span>
                 </div>
                 <input
                   type="checkbox"
                   checked={formData.grantInterest}
                   onChange={(e) => setFormData({ ...formData, grantInterest: e.target.checked })}
-                  className="w-4 h-4 accent-zinc-900 rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#0F172A] rounded cursor-pointer"
                 />
               </div>
 
               {/* Between-Service Call Window */}
               <div className="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-between">
                 <div className="space-y-0.5 pr-2">
-                  <span className="text-xs font-bold text-zinc-900 block">
-                    Contact Me Between-Service (2:30 PM – 4:30 PM)
+                  <span className="text-xs font-bold text-[#0F172A] block">
+                    {t.auditModal.serviceWindowLabel}
                   </span>
                   <span className="text-[11px] text-zinc-500 block">
-                    We reach out during your quiet afternoon kitchen break so floor service is never interrupted.
+                    {t.auditModal.serviceWindowSub}
                   </span>
                 </div>
                 <input
                   type="checkbox"
                   defaultChecked
-                  className="w-4 h-4 accent-zinc-900 rounded cursor-pointer"
+                  className="w-4 h-4 accent-[#0F172A] rounded cursor-pointer"
                 />
               </div>
 
@@ -254,13 +272,13 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-zinc-900 text-white font-semibold text-sm hover:bg-zinc-800 transition-all cursor-pointer shadow-xs"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-[#0F172A] text-white font-semibold text-sm hover:bg-zinc-800 transition-all cursor-pointer shadow-xs"
               >
                 {isSubmitting ? (
-                  <span>Reserving Audit Docket...</span>
+                  <span>{t.auditModal.submitting}</span>
                 ) : (
                   <>
-                    <span>Confirm 14-Day Diagnostic Audit Intake</span>
+                    <span>{t.auditModal.submitBtn}</span>
                     <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
                   </>
                 )}
@@ -269,18 +287,18 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
               {/* Direct WhatsApp Alternative */}
               <div className="pt-1 text-center">
                 <a
-                  href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20a%2014-day%20readiness%20audit%20for%20my%20venue."
+                  href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 hover:text-emerald-800 transition-colors"
                 >
                   <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span>Prefer instant chat? WhatsApp Mallory directly</span>
+                  <span>{t.auditModal.whatsappDirect}</span>
                 </a>
               </div>
 
               <div className="text-[11px] text-zinc-400 text-center">
-                100% confidential. No spam, no obligation.
+                {t.auditModal.confidential}
               </div>
             </form>
           )}

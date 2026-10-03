@@ -2,8 +2,13 @@
 
 import React, { useState } from "react";
 import { CheckCircle2, MessageSquare, Copy, Check, Shield, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function IntakeSection() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,13 +43,13 @@ export default function IntakeSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
-            Get Started
+            {t.intake.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-            Ready to Cut Away Operational Friction?
+            {t.intake.title}
           </h2>
           <p className="mt-3 text-base text-zinc-600">
-            Schedule your on-site 14-day diagnostic audit. We’ll map your workflows, inspect your POS/Xero pipelines, and calculate your exact ROI.
+            {t.intake.subtitle}
           </p>
         </div>
 
@@ -57,18 +62,26 @@ export default function IntakeSection() {
                 <CheckCircle2 className="w-7 h-7" />
               </div>
               <h3 className="text-2xl font-bold text-[#0F172A]">
-                Audit Request Logged
+                {t.intake.successTitle}
               </h3>
               <p className="text-sm text-zinc-600 max-w-md mx-auto leading-relaxed">
-                Thank you, <span className="font-semibold text-[#0F172A]">{formData.name}</span>. I have received your request. I will personally review your operational bottleneck and reach out to <span className="font-semibold text-[#0F172A]">{formData.email}</span> within 4 hours to coordinate our walk-through.
+                {language === "en" ? (
+                  <>
+                    Thank you, <span className="font-semibold text-[#0F172A]">{formData.name}</span>. I have received your request. I will personally review your operational bottleneck and reach out to <span className="font-semibold text-[#0F172A]">{formData.email}</span> within 4 hours to coordinate our walk-through.
+                  </>
+                ) : (
+                  <>
+                    Merci, <span className="font-semibold text-[#0F172A]">{formData.name}</span>. Votre demande a bien été reçue. J'examinerai personnellement votre point de friction opérationnel et recontacterai <span className="font-semibold text-[#0F172A]">{formData.email}</span> sous 4 heures pour organiser notre visite.
+                  </>
+                )}
               </p>
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="px-5 py-2 rounded-full bg-white text-xs font-semibold text-zinc-800 border border-zinc-200 hover:bg-zinc-100"
+                  className="px-5 py-2 rounded-full bg-white text-xs font-semibold text-zinc-800 border border-zinc-200 hover:bg-zinc-100 cursor-pointer"
                 >
-                  Submit Another Inquiry
+                  {t.intake.submitAnother}
                 </button>
               </div>
             </div>
@@ -79,13 +92,13 @@ export default function IntakeSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-zinc-700">
-                    Your Name <span className="text-[#0096A3]">*</span>
+                    {t.intake.formName} <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="name"
                     type="text"
                     required
-                    placeholder="Liam Henderson"
+                    placeholder={language === "en" ? "Liam Henderson" : "Julien Mercier"}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
@@ -94,13 +107,13 @@ export default function IntakeSection() {
 
                 <div className="space-y-1.5">
                   <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-zinc-700">
-                    Work Email <span className="text-[#0096A3]">*</span>
+                    {t.intake.formEmail} <span className="text-[#0096A3]">*</span>
                   </label>
                   <input
                     id="email"
                     type="email"
                     required
-                    placeholder="liam@venue.com.au"
+                    placeholder={language === "en" ? "liam@venue.com.au" : "julien@restaurant.com.au"}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
@@ -111,26 +124,26 @@ export default function IntakeSection() {
               {/* Business Type */}
               <div className="space-y-1.5">
                 <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700">
-                  Business Type <span className="text-[#0096A3]">*</span>
+                  {language === "en" ? "Business Type" : "Secteur d'Activité"} <span className="text-[#0096A3]">*</span>
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {[
-                    "Hospitality",
-                    "Professional Services",
-                    "Trade/Logistics",
-                    "Other",
-                  ].map((type) => (
+                    { id: "Hospitality", label: language === "en" ? "Hospitality" : "Restauration" },
+                    { id: "Professional Services", label: language === "en" ? "Professional Services" : "Services & Conseil" },
+                    { id: "Trade/Logistics", label: language === "en" ? "Trade/Logistics" : "Commerce / Fret" },
+                    { id: "Other", label: language === "en" ? "Other" : "Autre" },
+                  ].map((item) => (
                     <button
-                      key={type}
+                      key={item.id}
                       type="button"
-                      onClick={() => setFormData({ ...formData, businessType: type })}
-                      className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all text-center ${
-                        formData.businessType === type
+                      onClick={() => setFormData({ ...formData, businessType: item.id })}
+                      className={`px-3 py-2 rounded-xl text-xs font-semibold transition-all text-center cursor-pointer ${
+                        formData.businessType === item.id
                           ? "bg-zinc-900 text-white font-bold"
                           : "bg-white text-zinc-700 border border-zinc-200 hover:border-zinc-300"
                       }`}
                     >
-                      {type}
+                      {item.label}
                     </button>
                   ))}
                 </div>
@@ -139,12 +152,16 @@ export default function IntakeSection() {
               {/* Current Weekly Admin Bottleneck */}
               <div className="space-y-1.5">
                 <label htmlFor="bottleneck" className="block text-xs font-bold uppercase tracking-wider text-zinc-700">
-                  Current Weekly Admin Bottleneck
+                  {t.intake.formBottleneck}
                 </label>
                 <textarea
                   id="bottleneck"
                   rows={3}
-                  placeholder="e.g. Entering supplier invoices into Xero manually every Monday, or managing staff rosters when the weather turns bad."
+                  placeholder={
+                    language === "en"
+                      ? "e.g. Entering supplier invoices into Xero manually every Monday, or managing staff rosters when the weather turns bad."
+                      : "Ex. Saisie manuelle des factures fournisseurs dans Xero le lundi matin, ou ajustement des plannings et heures majorées en cas d'intempéries."
+                  }
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
                   className="w-full px-4 py-3 rounded-2xl bg-white border border-zinc-200 text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-[#0F172A] text-sm shadow-2xs"
@@ -158,17 +175,17 @@ export default function IntakeSection() {
                 className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-[#0F172A] text-white font-semibold text-sm hover:bg-[#1E293B] transition-all cursor-pointer shadow-sm"
               >
                 {isSubmitting ? (
-                  <span>Submitting...</span>
+                  <span>{t.intake.submitting}</span>
                 ) : (
                   <>
-                    <span>Request 14-Day Diagnostic Audit</span>
+                    <span>{t.intake.submitBtn}</span>
                     <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
                   </>
                 )}
               </button>
 
               <div className="text-center text-xs text-zinc-400 pt-1">
-                Zero spam. Strict non-disclosure.
+                {language === "en" ? "Zero spam. Strict non-disclosure." : "Zéro spam. Confidentialité et secret d'affaires garantis."}
               </div>
             </form>
           )}
@@ -178,7 +195,7 @@ export default function IntakeSection() {
             <div className="flex items-center gap-2 text-center sm:text-left">
               <MessageSquare className="w-4 h-4 text-zinc-400 flex-shrink-0" />
               <span>
-                Prefer direct access? Reach us via Slack Connect or email{" "}
+                {language === "en" ? "Prefer direct access? Reach us via Slack Connect or email " : "Vous préférez un accès direct ? Écrivez-nous par Slack Connect ou email "}
                 <a
                   href="mailto:founder@haimate.com.au"
                   className="text-zinc-900 font-bold underline hover:text-[#0096A3]"
@@ -190,7 +207,11 @@ export default function IntakeSection() {
 
             <div className="flex flex-wrap items-center gap-2">
               <a
-                href="https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20applied%20automation%20for%20my%20venue."
+                href={`https://wa.me/61402472262?text=${encodeURIComponent(
+                  language === "en"
+                    ? "Hi Mallory, I'm interested in applied automation for my venue."
+                    : "Bonjour Mallory, je souhaite échanger sur l'automatisation appliquée pour mon établissement."
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 hover:bg-emerald-100 transition-colors shadow-2xs text-xs font-semibold"
@@ -207,12 +228,12 @@ export default function IntakeSection() {
                 {copiedEmail ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    <span className="text-emerald-700 font-medium">Copied</span>
+                    <span className="text-emerald-700 font-medium">{language === "en" ? "Copied" : "Copié"}</span>
                   </>
                 ) : (
                   <>
                     <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Email</span>
+                    <span>{language === "en" ? "Copy Email" : "Copier l'Email"}</span>
                   </>
                 )}
               </button>

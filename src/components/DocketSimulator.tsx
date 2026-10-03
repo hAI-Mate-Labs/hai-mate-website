@@ -21,6 +21,8 @@ import {
   FileUp,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface DocketSimulatorProps {
   onOpenAuditModal: () => void;
@@ -49,6 +51,8 @@ interface DocketData {
 }
 
 export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorProps) {
+  const { language } = useLanguage();
+  const t = translations[language].docketSimulator;
   const [activeDocket, setActiveDocket] = useState<DocketType>("seafood");
   const [scanState, setScanState] = useState<"idle" | "scanning" | "scanned" | "staged">("idle");
   const [customFile, setCustomFile] = useState<{
@@ -315,15 +319,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-50 border border-zinc-200/80 mb-3 shadow-2xs">
             <Scan className="w-3.5 h-3.5 text-[#0096A3]" />
             <span className="text-xs font-semibold text-zinc-800 tracking-wide uppercase">
-              Live Interactive Simulator
+              {t.badge}
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-            See the 5-Second Docket Audit in Action.
+            {t.title}
           </h2>
           <p className="mt-3 text-base sm:text-lg text-zinc-600">
-            Suppliers bump contracted prices by $1–$3/unit unannounced. Watch how hAI Mate! instantly
-            reads paper delivery dockets, catches overcharges, and stages drafts in Xero.
+            {t.subtitle}
           </p>
         </div>
 
@@ -339,7 +342,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }`}
           >
             <Utensils className="w-3.5 h-3.5" />
-            <span>Seafood Bistro Docket</span>
+            <span>{t.tabSeafood}</span>
           </button>
 
           <button
@@ -352,7 +355,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }`}
           >
             <Croissant className="w-3.5 h-3.5" />
-            <span>Bakery Flour &amp; Butter Docket</span>
+            <span>{t.tabDairy}</span>
           </button>
 
           <button
@@ -365,7 +368,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }`}
           >
             <Beer className="w-3.5 h-3.5" />
-            <span>Pub Prime Meat Docket</span>
+            <span>{t.tabBeef}</span>
           </button>
 
           {/* Upload Tab */}
@@ -385,7 +388,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }`}
           >
             <Camera className="w-3.5 h-3.5 text-[#0096A3]" />
-            <span>Upload / Snap Your Docket</span>
+            <span>{t.tabCustom}</span>
             {customFile && (
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             )}
@@ -400,34 +403,34 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             </div>
             <div className="space-y-1">
               <h3 className="text-lg font-bold text-[#0F172A]">
-                Upload Any Receipt or Delivery Docket
+                {t.customUploadHeading}
               </h3>
               <p className="text-xs text-zinc-500 max-w-md mx-auto">
-                Snap a photo from your phone or choose an image file (JPG, PNG, PDF). We will simulate live OCR line extraction and price creep check.
+                {t.customUploadSub}
               </p>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-[#1E293B] transition-colors shadow-xs"
+                className="px-5 py-2.5 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-[#1E293B] transition-colors shadow-xs cursor-pointer"
               >
-                Browse File (JPG / PDF)
+                {t.chooseFileBtn}
               </button>
               <button
                 type="button"
                 onClick={() => cameraInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-white border border-zinc-200 text-zinc-900 text-xs font-bold hover:bg-zinc-100 transition-colors flex items-center gap-1.5"
+                className="px-5 py-2.5 rounded-full bg-white border border-zinc-200 text-zinc-900 text-xs font-bold hover:bg-zinc-100 transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Camera className="w-3.5 h-3.5 text-[#0096A3]" />
-                <span>Snap Photo with Phone</span>
+                <span>{t.cameraBtn}</span>
               </button>
               <button
                 type="button"
                 onClick={handleUseSampleCustom}
-                className="text-xs text-[#0096A3] font-semibold hover:underline block w-full mt-2"
+                className="text-xs text-[#0096A3] font-semibold hover:underline block w-full mt-2 cursor-pointer"
               >
-                Or test with sample kitchen invoice →
+                {language === "en" ? "Or test with sample kitchen invoice →" : "Ou tester avec un exemple de bon de cuisine →"}
               </button>
             </div>
           </div>
@@ -608,7 +611,9 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                 {/* Financial Impact Metric */}
                 <div className="flex items-center gap-6">
                   <div>
-                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">Total Docket</span>
+                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">
+                      {language === "en" ? "Total Docket" : "Total du Bon"}
+                    </span>
                     <span className="text-base sm:text-lg font-bold font-mono text-[#0F172A]">
                       ${totalBilled.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
                     </span>
@@ -617,7 +622,9 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <div className="h-8 w-px bg-zinc-200" />
 
                   <div>
-                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">Discrepancy Caught</span>
+                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">
+                      {language === "en" ? "Discrepancy Caught" : "Écart Détecté"}
+                    </span>
                     <span className={`text-base sm:text-lg font-extrabold font-mono ${
                       scanState === "scanned" || scanState === "staged"
                         ? "text-rose-600"
@@ -625,7 +632,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     }`}>
                       {scanState === "scanned" || scanState === "staged"
                         ? `-$${totalOvercharge.toFixed(2)}`
-                        : "Run scan to detect"}
+                        : language === "en" ? "Run scan to detect" : "Lancer le scan"}
                     </span>
                   </div>
 
@@ -634,7 +641,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       <div className="h-8 w-px bg-zinc-200 hidden sm:block" />
                       <div className="hidden sm:block">
                         <span className="text-[11px] text-rose-700 font-mono uppercase block">
-                          Annual Loss If Uncaught
+                          {language === "en" ? "Annual Loss If Uncaught" : "Perte Annuelle Estimée"}
                         </span>
                         <span className="text-base sm:text-lg font-extrabold font-mono text-rose-600">
                           ${annualizedImpact.toLocaleString("en-AU", { minimumFractionDigits: 0 })} / yr
@@ -653,7 +660,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs hover:bg-[#1E293B] transition-all shadow-sm w-full md:w-auto cursor-pointer"
                     >
                       <Scan className="w-4 h-4 text-[#00BFCC]" />
-                      <span>Run 5-Second OCR Scan</span>
+                      <span>{language === "en" ? "Run 5-Second OCR Scan" : "Lancer le Scan OCR (5s)"}</span>
                     </button>
                   )}
 
@@ -664,7 +671,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-200 text-zinc-600 font-semibold text-xs cursor-wait w-full md:w-auto"
                     >
                       <RefreshCw className="w-4 h-4 animate-spin text-[#00BFCC]" />
-                      <span>Checking Contract Line Items...</span>
+                      <span>{language === "en" ? "Checking Contract Line Items..." : "Vérification des Lignes Contractuelles..."}</span>
                     </button>
                   )}
 
@@ -673,9 +680,9 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="text-xs text-zinc-500 hover:text-zinc-900 px-3 py-2"
+                        className="text-xs text-zinc-500 hover:text-zinc-900 px-3 py-2 cursor-pointer"
                       >
-                        Reset
+                        {language === "en" ? "Reset" : "Réinitialiser"}
                       </button>
                       <button
                         type="button"
@@ -683,7 +690,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                         className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0096A3] text-white font-bold text-xs hover:bg-[#00818c] transition-all shadow-sm w-full sm:w-auto cursor-pointer"
                       >
                         <CheckCircle2 className="w-4 h-4 text-white" />
-                        <span>Stage in Xero Drafts (1-Tap)</span>
+                        <span>{language === "en" ? "Stage in Xero Drafts (1-Tap)" : "Créer le Brouillon dans Xero (1 Clic)"}</span>
                       </button>
                     </div>
                   )}
@@ -691,14 +698,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   {scanState === "staged" && (
                     <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
                       <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                        Draft Staged in Xero!
+                        {language === "en" ? "Draft Staged in Xero!" : "Brouillon Créé dans Xero !"}
                       </span>
                       <button
                         type="button"
                         onClick={onOpenAuditModal}
-                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-bold text-xs hover:bg-[#1E293B] transition-all shadow-xs"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-bold text-xs hover:bg-[#1E293B] transition-all shadow-xs cursor-pointer"
                       >
-                        <span>Audit All My Invoices</span>
+                        <span>{language === "en" ? "Audit All My Invoices" : "Auditer Toutes Mes Factures"}</span>
                         <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />
                       </button>
                     </div>

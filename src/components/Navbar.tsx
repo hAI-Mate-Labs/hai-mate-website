@@ -4,12 +4,16 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
 import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface NavbarProps {
   onOpenAuditModal: () => void;
 }
 
 export default function Navbar({ onOpenAuditModal }: NavbarProps) {
+  const { language, setLanguage } = useLanguage();
+  const t = translations[language].nav;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -22,12 +26,12 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Live Demo", href: "/#simulator" },
-    { name: "Solutions", href: "/#solutions" },
-    { name: "WA Grants", href: "/#grants" },
-    { name: "How It Works", href: "/#how-it-works" },
-    { name: "Founder", href: "/founder" },
-    { name: "Mission", href: "/mission" },
+    { name: t.liveDemo, href: "/#simulator" },
+    { name: t.solutions, href: "/#solutions" },
+    { name: t.grants, href: "/#grants" },
+    { name: t.howItWorks, href: "/#how-it-works" },
+    { name: t.founder, href: "/founder" },
+    { name: t.mission, href: "/mission" },
   ];
 
   return (
@@ -63,7 +67,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 </span>
               </span>
               <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-medium -mt-1">
-                Applied AI for Hospitality
+                {t.brandSub}
               </span>
             </div>
           </Link>
@@ -83,6 +87,34 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
           {/* Right Action */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
+            {/* Bilingual Segmented Toggle */}
+            <div className="inline-flex items-center p-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold shadow-2xs">
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  language === "en"
+                    ? "bg-white text-[#0F172A] shadow-xs font-bold"
+                    : "text-zinc-500 hover:text-[#0F172A]"
+                }`}
+                aria-label="Switch to English"
+              >
+                🇦🇺 EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("fr")}
+                className={`px-2.5 py-1 rounded-full transition-all cursor-pointer ${
+                  language === "fr"
+                    ? "bg-white text-[#0F172A] shadow-xs font-bold"
+                    : "text-zinc-500 hover:text-[#0F172A]"
+                }`}
+                aria-label="Passer en français"
+              >
+                🇫🇷 FR
+              </button>
+            </div>
+
             <a
               href="tel:0402472262"
               className="hidden xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-2"
@@ -94,21 +126,32 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold rounded-full bg-zinc-900 text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group"
             >
-              <span>Book an Audit</span>
+              <span>{t.bookAudit}</span>
               <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#00BFCC] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
 
           {/* Mobile menu toggle */}
           <div className="flex lg:hidden items-center gap-2">
+            {/* Mobile language switch */}
+            <div className="inline-flex items-center p-0.5 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage(language === "en" ? "fr" : "en")}
+                className="px-2 py-0.5 rounded-full bg-white text-[#0F172A] shadow-xs font-bold"
+              >
+                {language === "en" ? "🇦🇺 EN" : "🇫🇷 FR"}
+              </button>
+            </div>
+
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-zinc-900 text-white"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[#0F172A] text-white"
             >
-              Book Audit
+              {t.bookAuditMobile}
             </button>
             <button
               type="button"
@@ -138,13 +181,42 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             ))}
           </div>
 
+          {/* Language selection in mobile drawer */}
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-zinc-50 border border-zinc-200">
+            <span className="text-xs font-semibold text-zinc-600">Language / Langue :</span>
+            <div className="inline-flex items-center p-1 rounded-full bg-zinc-200/80 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1 rounded-full transition-all ${
+                  language === "en"
+                    ? "bg-white text-[#0F172A] font-bold shadow-xs"
+                    : "text-zinc-600"
+                }`}
+              >
+                🇦🇺 English
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("fr")}
+                className={`px-3 py-1 rounded-full transition-all ${
+                  language === "fr"
+                    ? "bg-white text-[#0F172A] font-bold shadow-xs"
+                    : "text-zinc-600"
+                }`}
+              >
+                🇫🇷 Français
+              </button>
+            </div>
+          </div>
+
           <div className="pt-2 border-t border-zinc-100 space-y-2">
             <a
               href="tel:0402472262"
               className="flex items-center justify-center gap-2 py-2.5 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-bold text-zinc-800"
             >
               <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
-              <span>Call Mallory: 0402 472 262</span>
+              <span>{t.callMallory}</span>
             </a>
 
             <button
@@ -153,9 +225,9 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenAuditModal();
               }}
-              className="w-full py-3 rounded-full bg-zinc-900 text-white text-xs font-bold hover:bg-zinc-800 shadow-sm"
+              className="w-full py-3 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-zinc-800 shadow-sm"
             >
-              Book 14-Day Venue Review
+              {t.book14DayReview}
             </button>
           </div>
         </div>

@@ -9,63 +9,48 @@ import {
   Check,
   ArrowRight
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface SolutionsHubProps {
   onOpenAuditModal: (solutionTitle?: string) => void;
 }
 
 export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
+  const { language } = useLanguage();
+  const t = translations[language].solutions;
+
   const solutions = [
     {
-      title: "BOH Procurement & Invoice Processing",
-      category: "Back-of-House Automation",
+      title: t.card1.title,
+      category: t.card1.category,
       icon: Receipt,
-      description:
-        "Optical Character Recognition (OCR) combined with autonomous parsing agents. Automatically checks line-item supplier pricing against contracts and updates Xero/MYOB ledgers in real time.",
-      highlights: [
-        "Saves 4 to 8 hours of weekly manual docket and PDF data entry",
-        "Flags price creep on meat, seafood, produce, and beverage contracts",
-        "Staged as draft bills in Xero/MYOB ready for 1-tap manager approval",
-      ],
+      description: t.card1.desc,
+      highlights: [t.card1.h1, t.card1.h2, t.card1.h3],
       worksWith: ["Xero", "MYOB", "PDF / OCR", "Gmail"],
     },
     {
-      title: "Dynamic Labor & Roster Optimization",
-      category: "Margin & Wage Protection",
+      title: t.card2.title,
+      category: t.card2.category,
       icon: Users,
-      description:
-        "POS-integrated machine learning models predicting shift surges from local weather, reservations, and events. Protects hospitality profit margins against penalty-rate blowouts.",
-      highlights: [
-        "Protects your 33% wage target against quiet shifts and sudden weather shifts",
-        "Integrates Bureau of Meteorology rain and heat alerts for your postcode",
-        "Suggests shift trims before expensive weekend penalty rates commence",
-      ],
+      description: t.card2.desc,
+      highlights: [t.card2.h1, t.card2.h2, t.card2.h3],
       worksWith: ["Lightspeed", "Square", "Deputy", "Weather API"],
     },
     {
-      title: "Front-of-House Communication Agents",
-      category: "Table Bookings & Revenue",
+      title: t.card3.title,
+      category: t.card3.category,
       icon: PhoneCall,
-      description:
-        "Conversational text and voice booking agents capturing after-hours reservations and table inquiries, recapturing 10–15% in lost booking revenue.",
-      highlights: [
-        "Answers phone calls and SMS 24/7 with friendly, natural conversation",
-        "Direct calendar synchronization with SevenRooms, OpenTable, and Resy",
-        "Captures function pack inquiries, dietaries, and large group deposits",
-      ],
+      description: t.card3.desc,
+      highlights: [t.card3.h1, t.card3.h2, t.card3.h3],
       worksWith: ["SevenRooms", "OpenTable", "Resy", "Phone & SMS"],
     },
     {
-      title: "Reputation & Review Sentinel",
-      category: "Guest Satisfaction",
+      title: t.card4.title,
+      category: t.card4.category,
       icon: Star,
-      description:
-        "Multi-platform review aggregator with sentiment classification, drafting context-aware responses and surfacing service bottlenecks early.",
-      highlights: [
-        "Unifies Google Reviews, TripAdvisor, and OpenTable in one dashboard",
-        "Instant text/Slack alerts for any rating under 4 stars with root-cause insights",
-        "Pre-drafts polite, tailored manager responses ready for quick approval",
-      ],
+      description: t.card4.desc,
+      highlights: [t.card4.h1, t.card4.h2, t.card4.h3],
       worksWith: ["Google Reviews", "TripAdvisor", "OpenTable", "Slack"],
     },
   ];
@@ -77,13 +62,13 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
-            Applied Agentic Workflows
+            {t.badge}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
-            Four Applied Solutions Built for WA Venues.
+            {t.title}
           </h2>
           <p className="mt-3 text-base text-zinc-600">
-            We don’t replace your team; we eliminate the non-revenue-generating administrative drag so your managers can focus on the floor.
+            {t.subtitle}
           </p>
         </div>
 
@@ -129,7 +114,7 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
 
                 <div className="pt-4 border-t border-zinc-100 flex items-center justify-between">
                   <div className="flex flex-wrap items-center gap-1.5 text-xs text-zinc-500">
-                    <span>Works with:</span>
+                    <span>{language === "en" ? "Works with:" : "Compatible avec :"}</span>
                     {item.worksWith.map((tool) => (
                       <span
                         key={tool}
@@ -143,9 +128,9 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
                   <button
                     type="button"
                     onClick={() => onOpenAuditModal(item.title)}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-zinc-900 hover:text-[#0096A3] transition-colors whitespace-nowrap pl-2"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#0F172A] hover:text-[#0096A3] transition-colors whitespace-nowrap pl-2 cursor-pointer"
                   >
-                    <span>Audit this</span>
+                    <span>{language === "en" ? "Audit this" : "Auditer ceci"}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
