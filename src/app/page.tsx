@@ -13,10 +13,12 @@ import CompactFounderCard from "@/components/CompactFounderCard";
 import IntakeSection from "@/components/IntakeSection";
 import Footer from "@/components/Footer";
 import AuditModal from "@/components/AuditModal";
+import SampleAuditModal from "@/components/SampleAuditModal";
 import FloatingContact from "@/components/FloatingContact";
 
 export default function Home() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
+  const [sampleAuditModalOpen, setSampleAuditModalOpen] = useState(false);
   const [selectedSolutionForAudit, setSelectedSolutionForAudit] = useState<string | undefined>(undefined);
 
   const handleOpenAuditModal = (solutionTitle?: string) => {
@@ -41,7 +43,7 @@ export default function Home() {
         {/* 2. Streamlined Trust Metric Strip (4-8 Hrs, 100% Control, Zero Hardware, 50% Grant) */}
         <MarketReality onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 3. Live Interactive Docket Scanner & Price Creep Simulator */}
+        {/* 3. Live Interactive Docket Scanner & Price Creep Simulator (with Real Custom Upload & Camera) */}
         <DocketSimulator onOpenAuditModal={() => handleOpenAuditModal()} />
 
         {/* 4. Core Solutions Hub & Connectivity */}
@@ -52,7 +54,10 @@ export default function Home() {
         <GrantCallout onOpenAuditModal={() => handleOpenAuditModal()} />
 
         {/* 6. The 3-Step Process & 100% Value Guarantee */}
-        <UnifiedProcessTimeline onOpenAuditModal={() => handleOpenAuditModal()} />
+        <UnifiedProcessTimeline
+          onOpenAuditModal={() => handleOpenAuditModal()}
+          onOpenSampleAuditModal={() => setSampleAuditModalOpen(true)}
+        />
 
         {/* 7. Direct Solo Practitioner Trust Card */}
         <CompactFounderCard onOpenAuditModal={() => handleOpenAuditModal()} />
@@ -72,6 +77,16 @@ export default function Home() {
         isOpen={auditModalOpen}
         onClose={handleCloseAuditModal}
         initialSolution={selectedSolutionForAudit}
+      />
+
+      {/* Sample 14-Day Audit Executive Teardown Modal */}
+      <SampleAuditModal
+        isOpen={sampleAuditModalOpen}
+        onClose={() => setSampleAuditModalOpen(false)}
+        onBookAudit={() => {
+          setSampleAuditModalOpen(false);
+          handleOpenAuditModal("Sample Audit Review");
+        }}
       />
     </div>
   );
