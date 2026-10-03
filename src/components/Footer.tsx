@@ -117,19 +117,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:text-zinc-950 transition-colors">
-                  Security Architecture
-                </a>
+                <Link href="/privacy" className="hover:text-zinc-950 transition-colors">
+                  Security &amp; Architecture
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-zinc-950 transition-colors">
-                  Privacy Policy
-                </a>
+                <Link href="/privacy" className="hover:text-zinc-950 transition-colors">
+                  Privacy Policy (AU &amp; GDPR)
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-zinc-950 transition-colors">
-                  Terms of Service
-                </a>
+                <Link href="/terms" className="hover:text-zinc-950 transition-colors">
+                  Terms of Service (ACL)
+                </Link>
               </li>
             </ul>
           </div>
