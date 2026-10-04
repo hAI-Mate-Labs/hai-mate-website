@@ -7,19 +7,27 @@ import {
   X,
   RotateCcw,
   Bot,
-  User,
   ShieldCheck,
-  CheckCircle2,
   Calendar,
   MessageSquare,
-  Phone,
   Landmark,
   Scan,
   Layers,
   ArrowRight,
   ExternalLink,
+  Key,
+  Eye,
+  EyeOff,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
+import {
+  queryMallo,
+  saveApiKey,
+  removeApiKey,
+  getActiveApiKey,
+  MAX_INPUT_CHARS,
+  MAX_OUTPUT_TOKENS,
+} from "@/lib/malloGemma";
 
 interface MalloAssistantProps {
   isOpen: boolean;
@@ -32,6 +40,7 @@ interface Message {
   sender: "user" | "assistant";
   text: string;
   tokensUsed?: number;
+  modelUsed?: string;
   action?: {
     label: string;
     onClick: () => void;
@@ -39,7 +48,7 @@ interface Message {
   };
 }
 
-const MAX_TOKENS = 150;
+const MAX_TOKENS = MAX_OUTPUT_TOKENS;
 
 export default function MalloAssistant({
   isOpen,
@@ -50,15 +59,48 @@ export default function MalloAssistant({
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
-      tokensUsed: 44,
+      text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 110 tokens for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
+      tokensUsed: 42,
+      modelUsed: "Mallo AI",
     },
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState("");
+
+  // Gemma 4 Key state
+  const [showKeyModal, setShowKeyModal] = useState(false);
+  const [apiKeyInput, setApiKeyInput] = useState("");
+  const [hasKey, setHasKey] = useState(false);
+  const [showKeyMask, setShowKeyMask] = useState(true);
+  const [keySavedToast, setKeySavedToast] = useState(false);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const key = getActiveApiKey();
+    setHasKey(Boolean(key));
+    setApiKeyInput(key);
+  }, []);
+
+  const handleSaveKey = () => {
+    if (apiKeyInput.trim()) {
+      saveApiKey(apiKeyInput.trim());
+      setHasKey(true);
+      setKeySavedToast(true);
+      setTimeout(() => {
+        setKeySavedToast(false);
+        setShowKeyModal(false);
+      }, 1000);
+    }
+  };
+
+  const handleRemoveKey = () => {
+    removeApiKey();
+    setApiKeyInput("");
+    setHasKey(false);
+  };
 
   const quickQuestions = [
     "Do chefs need new apps or iPads?",
@@ -83,199 +125,12 @@ export default function MalloAssistant({
     }
   }, [isOpen]);
 
-  const generateMalloResponse = (query: string): { text: string; action?: any } => {
-    const q = query.toLowerCase();
+  const handleSendMessage = async (textToSend?: string) => {
+    const rawQuery = (textToSend || inputValue).trim();
+    if (!rawQuery || isStreaming) return;
 
-    // 1. Staff software & learning curve
-    if (
-      q.includes("staff") ||
-      q.includes("software") ||
-      q.includes("hardware") ||
-      q.includes("ipad") ||
-      q.includes("app") ||
-      q.includes("screen") ||
-      q.includes("chef") ||
-      q.includes("learn") ||
-      q.includes("training")
-    ) {
-      return {
-        text: "Zero new software or hardware for your kitchen or floor staff. Chefs simply snap a phone photo of paper dockets or forward supplier PDF emails. Managers receive a simple 1-tap mobile prompt to approve staged bills in seconds. No training manuals or new dashboards required.",
-        action: {
-          label: "Book 14-Day Audit",
-          onClick: onOpenAuditModal,
-          icon: Calendar,
-        },
-      };
-    }
-
-    // 2. WA Grants (LCF)
-    if (
-      q.includes("grant") ||
-      q.includes("government") ||
-      q.includes("lcf") ||
-      q.includes("50%") ||
-      q.includes("fund") ||
-      q.includes("subsidy") ||
-      q.includes("wa state")
-    ) {
-      return {
-        text: "Eligible WA businesses can claim up to 50% matched co-funding ($25,000 for single venues, $50,000 for groups) through the WA Local Capability Fund (LCF) Digital Round. During our 14-day audit, Mallory prepares the complete technical scoping dossier and ROI paperwork ready for submission.",
-        action: {
-          label: "Explore WA Grant Calculator",
-          onClick: () => {
-            const el = document.getElementById("grants");
-            el?.scrollIntoView({ behavior: "smooth" });
-            onClose();
-          },
-          icon: Landmark,
-        },
-      };
-    }
-
-    // 3. Human in the loop / Control
-    if (
-      q.includes("control") ||
-      q.includes("human") ||
-      q.includes("mistake") ||
-      q.includes("error") ||
-      q.includes("pay") ||
-      q.includes("cut") ||
-      q.includes("roster") ||
-      q.includes("approval")
-    ) {
-      return {
-        text: "Strict Human-in-the-Loop is our ironclad covenant. No automated action executes unapproved. No bills are paid, no ledgers posted in Xero, and no shifts cut without your venue manager's explicit 1-tap mobile sign-off. You maintain 100% control over every single dollar.",
-        action: {
-          label: "Read Operator Covenant",
-          onClick: () => {
-            const el = document.getElementById("how-it-works");
-            el?.scrollIntoView({ behavior: "smooth" });
-            onClose();
-          },
-          icon: ShieldCheck,
-        },
-      };
-    }
-
-    // 4. POS, Tills & Accounting integrations
-    if (
-      q.includes("pos") ||
-      q.includes("lightspeed") ||
-      q.includes("square") ||
-      q.includes("ordermate") ||
-      q.includes("xero") ||
-      q.includes("myob") ||
-      q.includes("deputy") ||
-      q.includes("tanda") ||
-      q.includes("sevenrooms") ||
-      q.includes("integrate") ||
-      q.includes("system")
-    ) {
-      return {
-        text: "We support Lightspeed, Square, OrderMate, Toast, Xero, MYOB, Deputy, Tanda, SevenRooms, OpenTable, and Resy out of the box. We connect quietly via standard APIs and webhooks with zero changes to your physical till hardware.",
-        action: {
-          label: "View All Integrations",
-          onClick: () => {
-            const el = document.getElementById("integrations");
-            el?.scrollIntoView({ behavior: "smooth" });
-            onClose();
-          },
-          icon: Layers,
-        },
-      };
-    }
-
-    // 5. Audit timeline & Guarantee
-    if (
-      q.includes("audit") ||
-      q.includes("cost") ||
-      q.includes("price") ||
-      q.includes("timeline") ||
-      q.includes("process") ||
-      q.includes("14-day") ||
-      q.includes("guarantee")
-    ) {
-      return {
-        text: "The 14-day diagnostic audit is fixed-fee and runs during quiet morning prep hours with zero disruption to floor service. Backed by our 100% Value Guarantee: If we don't identify at least 3x the audit cost in recoverable admin hours or supplier overcharges, you pay $0.",
-        action: {
-          label: "Book Your 14-Day Audit",
-          onClick: onOpenAuditModal,
-          icon: Calendar,
-        },
-      };
-    }
-
-    // 6. Founder / Contact / Location
-    if (
-      q.includes("founder") ||
-      q.includes("mallory") ||
-      q.includes("who") ||
-      q.includes("contact") ||
-      q.includes("phone") ||
-      q.includes("whatsapp") ||
-      q.includes("call") ||
-      q.includes("perth") ||
-      q.includes("sydney")
-    ) {
-      return {
-        text: "hAI Mate! was founded by Mallory Antomarchi, an applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally. You deal directly with Mallory on 0402 472 262—no junior ticket queues.",
-        action: {
-          label: "Chat with Mallory on WhatsApp",
-          onClick: () => {
-            window.open(
-              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
-              "_blank",
-              "noopener,noreferrer"
-            );
-          },
-          icon: MessageSquare,
-        },
-      };
-    }
-
-    // 7. Docket OCR & Price creep
-    if (
-      q.includes("docket") ||
-      q.includes("receipt") ||
-      q.includes("ocr") ||
-      q.includes("price creep") ||
-      q.includes("overcharge") ||
-      q.includes("supplier")
-    ) {
-      return {
-        text: "Our private document ingestion pipeline parses wholesale dockets in 5 seconds. It cross-checks every billed line item against your contracted supplier price agreement, flags hidden price creep in red, and stages verified draft bills directly into Xero/MYOB.",
-        action: {
-          label: "Try Live Docket Simulator",
-          onClick: () => {
-            const el = document.getElementById("simulator");
-            el?.scrollIntoView({ behavior: "smooth" });
-            onClose();
-          },
-          icon: Scan,
-        },
-      };
-    }
-
-    // Fallback response
-    return {
-      text: "I am Mallo, your lightweight operational assistant (strictly capped at 150 tokens for concise answers). For custom technical scoping or to see how your venue can eliminate 4–8 hours/week on delivery dockets, you can book a free 14-day audit or chat directly with founder Mallory on WhatsApp.",
-      action: {
-        label: "WhatsApp Mallory (0402 472 262)",
-        onClick: () => {
-          window.open(
-            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
-            "_blank",
-            "noopener,noreferrer"
-          );
-        },
-        icon: MessageSquare,
-      },
-    };
-  };
-
-  const handleSendMessage = (textToSend?: string) => {
-    const query = (textToSend || inputValue).trim();
-    if (!query || isStreaming) return;
+    // Strict input length constraint
+    const query = rawQuery.slice(0, MAX_INPUT_CHARS);
 
     const userMsgId = `user-${Date.now()}`;
     const newMessages: Message[] = [
@@ -286,35 +141,114 @@ export default function MalloAssistant({
     setInputValue("");
     setIsStreaming(true);
 
-    const { text: fullResponse, action } = generateMalloResponse(query);
-    const tokens = Math.round(fullResponse.split(" ").length * 1.3);
+    try {
+      const history = messages
+        .filter((m) => m.id !== "welcome")
+        .map((m) => ({ sender: m.sender, text: m.text }));
 
-    // Stream response word-by-word
-    const words = fullResponse.split(" ");
-    let currentIdx = 0;
-    setStreamingText("");
+      const result = await queryMallo(query, "en", history);
 
-    const interval = setInterval(() => {
-      currentIdx += 1;
-      const partial = words.slice(0, currentIdx).join(" ");
-      setStreamingText(partial);
-
-      if (currentIdx >= words.length) {
-        clearInterval(interval);
-        setIsStreaming(false);
-        setStreamingText("");
-        setMessages([
-          ...newMessages,
-          {
-            id: `assistant-${Date.now()}`,
-            sender: "assistant",
-            text: fullResponse,
-            tokensUsed: Math.min(tokens, MAX_TOKENS),
-            action,
+      let actionObj: Message["action"] | undefined = undefined;
+      if (result.actionType === "audit") {
+        actionObj = {
+          label: "Book 14-Day Audit",
+          onClick: onOpenAuditModal,
+          icon: Calendar,
+        };
+      } else if (result.actionType === "grants") {
+        actionObj = {
+          label: "Explore WA Grant Calculator",
+          onClick: () => {
+            const el = document.getElementById("grants");
+            el?.scrollIntoView({ behavior: "smooth" });
+            onClose();
           },
-        ]);
+          icon: Landmark,
+        };
+      } else if (result.actionType === "covenant") {
+        actionObj = {
+          label: "Read Operator Covenant",
+          onClick: () => {
+            const el = document.getElementById("how-it-works");
+            el?.scrollIntoView({ behavior: "smooth" });
+            onClose();
+          },
+          icon: ShieldCheck,
+        };
+      } else if (result.actionType === "integrations") {
+        actionObj = {
+          label: "View All Integrations",
+          onClick: () => {
+            const el = document.getElementById("integrations");
+            el?.scrollIntoView({ behavior: "smooth" });
+            onClose();
+          },
+          icon: Layers,
+        };
+      } else if (result.actionType === "simulator") {
+        actionObj = {
+          label: "Try Live Docket Simulator",
+          onClick: () => {
+            const el = document.getElementById("simulator");
+            el?.scrollIntoView({ behavior: "smooth" });
+            onClose();
+          },
+          icon: Scan,
+        };
+      } else if (result.actionType === "whatsapp") {
+        actionObj = {
+          label: "WhatsApp Mallory (0402 472 262)",
+          onClick: () => {
+            window.open(
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          },
+          icon: MessageSquare,
+        };
       }
-    }, 28);
+
+      // Stream words smoothly into UI
+      const words = result.text.split(" ");
+      let currentIdx = 0;
+      setStreamingText("");
+
+      const interval = setInterval(() => {
+        currentIdx += 1;
+        const partial = words.slice(0, currentIdx).join(" ");
+        setStreamingText(partial);
+
+        if (currentIdx >= words.length) {
+          clearInterval(interval);
+          setIsStreaming(false);
+          setStreamingText("");
+          setMessages([
+            ...newMessages,
+            {
+              id: `assistant-${Date.now()}`,
+              sender: "assistant",
+              text: result.text,
+              tokensUsed: result.tokensUsed,
+              modelUsed: result.modelUsed,
+              action: actionObj,
+            },
+          ]);
+        }
+      }, 20);
+    } catch {
+      setIsStreaming(false);
+      setMessages([
+        ...newMessages,
+        {
+          id: `assistant-${Date.now()}`,
+          sender: "assistant",
+          text: "I am Mallo, your hospitality margin assistant. To review your dockets or book a 14-day audit, message Mallory directly on WhatsApp.",
+          tokensUsed: 30,
+          modelUsed: "Offline Engine",
+        },
+      ]);
+    }
   };
 
   const handleReset = () => {
@@ -322,8 +256,9 @@ export default function MalloAssistant({
       {
         id: "welcome",
         sender: "assistant",
-        text: "G'day! I'm Mallo, your virtual operational assistant trained on Mallory's hospitality pipelines (strictly capped at 150 tokens for brevity). Ask me anything about our docket automation, WA state grants, or how our 14-day audit works.",
-        tokensUsed: 44,
+        text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 110 tokens for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
+        tokensUsed: 42,
+        modelUsed: "Mallo AI",
       },
     ]);
   };
@@ -334,20 +269,39 @@ export default function MalloAssistant({
     <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2.5rem)] max-w-sm sm:max-w-md bg-white rounded-3xl shadow-2xl border border-zinc-200 overflow-hidden flex flex-col max-h-[85vh] h-[580px] animate-in fade-in slide-in-from-bottom-3 duration-200 select-none">
       
       {/* Header Bar */}
-      <div className="px-4 py-3 bg-[#0F172A] text-white flex items-center justify-between shrink-0">
+      <div className="px-4 py-3 bg-[#0F172A] text-white flex items-center justify-between shrink-0 border-b border-white/10">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center p-1.5 shadow-xs">
             <ApertureLogo size={20} color="#00BFCC" glow />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold tracking-tight">Mallo // AI Assistant</span>
-              <span className="text-[10px] font-mono font-bold text-[#00BFCC] bg-[#00BFCC]/15 px-2 py-0.5 rounded-full border border-[#00BFCC]/30">
-                AI Assistant
-              </span>
+              <span className="text-xs font-bold tracking-tight">Mallo // Margin Assistant</span>
+              {hasKey ? (
+                <button
+                  type="button"
+                  onClick={() => setShowKeyModal(!showKeyModal)}
+                  className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 hover:bg-emerald-500/25 transition-all cursor-pointer"
+                  title="Gemma 4 (gemma-4-26b-a4b-it) active"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Gemma 4</span>
+                  <Key className="w-2.5 h-2.5 opacity-80" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setShowKeyModal(!showKeyModal)}
+                  className="inline-flex items-center gap-1 text-[10px] font-mono font-medium text-[#00BFCC] bg-[#00BFCC]/15 px-2 py-0.5 rounded-full border border-[#00BFCC]/30 hover:bg-[#00BFCC]/25 transition-all cursor-pointer"
+                  title="Connect Google API key"
+                >
+                  <Key className="w-2.5 h-2.5" />
+                  <span>Connect Gemma 4</span>
+                </button>
+              )}
             </div>
             <p className="text-[10px] text-zinc-400">
-              150 Token Guardrail • Human-in-the-Loop Active
+              {MAX_TOKENS} Token Guardrail • Human-in-the-Loop Active
             </p>
           </div>
         </div>
@@ -371,6 +325,81 @@ export default function MalloAssistant({
           </button>
         </div>
       </div>
+
+      {/* Gemma 4 Settings Drawer */}
+      {showKeyModal && (
+        <div className="p-3 bg-zinc-100 border-b border-zinc-200 animate-in fade-in slide-in-from-top-2 duration-150 text-xs shrink-0">
+          <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center gap-1.5 text-zinc-900 font-bold text-xs">
+              <Key className="w-3.5 h-3.5 text-[#00BFCC]" />
+              <span>Google Gemma 4 Engine</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowKeyModal(false)}
+              className="p-1 rounded-md text-zinc-400 hover:text-zinc-700"
+              aria-label="Close settings"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+          <p className="text-[11px] text-zinc-600 mb-2 leading-relaxed">
+            Enter your Google AI Studio API key to power Mallo with Gemma 4 (gemma-4-26b-a4b-it). Stored privately in browser localStorage.
+          </p>
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="relative flex-1">
+              <input
+                type={showKeyMask ? "password" : "text"}
+                value={apiKeyInput}
+                onChange={(e) => setApiKeyInput(e.target.value)}
+                placeholder="Paste Google API Key (AIzaSy...)"
+                className="w-full pl-2.5 pr-8 py-1.5 text-xs rounded-lg border border-zinc-300 bg-white text-zinc-900 font-mono focus:outline-none focus:border-[#00BFCC]"
+              />
+              <button
+                type="button"
+                onClick={() => setShowKeyMask(!showKeyMask)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
+                title={showKeyMask ? "Show Key" : "Hide Key"}
+              >
+                {showKeyMask ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={handleSaveKey}
+              disabled={!apiKeyInput.trim()}
+              className="px-3 py-1.5 rounded-lg bg-[#00BFCC] text-[#0B0F19] font-bold text-xs hover:bg-[#00D9E6] transition-colors disabled:opacity-40 cursor-pointer shrink-0 shadow-2xs"
+            >
+              {keySavedToast ? "Saved!" : "Save Key"}
+            </button>
+            {hasKey && (
+              <button
+                type="button"
+                onClick={handleRemoveKey}
+                className="px-2 py-1.5 rounded-lg bg-red-500/10 text-red-600 hover:bg-red-500/20 text-xs font-semibold transition-colors cursor-pointer shrink-0"
+                title="Remove stored key"
+              >
+                Remove
+              </button>
+            )}
+          </div>
+          <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-0.5">
+            <span className="flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3 text-[#00BFCC]" />
+              <span>{hasKey ? "Key active & saved in browser" : "Zero server transmission"}</span>
+            </span>
+            <a
+              href="https://aistudio.google.com/app/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#00838F] hover:underline inline-flex items-center gap-0.5 font-medium"
+            >
+              <span>Get free key at Google AI Studio →</span>
+              <ExternalLink className="w-2.5 h-2.5" />
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* Messages Scroll Body */}
       <div className="p-4 overflow-y-auto flex-1 space-y-3 bg-zinc-50/50 text-xs">
@@ -407,9 +436,11 @@ export default function MalloAssistant({
             </div>
 
             {/* Token Badge for Assistant Messages */}
-            {m.sender === "assistant" && m.tokensUsed && (
-              <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1">
-                Mallo AI • {m.tokensUsed} / {MAX_TOKENS} tokens
+            {m.sender === "assistant" && (
+              <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1 flex items-center gap-1.5">
+                <span className="font-semibold text-zinc-600">{m.modelUsed || "Mallo AI"}</span>
+                <span>•</span>
+                <span>{m.tokensUsed || 35} / {MAX_TOKENS} tokens</span>
               </span>
             )}
           </div>
@@ -457,15 +488,23 @@ export default function MalloAssistant({
           }}
           className="flex items-center gap-2"
         >
-          <input
-            ref={inputRef}
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Ask about dockets, WA grants, or till setup..."
-            disabled={isStreaming}
-            className="flex-1 px-3.5 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
-          />
+          <div className="relative flex-1">
+            <input
+              ref={inputRef}
+              type="text"
+              maxLength={MAX_INPUT_CHARS}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Ask about dockets, WA grants, or 33% labor margin..."
+              disabled={isStreaming}
+              className="w-full pl-3.5 pr-14 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
+            />
+            {inputValue.length > 130 && (
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] font-mono text-zinc-400 pointer-events-none">
+                {inputValue.length}/{MAX_INPUT_CHARS}
+              </span>
+            )}
+          </div>
           <button
             type="submit"
             disabled={!inputValue.trim() || isStreaming}
