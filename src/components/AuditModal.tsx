@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, CheckCircle2, ArrowRight } from "lucide-react";
+import { X, CheckCircle2, ArrowRight, Calendar, MessageSquare, Mail, Phone, ExternalLink } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -13,6 +13,7 @@ interface AuditModalProps {
 
 export default function AuditModal({ isOpen, onClose, initialSolution }: AuditModalProps) {
   const { t, language } = useLanguage();
+  const [activeTab, setActiveTab] = useState<"form" | "cal">("form");
 
   const [formData, setFormData] = useState({
     businessName: "",
@@ -67,7 +68,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
   };
 
   const whatsappHref =
-    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.";
+    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
@@ -102,9 +103,90 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
           </button>
         </div>
 
+        {/* Tab Switcher: Intake Form vs Instant Cal.com Discovery */}
+        <div className="flex border-b border-zinc-100 bg-zinc-50/70 px-6 py-2.5 gap-2">
+          <button
+            type="button"
+            onClick={() => setActiveTab("form")}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+              activeTab === "form"
+                ? "bg-[#0F172A] text-white shadow-xs"
+                : "text-zinc-600 hover:text-zinc-900 bg-white border border-zinc-200"
+            }`}
+          >
+            {language === "en" ? "14-Day Audit Intake" : "Formulaire d'Audit 14 Jours"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("cal")}
+            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+              activeTab === "cal"
+                ? "bg-[#0F172A] text-white shadow-xs"
+                : "text-zinc-600 hover:text-zinc-900 bg-white border border-zinc-200"
+            }`}
+          >
+            <Calendar className="w-3.5 h-3.5 text-[#00BFCC]" />
+            <span>{language === "en" ? "Instant Discovery (Cal.com)" : "Réserver sur Cal.com"}</span>
+          </button>
+        </div>
+
         {/* Modal Body */}
         <div className="p-6 sm:p-8">
-          {isSuccess ? (
+          {activeTab === "cal" ? (
+            <div className="py-2 space-y-5">
+              <div className="text-center space-y-2">
+                <div className="w-12 h-12 rounded-2xl bg-[#00BFCC]/10 text-[#0096A3] flex items-center justify-center mx-auto border border-[#00BFCC]/20">
+                  <Calendar className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#0F172A]">
+                  {language === "en" ? "15-Minute Operational Discovery" : "Échange Opérationnel de 15 Minutes"}
+                </h3>
+                <p className="text-xs text-zinc-600 max-w-sm mx-auto leading-relaxed">
+                  {language === "en"
+                    ? "Pick an exact time during your quiet afternoon kitchen break (2:30 PM – 4:30 PM). Mallory will review your POS and docket workflows directly."
+                    : "Choisissez un créneau pendant le calme de l'après-midi (14h30 – 16h30). Mallory étudiera vos flux de caisse et de bons en direct."}
+                </p>
+              </div>
+
+              {/* Cal.com Direct Action */}
+              <a
+                href="https://cal.com/haimate/discovery"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-[#0F172A] text-white font-semibold text-sm hover:bg-zinc-800 transition-all shadow-xs cursor-pointer group"
+              >
+                <Calendar className="w-4 h-4 text-[#00BFCC]" />
+                <span>{language === "en" ? "Open Cal.com Discovery Calendar" : "Ouvrir l'Agenda Cal.com"}</span>
+                <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
+              </a>
+
+              {/* Direct Alternative channels */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-semibold hover:bg-emerald-100 transition-colors flex items-center gap-2.5"
+                >
+                  <MessageSquare className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>WhatsApp (+61 402 472 262)</span>
+                </a>
+                <a
+                  href="mailto:founder@haimate.com.au?subject=Venue%20Discovery%20Inquiry"
+                  className="p-3 rounded-2xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-semibold hover:bg-zinc-100 transition-colors flex items-center gap-2.5"
+                >
+                  <Mail className="w-4 h-4 text-[#0096A3] shrink-0" />
+                  <span>founder@haimate.com.au</span>
+                </a>
+              </div>
+
+              <div className="text-[11px] text-zinc-400 text-center">
+                {language === "en"
+                  ? "Direct engineer access • No salespeople or account coordinators."
+                  : "Accès direct ingénieur • Sans commerciaux ni intermédiaires."}
+              </div>
+            </div>
+          ) : isSuccess ? (
             <div className="py-6 text-center space-y-3.5">
               <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
                 <CheckCircle2 className="w-7 h-7" />
@@ -282,8 +364,24 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                 )}
               </button>
 
-              {/* Direct WhatsApp Alternative */}
+              {/* Or switch to Cal.com */}
               <div className="pt-1 text-center">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("cal")}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0096A3] hover:underline cursor-pointer"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>
+                    {language === "en"
+                      ? "Prefer to pick a 15-min call slot? Book on Cal.com →"
+                      : "Vous préférez choisir un créneau de 15 min ? Réserver sur Cal.com →"}
+                  </span>
+                </button>
+              </div>
+
+              {/* Direct WhatsApp Alternative */}
+              <div className="pt-0.5 text-center">
                 <a
                   href={whatsappHref}
                   target="_blank"

@@ -32,89 +32,89 @@ export default function UnifiedProcessTimeline({
     {
       step: "01",
       duration: language === "en" ? "Days 1–14" : "Jours 1 à 14",
-      tag: language === "en" ? "Free Diagnostic Audit" : "Audit Diagnostique Offert",
-      title: language === "en" ? "Zero-Disruption Paperwork & Till Audit" : "Audit Paperasse & Caisse Sans Perturbation",
+      tag: language === "en" ? "Flexible 14-Day Audit" : "Audit Diagnostique Flexible",
+      title: language === "en" ? "Digital Intake & Perth On-Site Audits" : "Intégration Numérique & Audits sur Place à Perth",
       description:
         language === "en"
-          ? "Conducted during quiet morning prep hours before guests arrive. We observe your paperwork trail and map high-ROI automation targets."
-          : "Réalisé le matin pendant la mise en place avant l'arrivée des clients. Nous analysons vos flux papier et identifions les gains immédiats.",
+          ? "Default remote intake via read-only OAuth connections to Lightspeed, Square & Xero, paired with a secure drag-and-drop link for 15–20 delivery dockets. Plus in-person morning prep audits across Perth."
+          : "Intégration numérique sans friction via connexions OAuth en lecture seule (Lightspeed, Square, Xero) avec dépôt sécurisé de 15 à 20 bons. Et visites matinales sur place à Perth.",
       icon: Clock,
       bullets:
         language === "en"
           ? [
-              "In-person venue walk-through and manager interviews in WA",
-              "OCR line-item test on 20+ of your historical delivery dockets",
-              "Read-only review of POS till (Lightspeed, Square) & Xero/MYOB codes",
-              "Pre-filled WA Government 50% co-funding grant application package",
+              "Zero-friction digital intake via read-only OAuth (Lightspeed, Square, Xero)",
+              "Secure drag-and-drop link for 15–20 delivery dockets & price agreements",
+              "In Perth? On-site morning prep audits and manager walk-throughs available across Perth Metro (Cottesloe, Fremantle, CBD, Subiaco) and the South West",
+              "Pre-filled WA Government 50% matched co-funding grant application package",
             ]
           : [
-              "Visite sur site de votre établissement et entretiens de cadrage en WA",
-              "Test OCR ligne par ligne sur plus de 20 de vos bons de livraison récents",
-              "Revue en lecture seule de votre caisse (Lightspeed, Square) et plan comptable Xero/MYOB",
+              "Intégration numérique sans friction via OAuth en lecture seule (Lightspeed, Square, Xero)",
+              "Lien de dépôt sécurisé pour 15 à 20 bons de livraison et accords tarifaires",
+              "À Perth ? Audits sur place pendant la mise en place matinale disponibles sur toute la métropole de Perth (Cottesloe, Fremantle, CBD, Subiaco) et le South West",
               "Dossier de subvention d'État WA (50% de prise en charge) pré-rempli",
             ],
       deliverable:
         language === "en"
-          ? "Executive Automation Roadmap with Guaranteed ROI"
-          : "Rapport de Faisabilité Exécutif & ROI Garanti",
+          ? "Executive Automation Roadmap with Guaranteed 3x ROI"
+          : "Rapport de Faisabilité Exécutif & ROI 3x Garanti",
     },
     {
       step: "02",
       duration: language === "en" ? "Weeks 3–5" : "Semaines 3 à 5",
-      tag: language === "en" ? "Custom Conduit Build" : "Développement du Conduit Sur-Mesure",
-      title: language === "en" ? "Off-Site Engineering & Supplier Tuning" : "Ingénierie Hors-Site & Paramétrage Fournisseurs",
+      tag: language === "en" ? "Asynchronous Cloud Engine" : "Moteur Cloud Asynchrone",
+      title: language === "en" ? "Overnight Cloud Reconciliation & Zero Staff Apps" : "Rapprochement Cloud Nocturne & Zéro App Équipe",
       description:
         language === "en"
-          ? "Built completely off-site by Mallory. Your live tills and accounting ledgers remain untouched until fully verified."
-          : "Développé entièrement hors-site par Mallory. Vos caisses et écritures comptables restent intactes jusqu'à vérification complète.",
+          ? "All background conduits execute continuously in the cloud with zero software downloads for floor staff. Invoices and till sales reconcile automatically overnight."
+          : "Tous les conduits s'exécutent en continu dans le cloud sans aucun téléchargement d'application pour les équipes. Bons et ventes se réconcilient automatiquement la nuit.",
       icon: Zap,
       bullets:
         language === "en"
           ? [
-              "Quiet connection to your existing Xero, Lightspeed, and Deputy accounts",
-              "Trained on your specific WA food, liquor, and produce supplier price agreements",
-              "Zero new apps for staff: simple phone photos and email PDF forwarding",
-              "Rigorous historical simulation testing before live activation",
+              "Draft bills staged in Xero before the morning prep shift arrives",
+              "Calibrated specifically for wholesale food, beverage, and produce delivery dockets",
+              "Dynamic Margin Guard reconciling live till sales with Bureau of Meteorology telemetry",
+              "Encrypted Australian cloud infrastructure operating under sovereign data controls",
             ]
           : [
-              "Connexion discrète à vos comptes existants Xero, Lightspeed et Deputy",
-              "Paramétré sur vos accords tarifaires spécifiques de marée, viande et boissons",
-              "Zéro nouvelle application : simples photos sur smartphone ou transferts PDF par email",
-              "Tests rigoureux de simulation historique avant activation définitive",
+              "Factures brouillons préparées dans Xero avant l'arrivée de la mise en place matinale",
+              "Calibré pour les bons de livraison de gros en alimentation, boissons et primeurs",
+              "Dynamic Margin Guard réconciliant les ventes de caisse avec la météo",
+              "Infrastructure cloud australienne chiffrée sous contrôle souverain des données",
             ],
       deliverable:
         language === "en"
-          ? "Working Private Conduit & Contract Price Guard"
-          : "Passerelle Privée Opérationnelle & Surveillance des Prix Fournisseurs",
+          ? "Staged Verified Draft Bills & Live 33% Wage Lock"
+          : "Factures Brouillons Prêtes dans Xero & Verrou Salaires 33%",
     },
     {
       step: "03",
       duration: language === "en" ? "Ongoing" : "Accompagnement Continu",
-      tag: language === "en" ? "1-Tap Mobile Control" : "Contrôle Mobile en 1 Clic",
-      title: language === "en" ? "Human-in-the-Loop Handover & Retainer" : "Déploiement Contrôlé & Suivi Personnalisé",
+      tag: language === "en" ? "1-Tap Mobile Governance" : "Gouvernance Mobile en 1 Clic",
+      title: language === "en" ? "Zero Unapproved Commits & Direct Founder Line" : "Zéro Écriture Non Validée & Ligne Directe Fondateur",
       description:
         language === "en"
-          ? "No automated action runs unapproved. Managers review and green-light draft bills or roster trims with 1 tap on their phone."
-          : "Aucune action automatisée ne s'exécute sans accord. Vos managers valident les factures brouillons ou ajustements en 1 clic sur mobile.",
+          ? "1-Tap Mobile Governance Conduits: zero unapproved commits to your ledger and zero shifts altered without explicit manager authorization."
+          : "Conduits de Gouvernance Mobile en 1 Clic : zéro écriture non validée dans votre grand livre et zéro shift modifié sans accord explicite du responsable.",
       icon: Smartphone,
       bullets:
         language === "en"
           ? [
-              "Direct mobile & WhatsApp line to Mallory during busy dinner shifts",
-              "Draft bills staged in Xero ready for instant 1-tap review",
-              "Continuous adjustments as menus, suppliers, and rosters change",
-              "Monthly executive review of saved admin hours and protected wage dollars",
+              "1-Tap green-light on mobile for staged wholesale bills and shift suggestions",
+              "Direct engineering partnership with founder Mallory via mobile & private Slack",
+              "Proprietary Supplier Price Guard flagging regional market overcharges",
+              "Continuous pipeline tuning backed by personal mobile support",
             ]
           : [
-              "Ligne mobile & WhatsApp directe avec Mallory disponible pendant vos services",
-              "Brouillons préparés dans Xero prêts pour validation instantanée en 1 clic",
-              "Ajustements continus lors des changements de cartes, fournisseurs et équipes",
-              "Bilan mensuel des heures administratives économisées et des marges protégées",
+              "Feu vert en 1 clic sur mobile pour les factures brouillons et suggestions de planning",
+              "Partenariat d'ingénierie direct avec le fondateur Mallory via mobile & Slack privé",
+              "Proprietary Supplier Price Guard signalant les surfacturations régionales",
+              "Ajustements continus garantis par une ligne téléphonique directe",
             ],
       deliverable:
         language === "en"
-          ? "Direct Solo Engineer Retainer & Zero Maintenance Drag"
-          : "Partenariat Direct avec l'Ingénieur & Zéro Charge de Maintenance",
+          ? "Direct Founder Access • Cloud-Connected Globally, On-Site in Perth"
+          : "Accès Direct au Fondateur • Connecté au Cloud, Sur Place à Perth",
     },
   ];
 

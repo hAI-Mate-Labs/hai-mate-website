@@ -187,7 +187,7 @@ export default function PrivacyClient() {
               </h2>
               <p>We process personal and business data strictly under lawful legal grounds:</p>
               <ul className="list-disc pl-5 space-y-2 text-zinc-600">
-                <li><strong>Performance of a Contract:</strong> To deliver 14-day diagnostic readiness audits, configure OCR pipelines, and maintain managed Slack retainers.</li>
+                <li><strong>Performance of a Contract:</strong> To deliver 14-day diagnostic readiness audits, configure private document ingestion &amp; margin guard pipelines, and maintain managed Slack retainers.</li>
                 <li><strong>Consent:</strong> When you voluntarily submit an intake enquiry or request direct contact from our founder.</li>
                 <li><strong>Legitimate Interests:</strong> To protect venue clients from supplier overcharges, prevent penalty wage blowouts, and defend system uptime.</li>
                 <li><strong>Legal Compliance:</strong> To satisfy Australian statutory record-keeping and taxation obligations under the Australian Taxation Office (ATO).</li>
@@ -208,8 +208,8 @@ export default function PrivacyClient() {
                 into public artificial intelligence foundation models.
               </p>
               <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                All document parsing (OCR) and predictive calculations occur within dedicated, zero-data-retention
-                enterprise API instances that guarantee client data is never used for model training or fine-tuning.
+                All document parsing and predictive calculations occur within dedicated, zero-data-retention
+                enterprise instances that guarantee client data is never used for model training or fine-tuning.
               </p>
             </div>
 
@@ -221,7 +221,7 @@ export default function PrivacyClient() {
               </h2>
               <p>
                 All data is encrypted in transit using <strong>TLS 1.3</strong> and at rest using <strong>AES-256</strong>.
-                Our cloud infrastructure is hosted primarily in Australian sovereign data centres (AWS/Google Cloud Australia regions),
+                Our cloud infrastructure is hosted in Australian sovereign data centres operating under sovereign data controls,
                 ensuring complete compliance with Australian data sovereignty laws.
               </p>
               <p>

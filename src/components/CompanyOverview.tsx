@@ -13,6 +13,8 @@ import {
   Users,
   PhoneCall,
   CalendarCheck,
+  Network,
+  CreditCard,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 import { useLanguage } from "@/context/LanguageContext";
@@ -248,6 +250,64 @@ export default function CompanyOverview({ onOpenAuditModal }: CompanyOverviewPro
             </div>
           </div>
 
+        </div>
+
+        {/* Platform Defensibility & Future Scale Blocks */}
+        <div className="mt-8 rounded-3xl bg-white border border-zinc-200/90 p-7 sm:p-9 shadow-xs">
+          <div className="max-w-2xl mb-6">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0096A3] block mb-1">
+              {c.offer.defensibilityTitle}
+            </span>
+            <p className="text-sm text-zinc-600 font-normal">
+              {c.offer.defensibilitySubtitle}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 1. Wholesale Benchmark Network */}
+            <div className="p-6 rounded-2xl bg-zinc-50/80 border border-zinc-200/80 flex flex-col justify-between hover:border-[#00BFCC]/40 transition-colors">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0096A3] bg-[#00BFCC]/10 px-2.5 py-1 rounded-full border border-[#00BFCC]/20">
+                    {c.offer.benchmarkNetwork.tag}
+                  </span>
+                  <Network className="w-4 h-4 text-[#0096A3]" />
+                </div>
+                <h4 className="text-lg font-bold text-[#0F172A]">
+                  {c.offer.benchmarkNetwork.title}
+                </h4>
+                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
+                  {c.offer.benchmarkNetwork.desc}
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-zinc-200/60 flex items-center justify-between text-[11px] text-zinc-500 font-medium">
+                <span>{language === "en" ? "Data Moat • Continuous Ingestion" : "Moat Données • Ingestion Continue"}</span>
+                <span className="text-[#0096A3] font-semibold">{language === "en" ? "Active Defense" : "Défense Active"}</span>
+              </div>
+            </div>
+
+            {/* 2. One-Tap Accounts Payable */}
+            <div className="p-6 rounded-2xl bg-zinc-50/80 border border-zinc-200/80 flex flex-col justify-between hover:border-[#00BFCC]/40 transition-colors">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                    {c.offer.instantSettlement.tag}
+                  </span>
+                  <CreditCard className="w-4 h-4 text-emerald-600" />
+                </div>
+                <h4 className="text-lg font-bold text-[#0F172A]">
+                  {c.offer.instantSettlement.title}
+                </h4>
+                <p className="text-xs text-zinc-600 leading-relaxed font-normal">
+                  {c.offer.instantSettlement.desc}
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-zinc-200/60 flex items-center justify-between text-[11px] text-zinc-500 font-medium">
+                <span>{language === "en" ? "Fintech Multiple Ready • B2B Settlement" : "Prêt Fintech • Règlement B2B"}</span>
+                <span className="text-emerald-700 font-semibold">{language === "en" ? "Instant Execution" : "Exécution Immédiate"}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>

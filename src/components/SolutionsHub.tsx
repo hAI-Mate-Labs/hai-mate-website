@@ -27,7 +27,7 @@ export default function SolutionsHub({ onOpenAuditModal }: SolutionsHubProps) {
       icon: Receipt,
       description: t.card1.desc,
       highlights: [t.card1.h1, t.card1.h2, t.card1.h3],
-      worksWith: ["Xero", "MYOB", "PDF / OCR", "Gmail"],
+      worksWith: ["Xero", "MYOB", "PDF & Paper Dockets", "Gmail"],
     },
     {
       title: t.card2.title,

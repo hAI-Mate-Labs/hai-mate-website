@@ -135,8 +135,8 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             {language === "en"
-              ? "Plugs into Lightspeed, Square, Xero & MYOB"
-              : "Compatible Lightspeed, Square, Xero & MYOB"}
+              ? "Lightspeed • Square • Xero • MYOB • Deputy • Slack"
+              : "Compatible Lightspeed • Square • Xero • MYOB • Deputy • Slack"}
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />

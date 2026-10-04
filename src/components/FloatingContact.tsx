@@ -301,7 +301,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
           label: language === "en" ? "Chat with Mallory on WhatsApp" : "Discuter avec Mallory sur WhatsApp",
           onClick: () => {
             window.open(
-              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
               "_blank",
               "noopener,noreferrer"
             );
@@ -330,8 +330,8 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       return {
         text:
           language === "en"
-            ? "Our OCR pipeline parses crumpled paper receipts in 5 seconds. It cross-checks every billed line item against your contracted supplier price agreement, flags hidden price creep in red, and stages verified draft bills directly into Xero/MYOB."
-            : "Notre passerelle OCR extrait les bons de livraison papier même froissés en 5 secondes. Elle croise chaque ligne d'article avec vos tarifs contractuels négociés, signale immédiatement les hausses en rouge, et prépare les écritures directement dans Xero/MYOB.",
+            ? "Our private document ingestion pipeline parses wholesale dockets in 5 seconds. It cross-checks every billed line item against your contracted supplier price agreement, flags hidden price creep in red, and stages verified draft bills directly into Xero/MYOB."
+            : "Notre pipeline privé d'ingestion documentaire extrait les bons de livraison de gros en 5 secondes. Il croise chaque ligne d'article avec vos tarifs contractuels négociés, signale immédiatement les hausses en rouge, et prépare les factures vérifiées directement dans Xero/MYOB.",
         action: {
           label: language === "en" ? "Try Live Docket Simulator" : "Tester le Simulateur de Bons",
           onClick: () => {
@@ -354,7 +354,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
         label: "WhatsApp (+61 402 472 262)",
         onClick: () => {
           window.open(
-            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
             "_blank",
             "noopener,noreferrer"
           );
@@ -662,7 +662,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   </button>
 
                   <a
-                    href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
+                    href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-semibold hover:bg-emerald-100 transition-colors group"

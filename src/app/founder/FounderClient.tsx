@@ -125,7 +125,7 @@ export default function FounderClient() {
                 <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
               </button>
               <a
-                href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
+                href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-medium rounded-full bg-emerald-50 text-emerald-950 border border-emerald-200 hover:bg-emerald-100 transition-all shadow-2xs"
@@ -499,7 +499,7 @@ export default function FounderClient() {
                   {lang === "en" ? "Core Technical Capability" : "Capacité Technique Clé"}
                 </span>
                 <p className="text-xs text-zinc-500 mt-0.5">
-                  Applied Agentic Workflows • Python &amp; SQL Pipelines • OCR Document Extraction • POS/Xero Integrations
+                  Applied Autonomous Workflows • Private Ingestion Pipelines • Wholesale Margin Defense • POS &amp; Ledger Conduits
                 </p>
               </div>
               <div className="flex items-center gap-2 text-xs font-mono text-zinc-600 bg-zinc-50 px-3 py-1.5 rounded-xl border border-zinc-200">
@@ -540,7 +540,7 @@ export default function FounderClient() {
                 
                 {/* WhatsApp Channel */}
                 <a
-                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
+                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors flex items-center gap-3.5 group"

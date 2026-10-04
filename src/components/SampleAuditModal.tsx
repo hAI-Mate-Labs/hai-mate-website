@@ -238,8 +238,8 @@ export default function SampleAuditModal({
                     </span>
                     <p className="text-xs text-zinc-300">
                       {isFr
-                        ? "Déployer le Conduit 1 (OCR Bons de Livraison vers Xero) & le Conduit 2 (Verrouillage Météo-Salaires Lightspeed)."
-                        : "Deploy Conduit 1 (OCR Docket Parser into Xero) & Conduit 2 (Lightspeed Weather Wage Lock)."}
+                        ? "Déployer le Conduit 1 (Pipeline Privé d'Ingestion des Bons vers Xero) & le Conduit 2 (Verrouillage Météo-Salaires Lightspeed)."
+                        : "Deploy Conduit 1 (Private Docket Ingestion Pipeline into Xero) & Conduit 2 (Lightspeed Weather Wage Lock)."}
                     </p>
                   </div>
                   <button
@@ -660,7 +660,7 @@ export default function SampleAuditModal({
                 <td style={{ padding: "6px", border: "1px solid #E4E4E7" }}>5.5 Hours / Wk</td>
                 <td style={{ padding: "6px", border: "1px solid #E4E4E7", color: "#DC2626", fontWeight: "700" }}>$14,300 / {isFr ? "An" : "Year"}</td>
                 <td style={{ padding: "6px", border: "1px solid #E4E4E7" }}>
-                  {isFr ? "Scan OCR Mobile en 5s → Factures Brouillons Xero" : "5-Sec Phone OCR Scan → Draft Xero Bills"}
+                  {isFr ? "Scan Mobile du Bon en 5s → Factures Brouillons Xero" : "5-Sec Phone Docket Scan → Draft Xero Bills"}
                 </td>
               </tr>
               <tr>

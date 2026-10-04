@@ -502,8 +502,8 @@ export default function MissionClient() {
                     </p>
                     <p>
                       When you work with hAI Mate!, you work directly with me. I personally conduct your
-                      14-day diagnostic audit, inspect your till exports, build your OCR invoice pipelines,
-                      and tune your roster forecasting models. You have my direct mobile phone number and
+                      14-day diagnostic audit, inspect your till exports, build your private docket ingestion pipelines,
+                      and tune your Dynamic Margin Guard. You have my direct mobile phone number and
                       a private Slack channel.
                     </p>
                     <p>
@@ -522,8 +522,8 @@ export default function MissionClient() {
                     </p>
                     <p>
                       Lorsque vous travaillez avec hAI Mate!, vous traitez directement avec moi. C'est moi qui réalise
-                      personnellement votre audit de 14 jours, inspecte vos données de caisse, conçois vos passerelles OCR
-                      de facturation et ajuste vos prévisions d'horaires. Vous disposez de mon numéro de mobile direct et
+                      personnellement votre audit de 14 jours, inspecte vos données de caisse, conçois vos pipelines privés d'ingestion documentaire
+                      et ajuste votre Dynamic Margin Guard. Vous disposez de mon numéro de mobile direct et
                       d'un canal direct.
                     </p>
                     <p>

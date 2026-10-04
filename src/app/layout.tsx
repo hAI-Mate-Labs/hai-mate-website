@@ -3,13 +3,13 @@ import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
-  title: "hAI Mate! | Applied AI & Automation Agency",
-  description: "Opening up operational flow while keeping human judgment at the center. Applied AI and agentic workflows for hospitality groups and growing SMEs across WA and Australia.",
-  keywords: ["applied AI WA", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "applied AI Perth WA"],
+  title: "hAI Mate! | Autonomous Margin Infrastructure for Hospitality",
+  description: "Opening up operational flow while keeping human judgment at the center. The autonomous back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB across WA and Australia.",
+  keywords: ["autonomous margin infrastructure", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "wholesale docket ingestion Perth WA"],
   authors: [{ name: "hAI Mate!" }],
   openGraph: {
-    title: "hAI Mate! | Applied Automation Agency",
-    description: "Opening up operational flow while keeping human judgment at the center.",
+    title: "hAI Mate! | Autonomous Margin Infrastructure",
+    description: "The autonomous back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB.",
     url: "https://haimate.com.au",
     siteName: "hAI Mate!",
     locale: "en_AU",
@@ -58,7 +58,7 @@ export default function RootLayout({
               "priceRange": "$$",
               "knowsAbout": [
                 "Hospitality Automation",
-                "Invoice OCR Extraction",
+                "Wholesale Docket Ingestion",
                 "Xero Integration",
                 "Lightspeed POS",
                 "Dynamic Labor Roster Optimization",

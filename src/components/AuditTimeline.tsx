@@ -41,7 +41,7 @@ export default function AuditTimeline({ onOpenAuditModal }: AuditTimelineProps) 
       subtitle: "Built completely off-site by our founder. Your live systems remain untouched.",
       icon: Zap,
       bullets: [
-        "We test OCR line-item parsing accuracy on 20+ of your historical seafood, meat, and produce dockets.",
+        "We calibrate our private document ingestion pipeline against 20+ of your historical seafood, meat, and produce dockets.",
         "We train a custom shift demand model connecting your till's hourly sales to local weather patterns.",
         "Zero changes to your live till, bank accounts, or accounting ledgers during this stage.",
       ],

@@ -488,7 +488,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   {scanState === "scanning" && (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-xs font-semibold text-[#0096A3]">
                       <RefreshCw className="w-3 h-3 animate-spin" />
-                      Running OCR &amp; Rate Verification...
+                      Running Ingestion &amp; Rate Verification...
                     </span>
                   )}
                   {scanState === "scanned" && (
@@ -517,7 +517,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <div className="text-xs">
                     <span className="font-bold text-[#0F172A] block">Your Scanned Receipt Preview</span>
                     <span className="text-zinc-500">
-                      {customFile.name} • Live OCR pipeline calibrated to your supplier layout
+                      {customFile.name} • Private ingestion pipeline calibrated to your supplier layout
                     </span>
                   </div>
                 </div>
@@ -660,7 +660,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs hover:bg-[#1E293B] transition-all shadow-sm w-full md:w-auto cursor-pointer"
                     >
                       <Scan className="w-4 h-4 text-[#00BFCC]" />
-                      <span>{language === "en" ? "Run 5-Second OCR Scan" : "Lancer le Scan OCR (5s)"}</span>
+                      <span>{language === "en" ? "Run 5-Second Docket Scan" : "Lancer le Scan du Bon (5s)"}</span>
                     </button>
                   )}
 
