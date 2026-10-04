@@ -1,2 +1,2 @@
-:HL["/hai-mate-website/_next/static/css/88309298e3ce3311.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"privacy","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"qx1VDEDNSgt8pvbk75G_R"}
+:HL["/hai-mate-website/_next/static/css/9bf54ff2d3acd4c7.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"privacy","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"2FTHkjb6cq8RbwgJ9oquw"}
