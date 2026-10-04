@@ -422,11 +422,6 @@ export const translations = {
       emailBtn: "Email Me Directly",
       emailCopied: "Email copied to clipboard!",
       bookAuditBtn: "Book 14-Day Diagnostic Review",
-      gemmaEngine: "Gemma 4 Engine",
-      dailyQuota: "{remaining}/3 queries left today",
-      dailyLimitReached: "Daily limit reached (3/3)",
-      dailyLimitNotice: "Daily conversation limit reached (3/3 queries used today). To explore your venue's margin defense, message Mallory directly on WhatsApp.",
-      placeholderLimit: "Daily limit reached (3/3). WhatsApp Mallory directly →",
     },
     auditModal: {
       headerTitle: "hAI Mate! • 14-Day Diagnostic Audit",
@@ -896,11 +891,6 @@ export const translations = {
       emailBtn: "M'envoyer un Email Direct",
       emailCopied: "Email copié dans le presse-papier !",
       bookAuditBtn: "Réserver l'Audit Diagnostique (14 Jours)",
-      gemmaEngine: "Moteur Gemma 4",
-      dailyQuota: "{remaining}/3 messages restants",
-      dailyLimitReached: "Limite quotidienne atteinte (3/3)",
-      dailyLimitNotice: "Limite quotidienne atteinte (3/3 messages utilisés aujourd'hui). Pour continuer l'analyse de votre établissement, écrivez directement à Mallory sur WhatsApp.",
-      placeholderLimit: "Limite atteinte (3/3). Écrivez directement à Mallory sur WhatsApp →",
     },
     auditModal: {
       headerTitle: "hAI Mate! • Audit Diagnostique de 14 Jours",
