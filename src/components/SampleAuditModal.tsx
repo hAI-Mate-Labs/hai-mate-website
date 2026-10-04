@@ -838,7 +838,7 @@ export default function SampleAuditModal({
           </p>
           <div style={{ marginTop: "8px", paddingTop: "6px", borderTop: "1px solid #E4E4E7", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span><strong>{isFr ? "Contact Ingénierie :" : "Engineering Contact:"}</strong> Mallory Antomarchi • Mobile &amp; WhatsApp: 0402 472 262</span>
-            <span>Email: founder@haimate.com.au • Web: haimate.com.au</span>
+            <span>Email: founder@haimate.com.au • Web: hai-mate-labs.github.io/hai-mate-website</span>
           </div>
         </div>
       </div>

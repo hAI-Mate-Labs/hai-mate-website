@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy & Data Governance | hAI Mate!",
     description:
       "Compliant with the Australian Privacy Act 1988 and EU GDPR. Strict zero AI model training guarantee on all venue invoices, recipes, and roster data.",
-    url: "https://haimate.com.au/privacy",
+    url: "https://hai-mate-labs.github.io/hai-mate-website/privacy",
     siteName: "hAI Mate!",
     locale: "en_AU",
     type: "website",

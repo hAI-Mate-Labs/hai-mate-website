@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "hAI Mate! | Autonomous Margin Infrastructure",
     description: "The autonomous back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB.",
-    url: "https://haimate.com.au",
+    url: "https://hai-mate-labs.github.io/hai-mate-website",
     siteName: "hAI Mate!",
     locale: "en_AU",
     type: "website",
@@ -57,8 +57,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "name": "hAI Mate!",
-              "url": "https://haimate.com.au",
-              "logo": "https://haimate.com.au/favicon.ico",
+              "url": "https://hai-mate-labs.github.io/hai-mate-website",
+              "logo": "https://hai-mate-labs.github.io/hai-mate-website/favicon.ico",
               "description":
                 "Applied AI and agentic automation agency for hospitality groups, restaurants, bakeries, and pubs across Western Australia and nationally.",
               "address": {

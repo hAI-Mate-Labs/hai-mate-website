@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "The Founder • Mallory Antomarchi | hAI Mate!",
     description:
       "We were not put on this earth to spend our lives filing paperwork. How Mallory Antomarchi is applying AI and agentic automation to empower Australian hospitality operators.",
-    url: "https://haimate.com.au/founder",
+    url: "https://hai-mate-labs.github.io/hai-mate-website/founder",
     siteName: "hAI Mate!",
     locale: "en_AU",
     type: "website",

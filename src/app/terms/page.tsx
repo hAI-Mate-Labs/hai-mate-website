@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Terms of Service | hAI Mate!",
     description:
       "Engagement terms and human-in-the-loop operational covenants for hAI Mate! applied automation services.",
-    url: "https://haimate.com.au/terms",
+    url: "https://hai-mate-labs.github.io/hai-mate-website/terms",
     siteName: "hAI Mate!",
     locale: "en_AU",
     type: "website",

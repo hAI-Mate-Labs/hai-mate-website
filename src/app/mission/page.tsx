@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Mission, Vision & Purpose | hAI Mate!",
     description:
       "Technology should quietly serve the human craft—never displace it. How hAI Mate! is restoring time and control to Australian hospitality operators.",
-    url: "https://haimate.com.au/mission",
+    url: "https://hai-mate-labs.github.io/hai-mate-website/mission",
     siteName: "hAI Mate!",
     locale: "en_AU",
     type: "website",
