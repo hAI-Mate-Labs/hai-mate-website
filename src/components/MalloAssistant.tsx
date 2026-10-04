@@ -6,7 +6,6 @@ import {
   Send,
   X,
   RotateCcw,
-  Bot,
   ShieldCheck,
   Calendar,
   MessageSquare,
@@ -14,17 +13,11 @@ import {
   Scan,
   Layers,
   ArrowRight,
-  ExternalLink,
-  Key,
-  Eye,
-  EyeOff,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 import {
   queryMallo,
-  saveApiKey,
-  removeApiKey,
-  getActiveApiKey,
+  getRemainingDailyQueries,
   MAX_INPUT_CHARS,
   MAX_OUTPUT_TOKENS,
 } from "@/lib/malloGemma";
@@ -59,48 +52,22 @@ export default function MalloAssistant({
     {
       id: "welcome",
       sender: "assistant",
-      text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 110 tokens for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
-      tokensUsed: 42,
+      text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 35 words for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
+      tokensUsed: 38,
       modelUsed: "Mallo AI",
     },
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingText, setStreamingText] = useState("");
-
-  // Gemma 4 Key state
-  const [showKeyModal, setShowKeyModal] = useState(false);
-  const [apiKeyInput, setApiKeyInput] = useState("");
-  const [hasKey, setHasKey] = useState(false);
-  const [showKeyMask, setShowKeyMask] = useState(true);
-  const [keySavedToast, setKeySavedToast] = useState(false);
+  const [remainingQueries, setRemainingQueries] = useState<number>(3);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const key = getActiveApiKey();
-    setHasKey(Boolean(key));
-    setApiKeyInput(key);
-  }, []);
-
-  const handleSaveKey = () => {
-    if (apiKeyInput.trim()) {
-      saveApiKey(apiKeyInput.trim());
-      setHasKey(true);
-      setKeySavedToast(true);
-      setTimeout(() => {
-        setKeySavedToast(false);
-        setShowKeyModal(false);
-      }, 1000);
-    }
-  };
-
-  const handleRemoveKey = () => {
-    removeApiKey();
-    setApiKeyInput("");
-    setHasKey(false);
-  };
+    setRemainingQueries(getRemainingDailyQueries());
+  }, [isOpen]);
 
   const quickQuestions = [
     "Do chefs need new apps or iPads?",
@@ -129,7 +96,7 @@ export default function MalloAssistant({
     const rawQuery = (textToSend || inputValue).trim();
     if (!rawQuery || isStreaming) return;
 
-    // Strict input length constraint
+    // Strict input length constraint (~35-40 tokens max)
     const query = rawQuery.slice(0, MAX_INPUT_CHARS);
 
     const userMsgId = `user-${Date.now()}`;
@@ -223,6 +190,7 @@ export default function MalloAssistant({
           clearInterval(interval);
           setIsStreaming(false);
           setStreamingText("");
+          setRemainingQueries(result.remainingDailyQueries);
           setMessages([
             ...newMessages,
             {
@@ -238,6 +206,7 @@ export default function MalloAssistant({
       }, 20);
     } catch {
       setIsStreaming(false);
+      setRemainingQueries(getRemainingDailyQueries());
       setMessages([
         ...newMessages,
         {
@@ -256,8 +225,8 @@ export default function MalloAssistant({
       {
         id: "welcome",
         sender: "assistant",
-        text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 110 tokens for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
-        tokensUsed: 42,
+        text: "G'day! I'm Mallo, your sovereign margin assistant powered by Gemma 4 (strictly capped at 35 words for brevity). Ask me anything about our wholesale docket OCR, WA state grant co-funding, or our 14-day diagnostic audit.",
+        tokensUsed: 38,
         modelUsed: "Mallo AI",
       },
     ]);
@@ -277,32 +246,22 @@ export default function MalloAssistant({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold tracking-tight">Mallo // Margin Assistant</span>
-              {hasKey ? (
-                <button
-                  type="button"
-                  onClick={() => setShowKeyModal(!showKeyModal)}
-                  className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 hover:bg-emerald-500/25 transition-all cursor-pointer"
-                  title="Gemma 4 (gemma-4-26b-a4b-it) active"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Gemma 4</span>
-                  <Key className="w-2.5 h-2.5 opacity-80" />
-                </button>
+              <span className="inline-flex items-center gap-1 text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Gemma 4</span>
+              </span>
+            </div>
+            <div className="mt-0.5">
+              {remainingQueries > 0 ? (
+                <span className="text-[10px] text-zinc-400 font-mono">
+                  {remainingQueries}/3 free queries left today
+                </span>
               ) : (
-                <button
-                  type="button"
-                  onClick={() => setShowKeyModal(!showKeyModal)}
-                  className="inline-flex items-center gap-1 text-[10px] font-mono font-medium text-[#00BFCC] bg-[#00BFCC]/15 px-2 py-0.5 rounded-full border border-[#00BFCC]/30 hover:bg-[#00BFCC]/25 transition-all cursor-pointer"
-                  title="Connect Google API key"
-                >
-                  <Key className="w-2.5 h-2.5" />
-                  <span>Connect Gemma 4</span>
-                </button>
+                <span className="text-[10px] text-amber-400 font-mono font-bold">
+                  Daily limit reached (3/3)
+                </span>
               )}
             </div>
-            <p className="text-[10px] text-zinc-400">
-              {MAX_TOKENS} Token Guardrail • Human-in-the-Loop Active
-            </p>
           </div>
         </div>
 
@@ -310,7 +269,7 @@ export default function MalloAssistant({
           <button
             type="button"
             onClick={handleReset}
-            className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+            className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
             title="Reset conversation"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -318,88 +277,13 @@ export default function MalloAssistant({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+            className="p-1.5 text-zinc-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close assistant"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
       </div>
-
-      {/* Gemma 4 Settings Drawer */}
-      {showKeyModal && (
-        <div className="p-3 bg-zinc-100 border-b border-zinc-200 animate-in fade-in slide-in-from-top-2 duration-150 text-xs shrink-0">
-          <div className="flex items-center justify-between mb-1.5">
-            <div className="flex items-center gap-1.5 text-zinc-900 font-bold text-xs">
-              <Key className="w-3.5 h-3.5 text-[#00BFCC]" />
-              <span>Google Gemma 4 Engine</span>
-            </div>
-            <button
-              type="button"
-              onClick={() => setShowKeyModal(false)}
-              className="p-1 rounded-md text-zinc-400 hover:text-zinc-700"
-              aria-label="Close settings"
-            >
-              <X className="w-3.5 h-3.5" />
-            </button>
-          </div>
-          <p className="text-[11px] text-zinc-600 mb-2 leading-relaxed">
-            Enter your Google AI Studio API key to power Mallo with Gemma 4 (gemma-4-26b-a4b-it). Stored privately in browser localStorage.
-          </p>
-          <div className="flex items-center gap-1.5 mb-2">
-            <div className="relative flex-1">
-              <input
-                type={showKeyMask ? "password" : "text"}
-                value={apiKeyInput}
-                onChange={(e) => setApiKeyInput(e.target.value)}
-                placeholder="Paste Google API Key (AIzaSy...)"
-                className="w-full pl-2.5 pr-8 py-1.5 text-xs rounded-lg border border-zinc-300 bg-white text-zinc-900 font-mono focus:outline-none focus:border-[#00BFCC]"
-              />
-              <button
-                type="button"
-                onClick={() => setShowKeyMask(!showKeyMask)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600"
-                title={showKeyMask ? "Show Key" : "Hide Key"}
-              >
-                {showKeyMask ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
-              </button>
-            </div>
-            <button
-              type="button"
-              onClick={handleSaveKey}
-              disabled={!apiKeyInput.trim()}
-              className="px-3 py-1.5 rounded-lg bg-[#00BFCC] text-[#0B0F19] font-bold text-xs hover:bg-[#00D9E6] transition-colors disabled:opacity-40 cursor-pointer shrink-0 shadow-2xs"
-            >
-              {keySavedToast ? "Saved!" : "Save Key"}
-            </button>
-            {hasKey && (
-              <button
-                type="button"
-                onClick={handleRemoveKey}
-                className="px-2 py-1.5 rounded-lg bg-red-500/10 text-red-600 hover:bg-red-500/20 text-xs font-semibold transition-colors cursor-pointer shrink-0"
-                title="Remove stored key"
-              >
-                Remove
-              </button>
-            )}
-          </div>
-          <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-0.5">
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3 h-3 text-[#00BFCC]" />
-              <span>{hasKey ? "Key active & saved in browser" : "Zero server transmission"}</span>
-            </span>
-            <a
-              href="https://aistudio.google.com/app/apikey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#00838F] hover:underline inline-flex items-center gap-0.5 font-medium"
-            >
-              <span>Get free key at Google AI Studio →</span>
-              <ExternalLink className="w-2.5 h-2.5" />
-            </a>
-          </div>
-        </div>
-      )}
 
       {/* Messages Scroll Body */}
       <div className="p-4 overflow-y-auto flex-1 space-y-3 bg-zinc-50/50 text-xs">
@@ -413,7 +297,7 @@ export default function MalloAssistant({
             <div
               className={`max-w-[88%] p-3.5 rounded-2xl leading-relaxed shadow-2xs ${
                 m.sender === "user"
-                  ? "bg-[#0F172A] text-white rounded-br-xs"
+                  ? "bg-[#0F172A] text-white rounded-br-xs font-medium"
                   : "bg-white text-zinc-800 border border-zinc-200/90 rounded-bl-xs"
               }`}
             >
@@ -440,7 +324,7 @@ export default function MalloAssistant({
               <span className="text-[9px] text-zinc-400 font-mono mt-1 px-1 flex items-center gap-1.5">
                 <span className="font-semibold text-zinc-600">{m.modelUsed || "Mallo AI"}</span>
                 <span>•</span>
-                <span>{m.tokensUsed || 35} / {MAX_TOKENS} tokens</span>
+                <span>{m.tokensUsed || 35} tokens</span>
               </span>
             )}
           </div>
@@ -469,7 +353,7 @@ export default function MalloAssistant({
             <button
               key={idx}
               type="button"
-              disabled={isStreaming}
+              disabled={isStreaming || remainingQueries <= 0}
               onClick={() => handleSendMessage(q)}
               className="px-2.5 py-1 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-[10px] font-medium whitespace-nowrap transition-colors cursor-pointer shrink-0 disabled:opacity-50"
             >
@@ -479,7 +363,7 @@ export default function MalloAssistant({
         </div>
       </div>
 
-      {/* Input Row */}
+      {/* Input Row with Rate Limiter */}
       <div className="p-3 bg-white border-t border-zinc-200 shrink-0">
         <form
           onSubmit={(e) => {
@@ -495,11 +379,11 @@ export default function MalloAssistant({
               maxLength={MAX_INPUT_CHARS}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask about dockets, WA grants, or 33% labor margin..."
-              disabled={isStreaming}
-              className="w-full pl-3.5 pr-14 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400"
+              placeholder={remainingQueries > 0 ? "Ask about dockets, WA grants, or 33% labor target..." : "Daily limit reached (3/3). WhatsApp Mallory directly →"}
+              disabled={isStreaming || remainingQueries <= 0}
+              className="w-full pl-3.5 pr-14 py-2 text-xs rounded-full border border-zinc-200 focus:outline-none focus:border-[#0F172A] bg-zinc-50 focus:bg-white transition-all placeholder:text-zinc-400 disabled:opacity-60"
             />
-            {inputValue.length > 130 && (
+            {inputValue.length > 90 && (
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] font-mono text-zinc-400 pointer-events-none">
                 {inputValue.length}/{MAX_INPUT_CHARS}
               </span>
@@ -507,7 +391,7 @@ export default function MalloAssistant({
           </div>
           <button
             type="submit"
-            disabled={!inputValue.trim() || isStreaming}
+            disabled={!inputValue.trim() || isStreaming || remainingQueries <= 0}
             className="p-2 rounded-full bg-[#0F172A] text-white disabled:opacity-30 hover:bg-[#1E293B] transition-colors shrink-0 shadow-xs cursor-pointer"
             aria-label="Send query"
           >
