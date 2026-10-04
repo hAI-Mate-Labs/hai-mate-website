@@ -53,7 +53,7 @@ export default function Home() {
           onOpenSampleAuditModal={() => setSampleAuditModalOpen(true)}
         />
 
-        {/* 6. Direct Solo Practitioner Trust Card */}
+        {/* 6. Direct Engineering Partnership Trust Card */}
         <CompactFounderCard onOpenAuditModal={() => handleOpenAuditModal()} />
 
         {/* 7. Direct Booking Intake & WhatsApp Line */}

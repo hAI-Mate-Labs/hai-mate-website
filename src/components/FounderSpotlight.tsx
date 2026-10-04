@@ -25,23 +25,23 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
             {/* Pill Header */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-800">
               <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-              <span>DIRECT PRACTITIONER PARTNERSHIP</span>
+              <span>DIRECT ENGINEERING PARTNERSHIP • SOVEREIGN INFRASTRUCTURE</span>
             </div>
 
             {/* Title & Message */}
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              A Personal Note from the Founder.
+              Direct Engineering Partnership • Sovereign Infrastructure with Direct Leadership Access
             </h2>
 
             <div className="space-y-4 text-base text-zinc-600 leading-relaxed font-normal">
               <p>
-                In the hospitality world, your time is your most precious asset. You don’t need an agency passing your questions between account managers, junior developers, or overseas support tickets.
+                In hospitality, operational downtime is not an option. You do not need bloated agencies passing support requests through junior account coordinators or overseas ticketing queues. At hAI Mate!, our infrastructure is engineered directly by technical leadership. You get battle-tested, sovereign automation pipelines with direct founder-level SLA access via private Slack Connect and WhatsApp whenever adjustments are required.
               </p>
               <p>
-                As an independent solo practitioner, I work directly with you. When we start a 14-day audit, I am the one walking your venue floor across WA dining hubs (Cottesloe, Fremantle, Perth CBD, South West), reviewing your dockets, and configuring your workflows. Every conduit is tailored specifically to your venue’s unique till, suppliers, and menu rules.
+                Whether reviewing your prep line and paper dockets in person across Perth Metro (Cottesloe, Fremantle, CBD, Subiaco) and the South West or tuning your pipelines remotely, every conduit is tailored specifically to your venue’s unique till, suppliers, and menu rules.
               </p>
               <p className="text-[#0F172A] font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
-                “You get reliable, proven automation built to do the heavy lifting in the background, backed by my personal phone number whenever you need adjustments.”
+                “In hospitality, operational downtime is not an option. You do not need bloated agencies. At hAI Mate!, our infrastructure is engineered directly by technical leadership.”
               </p>
             </div>
 

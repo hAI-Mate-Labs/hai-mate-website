@@ -255,6 +255,16 @@ export default function UnifiedProcessTimeline({
                   </>
                 )}
               </p>
+              <div className="pt-2 flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-zinc-200/90 text-[11px] font-semibold text-zinc-800 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
+                  <span>
+                    {language === "en"
+                      ? "Redundant Australian Cloud Operations • Continuous Automated Pipeline Monitoring • Zero Single-Point-of-Failure Architecture"
+                      : "Opérations Cloud Australiennes Redondantes • Surveillance Continue des Pipelines Automatisés • Architecture Sans Point Défaillant Unique"}
+                  </span>
+                </span>
+              </div>
               <div className="pt-1">
                 <Link
                   href="/mission"

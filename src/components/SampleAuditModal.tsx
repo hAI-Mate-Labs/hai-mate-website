@@ -629,7 +629,7 @@ export default function SampleAuditModal({
                 <td style={{ width: "20%", fontWeight: "700", color: "#0F172A" }}>{isFr ? "120 Couverts • Bistrot & Bar" : "120 Seats • Bistro & Bar"}</td>
               </tr>
               <tr>
-                <td style={{ color: "#71717A", fontWeight: "600", paddingTop: "4px" }}>{isFr ? "Praticien Responsable :" : "Lead Practitioner:"}</td>
+                <td style={{ color: "#71717A", fontWeight: "600", paddingTop: "4px" }}>{isFr ? "Direction Technique :" : "Lead Systems Engineer:"}</td>
                 <td style={{ fontWeight: "700", color: "#0F172A", paddingTop: "4px" }}>Mallory Antomarchi ({isFr ? "Fondateur" : "Founder"})</td>
                 <td style={{ color: "#71717A", fontWeight: "600", paddingTop: "4px" }}>{isFr ? "Systèmes Audités :" : "Audited Systems:"}</td>
                 <td style={{ fontWeight: "700", color: "#0F172A", paddingTop: "4px" }}>Lightspeed POS • Xero • Deputy</td>
@@ -837,7 +837,7 @@ export default function SampleAuditModal({
             )}
           </p>
           <div style={{ marginTop: "8px", paddingTop: "6px", borderTop: "1px solid #E4E4E7", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span><strong>{isFr ? "Contact Praticien :" : "Practitioner Contact:"}</strong> Mallory Antomarchi • Mobile &amp; WhatsApp: 0402 472 262</span>
+            <span><strong>{isFr ? "Contact Ingénierie :" : "Engineering Contact:"}</strong> Mallory Antomarchi • Mobile &amp; WhatsApp: 0402 472 262</span>
             <span>Email: founder@haimate.com.au • Web: haimate.com.au</span>
           </div>
         </div>

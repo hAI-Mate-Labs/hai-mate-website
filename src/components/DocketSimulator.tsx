@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   FileText,
   Scan,
@@ -8,17 +8,13 @@ import {
   AlertTriangle,
   ArrowRight,
   RefreshCw,
-  Sparkles,
-  ShieldCheck,
-  Send,
-  Building,
-  Utensils,
-  Croissant,
-  Beer,
   Upload,
   Camera,
-  Image as ImageIcon,
-  FileUp,
+  RotateCcw,
+  ShieldCheck,
+  Check,
+  FileCheck2,
+  Terminal,
 } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 import { useLanguage } from "@/context/LanguageContext";
@@ -28,15 +24,16 @@ interface DocketSimulatorProps {
   onOpenAuditModal: () => void;
 }
 
-type DocketType = "seafood" | "bakery" | "meat" | "custom";
+type DocketType = "seafood" | "meat" | "produce" | "custom";
 
 interface LineItem {
   name: string;
   qty: string;
+  unit: string;
   billedRate: number;
   contractRate: number;
-  unit: string;
   isDiscrepancy: boolean;
+  varianceLabel?: string;
 }
 
 interface DocketData {
@@ -44,7 +41,6 @@ interface DocketData {
   venueName: string;
   supplierName: string;
   docketNumber: string;
-  icon: any;
   tag: string;
   date: string;
   items: LineItem[];
@@ -53,8 +49,11 @@ interface DocketData {
 export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorProps) {
   const { language } = useLanguage();
   const t = translations[language].docketSimulator;
+
   const [activeDocket, setActiveDocket] = useState<DocketType>("seafood");
-  const [scanState, setScanState] = useState<"idle" | "scanning" | "scanned" | "staged">("idle");
+  const [scanState, setScanState] = useState<"idle" | "scanning" | "scanned" | "staged">("scanned");
+  const [scanStep, setScanStep] = useState<number>(3);
+  const [isDragging, setIsDragging] = useState(false);
   const [customFile, setCustomFile] = useState<{
     name: string;
     size: string;
@@ -63,6 +62,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
+
+  // Clear timers on unmount
+  useEffect(() => {
+    return () => {
+      timeoutsRef.current.forEach(clearTimeout);
+    };
+  }, []);
 
   const dockets: Record<DocketType, DocketData> = {
     seafood: {
@@ -70,20 +77,20 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
       venueName: "Cottesloe Beachside Bistro",
       supplierName: "Fresh Ocean Catch Wholesalers",
       docketNumber: "DOC-89421",
-      icon: Utensils,
-      tag: "Seafood & Grill",
+      tag: "Wholesale Seafood",
       date: "Today, 06:45 AM Delivery",
       items: [
         {
-          name: "Local Barramundi Fillets (Skin-on)",
+          name: "Local Barramundi Fillets, 25 kg",
           qty: "25",
           unit: "kg",
           billedRate: 31.0,
           contractRate: 28.5,
           isDiscrepancy: true,
+          varianceLabel: "+$62.50 Price Creep Detected",
         },
         {
-          name: "Spencer Gulf King Prawns (U10)",
+          name: "Spencer Gulf King Prawns (U10), 15 kg",
           qty: "15",
           unit: "kg",
           billedRate: 38.0,
@@ -91,7 +98,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
           isDiscrepancy: false,
         },
         {
-          name: "Tasmanian Salmon Portions (200g)",
+          name: "Tasmanian Salmon Portions (200g), 20 kg",
           qty: "20",
           unit: "kg",
           billedRate: 29.5,
@@ -99,120 +106,104 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
           isDiscrepancy: false,
         },
         {
-          name: "Fresh Sea Scallops (Roe-off)",
+          name: "Fresh Sea Scallops (Roe-off), 10 kg",
           qty: "10",
           unit: "kg",
-          billedRate: 44.0,
+          billedRate: 41.0,
           contractRate: 41.0,
-          isDiscrepancy: true,
-        },
-      ],
-    },
-    bakery: {
-      id: "bakery",
-      venueName: "Mount Lawley Artisan Bakery",
-      supplierName: "Heritage Mill & Dairy Co.",
-      docketNumber: "DOC-41903",
-      icon: Croissant,
-      tag: "Bakery & Wholesale",
-      date: "Today, 04:15 AM Delivery",
-      items: [
-        {
-          name: "Unbleached Organic Bakers Flour (25kg)",
-          qty: "40",
-          unit: "bags (25kg)",
-          billedRate: 32.5,
-          contractRate: 31.3,
-          isDiscrepancy: true,
-        },
-        {
-          name: "Grass-Fed Cultured Unsalted Butter",
-          qty: "60",
-          unit: "kg blocks",
-          billedRate: 14.2,
-          contractRate: 14.2,
           isDiscrepancy: false,
-        },
-        {
-          name: "Free Range Egg Pulp (Pasteurized)",
-          qty: "30",
-          unit: "litres",
-          billedRate: 8.8,
-          contractRate: 8.8,
-          isDiscrepancy: false,
-        },
-        {
-          name: "Valrhona Baking Cocoa & Couverture",
-          qty: "15",
-          unit: "boxes (10kg)",
-          billedRate: 118.0,
-          contractRate: 110.0,
-          isDiscrepancy: true,
         },
       ],
     },
     meat: {
       id: "meat",
-      venueName: "Fremantle Craft Pub & Taphouse",
-      supplierName: "WA Prime Wholesale Meats",
-      docketNumber: "DOC-77290",
-      icon: Beer,
-      tag: "Pub & Smokehouse",
-      date: "Today, 07:30 AM Delivery",
+      venueName: "Fremantle Craft Grill & Smokehouse",
+      supplierName: "WA Prime Meats & Poultry",
+      docketNumber: "INV-40112",
+      tag: "Butcher & Poultry",
+      date: "Today, 07:15 AM Delivery",
       items: [
         {
-          name: "Black Angus Grain-Fed Sirloin (YG)",
+          name: "Black Angus Grain-Fed Sirloin (YG), 35 kg",
           qty: "35",
           unit: "kg",
           billedRate: 36.5,
           contractRate: 33.5,
           isDiscrepancy: true,
+          varianceLabel: "+$105.00 Price Creep Detected",
         },
         {
-          name: "Free Range Pork Belly (Skin Scored)",
+          name: "Free Range Chicken Breast Fillet, 30 kg",
           qty: "30",
           unit: "kg",
-          billedRate: 16.5,
-          contractRate: 16.5,
+          billedRate: 12.8,
+          contractRate: 12.8,
           isDiscrepancy: false,
         },
         {
-          name: "Smoked Bacon Rasher Rib-Eye (Catering)",
-          qty: "25",
+          name: "WA Prime Lamb Cutlets (Cap-on), 15 kg",
+          qty: "15",
           unit: "kg",
-          billedRate: 18.0,
-          contractRate: 18.0,
+          billedRate: 48.0,
+          contractRate: 48.0,
           isDiscrepancy: false,
         },
+      ],
+    },
+    produce: {
+      id: "produce",
+      venueName: "Subiaco Dining Room & Garden",
+      supplierName: "Wanneroo Regional Produce",
+      docketNumber: "DEL-66290",
+      tag: "Local Farm Produce",
+      date: "Today, 05:30 AM Delivery",
+      items: [
         {
-          name: "Lamb Cutlets French Trimmed (Cap-on)",
-          qty: "18",
+          name: "Heirloom Medley Tomatoes, 20 kg",
+          qty: "20",
           unit: "kg",
-          billedRate: 49.0,
-          contractRate: 45.0,
+          billedRate: 14.8,
+          contractRate: 12.0,
           isDiscrepancy: true,
+          varianceLabel: "+$56.00 Price Creep Detected",
+        },
+        {
+          name: "Hydroponic Baby Spinach Leaves, 15 kg",
+          qty: "15",
+          unit: "kg",
+          billedRate: 18.5,
+          contractRate: 18.5,
+          isDiscrepancy: false,
+        },
+        {
+          name: "Hass Avocados (Trays, Large), 8 trays",
+          qty: "8",
+          unit: "tray",
+          billedRate: 34.0,
+          contractRate: 34.0,
+          isDiscrepancy: false,
         },
       ],
     },
     custom: {
       id: "custom",
-      venueName: "Your Venue (Live Upload)",
-      supplierName: customFile ? "Detected WA Wholesale Deliveries" : "Your Uploaded Supplier",
-      docketNumber: customFile ? `DOC-${customFile.name.slice(0, 6).toUpperCase()}` : "DOC-CUSTOM",
-      icon: Camera,
-      tag: "Operator Uploaded",
-      date: "Uploaded Today • Auto-Calibrated",
+      venueName: "Your Venue (Extracted Docket)",
+      supplierName: customFile ? `Supplier • ${customFile.name.slice(0, 24)}` : "Your Uploaded Wholesale Docket",
+      docketNumber: customFile ? `DOC-${customFile.name.replace(/[^a-zA-Z0-9]/g, "").slice(0, 5).toUpperCase()}` : "DOC-CUSTOM",
+      tag: "Live Operator Ingestion",
+      date: "Uploaded Today • Auto-Calibrated Pipeline",
       items: [
         {
-          name: "Wholesale Fresh Produce / Protein (Extracted)",
+          name: "Wholesale Fresh Produce / Protein (Extracted), 22 kg",
           qty: "22",
           unit: "kg",
           billedRate: 34.5,
           contractRate: 31.5,
           isDiscrepancy: true,
+          varianceLabel: "+$66.00 Price Creep Detected",
         },
         {
-          name: "Kitchen Pantry Dairy / Oil Stock (Extracted)",
+          name: "Kitchen Pantry Dairy / Oil Stock (Extracted), 15 units",
           qty: "15",
           unit: "units",
           billedRate: 18.5,
@@ -220,12 +211,12 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
           isDiscrepancy: false,
         },
         {
-          name: "Specialty Supplier Delivery Line (Extracted)",
+          name: "Specialty Supplier Delivery Line (Extracted), 12 kg",
           qty: "12",
           unit: "kg",
-          billedRate: 42.0,
+          billedRate: 38.0,
           contractRate: 38.0,
-          isDiscrepancy: true,
+          isDiscrepancy: false,
         },
       ],
     },
@@ -233,7 +224,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
   const current = dockets[activeDocket];
 
-  // Calculate totals
+  // Financial calculations
   const totalBilled = current.items.reduce(
     (acc, item) => acc + parseFloat(item.qty) * item.billedRate,
     0
@@ -249,29 +240,48 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
   const annualizedImpact = totalOvercharge * 52;
 
-  const handleStartScan = () => {
+  // Execute the autonomous 2.5-second scan sequence
+  const startScanSequence = () => {
+    timeoutsRef.current.forEach(clearTimeout);
+    timeoutsRef.current = [];
+
     setScanState("scanning");
-    setTimeout(() => {
+    setScanStep(1);
+
+    const step2Timer = setTimeout(() => {
+      setScanStep(2);
+    }, 850);
+
+    const step3Timer = setTimeout(() => {
+      setScanStep(3);
+    }, 1700);
+
+    const finishTimer = setTimeout(() => {
       setScanState("scanned");
-    }, 1200);
+    }, 2500);
+
+    timeoutsRef.current = [step2Timer, step3Timer, finishTimer];
   };
 
-  const handleStageXero = () => {
+  const handleSwitchTab = (type: DocketType) => {
+    if (type === activeDocket && scanState === "scanned") return;
+    setActiveDocket(type);
+    if (type !== "custom" || customFile) {
+      startScanSequence();
+    } else {
+      setScanState("idle");
+    }
+  };
+
+  const handleStageInXero = () => {
     setScanState("staged");
   };
 
   const handleReset = () => {
-    setScanState("idle");
+    startScanSequence();
   };
 
-  const handleSwitchTab = (type: DocketType) => {
-    setActiveDocket(type);
-    setScanState("idle");
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const processFile = (file: File) => {
     const url = URL.createObjectURL(file);
     const sizeKb = (file.size / 1024).toFixed(0);
     setCustomFile({
@@ -280,30 +290,79 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
       previewUrl: url,
     });
     setActiveDocket("custom");
-    setScanState("idle");
+    startScanSequence();
+  };
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      processFile(file);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) {
+      processFile(file);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
   };
 
   const handleUseSampleCustom = () => {
     setCustomFile({
-      name: "kitchen_docket_sample.jpg",
+      name: "fremantle_butcher_delivery_sample.jpg",
       size: "480 KB",
       previewUrl: null,
     });
     setActiveDocket("custom");
-    setScanState("idle");
+    startScanSequence();
   };
 
+  // Interpolated summary banner
+  const formattedSummary = t.summaryBanner
+    .replace("${amount}", totalOvercharge.toFixed(2))
+    .replace("{amount}", totalOvercharge.toFixed(2));
+
+  // Staged bill reference
+  const stagedRef = current.docketNumber
+    .replace("DOC-", "STG-")
+    .replace("INV-", "STG-")
+    .replace("DEL-", "STG-");
+
+  const formattedStagedNotice = t.stagedConfirmation.replace("#{ref}", `#${stagedRef}`);
+
   return (
-    <section id="simulator" className="relative py-20 md:py-28 bg-white border-b border-zinc-100 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section
+      id="simulator"
+      className="relative py-20 md:py-28 bg-[#0B0F19] border-y border-[#232F48] overflow-hidden text-[#F8FAFC]"
+    >
+      {/* Background radial cyan glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-[#00F2FE]/10 via-[#00F2FE]/5 to-transparent blur-3xl pointer-events-none" />
+
+      {/* Subtle Aperture Watermark */}
+      <div className="absolute -right-20 -bottom-20 opacity-[0.03] pointer-events-none">
+        <ApertureLogo size={550} color="#00F2FE" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hidden inputs for file browse and camera */}
         <input
           ref={fileInputRef}
           type="file"
           accept="image/*,application/pdf"
           className="hidden"
-          onChange={handleFileUpload}
+          onChange={handleFileInputChange}
         />
         <input
           ref={cameraInputRef}
@@ -311,414 +370,569 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
           accept="image/*"
           capture="environment"
           className="hidden"
-          onChange={handleFileUpload}
+          onChange={handleFileInputChange}
         />
 
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-50 border border-zinc-200/80 mb-3 shadow-2xs">
-            <Scan className="w-3.5 h-3.5 text-[#0096A3]" />
-            <span className="text-xs font-semibold text-zinc-800 tracking-wide uppercase">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#151D2F] border border-[#232F48] shadow-inner mb-4">
+            <Scan className="w-3.5 h-3.5 text-[#00F2FE]" />
+            <span className="text-xs font-semibold text-[#00F2FE] tracking-wide uppercase">
               {t.badge}
             </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight">
+
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight"
+            style={{ color: "#F8FAFC" }}
+          >
             {t.title}
           </h2>
-          <p className="mt-3 text-base sm:text-lg text-zinc-600">
+
+          <p className="mt-3 text-base sm:text-lg text-[#94A3B8]">
             {t.subtitle}
           </p>
         </div>
 
-        {/* Venue Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+        {/* Dual-Input Selector Tabs */}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
+          {/* Tab 1: Seafood */}
           <button
             type="button"
             onClick={() => handleSwitchTab("seafood")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
               activeDocket === "seafood"
-                ? "bg-[#0F172A] text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
+                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <Utensils className="w-3.5 h-3.5" />
+            <FileText className="w-3.5 h-3.5" />
             <span>{t.tabSeafood}</span>
           </button>
 
-          <button
-            type="button"
-            onClick={() => handleSwitchTab("bakery")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
-              activeDocket === "bakery"
-                ? "bg-[#0F172A] text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
-            }`}
-          >
-            <Croissant className="w-3.5 h-3.5" />
-            <span>{t.tabDairy}</span>
-          </button>
-
+          {/* Tab 2: Butcher & Poultry */}
           <button
             type="button"
             onClick={() => handleSwitchTab("meat")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
               activeDocket === "meat"
-                ? "bg-[#0F172A] text-white shadow-sm"
-                : "bg-zinc-100 text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-200/70"
+                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <Beer className="w-3.5 h-3.5" />
-            <span>{t.tabBeef}</span>
+            <FileText className="w-3.5 h-3.5" />
+            <span>{t.tabMeat}</span>
           </button>
 
-          {/* Upload Tab */}
+          {/* Tab 3: Local Farm Produce */}
+          <button
+            type="button"
+            onClick={() => handleSwitchTab("produce")}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+              activeDocket === "produce"
+                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>{t.tabProduce}</span>
+          </button>
+
+          {/* Tab 4: Custom File Dropzone & Camera */}
           <button
             type="button"
             onClick={() => {
               setActiveDocket("custom");
-              setScanState("idle");
               if (!customFile) {
-                fileInputRef.current?.click();
+                setScanState("idle");
+              } else {
+                startScanSequence();
               }
             }}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
               activeDocket === "custom"
-                ? "bg-[#0F172A] text-white shadow-sm ring-2 ring-[#00BFCC]/30"
-                : "bg-[#00BFCC]/10 text-zinc-900 border border-[#00BFCC]/30 hover:bg-[#00BFCC]/20"
+                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <Camera className="w-3.5 h-3.5 text-[#0096A3]" />
+            <Camera className="w-3.5 h-3.5" />
             <span>{t.tabCustom}</span>
             {customFile && (
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
             )}
           </button>
         </div>
 
-        {/* Upload Dropzone prompt if custom tab selected and no file uploaded */}
+        {/* Custom Dropzone View (when custom tab is selected and no file uploaded yet) */}
         {activeDocket === "custom" && !customFile && (
-          <div className="mb-8 rounded-3xl bg-zinc-50 border-2 border-dashed border-zinc-200 p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center mx-auto text-zinc-900 shadow-2xs">
-              <Upload className="w-6 h-6 text-[#0096A3]" />
+          <div
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            className={`mb-8 rounded-3xl bg-[#151D2F] border-2 border-dashed p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-4 transition-all ${
+              isDragging
+                ? "border-[#00F2FE] bg-[#00F2FE]/5 shadow-[0_0_20px_rgba(0,242,254,0.2)]"
+                : "border-[#232F48] hover:border-[#00F2FE]/60"
+            }`}
+          >
+            <div className="w-16 h-16 rounded-2xl bg-[#0B0F19] border border-[#232F48] flex items-center justify-center mx-auto text-[#00F2FE] shadow-inner">
+              <Upload className="w-7 h-7 text-[#00F2FE]" />
             </div>
+
             <div className="space-y-1">
-              <h3 className="text-lg font-bold text-[#0F172A]">
+              <h3
+                className="text-lg font-bold"
+                style={{ color: "#F8FAFC" }}
+              >
                 {t.customUploadHeading}
               </h3>
-              <p className="text-xs text-zinc-500 max-w-md mx-auto">
+              <p className="text-xs text-[#94A3B8] max-w-md mx-auto">
                 {t.customUploadSub}
               </p>
             </div>
+
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-[#1E293B] transition-colors shadow-xs cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#00F2FE] text-[#0B0F19] text-xs font-bold hover:bg-[#38bdf8] transition-all shadow-[0_0_15px_rgba(0,242,254,0.3)] cursor-pointer"
               >
                 {t.chooseFileBtn}
               </button>
               <button
                 type="button"
                 onClick={() => cameraInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-white border border-zinc-200 text-zinc-900 text-xs font-bold hover:bg-zinc-100 transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#151D2F] border border-[#232F48] text-[#F8FAFC] text-xs font-bold hover:bg-[#1E293B] hover:border-[#00F2FE]/60 transition-colors flex items-center gap-1.5 cursor-pointer"
               >
-                <Camera className="w-3.5 h-3.5 text-[#0096A3]" />
+                <Camera className="w-3.5 h-3.5 text-[#00F2FE]" />
                 <span>{t.cameraBtn}</span>
               </button>
+            </div>
+
+            <div>
               <button
                 type="button"
                 onClick={handleUseSampleCustom}
-                className="text-xs text-[#0096A3] font-semibold hover:underline block w-full mt-2 cursor-pointer"
+                className="text-xs text-[#00F2FE] font-semibold hover:underline cursor-pointer"
               >
-                {language === "en" ? "Or test with sample kitchen invoice →" : "Ou tester avec un exemple de bon de cuisine →"}
+                {language === "en"
+                  ? "Or test with pre-calibrated sample kitchen docket →"
+                  : "Ou tester avec un exemple de bon de cuisine calibré →"}
               </button>
             </div>
           </div>
         )}
 
-        {/* Main Simulator Card */}
+        {/* Main Terminal-Styled Simulation Card */}
         {!(activeDocket === "custom" && !customFile) && (
-          <div className="rounded-3xl bg-zinc-50/70 border border-zinc-200/90 p-6 sm:p-10 shadow-xs relative overflow-hidden">
-            
-            {/* Subtle watermark */}
-            <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 opacity-[0.025] pointer-events-none">
-              <ApertureLogo size={400} color="#0F172A" />
-            </div>
-
-            <div className="relative space-y-6">
-              
-              {/* Top Bar of the Docket */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-zinc-200/80 gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-zinc-900 shadow-2xs">
-                    <FileText className="w-5 h-5 text-[#0096A3]" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-bold text-[#0F172A]">{current.supplierName}</span>
-                      <span className="text-[10px] font-mono text-zinc-500 bg-white px-2 py-0.5 rounded border border-zinc-200">
-                        {current.docketNumber}
-                      </span>
-                    </div>
-                    <p className="text-xs text-zinc-500">
-                      {current.venueName} • {current.date}
-                      {customFile && ` • File: ${customFile.name} (${customFile.size})`}
-                    </p>
-                  </div>
+          <div className="rounded-3xl bg-[#151D2F] border border-[#232F48] p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+            {/* Terminal Top Bar */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-[#232F48] gap-3">
+              <div className="flex items-center gap-3">
+                {/* 3 Terminal Window Dots */}
+                <div className="flex items-center gap-1.5 pr-2 border-r border-[#232F48]">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
 
-                {/* Status Badge & Upload Actions */}
                 <div className="flex items-center gap-2">
-                  {activeDocket === "custom" && customFile && (
-                    <button
-                      type="button"
-                      onClick={() => fileInputRef.current?.click()}
-                      className="px-3 py-1 rounded-full border border-zinc-200 bg-white text-[11px] font-semibold text-zinc-600 hover:bg-zinc-100"
-                    >
-                      Change Photo
-                    </button>
-                  )}
-
-                  {scanState === "idle" && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-xs font-semibold text-amber-800">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                      Unchecked Delivery Docket
-                    </span>
-                  )}
-                  {scanState === "scanning" && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-xs font-semibold text-[#0096A3]">
-                      <RefreshCw className="w-3 h-3 animate-spin" />
-                      Running Ingestion &amp; Rate Verification...
-                    </span>
-                  )}
-                  {scanState === "scanned" && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-800">
-                      <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
-                      2 Rate Overcharges Detected
-                    </span>
-                  )}
-                  {scanState === "staged" && (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      Staged in Xero with Credit Note Draft
-                    </span>
-                  )}
+                  <Terminal className="w-4 h-4 text-[#00F2FE]" />
+                  <span className="text-xs font-mono text-[#00F2FE] tracking-wider uppercase">
+                    CONDUIT: INGESTION_V4.2 // AU_SOVEREIGN_NODE
+                  </span>
                 </div>
               </div>
 
-              {/* Uploaded image preview if available */}
-              {activeDocket === "custom" && customFile?.previewUrl && (
-                <div className="p-3 bg-white border border-zinc-200 rounded-2xl flex items-center gap-4">
-                  <img
-                    src={customFile.previewUrl}
-                    alt="Uploaded delivery docket"
-                    className="w-16 h-16 object-cover rounded-xl border border-zinc-200 shadow-2xs"
-                  />
-                  <div className="text-xs">
-                    <span className="font-bold text-[#0F172A] block">Your Scanned Receipt Preview</span>
-                    <span className="text-zinc-500">
-                      {customFile.name} • Private ingestion pipeline calibrated to your supplier layout
+              {/* Live Status Badge */}
+              <div className="flex items-center gap-2">
+                {activeDocket === "custom" && customFile && (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="px-2.5 py-1 rounded-full border border-[#232F48] bg-[#0B0F19] text-[11px] font-mono text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
+                  >
+                    Replace Photo
+                  </button>
+                )}
+
+                {scanState === "idle" && (
+                  <button
+                    type="button"
+                    onClick={startScanSequence}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-[#00F2FE]/40 text-xs font-mono text-[#00F2FE] cursor-pointer"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]" />
+                    Run 2.5s Scan
+                  </button>
+                )}
+
+                {scanState === "scanning" && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00F2FE]/10 border border-[#00F2FE]/40 text-xs font-mono text-[#00F2FE]">
+                    <RefreshCw className="w-3 h-3 animate-spin text-[#00F2FE]" />
+                    <span>AUTONOMOUS SCAN IN PROGRESS</span>
+                  </span>
+                )}
+
+                {scanState === "scanned" && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-xs font-mono text-rose-400">
+                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                    <span>1 OVERCHARGE DETECTED</span>
+                  </span>
+                )}
+
+                {scanState === "staged" && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>STAGED IN XERO (VERIFIED)</span>
+                  </span>
+                )}
+
+                {scanState !== "scanning" && (
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    title="Re-run 2.5s Scan Sequence"
+                    className="p-1.5 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Docket Metadata Banner */}
+            <div className="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border-b border-[#232F48]/60">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#0B0F19] border border-[#232F48] flex items-center justify-center text-[#00F2FE]">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#F8FAFC] text-sm">
+                      {current.supplierName}
                     </span>
+                    <span className="font-mono text-[11px] text-[#00F2FE] bg-[#00F2FE]/10 px-2 py-0.5 rounded border border-[#00F2FE]/20">
+                      {current.docketNumber}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-[#94A3B8] mt-0.5">
+                    {current.venueName} • {current.date}
+                    {customFile && ` • File: ${customFile.name} (${customFile.size})`}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 text-[11px] font-mono text-[#94A3B8]">
+                <span>Ingestion: Calibrated</span>
+                <span className="w-1 h-1 rounded-full bg-[#232F48]" />
+                <span className="text-[#00F2FE]">HITL Governance: Active</span>
+              </div>
+            </div>
+
+            {/* Uploaded File Preview Thumbnail (if custom) */}
+            {activeDocket === "custom" && customFile?.previewUrl && (
+              <div className="mt-4 p-3 bg-[#0B0F19] border border-[#232F48] rounded-2xl flex items-center gap-3">
+                <img
+                  src={customFile.previewUrl}
+                  alt="Scanned invoice"
+                  className="w-14 h-14 object-cover rounded-lg border border-[#232F48]"
+                />
+                <div className="text-xs">
+                  <span className="font-bold text-[#F8FAFC] block">
+                    {customFile.name}
+                  </span>
+                  <span className="text-[#94A3B8]">
+                    Image ingested via private optical conduit • Layout mapped
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {/* Terminal Telemetry / Scanning Sequence State */}
+            <div className="relative mt-5">
+              {/* Vertical Animated Cyan Scanline Overlay */}
+              {scanState === "scanning" && (
+                <div className="absolute inset-0 z-30 pointer-events-none overflow-hidden rounded-2xl">
+                  {/* Glowing Laser Sweep */}
+                  <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#00F2FE] to-transparent shadow-[0_0_20px_#00F2FE] animate-scanline" />
+                  <div className="absolute inset-0 bg-[#00F2FE]/5 backdrop-blur-[0.5px]" />
+                </div>
+              )}
+
+              {/* Progress Telemetry Steps Box (Visible during scan) */}
+              {scanState === "scanning" && (
+                <div className="mb-5 p-4 rounded-2xl bg-[#0B0F19] border border-[#00F2FE]/40 space-y-3">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[#00F2FE] font-bold flex items-center gap-2">
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#00F2FE]" />
+                      Autonomous 2.5s Scan Pipeline Executing...
+                    </span>
+                    <span className="text-[#94A3B8]">
+                      {scanStep === 1 ? "33%" : scanStep === 2 ? "66%" : "99%"}
+                    </span>
+                  </div>
+
+                  {/* Progress bar */}
+                  <div className="w-full h-1.5 bg-[#151D2F] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#00F2FE] transition-all duration-700 ease-out shadow-[0_0_10px_#00F2FE]"
+                      style={{
+                        width: scanStep === 1 ? "33%" : scanStep === 2 ? "66%" : "100%",
+                      }}
+                    />
+                  </div>
+
+                  {/* 3 Step Indicators */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 font-mono text-[11px]">
+                    <div
+                      className={`flex items-center gap-2 p-2 rounded-lg border ${
+                        scanStep >= 1
+                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
+                          : "border-[#232F48] text-[#94A3B8]"
+                      }`}
+                    >
+                      {scanStep > 1 ? (
+                        <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
+                      ) : (
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                      )}
+                      <span>{t.stepExtracting}</span>
+                    </div>
+
+                    <div
+                      className={`flex items-center gap-2 p-2 rounded-lg border ${
+                        scanStep >= 2
+                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
+                          : "border-[#232F48] text-[#94A3B8]"
+                      }`}
+                    >
+                      {scanStep > 2 ? (
+                        <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
+                      ) : scanStep === 2 ? (
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                      ) : (
+                        <span className="w-2 h-2 rounded-full bg-[#232F48]" />
+                      )}
+                      <span>{t.stepComparing}</span>
+                    </div>
+
+                    <div
+                      className={`flex items-center gap-2 p-2 rounded-lg border ${
+                        scanStep >= 3
+                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
+                          : "border-[#232F48] text-[#94A3B8]"
+                      }`}
+                    >
+                      {scanStep === 3 ? (
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                      ) : (
+                        <span className="w-2 h-2 rounded-full bg-[#232F48]" />
+                      )}
+                      <span>{t.stepDetecting}</span>
+                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Line Items Container */}
-              <div className="space-y-3 relative">
-                
-                {/* Laser scanning line animation overlay */}
-                {scanState === "scanning" && (
-                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-2xl">
-                    <div className="w-full h-1 bg-[#00BFCC] shadow-[0_0_15px_#00BFCC] animate-bounce" />
-                  </div>
-                )}
+              {/* Parsed Output & Discrepancy Detection Table */}
+              <div className="overflow-x-auto rounded-2xl border border-[#232F48] bg-[#0B0F19]">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-[#232F48] text-[11px] font-mono uppercase tracking-wider text-[#94A3B8] bg-[#151D2F]/50">
+                      <th className="py-3 px-4 sm:px-5 font-semibold">
+                        {t.colItem}
+                      </th>
+                      <th className="py-3 px-4 sm:px-5 font-semibold">
+                        {t.colInvoiced}
+                      </th>
+                      <th className="py-3 px-4 sm:px-5 font-semibold">
+                        {t.colBenchmark}
+                      </th>
+                      <th className="py-3 px-4 sm:px-5 font-semibold text-right">
+                        {t.colVariance}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#232F48]/60 text-xs sm:text-sm">
+                    {current.items.map((item, idx) => {
+                      const billedTotal = parseFloat(item.qty) * item.billedRate;
+                      const diffPerUnit = item.billedRate - item.contractRate;
+                      const totalDiff = parseFloat(item.qty) * diffPerUnit;
 
-                {current.items.map((item, idx) => {
-                  const billedTotal = parseFloat(item.qty) * item.billedRate;
-                  const diffPerUnit = item.billedRate - item.contractRate;
-                  const totalItemDiff = parseFloat(item.qty) * diffPerUnit;
-
-                  return (
-                    <div
-                      key={idx}
-                      className={`p-4 rounded-2xl bg-white border transition-all duration-300 ${
-                        scanState === "scanned" && item.isDiscrepancy
-                          ? "border-rose-300 bg-rose-50/20 shadow-xs"
-                          : scanState === "scanned" && !item.isDiscrepancy
-                          ? "border-emerald-200 bg-emerald-50/10 shadow-2xs"
-                          : "border-zinc-200/80 shadow-2xs"
-                      }`}
-                    >
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs sm:text-sm font-bold text-[#0F172A]">
+                      return (
+                        <tr
+                          key={idx}
+                          className={`transition-colors duration-200 ${
+                            scanState === "scanned" && item.isDiscrepancy
+                              ? "bg-rose-500/5 hover:bg-rose-500/10"
+                              : "hover:bg-[#151D2F]/70"
+                          }`}
+                        >
+                          {/* Item Description & Quantity */}
+                          <td className="py-3.5 px-4 sm:px-5">
+                            <div className="font-semibold text-[#F8FAFC]">
                               {item.name}
+                            </div>
+                            <div className="text-[11px] font-mono text-[#94A3B8] mt-0.5">
+                              Line Total: ${billedTotal.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
+                            </div>
+                          </td>
+
+                          {/* Invoiced Unit Rate */}
+                          <td className="py-3.5 px-4 sm:px-5 font-mono text-[#F8FAFC]">
+                            <span className="font-bold">
+                              ${item.billedRate.toFixed(2)}
                             </span>
-                            <span className="text-xs text-zinc-500 font-mono">
-                              ({item.qty} {item.unit})
+                            <span className="text-xs text-[#94A3B8]"> / {item.unit}</span>
+                          </td>
+
+                          {/* Contract Benchmark */}
+                          <td className="py-3.5 px-4 sm:px-5 font-mono text-[#94A3B8]">
+                            <span className="text-[#F8FAFC]">
+                              ${item.contractRate.toFixed(2)}
                             </span>
-                          </div>
-                          <div className="text-xs text-zinc-500 flex items-center gap-3">
-                            <span>Billed: ${item.billedRate.toFixed(2)}/{item.unit.split(" ")[0]}</span>
-                            {scanState !== "idle" && (
-                              <span className="font-mono text-zinc-600">
-                                Agreed Contract: ${item.contractRate.toFixed(2)}/{item.unit.split(" ")[0]}
+                            <span className="text-xs text-[#94A3B8]"> / {item.unit}</span>
+                            <span className="ml-1.5 text-[10px] text-[#00F2FE] bg-[#00F2FE]/10 px-1.5 py-0.5 rounded border border-[#00F2FE]/20">
+                              [{t.agreedRate}]
+                            </span>
+                          </td>
+
+                          {/* Variance Alert */}
+                          <td className="py-3.5 px-4 sm:px-5 text-right font-mono">
+                            {scanState === "idle" && (
+                              <span className="text-xs text-[#94A3B8]">
+                                Pending Scan
                               </span>
                             )}
-                          </div>
-                        </div>
 
-                        {/* Right column result */}
-                        <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center">
-                          <span className="text-sm font-bold font-mono text-[#0F172A]">
-                            ${billedTotal.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
-                          </span>
+                            {scanState === "scanning" && (
+                              <span className="text-xs text-[#00F2FE] animate-pulse">
+                                Auditing...
+                              </span>
+                            )}
 
-                          {scanState === "idle" && (
-                            <span className="text-[11px] text-zinc-400 font-mono">Pending Check</span>
-                          )}
-
-                          {scanState === "scanning" && (
-                            <span className="text-[11px] text-[#0096A3] animate-pulse font-mono">
-                              Verifying...
-                            </span>
-                          )}
-
-                          {scanState !== "idle" && scanState !== "scanning" && (
-                            <div>
-                              {item.isDiscrepancy ? (
-                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-rose-600 font-mono bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
-                                  Overcharge +${totalItemDiff.toFixed(2)} (+${diffPerUnit.toFixed(2)}/u)
-                                </span>
-                              ) : (
-                                <span className="inline-flex items-center gap-1 text-[11px] font-medium text-emerald-600 font-mono bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                                  <CheckCircle2 className="w-3 h-3" /> Exact Rate Match
-                                </span>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+                            {(scanState === "scanned" || scanState === "staged") && (
+                              <div>
+                                {item.isDiscrepancy ? (
+                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-bold shadow-[0_0_10px_rgba(244,63,94,0.15)]">
+                                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                                    <span>
+                                      {item.varianceLabel || `+$${totalDiff.toFixed(2)} ${t.priceCreep}`}
+                                    </span>
+                                  </div>
+                                ) : (
+                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-medium">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                    <span>{t.exactMatch}</span>
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
+            </div>
 
-              {/* Results & Action Footer */}
-              <div className="pt-4 border-t border-zinc-200/80 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
-                
-                {/* Financial Impact Metric */}
-                <div className="flex items-center gap-6">
+            {/* 1-Tap Governance Action Bar */}
+            <div className="mt-6 pt-5 border-t border-[#232F48] space-y-4">
+              {/* Discrepancy Summary Banner */}
+              <div className="p-4 rounded-2xl bg-[#0B0F19] border border-[#232F48] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+                    <AlertTriangle className="w-5 h-5 text-rose-400" />
+                  </div>
                   <div>
-                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">
-                      {language === "en" ? "Total Docket" : "Total du Bon"}
+                    <span className="text-xs sm:text-sm font-bold text-[#F8FAFC] block">
+                      {formattedSummary}
                     </span>
-                    <span className="text-base sm:text-lg font-bold font-mono text-[#0F172A]">
-                      ${totalBilled.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
+                    <span className="text-xs text-[#94A3B8]">
+                      Annualized overcharge if left unchecked:{" "}
+                      <strong className="text-rose-400 font-mono">
+                        ${annualizedImpact.toLocaleString("en-AU", { minimumFractionDigits: 0 })} / yr
+                      </strong>
                     </span>
                   </div>
-
-                  <div className="h-8 w-px bg-zinc-200" />
-
-                  <div>
-                    <span className="text-[11px] text-zinc-400 font-mono uppercase block">
-                      {language === "en" ? "Discrepancy Caught" : "Écart Détecté"}
-                    </span>
-                    <span className={`text-base sm:text-lg font-extrabold font-mono ${
-                      scanState === "scanned" || scanState === "staged"
-                        ? "text-rose-600"
-                        : "text-zinc-400"
-                    }`}>
-                      {scanState === "scanned" || scanState === "staged"
-                        ? `-$${totalOvercharge.toFixed(2)}`
-                        : language === "en" ? "Run scan to detect" : "Lancer le scan"}
-                    </span>
-                  </div>
-
-                  {(scanState === "scanned" || scanState === "staged") && (
-                    <>
-                      <div className="h-8 w-px bg-zinc-200 hidden sm:block" />
-                      <div className="hidden sm:block">
-                        <span className="text-[11px] text-rose-700 font-mono uppercase block">
-                          {language === "en" ? "Annual Loss If Uncaught" : "Perte Annuelle Estimée"}
-                        </span>
-                        <span className="text-base sm:text-lg font-extrabold font-mono text-rose-600">
-                          ${annualizedImpact.toLocaleString("en-AU", { minimumFractionDigits: 0 })} / yr
-                        </span>
-                      </div>
-                    </>
-                  )}
                 </div>
 
-                {/* Primary Action Button */}
-                <div className="flex items-center gap-3">
-                  {scanState === "idle" && (
+                <div className="text-right shrink-0">
+                  <span className="text-[10px] font-mono text-[#94A3B8] uppercase block">
+                    Total Invoiced
+                  </span>
+                  <span className="text-base font-extrabold font-mono text-[#F8FAFC]">
+                    ${totalBilled.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
+                  </span>
+                </div>
+              </div>
+
+              {/* Action Buttons Row */}
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+                {/* HITL Reassurance microtext */}
+                <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
+                  <ShieldCheck className="w-4 h-4 text-[#00F2FE] shrink-0" />
+                  <span>{t.microText}</span>
+                </div>
+
+                {/* Primary CTA */}
+                <div className="flex items-center gap-3 justify-end">
+                  {scanState !== "staged" ? (
                     <button
                       type="button"
-                      onClick={handleStartScan}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] text-white font-semibold text-xs hover:bg-[#1E293B] transition-all shadow-sm w-full md:w-auto cursor-pointer"
+                      onClick={handleStageInXero}
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#00F2FE] hover:bg-[#38bdf8] text-[#0B0F19] font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(0,242,254,0.35)] transition-all cursor-pointer w-full sm:w-auto"
                     >
-                      <Scan className="w-4 h-4 text-[#00BFCC]" />
-                      <span>{language === "en" ? "Run 5-Second Docket Scan" : "Lancer le Scan du Bon (5s)"}</span>
+                      <FileCheck2 className="w-4 h-4 text-[#0B0F19]" />
+                      <span>{t.approveBtn}</span>
                     </button>
-                  )}
-
-                  {scanState === "scanning" && (
-                    <button
-                      type="button"
-                      disabled
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-200 text-zinc-600 font-semibold text-xs cursor-wait w-full md:w-auto"
-                    >
-                      <RefreshCw className="w-4 h-4 animate-spin text-[#00BFCC]" />
-                      <span>{language === "en" ? "Checking Contract Line Items..." : "Vérification des Lignes Contractuelles..."}</span>
-                    </button>
-                  )}
-
-                  {scanState === "scanned" && (
-                    <div className="flex flex-col sm:flex-row items-center gap-2 w-full md:w-auto">
-                      <button
-                        type="button"
-                        onClick={handleReset}
-                        className="text-xs text-zinc-500 hover:text-zinc-900 px-3 py-2 cursor-pointer"
-                      >
-                        {language === "en" ? "Reset" : "Réinitialiser"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleStageXero}
-                        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0096A3] text-white font-bold text-xs hover:bg-[#00818c] transition-all shadow-sm w-full sm:w-auto cursor-pointer"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                        <span>{language === "en" ? "Stage in Xero Drafts (1-Tap)" : "Créer le Brouillon dans Xero (1 Clic)"}</span>
-                      </button>
-                    </div>
-                  )}
-
-                  {scanState === "staged" && (
-                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-                      <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                        {language === "en" ? "Draft Staged in Xero!" : "Brouillon Créé dans Xero !"}
+                  ) : (
+                    <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                      {/* Confirmation Pill */}
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        <span>{formattedStagedNotice}</span>
                       </span>
+
+                      {/* Diagnostic Audit Trigger */}
                       <button
                         type="button"
                         onClick={onOpenAuditModal}
-                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white font-bold text-xs hover:bg-[#1E293B] transition-all shadow-xs cursor-pointer"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F8FAFC] text-[#0B0F19] font-bold text-xs hover:bg-white transition-all shadow-sm cursor-pointer w-full sm:w-auto"
                       >
-                        <span>{language === "en" ? "Audit All My Invoices" : "Auditer Toutes Mes Factures"}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />
+                        <span>{t.reviewAllBtn}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#0096A3]" />
                       </button>
                     </div>
                   )}
                 </div>
-
               </div>
 
+              {/* Staged Confirmation Details (When Staged) */}
+              {scanState === "staged" && (
+                <div className="p-3.5 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-xs text-[#94A3B8] flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span>
+                      {language === "en"
+                        ? "Zero unapproved commits to your ledger. Zero shifts altered without explicit authorization."
+                        : "Zéro écriture non approuvée sur votre grand livre. Zéro modification de shift sans autorisation explicite."}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="text-[#00F2FE] hover:underline font-mono text-xs cursor-pointer ml-4"
+                  >
+                    {language === "en" ? "Test Another Docket" : "Tester un Autre Bon"}
+                  </button>
+                </div>
+              )}
             </div>
-
           </div>
         )}
-
       </div>
     </section>
   );

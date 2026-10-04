@@ -99,6 +99,22 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                     </p>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-3 pt-2 border-t border-zinc-200/50">
+                  <div className="p-2 rounded-xl bg-white border border-zinc-200/80 text-zinc-900 shrink-0">
+                    <ApertureLogo className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-[#0F172A] block">
+                      {language === "en" ? "Sovereign Continuity" : "Continuité Souveraine"}
+                    </span>
+                    <p className="text-[11px] text-zinc-500 leading-tight">
+                      {language === "en"
+                        ? "Redundant Australian Cloud Operations • Continuous Automated Pipeline Monitoring • Zero Single-Point-of-Failure Architecture"
+                        : "Opérations Cloud Australiennes Redondantes • Surveillance Continue des Pipelines Automatisés • Architecture Sans Point Défaillant Unique"}
+                    </p>
+                  </div>
+                </div>
               </div>
 
             </div>

@@ -44,7 +44,7 @@ export default function ProcessSection({ onOpenAuditModal }: ProcessSectionProps
       summary:
         "Direct, real-time developer access via Slack Connect, continuous model tuning, and proactive uptime monitoring.",
       deliverables: [
-        "Direct mobile & Slack Connect channel with your dedicated solo engineer",
+        "Direct mobile & Slack Connect channel with your dedicated lead systems engineer",
         "Fast response during busy weekend and dinner shifts",
         "Continuous adjustments as menus, suppliers, and rosters evolve",
         "Monthly executive review of saved hours and protected wage dollars",

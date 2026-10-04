@@ -49,7 +49,7 @@ export default function ComparisonTable({ onOpenAuditModal }: ComparisonTablePro
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs font-semibold uppercase tracking-wider text-[#0096A3] block mb-2">
-            Why a Solo Partner Beats the Alternatives
+            Why Direct Engineering Partnership Beats the Alternatives
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
             The Right Fit for Independent Venues.
@@ -130,13 +130,13 @@ export default function ComparisonTable({ onOpenAuditModal }: ComparisonTablePro
             </div>
           </div>
 
-          {/* Column 3: hAI Mate! (Solo Partner Highlighted) */}
+          {/* Column 3: hAI Mate! (Direct Engineering Leadership Highlighted) */}
           <div className="rounded-3xl bg-white border-2 border-zinc-950 p-7 shadow-lg relative flex flex-col justify-between">
             
             {/* Top Recommended Tag */}
             <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-zinc-950 text-white text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
-              Dedicated Solo Partner
+              Direct Engineering Leadership
             </div>
 
             <div>
@@ -148,10 +148,10 @@ export default function ComparisonTable({ onOpenAuditModal }: ComparisonTablePro
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-zinc-950">
-                  Applied Solo Partnership
+                  Institutional Sovereign Infrastructure
                 </h3>
                 <span className="text-xs text-zinc-500">
-                  Direct senior engineer delivery
+                  Direct technical leadership delivery
                 </span>
               </div>
 

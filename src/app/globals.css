@@ -40,9 +40,27 @@ body {
   selection-color: #FFFFFF;
 }
 
-/* Enforce logo color #0F172A across all headings and titles */
+/* Enforce logo color #0F172A across all headings and titles by default */
 h1, h2, h3, h4, h5, h6 {
-  color: #0F172A !important;
+  color: #0F172A;
+}
+
+@keyframes scanline {
+  0% {
+    top: 0%;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 96%;
+    opacity: 0.3;
+  }
+}
+
+.animate-scanline {
+  animation: scanline 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
 ::selection {

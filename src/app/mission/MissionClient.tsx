@@ -481,12 +481,12 @@ export default function MissionClient() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-[#0F172A]">
-                    {language === "en" ? "A Solo Practice by Design" : "Une Pratique d'Artisan par Choix"}
+                    {language === "en" ? "Direct Technical Leadership by Design" : "Direction Technique Directe par Choix"}
                   </h3>
                   <p className="text-xs text-zinc-500">
                     {language === "en"
-                      ? "Personal note from the Founder • Operating on-the-ground in Perth & WA"
-                      : "Note personnelle du Fondateur • Opérant sur le terrain à Perth & dans le WA"}
+                      ? "Personal note from the Founder • Sovereign Infrastructure in Perth & WA"
+                      : "Note personnelle du Fondateur • Infrastructure Souveraine à Perth & dans le WA"}
                   </p>
                 </div>
               </div>
@@ -495,10 +495,7 @@ export default function MissionClient() {
                 {language === "en" ? (
                   <>
                     <p>
-                      “I deliberately structured <strong>hAI Mate!</strong> as an applied solo practice.
-                      In corporate agencies, clients are pitched by experienced partners, only to be
-                      passed off to junior coordinators or outsourced ticket queues who have never set foot
-                      in a commercial kitchen or seen a Friday night dinner rush.
+                      “In hospitality, operational downtime is not an option. You do not need bloated agencies passing support requests through junior account coordinators or overseas ticketing queues. At <strong>hAI Mate!</strong>, our infrastructure is engineered directly by technical leadership. You get battle-tested, sovereign automation pipelines with direct founder-level SLA access via private Slack Connect and WhatsApp whenever adjustments are required.
                     </p>
                     <p>
                       When you work with hAI Mate!, you work directly with me. I personally conduct your
@@ -507,18 +504,15 @@ export default function MissionClient() {
                       a private Slack channel.
                     </p>
                     <p>
-                      My goal isn’t to build an agency empire with hundreds of junior staff. My goal is to
-                      be the trusted, high-craft automation partner for operators who take pride in what
+                      My goal isn’t to build a bloated agency empire with junior overhead. My goal is to
+                      deliver institutional, sovereign margin infrastructure for operators who take pride in what
                       they put on the plate.”
                     </p>
                   </>
                 ) : (
                   <>
                     <p>
-                      « J'ai délibérément structuré <strong>hAI Mate!</strong> comme une pratique d'ingénieur solo.
-                      Dans les agences traditionnelles, les clients sont approchés par des directeurs de compte,
-                      pour être ensuite confiés à des coordonnateurs débutants ou à des services de tickets délocalisés
-                      qui n'ont jamais mis les pieds dans une cuisine professionnelle ni vécu le coup de feu d'un vendredi soir.
+                      « En restauration, les interruptions opérationnelles sont inacceptables. Vous n'avez pas besoin d'agences pléthoriques transmettant vos demandes à des coordinateurs débutants ou à des services clients délocalisés. Chez <strong>hAI Mate!</strong>, notre infrastructure est directement conçue par notre direction technique. Vous bénéficiez de pipelines d'automatisation souverains et éprouvés, avec un accès SLA direct au fondateur via un canal privé Slack Connect et WhatsApp pour tout ajustement.
                     </p>
                     <p>
                       Lorsque vous travaillez avec hAI Mate!, vous traitez directement avec moi. C'est moi qui réalise

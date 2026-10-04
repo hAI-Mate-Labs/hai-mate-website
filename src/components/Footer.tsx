@@ -65,13 +65,15 @@ export default function Footer() {
               {t.footer.disclaimer}
             </p>
 
-            <div className="text-xs text-zinc-500 space-y-1 pt-1">
-              <p className="font-medium text-zinc-700">
-                {language === "en"
-                  ? "Applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally"
-                  : "Pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale"}
+            <div className="text-xs text-zinc-500 space-y-2 pt-1">
+              <p className="font-semibold text-zinc-800">
+                {t.footer.legalEntity}
               </p>
-              <p>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-50 border border-zinc-200/80 text-[11px] font-medium text-zinc-700">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
+                <span>{t.footer.sovereignBadge}</span>
+              </div>
+              <p className="text-[11px] text-zinc-500">
                 {language === "en"
                   ? "On-site diagnostic audits across Cottesloe, Fremantle, Perth CBD & the South West"
                   : "Audits diagnostiques sur place à Cottesloe, Fremantle, Perth CBD & dans le South West"}
@@ -147,7 +149,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
           <div>
-            &copy; {new Date().getFullYear()} hAI Mate! {language === "en" ? "Operating on-the-ground in Perth & WA, serving venues nationally." : "Opérant sur le terrain à Perth & dans le WA, au service des établissements à l'échelle nationale."}
+            &copy; {new Date().getFullYear()} {t.footer.legalEntity}
           </div>
           <div className="flex items-center gap-2">
             <span>{language === "en" ? "Perth, WA & National Engagements" : "Interventions à Perth, dans le WA & à l'Échelle Nationale"}</span>
