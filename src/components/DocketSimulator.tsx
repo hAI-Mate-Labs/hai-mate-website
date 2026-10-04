@@ -349,14 +349,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
   return (
     <section
       id="simulator"
-      className="relative py-20 md:py-28 bg-[#0F172A] border-y border-[#232F48] overflow-hidden text-[#F8FAFC] transition-colors duration-200"
+      className="relative py-20 md:py-28 bg-[#F8FAFC] dark:bg-[#0F172A] border-y border-zinc-200 dark:border-[#232F48] overflow-hidden text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-200"
     >
       {/* Background radial cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-[#00F2FE]/10 via-[#00F2FE]/5 to-transparent blur-3xl pointer-events-none" />
 
       {/* Subtle Aperture Watermark */}
-      <div className="absolute -right-20 -bottom-20 opacity-[0.03] pointer-events-none">
-        <ApertureLogo size={550} color="#00F2FE" />
+      <div className="absolute -right-20 -bottom-20 opacity-[0.03] text-zinc-900 dark:text-[#00F2FE] pointer-events-none">
+        <ApertureLogo size={550} />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -379,21 +379,18 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#151D2F] border border-[#232F48] shadow-inner mb-4">
-            <Scan className="w-3.5 h-3.5 text-[#00F2FE]" />
-            <span className="text-xs font-semibold text-[#00F2FE] tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] shadow-2xs mb-4">
+            <Scan className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE]" />
+            <span className="text-xs font-semibold text-[#0096A3] dark:text-[#00F2FE] tracking-wide uppercase">
               {t.badge}
             </span>
           </div>
 
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight"
-            style={{ color: "#F8FAFC" }}
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#0F172A] dark:text-[#F8FAFC]">
             {t.title}
           </h2>
 
-          <p className="mt-3 text-base sm:text-lg text-[#94A3B8]">
+          <p className="mt-3 text-base sm:text-lg text-zinc-600 dark:text-[#94A3B8]">
             {t.subtitle}
           </p>
         </div>
@@ -406,8 +403,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("seafood")}
             className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "seafood"
-                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
-                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
+                ? "bg-[#0096A3] text-white shadow-md dark:bg-[#00F2FE] dark:text-[#0B0F19] dark:shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-white dark:bg-[#151D2F] text-zinc-600 dark:text-[#94A3B8] border border-zinc-200 dark:border-[#232F48] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 hover:text-[#0F172A] dark:hover:text-[#F8FAFC] shadow-2xs"
             }`}
           >
             <FileText className="w-3.5 h-3.5 shrink-0" />
@@ -421,8 +418,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("meat")}
             className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "meat"
-                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
-                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
+                ? "bg-[#0096A3] text-white shadow-md dark:bg-[#00F2FE] dark:text-[#0B0F19] dark:shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-white dark:bg-[#151D2F] text-zinc-600 dark:text-[#94A3B8] border border-zinc-200 dark:border-[#232F48] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 hover:text-[#0F172A] dark:hover:text-[#F8FAFC] shadow-2xs"
             }`}
           >
             <FileText className="w-3.5 h-3.5 shrink-0" />
@@ -436,8 +433,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onClick={() => handleSwitchTab("produce")}
             className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "produce"
-                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
-                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
+                ? "bg-[#0096A3] text-white shadow-md dark:bg-[#00F2FE] dark:text-[#0B0F19] dark:shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-white dark:bg-[#151D2F] text-zinc-600 dark:text-[#94A3B8] border border-zinc-200 dark:border-[#232F48] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 hover:text-[#0F172A] dark:hover:text-[#F8FAFC] shadow-2xs"
             }`}
           >
             <FileText className="w-3.5 h-3.5 shrink-0" />
@@ -458,15 +455,15 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             }}
             className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "custom"
-                ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
-                : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
+                ? "bg-[#0096A3] text-white shadow-md dark:bg-[#00F2FE] dark:text-[#0B0F19] dark:shadow-[0_0_15px_rgba(0,242,254,0.35)]"
+                : "bg-white dark:bg-[#151D2F] text-zinc-600 dark:text-[#94A3B8] border border-zinc-200 dark:border-[#232F48] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 hover:text-[#0F172A] dark:hover:text-[#F8FAFC] shadow-2xs"
             }`}
           >
             <Camera className="w-3.5 h-3.5 shrink-0" />
             <span className="sm:hidden">{language === "en" ? "Drop Photo" : "Photo"}</span>
             <span className="hidden sm:inline">{t.tabCustom}</span>
             {customFile && (
-              <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#0096A3] dark:bg-[#00F2FE] animate-pulse" />
             )}
           </button>
         </div>
@@ -477,24 +474,21 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
-            className={`mb-8 rounded-3xl bg-[#151D2F] border-2 border-dashed p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-4 transition-all ${
+            className={`mb-8 rounded-3xl bg-white dark:bg-[#151D2F] border-2 border-dashed p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-4 transition-all shadow-sm ${
               isDragging
-                ? "border-[#00F2FE] bg-[#00F2FE]/5 shadow-[0_0_20px_rgba(0,242,254,0.2)]"
-                : "border-[#232F48] hover:border-[#00F2FE]/60"
+                ? "border-[#0096A3] dark:border-[#00F2FE] bg-[#0096A3]/5 dark:bg-[#00F2FE]/5 shadow-[0_0_20px_rgba(0,150,163,0.15)] dark:shadow-[0_0_20px_rgba(0,242,254,0.2)]"
+                : "border-zinc-300 dark:border-[#232F48] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/60"
             }`}
           >
-            <div className="w-16 h-16 rounded-2xl bg-[#0B0F19] border border-[#232F48] flex items-center justify-center mx-auto text-[#00F2FE] shadow-inner">
-              <Upload className="w-7 h-7 text-[#00F2FE]" />
+            <div className="w-16 h-16 rounded-2xl bg-zinc-50 dark:bg-[#0B0F19] border border-zinc-200 dark:border-[#232F48] flex items-center justify-center mx-auto text-[#0096A3] dark:text-[#00F2FE] shadow-2xs">
+              <Upload className="w-7 h-7 text-[#0096A3] dark:text-[#00F2FE]" />
             </div>
 
             <div className="space-y-1">
-              <h3
-                className="text-lg font-bold"
-                style={{ color: "#F8FAFC" }}
-              >
+              <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
                 {t.customUploadHeading}
               </h3>
-              <p className="text-xs text-[#94A3B8] max-w-md mx-auto">
+              <p className="text-xs text-zinc-500 dark:text-[#94A3B8] max-w-md mx-auto">
                 {t.customUploadSub}
               </p>
             </div>
@@ -503,16 +497,16 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-[#00F2FE] text-[#0B0F19] text-xs font-bold hover:bg-[#38bdf8] transition-all shadow-[0_0_15px_rgba(0,242,254,0.3)] cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#0096A3] text-white hover:bg-[#007A85] text-xs font-bold dark:bg-[#00F2FE] dark:text-[#0B0F19] dark:hover:bg-[#38bdf8] transition-all shadow-sm dark:shadow-[0_0_15px_rgba(0,242,254,0.3)] cursor-pointer"
               >
                 {t.chooseFileBtn}
               </button>
               <button
                 type="button"
                 onClick={() => cameraInputRef.current?.click()}
-                className="px-5 py-2.5 rounded-full bg-[#151D2F] border border-[#232F48] text-[#F8FAFC] text-xs font-bold hover:bg-[#1E293B] hover:border-[#00F2FE]/60 transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-zinc-800 dark:text-[#F8FAFC] text-xs font-bold hover:bg-zinc-50 dark:hover:bg-[#1E293B] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/60 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
               >
-                <Camera className="w-3.5 h-3.5 text-[#00F2FE]" />
+                <Camera className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE]" />
                 <span>{t.cameraBtn}</span>
               </button>
             </div>
@@ -521,7 +515,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               <button
                 type="button"
                 onClick={handleUseSampleCustom}
-                className="text-xs text-[#00F2FE] font-semibold hover:underline cursor-pointer"
+                className="text-xs text-[#0096A3] dark:text-[#00F2FE] font-semibold hover:underline cursor-pointer"
               >
                 {language === "en"
                   ? "Or test with pre-calibrated sample kitchen docket →"
@@ -533,20 +527,20 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
         {/* Main Terminal-Styled Simulation Card */}
         {!(activeDocket === "custom" && !customFile) && (
-          <div className="rounded-3xl bg-[#151D2F] border border-[#232F48] p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+          <div className="rounded-3xl bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] p-5 sm:p-8 shadow-xl dark:shadow-2xl relative overflow-hidden transition-colors duration-200">
             {/* Terminal Top Bar */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-[#232F48] gap-3">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-5 border-b border-zinc-200 dark:border-[#232F48] gap-3">
               <div className="flex items-center gap-3">
                 {/* 3 Terminal Window Dots */}
-                <div className="flex items-center gap-1.5 pr-2 border-r border-[#232F48]">
+                <div className="flex items-center gap-1.5 pr-2 border-r border-zinc-200 dark:border-[#232F48]">
                   <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-[#00F2FE]" />
-                  <span className="text-xs font-mono text-[#00F2FE] tracking-wider uppercase">
+                  <Terminal className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE]" />
+                  <span className="text-xs font-mono text-[#0096A3] dark:text-[#00F2FE] tracking-wider uppercase font-semibold">
                     CONDUIT: INGESTION_V4.2 // AU_SOVEREIGN_NODE
                   </span>
                 </div>
@@ -558,7 +552,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="px-2.5 py-1 rounded-full border border-[#232F48] bg-[#0B0F19] text-[11px] font-mono text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
+                    className="px-2.5 py-1 rounded-full border border-zinc-200 dark:border-[#232F48] bg-zinc-100 dark:bg-[#0B0F19] text-[11px] font-mono text-zinc-600 dark:text-[#94A3B8] hover:text-[#0096A3] dark:hover:text-[#00F2FE] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
                   >
                     Replace Photo
                   </button>
@@ -568,30 +562,30 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <button
                     type="button"
                     onClick={startScanSequence}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-[#00F2FE]/40 text-xs font-mono text-[#00F2FE] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0096A3]/10 dark:bg-cyan-950/40 border border-[#0096A3]/30 dark:border-[#00F2FE]/40 text-xs font-mono text-[#0096A3] dark:text-[#00F2FE] cursor-pointer"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0096A3] dark:bg-[#00F2FE]" />
                     Run 3.0s Scan
                   </button>
                 )}
 
                 {scanState === "scanning" && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00F2FE]/10 border border-[#00F2FE]/40 text-xs font-mono text-[#00F2FE]">
-                    <RefreshCw className="w-3 h-3 animate-spin text-[#00F2FE]" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0096A3]/10 dark:bg-[#00F2FE]/10 border border-[#0096A3]/30 dark:border-[#00F2FE]/40 text-xs font-mono text-[#0096A3] dark:text-[#00F2FE]">
+                    <RefreshCw className="w-3 h-3 animate-spin text-[#0096A3] dark:text-[#00F2FE]" />
                     <span>AUTONOMOUS SCAN IN PROGRESS</span>
                   </span>
                 )}
 
                 {scanState === "scanned" && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-xs font-mono text-rose-400">
-                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-xs font-mono text-rose-600 dark:text-rose-400">
+                    <AlertTriangle className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
                     <span>1 OVERCHARGE DETECTED</span>
                   </span>
                 )}
 
                 {scanState === "staged" && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     <span>STAGED IN XERO (VERIFIED)</span>
                   </span>
                 )}
@@ -601,7 +595,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     type="button"
                     onClick={handleReset}
                     title="Re-run 3.0s Scan Sequence"
-                    className="p-1.5 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
+                    className="p-1.5 rounded-lg bg-zinc-100 dark:bg-[#0B0F19] border border-zinc-200 dark:border-[#232F48] text-zinc-500 dark:text-[#94A3B8] hover:text-[#0096A3] dark:hover:text-[#00F2FE] hover:border-[#0096A3] dark:hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                   </button>
@@ -610,37 +604,37 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             </div>
 
             {/* Docket Metadata Banner */}
-            <div className="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border-b border-[#232F48]/60">
+            <div className="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs border-b border-zinc-200/80 dark:border-[#232F48]/60">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#0B0F19] border border-[#232F48] flex items-center justify-center text-[#00F2FE]">
+                <div className="w-9 h-9 rounded-xl bg-zinc-100 dark:bg-[#0B0F19] border border-zinc-200 dark:border-[#232F48] flex items-center justify-center text-[#0096A3] dark:text-[#00F2FE]">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#F8FAFC] text-sm">
+                    <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC] text-sm">
                       {current.supplierName}
                     </span>
-                    <span className="font-mono text-[11px] text-[#00F2FE] bg-[#00F2FE]/10 px-2 py-0.5 rounded border border-[#00F2FE]/20">
+                    <span className="font-mono text-[11px] text-[#0096A3] bg-[#0096A3]/10 border border-[#0096A3]/20 dark:text-[#00F2FE] dark:bg-[#00F2FE]/10 px-2 py-0.5 rounded dark:border-[#00F2FE]/20 font-semibold">
                       {current.docketNumber}
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#94A3B8] mt-0.5">
+                  <p className="text-[11px] text-zinc-500 dark:text-[#94A3B8] mt-0.5">
                     {current.venueName} • {current.date}
                     {customFile && ` • File: ${customFile.name} (${customFile.size})`}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 text-[11px] font-mono text-[#94A3B8]">
+              <div className="flex items-center gap-3 text-[11px] font-mono text-zinc-500 dark:text-[#94A3B8]">
                 <span>Ingestion: Calibrated</span>
-                <span className="w-1 h-1 rounded-full bg-[#232F48]" />
-                <span className="text-[#00F2FE]">HITL Governance: Active</span>
+                <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-[#232F48]" />
+                <span className="text-[#0096A3] dark:text-[#00F2FE] font-medium">HITL Governance: Active</span>
               </div>
             </div>
 
             {/* Uploaded File Preview Thumbnail (if custom) */}
             {activeDocket === "custom" && customFile?.previewUrl && (
-              <div className="mt-4 p-3 bg-[#0B0F19] border border-[#232F48] rounded-2xl flex items-center gap-3">
+              <div className="mt-4 p-3 bg-zinc-50 dark:bg-[#0B0F19] border border-zinc-200 dark:border-[#232F48] rounded-2xl flex items-center gap-3">
                 <img
                   src={customFile.previewUrl}
                   alt="Scanned invoice"
@@ -670,21 +664,21 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
               {/* Progress Telemetry Steps Box (Visible during scan) */}
               {scanState === "scanning" && (
-                <div className="mb-5 p-4 rounded-2xl bg-[#0B0F19] border border-[#00F2FE]/40 space-y-3">
+                <div className="mb-5 p-4 rounded-2xl bg-zinc-50 dark:bg-[#0B0F19] border border-[#0096A3]/30 dark:border-[#00F2FE]/40 space-y-3 shadow-2xs">
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-[#00F2FE] font-bold flex items-center gap-2">
-                      <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#00F2FE]" />
+                    <span className="text-[#0096A3] dark:text-[#00F2FE] font-bold flex items-center gap-2">
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#0096A3] dark:text-[#00F2FE]" />
                       Autonomous 3.0s Scan Pipeline Executing...
                     </span>
-                    <span className="text-[#94A3B8]">
+                    <span className="text-zinc-500 dark:text-[#94A3B8]">
                       {scanStep === 1 ? "25%" : scanStep === 2 ? "50%" : scanStep === 3 ? "75%" : "100%"}
                     </span>
                   </div>
 
                   {/* Progress bar */}
-                  <div className="w-full h-1.5 bg-[#151D2F] rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-zinc-200 dark:bg-[#151D2F] rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-[#00F2FE] transition-all duration-700 ease-out shadow-[0_0_10px_#00F2FE]"
+                      className="h-full bg-[#0096A3] dark:bg-[#00F2FE] transition-all duration-700 ease-out shadow-[0_0_10px_#0096A3] dark:shadow-[0_0_10px_#00F2FE]"
                       style={{
                         width: scanStep === 1 ? "25%" : scanStep === 2 ? "50%" : scanStep === 3 ? "75%" : "100%",
                       }}
@@ -696,14 +690,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <div
                       className={`flex items-center gap-2 p-2 rounded-lg border ${
                         scanStep >= 1
-                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
-                          : "border-[#232F48] text-[#94A3B8]"
+                          ? "bg-white dark:bg-[#151D2F] border-[#0096A3]/40 dark:border-[#00F2FE]/40 text-[#0096A3] dark:text-[#00F2FE] shadow-2xs"
+                          : "border-zinc-200 dark:border-[#232F48] text-zinc-400 dark:text-[#94A3B8]"
                       }`}
                     >
                       {scanStep > 1 ? (
-                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE] shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#0096A3] dark:bg-[#00F2FE] animate-pulse shrink-0" />
                       )}
                       <span className="truncate">{t.stepExtracting}</span>
                     </div>
@@ -711,16 +705,16 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <div
                       className={`flex items-center gap-2 p-2 rounded-lg border ${
                         scanStep >= 2
-                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
-                          : "border-[#232F48] text-[#94A3B8]"
+                          ? "bg-white dark:bg-[#151D2F] border-[#0096A3]/40 dark:border-[#00F2FE]/40 text-[#0096A3] dark:text-[#00F2FE] shadow-2xs"
+                          : "border-zinc-200 dark:border-[#232F48] text-zinc-400 dark:text-[#94A3B8]"
                       }`}
                     >
                       {scanStep > 2 ? (
-                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE] shrink-0" />
                       ) : scanStep === 2 ? (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#0096A3] dark:bg-[#00F2FE] animate-pulse shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#232F48] shrink-0" />
                       )}
                       <span className="truncate">{t.stepComparing}</span>
                     </div>
@@ -728,16 +722,16 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <div
                       className={`flex items-center gap-2 p-2 rounded-lg border ${
                         scanStep >= 3
-                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
-                          : "border-[#232F48] text-[#94A3B8]"
+                          ? "bg-white dark:bg-[#151D2F] border-[#0096A3]/40 dark:border-[#00F2FE]/40 text-[#0096A3] dark:text-[#00F2FE] shadow-2xs"
+                          : "border-zinc-200 dark:border-[#232F48] text-zinc-400 dark:text-[#94A3B8]"
                       }`}
                     >
                       {scanStep > 3 ? (
-                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE] shrink-0" />
                       ) : scanStep === 3 ? (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#0096A3] dark:bg-[#00F2FE] animate-pulse shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#232F48] shrink-0" />
                       )}
                       <span className="truncate">{t.stepDetecting}</span>
                     </div>
@@ -745,14 +739,14 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <div
                       className={`flex items-center gap-2 p-2 rounded-lg border ${
                         scanStep >= 4
-                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
-                          : "border-[#232F48] text-[#94A3B8]"
+                          ? "bg-white dark:bg-[#151D2F] border-[#0096A3]/40 dark:border-[#00F2FE]/40 text-[#0096A3] dark:text-[#00F2FE] shadow-2xs"
+                          : "border-zinc-200 dark:border-[#232F48] text-zinc-400 dark:text-[#94A3B8]"
                       }`}
                     >
                       {scanStep === 4 ? (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-[#0096A3] dark:bg-[#00F2FE] animate-pulse shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#232F48] shrink-0" />
                       )}
                       <span className="truncate">{t.stepFormatting}</span>
                     </div>
@@ -761,10 +755,10 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               )}
 
               {/* Parsed Output & Discrepancy Detection Table */}
-              <div className="overflow-x-auto rounded-2xl border border-[#232F48] bg-[#0B0F19] scrollbar-none">
+              <div className="overflow-x-auto rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0B0F19] scrollbar-none shadow-2xs">
                 <table className="w-full min-w-[560px] text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-[#232F48] text-[11px] font-mono uppercase tracking-wider text-[#94A3B8] bg-[#151D2F]/50">
+                    <tr className="border-b border-zinc-200 dark:border-[#232F48] text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-[#94A3B8] bg-zinc-50/80 dark:bg-[#151D2F]/50">
                       <th className="py-3 px-4 sm:px-5 font-semibold">
                         {t.colItem}
                       </th>
@@ -779,7 +773,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#232F48]/60 text-xs sm:text-sm">
+                  <tbody className="divide-y divide-zinc-200/80 dark:divide-[#232F48]/60 text-xs sm:text-sm">
                     {current.items.map((item, idx) => {
                       const billedTotal = parseFloat(item.qty) * item.billedRate;
                       const diffPerUnit = item.billedRate - item.contractRate;
@@ -791,34 +785,34 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                           className={`transition-colors duration-200 ${
                             scanState === "scanned" && item.isDiscrepancy
                               ? "bg-rose-500/5 hover:bg-rose-500/10"
-                              : "hover:bg-[#151D2F]/70"
+                              : "hover:bg-zinc-50/80 dark:hover:bg-[#151D2F]/70"
                           }`}
                         >
                           {/* Item Description & Quantity */}
                           <td className="py-3.5 px-4 sm:px-5">
-                            <div className="font-semibold text-[#F8FAFC]">
+                            <div className="font-semibold text-[#0F172A] dark:text-[#F8FAFC]">
                               {item.name}
                             </div>
-                            <div className="text-[11px] font-mono text-[#94A3B8] mt-0.5">
+                            <div className="text-[11px] font-mono text-zinc-500 dark:text-[#94A3B8] mt-0.5">
                               Line Total: ${billedTotal.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
                             </div>
                           </td>
 
                           {/* Invoiced Unit Rate */}
-                          <td className="py-3.5 px-4 sm:px-5 font-mono text-[#F8FAFC]">
+                          <td className="py-3.5 px-4 sm:px-5 font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                             <span className="font-bold">
                               ${item.billedRate.toFixed(2)}
                             </span>
-                            <span className="text-xs text-[#94A3B8]"> / {item.unit}</span>
+                            <span className="text-xs text-zinc-500 dark:text-[#94A3B8]"> / {item.unit}</span>
                           </td>
 
                           {/* Contract Benchmark */}
-                          <td className="py-3.5 px-4 sm:px-5 font-mono text-[#94A3B8]">
-                            <span className="text-[#F8FAFC]">
+                          <td className="py-3.5 px-4 sm:px-5 font-mono text-zinc-600 dark:text-[#94A3B8]">
+                            <span className="text-[#0F172A] dark:text-[#F8FAFC]">
                               ${item.contractRate.toFixed(2)}
                             </span>
-                            <span className="text-xs text-[#94A3B8]"> / {item.unit}</span>
-                            <span className="ml-1.5 text-[10px] text-[#00F2FE] bg-[#00F2FE]/10 px-1.5 py-0.5 rounded border border-[#00F2FE]/20">
+                            <span className="text-xs text-zinc-500 dark:text-[#94A3B8]"> / {item.unit}</span>
+                            <span className="ml-1.5 text-[10px] text-[#0096A3] bg-[#0096A3]/10 border border-[#0096A3]/20 dark:text-[#00F2FE] dark:bg-[#00F2FE]/10 px-1.5 py-0.5 rounded dark:border-[#00F2FE]/20 font-medium">
                               [{t.agreedRate}]
                             </span>
                           </td>
@@ -826,13 +820,13 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                           {/* Variance Alert */}
                           <td className="py-3.5 px-4 sm:px-5 text-right font-mono">
                             {scanState === "idle" && (
-                              <span className="text-xs text-[#94A3B8]">
+                              <span className="text-xs text-zinc-400 dark:text-[#94A3B8]">
                                 Pending Scan
                               </span>
                             )}
 
                             {scanState === "scanning" && (
-                              <span className="text-xs text-[#00F2FE] animate-pulse">
+                              <span className="text-xs text-[#0096A3] dark:text-[#00F2FE] animate-pulse">
                                 Auditing...
                               </span>
                             )}
@@ -840,15 +834,15 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                             {(scanState === "scanned" || scanState === "staged") && (
                               <div>
                                 {item.isDiscrepancy ? (
-                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-bold shadow-[0_0_10px_rgba(244,63,94,0.15)]">
-                                    <AlertTriangle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
+                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 font-mono text-xs font-bold shadow-[0_0_10px_rgba(244,63,94,0.12)]">
+                                    <AlertTriangle className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400 shrink-0" />
                                     <span>
                                       {item.varianceLabel || `+$${totalDiff.toFixed(2)} ${t.priceCreep}`}
                                     </span>
                                   </div>
                                 ) : (
-                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-medium">
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-medium">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                                     <span>{t.exactMatch}</span>
                                   </div>
                                 )}
@@ -864,20 +858,20 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
             </div>
 
             {/* 1-Tap Governance Action Bar */}
-            <div className="mt-6 pt-5 border-t border-[#232F48] space-y-4">
+            <div className="mt-6 pt-5 border-t border-zinc-200 dark:border-[#232F48] space-y-4">
               {/* Discrepancy Summary Banner */}
-              <div className="p-4 rounded-2xl bg-[#0B0F19] border border-[#232F48] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-[#0B0F19] border border-zinc-200 dark:border-[#232F48] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
-                    <AlertTriangle className="w-5 h-5 text-rose-400" />
+                  <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0">
+                    <AlertTriangle className="w-5 h-5 text-rose-600 dark:text-rose-400" />
                   </div>
                   <div>
-                    <span className="text-xs sm:text-sm font-bold text-[#F8FAFC] block">
+                    <span className="text-xs sm:text-sm font-bold text-[#0F172A] dark:text-[#F8FAFC] block">
                       {formattedSummary}
                     </span>
-                    <span className="text-xs text-[#94A3B8]">
+                    <span className="text-xs text-zinc-500 dark:text-[#94A3B8]">
                       Annualized overcharge if left unchecked:{" "}
-                      <strong className="text-rose-400 font-mono">
+                      <strong className="text-rose-600 dark:text-rose-400 font-mono">
                         ${annualizedImpact.toLocaleString("en-AU", { minimumFractionDigits: 0 })} / yr
                       </strong>
                     </span>
@@ -885,10 +879,10 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                 </div>
 
                 <div className="text-right shrink-0">
-                  <span className="text-[10px] font-mono text-[#94A3B8] uppercase block">
+                  <span className="text-[10px] font-mono text-zinc-500 dark:text-[#94A3B8] uppercase block">
                     Total Invoiced
                   </span>
-                  <span className="text-base font-extrabold font-mono text-[#F8FAFC]">
+                  <span className="text-base font-extrabold font-mono text-[#0F172A] dark:text-[#F8FAFC]">
                     ${totalBilled.toLocaleString("en-AU", { minimumFractionDigits: 2 })}
                   </span>
                 </div>
@@ -897,8 +891,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               {/* Action Buttons Row */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
                 {/* HITL Reassurance microtext */}
-                <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
-                  <ShieldCheck className="w-4 h-4 text-[#00F2FE] shrink-0" />
+                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-[#94A3B8]">
+                  <ShieldCheck className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE] shrink-0" />
                   <span>{t.microText}</span>
                 </div>
 
@@ -908,16 +902,16 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <button
                       type="button"
                       onClick={handleStageInXero}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#00F2FE] hover:bg-[#38bdf8] text-[#0B0F19] font-black text-xs sm:text-sm shadow-[0_0_20px_rgba(0,242,254,0.35)] transition-all cursor-pointer w-full sm:w-auto"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#0096A3] hover:bg-[#007A85] text-white dark:bg-[#00F2FE] dark:hover:bg-[#38bdf8] dark:text-[#0B0F19] font-black text-xs sm:text-sm shadow-md dark:shadow-[0_0_20px_rgba(0,242,254,0.35)] transition-all cursor-pointer w-full sm:w-auto"
                     >
-                      <FileCheck2 className="w-4 h-4 text-[#0B0F19]" />
+                      <FileCheck2 className="w-4 h-4 text-white dark:text-[#0B0F19]" />
                       <span>{t.approveBtn}</span>
                     </button>
                   ) : (
                     <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                       {/* Confirmation Pill */}
-                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-400">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                      <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                         <span>{formattedStagedNotice}</span>
                       </span>
 
@@ -925,10 +919,10 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       <button
                         type="button"
                         onClick={onOpenAuditModal}
-                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#F8FAFC] text-[#0B0F19] font-bold text-xs hover:bg-white transition-all shadow-sm cursor-pointer w-full sm:w-auto"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#0F172A] text-white hover:bg-black dark:bg-[#F8FAFC] dark:text-[#0B0F19] dark:hover:bg-white font-bold text-xs transition-all shadow-sm cursor-pointer w-full sm:w-auto"
                       >
                         <span>{t.reviewAllBtn}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#0096A3]" />
+                        <ArrowRight className="w-3.5 h-3.5 text-white dark:text-[#0096A3]" />
                       </button>
                     </div>
                   )}
@@ -937,9 +931,9 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
               {/* Staged Confirmation Details (When Staged) */}
               {scanState === "staged" && (
-                <div className="p-3.5 rounded-xl bg-emerald-500/5 border border-emerald-500/20 text-xs text-[#94A3B8] flex items-center justify-between">
+                <div className="p-3.5 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/5 border border-emerald-500/20 text-xs text-zinc-600 dark:text-[#94A3B8] flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
                     <span>
                       {language === "en"
                         ? "Zero unapproved commits to your ledger. Zero shifts altered without explicit authorization."
@@ -949,7 +943,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <button
                     type="button"
                     onClick={handleReset}
-                    className="text-[#00F2FE] hover:underline font-mono text-xs cursor-pointer ml-4"
+                    className="text-[#0096A3] dark:text-[#00F2FE] hover:underline font-mono text-xs cursor-pointer ml-4 font-semibold"
                   >
                     {language === "en" ? "Test Another Docket" : "Tester un Autre Bon"}
                   </button>
