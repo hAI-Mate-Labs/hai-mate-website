@@ -80,7 +80,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-3xl bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] shadow-xl overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-150 max-h-[90dvh] flex flex-col">
+      <div className="relative w-full max-w-xl rounded-3xl bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] shadow-xl overflow-hidden z-10 my-8 animate-in zoom-in-95 duration-150 max-h-[90dvh] flex flex-col">
         
         {/* Modal Header */}
         <div className="px-6 py-5 border-b border-zinc-100 dark:border-[#232F48] flex items-center justify-between shrink-0">
@@ -151,7 +151,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
 
               {/* Cal.com Direct Action */}
               <a
-                href="https://cal.com/haimate/discovery"
+                href="https://cal.com/haimate/15min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-5 rounded-full bg-[#0F172A] text-white dark:bg-[#00BFCC] dark:text-[#0F172A] font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-[#00E5FF] transition-all shadow-xs cursor-pointer group"
@@ -167,17 +167,17 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                   href={whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-colors flex items-center gap-2.5"
+                  className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-colors flex items-center justify-center sm:justify-start gap-2 whitespace-nowrap min-w-0"
                 >
                   <MessageSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span>WhatsApp (+61 402 472 262)</span>
+                  <span className="whitespace-nowrap">WhatsApp (+61 402 472 262)</span>
                 </a>
                 <a
                   href="mailto:founder@haimate.com.au?subject=Venue%20Discovery%20Inquiry"
-                  className="p-3 rounded-2xl bg-zinc-50 dark:bg-[#0F172A] border border-zinc-200 dark:border-[#232F48] text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-[#232F48] transition-colors flex items-center gap-2.5"
+                  className="p-3 rounded-2xl bg-zinc-50 dark:bg-[#0F172A] border border-zinc-200 dark:border-[#232F48] text-zinc-800 dark:text-zinc-200 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-[#232F48] transition-colors flex items-center justify-center sm:justify-start gap-2 whitespace-nowrap min-w-0"
                 >
                   <Mail className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC] shrink-0" />
-                  <span>founder@haimate.com.au</span>
+                  <span className="whitespace-nowrap truncate">founder@haimate.com.au</span>
                 </a>
               </div>
 
