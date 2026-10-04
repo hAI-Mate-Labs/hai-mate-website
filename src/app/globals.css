@@ -40,9 +40,110 @@ body {
   selection-color: #FFFFFF;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Enforce logo color #0F172A across all headings and titles by default */
 h1, h2, h3, h4, h5, h6 {
   color: #0F172A;
+}
+
+html.dark,
+html.dark body {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #F8FAFC !important;
+}
+
+/* Seamless #0F172A dark branding overrides */
+html.dark section,
+html.dark div.bg-white,
+html.dark main {
+  background-color: #0F172A;
+  color: #F8FAFC;
+}
+
+html.dark div.bg-zinc-50,
+html.dark div.bg-zinc-50\/50,
+html.dark div.bg-zinc-50\/60,
+html.dark div.bg-zinc-50\/70,
+html.dark div.bg-zinc-50\/80 {
+  background-color: #151D2F;
+}
+
+html.dark .border-zinc-100,
+html.dark .border-zinc-200,
+html.dark .border-zinc-200\/60,
+html.dark .border-zinc-200\/70,
+html.dark .border-zinc-200\/80,
+html.dark .border-zinc-200\/90 {
+  border-color: #232F48;
+}
+
+html.dark .text-zinc-600,
+html.dark .text-zinc-500,
+html.dark .text-zinc-400 {
+  color: #94A3B8;
+}
+
+html.dark .text-zinc-900,
+html.dark .text-zinc-800,
+html.dark .text-zinc-700 {
+  color: #F8FAFC;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light),
+  html:not(.light) body {
+    background-color: #0F172A !important;
+    color: #F8FAFC !important;
+  }
+  html:not(.light) h1,
+  html:not(.light) h2,
+  html:not(.light) h3,
+  html:not(.light) h4,
+  html:not(.light) h5,
+  html:not(.light) h6 {
+    color: #F8FAFC !important;
+  }
+  html:not(.light) section,
+  html:not(.light) div.bg-white,
+  html:not(.light) main {
+    background-color: #0F172A;
+    color: #F8FAFC;
+  }
+  html:not(.light) div.bg-zinc-50,
+  html:not(.light) div.bg-zinc-50\/50,
+  html:not(.light) div.bg-zinc-50\/60,
+  html:not(.light) div.bg-zinc-50\/70,
+  html:not(.light) div.bg-zinc-50\/80 {
+    background-color: #151D2F;
+  }
+  html:not(.light) .border-zinc-100,
+  html:not(.light) .border-zinc-200,
+  html:not(.light) .border-zinc-200\/60,
+  html:not(.light) .border-zinc-200\/70,
+  html:not(.light) .border-zinc-200\/80,
+  html:not(.light) .border-zinc-200\/90 {
+    border-color: #232F48;
+  }
+  html:not(.light) .text-zinc-600,
+  html:not(.light) .text-zinc-500,
+  html:not(.light) .text-zinc-400 {
+    color: #94A3B8;
+  }
+  html:not(.light) .text-zinc-900,
+  html:not(.light) .text-zinc-800,
+  html:not(.light) .text-zinc-700 {
+    color: #F8FAFC;
+  }
 }
 
 @keyframes scanline {

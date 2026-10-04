@@ -100,38 +100,40 @@ export default function UnifiedProcessTimeline({
       bullets:
         language === "en"
           ? [
-              "1-Tap green-light on mobile for staged wholesale bills and shift suggestions",
-              "Direct engineering partnership with founder Mallory via mobile & private Slack",
-              "Proprietary Supplier Price Guard flagging regional market overcharges",
-              "Continuous pipeline tuning backed by personal mobile support",
+              "Zero unapproved commits to your ledger: 1-tap manager sign-off via WhatsApp or Slack",
+              "Zero roster cuts or shift trims execute without explicit floor manager authorization",
+              "Direct engineering leadership access: direct line to founder, zero junior support tiers",
+              "Weekly variance digest highlighting captured price creep and protected margin hours",
             ]
           : [
-              "Feu vert en 1 clic sur mobile pour les factures brouillons et suggestions de planning",
-              "Partenariat d'ingénierie direct avec le fondateur Mallory via mobile & Slack privé",
-              "Proprietary Supplier Price Guard signalant les surfacturations régionales",
-              "Ajustements continus garantis par une ligne téléphonique directe",
+              "Zéro écriture non approuvée : validation responsable en 1 clic via WhatsApp ou Slack",
+              "Zéro modification de shift exécutée sans accord explicite du responsable de salle",
+              "Accès direct à la direction technique : ligne directe avec le fondateur, zéro ticket anonyme",
+              "Récapitulatif hebdomadaire des hausses de prix stoppées et des heures de marge protégées",
             ],
       deliverable:
         language === "en"
-          ? "Direct Founder Access • Cloud-Connected Globally, On-Site in Perth"
-          : "Accès Direct au Fondateur • Connecté au Cloud, Sur Place à Perth",
+          ? "Continuous Margin Defense & Direct Founder Mobile SLA"
+          : "Défense Continue des Marges & SLA Direct Fondateur",
     },
   ];
 
   return (
-    <section id="how-it-works" className="relative py-20 md:py-28 bg-white border-b border-zinc-100">
+    <section id="how-it-works" className="relative py-20 md:py-28 bg-zinc-50/60 dark:bg-[#0F172A] border-y border-zinc-200/80 dark:border-[#232F48] transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-semibold text-zinc-800 mb-3 shadow-2xs">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#151D2F] border border-zinc-200/80 dark:border-[#232F48] mb-3 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#00BFCC]" />
-            <span>{language === "en" ? "PROVEN 3-STEP METHODOLOGY" : "MÉTHODOLOGIE ÉPROUVÉE EN 3 ÉTAPES"}</span>
+            <span className="text-xs font-semibold text-zinc-800 dark:text-[#F8FAFC] tracking-wide uppercase">
+              {t.process.badge}
+            </span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] dark:text-[#F8FAFC] tracking-tight leading-tight">
             {language === "en" ? "From Back-Office Chaos to 1-Tap Control in 14 Days." : "Du Chaos Administratif au Contrôle en 1 Clic en 14 Jours."}
           </h2>
-          <p className="mt-3 text-base text-zinc-600">
+          <p className="mt-3 text-base text-zinc-600 dark:text-[#94A3B8]">
             {language === "en"
               ? "Zero disruption to your floor staff or kitchen prep. Everything is mapped and built in the background, tailored specifically to your venue."
               : "Zéro perturbation pour vos équipes de salle ou de cuisine. Tout est analysé et conçu en arrière-plan, sur-mesure pour votre établissement."}
@@ -145,19 +147,19 @@ export default function UnifiedProcessTimeline({
             return (
               <div
                 key={s.step}
-                className="rounded-3xl bg-white border border-zinc-200/90 p-6 sm:p-8 flex flex-col justify-between hover:border-zinc-300 transition-all shadow-xs relative group"
+                className="rounded-3xl bg-white dark:bg-[#151D2F] border border-zinc-200/90 dark:border-[#232F48] p-6 sm:p-8 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-[#00F2FE]/40 transition-all shadow-xs relative group"
               >
                 {/* Step pill & duration */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="inline-flex items-center gap-2">
-                    <span className="text-2xl font-black text-[#0F172A] tracking-tight">
+                    <span className="text-2xl font-black text-[#0F172A] dark:text-[#F8FAFC] tracking-tight">
                       {s.step}
                     </span>
-                    <span className="text-[11px] font-bold text-[#0096A3] bg-[#00BFCC]/10 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-bold text-[#0096A3] dark:text-[#00F2FE] bg-[#00BFCC]/10 px-2.5 py-0.5 rounded-full">
                       {s.tag}
                     </span>
                   </div>
-                  <span className="text-xs font-semibold text-zinc-500 bg-zinc-100 px-2.5 py-1 rounded-full">
+                  <span className="text-xs font-semibold text-zinc-500 dark:text-[#94A3B8] bg-zinc-100 dark:bg-[#0B0F19] px-2.5 py-1 rounded-full border border-transparent dark:border-[#232F48]">
                     {s.duration}
                   </span>
                 </div>
@@ -165,22 +167,22 @@ export default function UnifiedProcessTimeline({
                 {/* Content */}
                 <div className="space-y-3 flex-1">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-xl bg-zinc-50 border border-zinc-200/80 text-zinc-900 group-hover:text-[#0096A3] group-hover:border-[#00BFCC]/30 transition-colors">
+                    <div className="p-2 rounded-xl bg-zinc-50 dark:bg-[#0B0F19] border border-zinc-200/80 dark:border-[#232F48] text-zinc-900 dark:text-[#F8FAFC] group-hover:text-[#0096A3] group-hover:border-[#00BFCC]/30 transition-colors">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-[#0F172A] leading-snug">
+                    <h3 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC] leading-snug">
                       {s.title}
                     </h3>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-[#94A3B8] leading-relaxed font-normal">
                     {s.description}
                   </p>
 
-                  <ul className="space-y-2 pt-2 border-t border-zinc-100">
+                  <ul className="space-y-2 pt-2 border-t border-zinc-100 dark:border-[#232F48]">
                     {s.bullets.map((bullet, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs text-zinc-600">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0096A3] shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start gap-2 text-xs text-zinc-600 dark:text-[#94A3B8]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE] shrink-0 mt-0.5" />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -188,18 +190,18 @@ export default function UnifiedProcessTimeline({
                 </div>
 
                 {/* Deliverable badge */}
-                <div className="mt-6 pt-4 border-t border-zinc-100 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
+                <div className="mt-6 pt-4 border-t border-zinc-100 dark:border-[#232F48] space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-[#94A3B8] block">
                     {language === "en" ? "Key Deliverable" : "Livrable Majeur"}
                   </span>
-                  <div className="text-xs font-semibold text-zinc-900 bg-zinc-50 p-2.5 rounded-xl border border-zinc-100">
+                  <div className="text-xs font-semibold text-zinc-900 dark:text-[#F8FAFC] bg-zinc-50 dark:bg-[#0B0F19] p-2.5 rounded-xl border border-zinc-100 dark:border-[#232F48]">
                     {s.deliverable}
                   </div>
                   {s.step === "01" && onOpenSampleAuditModal && (
                     <button
                       type="button"
                       onClick={onOpenSampleAuditModal}
-                      className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#0096A3] hover:text-[#00818c] bg-[#00BFCC]/10 hover:bg-[#00BFCC]/20 py-2 rounded-xl transition-colors cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#0096A3] dark:text-[#00F2FE] hover:text-[#00818c] bg-[#00BFCC]/10 hover:bg-[#00BFCC]/20 py-2 rounded-xl transition-colors cursor-pointer"
                     >
                       <FileText className="w-3.5 h-3.5" />
                       <span>{language === "en" ? "Inspect Sample Report Teardown →" : "Consulter l'Exemple de Rapport Exécutif →"}</span>
@@ -217,9 +219,9 @@ export default function UnifiedProcessTimeline({
             <button
               type="button"
               onClick={onOpenSampleAuditModal}
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white border border-zinc-200 text-zinc-900 text-xs sm:text-sm font-bold hover:bg-zinc-50 hover:border-zinc-300 transition-all shadow-xs group cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-zinc-900 dark:text-[#F8FAFC] text-xs sm:text-sm font-bold hover:bg-zinc-50 dark:hover:bg-[#1E293B] transition-all shadow-xs group cursor-pointer"
             >
-              <FileText className="w-4 h-4 text-[#0096A3]" />
+              <FileText className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE]" />
               <span>
                 {language === "en"
                   ? "Inspect Sample 14-Day Audit Teardown Report (Confidential Executive Deliverable)"
@@ -231,32 +233,32 @@ export default function UnifiedProcessTimeline({
         )}
 
         {/* 100% Value Guarantee & Operator Covenant Banner */}
-        <div className="rounded-3xl bg-zinc-50 border border-zinc-200/90 p-6 sm:p-8 relative overflow-hidden shadow-xs">
-          <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-[0.03] pointer-events-none">
-            <ApertureLogo size={320} color="#0F172A" />
+        <div className="rounded-3xl bg-zinc-50 dark:bg-[#151D2F] border border-zinc-200/90 dark:border-[#232F48] p-6 sm:p-8 relative overflow-hidden shadow-xs transition-colors duration-200">
+          <div className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+            <ApertureLogo size={320} color="#00BFCC" />
           </div>
 
           <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="space-y-2 max-w-2xl">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-[#0096A3]" />
-                <span className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                <ShieldCheck className="w-5 h-5 text-[#0096A3] dark:text-[#00F2FE]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#F8FAFC]">
                   {language === "en" ? "The hAI Mate! 100% Value Guarantee & Covenant" : "L'Engagement hAI Mate! : Garantie de Valeur à 100%"}
                 </span>
               </div>
-              <p className="text-sm text-zinc-700 leading-relaxed">
+              <p className="text-sm text-zinc-700 dark:text-[#94A3B8] leading-relaxed">
                 {language === "en" ? (
                   <>
-                    If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-[#0F172A]">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
+                    If our 14-day diagnostic audit does not uncover at least <strong>3x its value in recoverable admin hours or supplier invoice discrepancies</strong>, you pay <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">$0</span>. Zero lock-in. No automated action executes without your explicit 1-tap sign-off.
                   </>
                 ) : (
                   <>
-                    Si notre audit diagnostique de 14 jours n'identifie pas au minimum <strong>3x sa valeur en heures administratives récupérables ou surfacturations fournisseurs</strong>, vous payez <span className="font-bold text-[#0F172A]">0 $</span>. Zéro engagement. Aucune action automatisée ne s'exécute sans votre validation en 1 clic.
+                    Si notre audit diagnostique de 14 jours n'identifie pas au minimum <strong>3x sa valeur en heures administratives récupérables ou surfacturations fournisseurs</strong>, vous payez <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">0 $</span>. Zéro engagement. Aucune action automatisée ne s'exécute sans votre validation en 1 clic.
                   </>
                 )}
               </p>
               <div className="pt-2 flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-zinc-200/90 text-[11px] font-semibold text-zinc-800 shadow-2xs">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-[#0B0F19] border border-zinc-200/90 dark:border-[#232F48] text-[11px] font-semibold text-zinc-800 dark:text-[#F8FAFC] shadow-2xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
                   <span>
                     {language === "en"
@@ -268,7 +270,7 @@ export default function UnifiedProcessTimeline({
               <div className="pt-1">
                 <Link
                   href="/mission"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0096A3] hover:text-[#00818c] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0096A3] dark:text-[#00F2FE] hover:underline transition-colors"
                 >
                   <span>{language === "en" ? "Read our full Operational Philosophy & 2030 Mission" : "Découvrir notre Philosophie Opérationnelle & Mission 2030"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -279,10 +281,10 @@ export default function UnifiedProcessTimeline({
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-zinc-900 text-white font-semibold text-xs sm:text-sm hover:bg-zinc-800 transition-all shadow-sm shrink-0 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#0F172A] dark:bg-[#00F2FE] text-white dark:text-[#0B0F19] font-bold text-xs sm:text-sm hover:bg-zinc-800 dark:hover:bg-[#38bdf8] transition-all shadow-sm shrink-0 w-full sm:w-auto cursor-pointer"
             >
               <span>{t.process.title ? (language === "en" ? "Book Your 14-Day Audit" : "Réserver Votre Audit de 14 Jours") : ""}</span>
-              <ArrowRight className="w-4 h-4 text-[#00BFCC]" />
+              <ArrowRight className="w-4 h-4 text-[#00BFCC] dark:text-[#0B0F19]" />
             </button>
           </div>
         </div>

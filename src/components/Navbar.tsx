@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import ApertureLogo from "./ApertureLogo";
-import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone, Sun, Moon, Laptop } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { translations } from "@/lib/translations";
 
 interface NavbarProps {
@@ -13,6 +14,7 @@ interface NavbarProps {
 
 export default function Navbar({ onOpenAuditModal }: NavbarProps) {
   const { language, setLanguage } = useLanguage();
+  const { theme, themePreference, setThemePreference, toggleTheme } = useTheme();
   const t = translations[language].nav;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -38,8 +40,8 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-200 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-xs"
-          : "bg-white border-b border-zinc-100"
+          ? "bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-md border-b border-zinc-200/80 dark:border-[#232F48] shadow-xs"
+          : "bg-white dark:bg-[#0F172A] border-b border-zinc-100 dark:border-[#232F48]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +58,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
               glow
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-[#0F172A] font-sans flex items-baseline">
+              <span className="text-xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] font-sans flex items-baseline">
                 hAI Mate
                 <span className="inline-block relative">
                   !
@@ -66,19 +68,19 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                   />
                 </span>
               </span>
-              <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-medium -mt-1">
+              <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-[#94A3B8] font-medium -mt-1">
                 {t.brandSub}
               </span>
             </div>
           </Link>
 
           {/* Center Links - Limova Floating Pill Dock */}
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-zinc-100/80 border border-zinc-200/90 p-1.5 rounded-full shadow-2xs backdrop-blur-xs shrink-0">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 bg-zinc-100/80 dark:bg-[#151D2F] border border-zinc-200/90 dark:border-[#232F48] p-1.5 rounded-full shadow-2xs backdrop-blur-xs shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-3 xl:px-3.5 py-1.5 text-xs font-semibold text-zinc-600 hover:text-[#0F172A] hover:bg-white hover:shadow-2xs rounded-full transition-all whitespace-nowrap shrink-0"
+                className="px-3 xl:px-3.5 py-1.5 text-xs font-semibold text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-white dark:hover:bg-[#1E293B] hover:shadow-2xs rounded-full transition-all whitespace-nowrap shrink-0"
               >
                 {link.name}
               </Link>
@@ -87,15 +89,34 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
           {/* Right Action */}
           <div className="hidden md:flex items-center gap-2.5 xl:gap-3 shrink-0">
+            {/* Theme Toggle (Device / Dark / Light) */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={
+                themePreference === "system"
+                  ? `Device System Theme (${theme}) • Click to toggle`
+                  : `Current: ${theme} • Click to toggle`
+              }
+              className="p-2 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors cursor-pointer"
+              aria-label="Toggle dark/light mode"
+            >
+              {theme === "dark" ? (
+                <Moon className="w-3.5 h-3.5 text-[#00F2FE]" />
+              ) : (
+                <Sun className="w-3.5 h-3.5 text-amber-500" />
+              )}
+            </button>
+
             {/* Bilingual Segmented Toggle */}
-            <div className="inline-flex items-center p-1 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-semibold shadow-2xs shrink-0">
+            <div className="inline-flex items-center p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold shadow-2xs shrink-0">
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
                 className={`px-2.5 py-1 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   language === "en"
-                    ? "bg-white text-[#0F172A] shadow-xs font-bold"
-                    : "text-zinc-500 hover:text-[#0F172A]"
+                    ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
+                    : "text-zinc-500 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 }`}
                 aria-label="Switch to English"
               >
@@ -106,8 +127,8 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 onClick={() => setLanguage("fr")}
                 className={`px-2.5 py-1 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   language === "fr"
-                    ? "bg-white text-[#0F172A] shadow-xs font-bold"
-                    : "text-zinc-500 hover:text-[#0F172A]"
+                    ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
+                    : "text-zinc-500 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 }`}
                 aria-label="Passer en français"
               >
@@ -117,30 +138,44 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
             <a
               href="tel:+61402472262"
-              className="hidden 2xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-1 whitespace-nowrap shrink-0"
+              className="hidden 2xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-[#94A3B8] hover:text-zinc-900 dark:hover:text-[#F8FAFC] transition-colors pr-1 whitespace-nowrap shrink-0"
             >
-              <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
+              <Phone className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE]" />
               <span>0402 472 262</span>
             </a>
 
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="inline-flex items-center justify-center px-4 xl:px-5 py-2.5 text-xs font-bold rounded-full bg-[#0F172A] text-white hover:bg-zinc-800 transition-all cursor-pointer shadow-xs group whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center px-4 xl:px-5 py-2.5 text-xs font-bold rounded-full bg-[#0F172A] dark:bg-[#00F2FE] text-white dark:text-[#0B0F19] hover:bg-zinc-800 dark:hover:bg-[#38bdf8] transition-all cursor-pointer shadow-xs group whitespace-nowrap shrink-0"
             >
               <span>{t.bookAudit}</span>
-              <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#00BFCC] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 text-[#00BFCC] dark:text-[#0B0F19] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
 
           {/* Mobile menu toggle */}
           <div className="flex lg:hidden items-center gap-2">
+            {/* Theme button mobile */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="p-1.5 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-zinc-600 dark:text-[#94A3B8]"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Moon className="w-3.5 h-3.5 text-[#00F2FE]" />
+              ) : (
+                <Sun className="w-3.5 h-3.5 text-amber-500" />
+              )}
+            </button>
+
             {/* Mobile language switch */}
-            <div className="inline-flex items-center p-0.5 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] font-semibold">
+            <div className="inline-flex items-center p-0.5 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-[11px] font-semibold">
               <button
                 type="button"
                 onClick={() => setLanguage(language === "en" ? "fr" : "en")}
-                className="px-2 py-0.5 rounded-full bg-white text-[#0F172A] shadow-xs font-bold"
+                className="px-2 py-0.5 rounded-full bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
               >
                 {language === "en" ? "🇦🇺 EN" : "🇫🇷 FR"}
               </button>
@@ -149,14 +184,14 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             <button
               type="button"
               onClick={onOpenAuditModal}
-              className="px-3.5 py-1.5 text-xs font-semibold rounded-full bg-[#0F172A] text-white"
+              className="px-3 py-1.5 text-xs font-semibold rounded-full bg-[#0F172A] dark:bg-[#00F2FE] text-white dark:text-[#0B0F19]"
             >
               {t.bookAuditMobile}
             </button>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
+              className="p-2 rounded-lg text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC] hover:bg-zinc-100 dark:hover:bg-[#151D2F]"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -167,31 +202,30 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-zinc-100 bg-white px-5 py-6 space-y-4 shadow-lg animate-in slide-in-from-top-2 duration-150">
+        <div className="lg:hidden border-t border-zinc-100 dark:border-[#232F48] bg-white dark:bg-[#0F172A] px-5 py-6 space-y-4 shadow-lg animate-in slide-in-from-top-2 duration-150">
           <div className="grid grid-cols-2 gap-2 pb-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-xl bg-zinc-50 border border-zinc-100 text-sm font-semibold text-zinc-800 hover:text-[#0F172A] hover:bg-zinc-100 transition-colors"
+                className="px-3 py-2 rounded-xl bg-zinc-50 dark:bg-[#151D2F] border border-zinc-100 dark:border-[#232F48] text-sm font-semibold text-zinc-800 dark:text-[#F8FAFC] hover:text-[#0F172A] hover:bg-zinc-100 dark:hover:bg-[#1E293B] transition-colors"
               >
                 {link.name}
               </Link>
             ))}
           </div>
 
-          {/* Language selection in mobile drawer */}
-          <div className="flex items-center justify-between p-3 rounded-2xl bg-zinc-50 border border-zinc-200">
-            <span className="text-xs font-semibold text-zinc-600">Language / Langue :</span>
-            <div className="inline-flex items-center p-1 rounded-full bg-zinc-200/80 text-xs font-semibold">
+          <div className="pt-2 border-t border-zinc-100 dark:border-[#232F48] flex items-center justify-between text-xs text-zinc-500 dark:text-[#94A3B8]">
+            <span>{language === "en" ? "Language:" : "Langue :"}</span>
+            <div className="inline-flex p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48]">
               <button
                 type="button"
                 onClick={() => setLanguage("en")}
                 className={`px-3 py-1 rounded-full transition-all ${
                   language === "en"
-                    ? "bg-white text-[#0F172A] font-bold shadow-xs"
-                    : "text-zinc-600"
+                    ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] font-bold shadow-xs"
+                    : "text-zinc-600 dark:text-[#94A3B8]"
                 }`}
               >
                 🇦🇺 English
@@ -201,8 +235,8 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 onClick={() => setLanguage("fr")}
                 className={`px-3 py-1 rounded-full transition-all ${
                   language === "fr"
-                    ? "bg-white text-[#0F172A] font-bold shadow-xs"
-                    : "text-zinc-600"
+                    ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] font-bold shadow-xs"
+                    : "text-zinc-600 dark:text-[#94A3B8]"
                 }`}
               >
                 🇫🇷 Français
@@ -210,12 +244,12 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             </div>
           </div>
 
-          <div className="pt-2 border-t border-zinc-100 space-y-2">
+          <div className="pt-2 border-t border-zinc-100 dark:border-[#232F48] space-y-2">
             <a
               href="tel:+61402472262"
-              className="flex items-center justify-center gap-2 py-2.5 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-bold text-zinc-800"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-full bg-zinc-50 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-bold text-zinc-800 dark:text-[#F8FAFC]"
             >
-              <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
+              <Phone className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00F2FE]" />
               <span>{t.callMallory}</span>
             </a>
 
@@ -225,7 +259,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
                 setMobileMenuOpen(false);
                 onOpenAuditModal();
               }}
-              className="w-full py-3 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-zinc-800 shadow-sm"
+              className="w-full py-3 rounded-full bg-[#0F172A] dark:bg-[#00F2FE] text-white dark:text-[#0B0F19] text-xs font-bold hover:bg-zinc-800 dark:hover:bg-[#38bdf8] shadow-sm"
             >
               {t.book14DayReview}
             </button>

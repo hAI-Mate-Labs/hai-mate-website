@@ -345,7 +345,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
   return (
     <section
       id="simulator"
-      className="relative py-20 md:py-28 bg-[#0B0F19] border-y border-[#232F48] overflow-hidden text-[#F8FAFC]"
+      className="relative py-20 md:py-28 bg-[#0F172A] border-y border-[#232F48] overflow-hidden text-[#F8FAFC] transition-colors duration-200"
     >
       {/* Background radial cyan glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[450px] bg-gradient-to-b from-[#00F2FE]/10 via-[#00F2FE]/5 to-transparent blur-3xl pointer-events-none" />

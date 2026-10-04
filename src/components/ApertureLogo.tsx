@@ -24,8 +24,8 @@ export default function ApertureLogo({
   const isConduitActive = activeSegment === "all" || activeSegment === "conduit";
   const isNodeActive = activeSegment === "all" || activeSegment === "node";
 
-  // For light background, default outer circle is dark #0F172A so the conduit cuts through showing white!
-  const circleFill = color || (isOuterActive ? "#0F172A" : "#94A3B8");
+  // Default outer circle adapts to light and dark modes
+  const circleFill = color || (isOuterActive ? "currentColor" : "#94A3B8");
 
   return (
     <svg
@@ -66,7 +66,7 @@ export default function ApertureLogo({
         r="180"
         fill={circleFill}
         mask={`url(#${maskId})`}
-        className="transition-all duration-300"
+        className="transition-all duration-300 text-[#0F172A] dark:text-[#F8FAFC]"
         opacity={isOuterActive ? 1 : 0.3}
       />
 

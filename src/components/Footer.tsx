@@ -13,20 +13,20 @@ export default function Footer() {
   const techBadges = ["Lightspeed", "Square", "Xero", "MYOB", "Slack"];
 
   return (
-    <footer className="relative bg-white text-zinc-600 font-sans border-t border-zinc-100">
+    <footer className="relative bg-white dark:bg-[#0F172A] text-zinc-600 dark:text-[#94A3B8] font-sans border-t border-zinc-100 dark:border-[#232F48] transition-colors duration-200">
       
       {/* Ecosystem Logos Row */}
-      <div className="border-b border-zinc-100 py-8">
+      <div className="border-b border-zinc-100 dark:border-[#232F48] py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400 dark:text-[#94A3B8]">
               {language === "en" ? "Integrates with your existing tech:" : "S'intègre à vos outils existants :"}
             </span>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {techBadges.map((badge) => (
                 <span
                   key={badge}
-                  className="px-3.5 py-1 rounded-full bg-zinc-50 border border-zinc-200/80 text-xs font-medium text-zinc-800"
+                  className="px-3.5 py-1 rounded-full bg-zinc-50 dark:bg-[#151D2F] border border-zinc-200/80 dark:border-[#232F48] text-xs font-medium text-zinc-800 dark:text-[#F8FAFC]"
                 >
                   {badge}
                 </span>
@@ -45,7 +45,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 inline-flex">
               <ApertureLogo className="h-7 w-7" />
               <div className="flex flex-col">
-                <span className="text-xl font-bold tracking-tight text-[#0F172A] font-sans flex items-baseline">
+                <span className="text-xl font-bold tracking-tight text-[#0F172A] dark:text-[#F8FAFC] font-sans flex items-baseline">
                   hAI Mate
                   <span className="inline-block relative">
                     !
@@ -55,25 +55,25 @@ export default function Footer() {
                     />
                   </span>
                 </span>
-                <span className="text-[10px] uppercase tracking-wider text-zinc-400 font-medium -mt-1">
+                <span className="text-[10px] uppercase tracking-wider text-zinc-400 dark:text-[#94A3B8] font-medium -mt-1">
                   {t.footer.tagline}
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm text-zinc-500 max-w-sm leading-relaxed">
+            <p className="text-sm text-zinc-500 dark:text-[#94A3B8] max-w-sm leading-relaxed">
               {t.footer.disclaimer}
             </p>
 
-            <div className="text-xs text-zinc-500 space-y-2 pt-1">
-              <p className="font-semibold text-zinc-800">
+            <div className="text-xs text-zinc-500 dark:text-[#94A3B8] space-y-2 pt-1">
+              <p className="font-semibold text-zinc-800 dark:text-[#F8FAFC]">
                 {t.footer.legalEntity}
               </p>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-50 border border-zinc-200/80 text-[11px] font-medium text-zinc-700">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-zinc-50 dark:bg-[#151D2F] border border-zinc-200/80 dark:border-[#232F48] text-[11px] font-medium text-zinc-700 dark:text-[#F8FAFC]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
                 <span>{t.footer.sovereignBadge}</span>
               </div>
-              <p className="text-[11px] text-zinc-500">
+              <p className="text-[11px] text-zinc-500 dark:text-[#94A3B8]">
                 {language === "en"
                   ? "On-site diagnostic audits across Cottesloe, Fremantle, Perth CBD & the South West"
                   : "Audits diagnostiques sur place à Cottesloe, Fremantle, Perth CBD & dans le South West"}
@@ -83,37 +83,37 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#F8FAFC]">
               {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/#solutions" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/#solutions" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {t.nav.solutions}
                 </Link>
               </li>
               <li>
-                <Link href="/mission" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/mission" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {t.nav.mission}
                 </Link>
               </li>
               <li>
-                <Link href="/founder" className="hover:text-[#0F172A] transition-colors text-[#0F172A] font-medium">
+                <Link href="/founder" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors text-[#0F172A] dark:text-[#F8FAFC] font-medium">
                   {t.nav.founder}
                 </Link>
               </li>
               <li>
-                <Link href="/#how-it-works" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/#how-it-works" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {t.nav.howItWorks}
                 </Link>
               </li>
               <li>
-                <Link href="/#grants" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/#grants" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {t.nav.grants}
                 </Link>
               </li>
               <li>
-                <Link href="/#intake" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/#intake" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {language === "en" ? "Contact & Scoping" : "Contact & Cadrage"}
                 </Link>
               </li>
@@ -122,22 +122,22 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] dark:text-[#F8FAFC]">
               {t.footer.legal}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/privacy" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {language === "en" ? "Security & Architecture" : "Sécurité & Architecture"}
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/privacy" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {language === "en" ? "Privacy Policy (AU & GDPR)" : "Politique de Confidentialité (AU & RGPD)"}
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-[#0F172A] transition-colors">
+                <Link href="/terms" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {language === "en" ? "Terms of Service (ACL)" : "Conditions Générales (ACL)"}
                 </Link>
               </li>
@@ -147,7 +147,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-14 pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
+        <div className="mt-14 pt-8 border-t border-zinc-100 dark:border-[#232F48] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 dark:text-[#94A3B8]">
           <div>
             &copy; {new Date().getFullYear()} {t.footer.legalEntity}
           </div>
