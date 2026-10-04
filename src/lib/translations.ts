@@ -378,11 +378,11 @@ export const translations = {
       whatsappBtn: "Message Mallory on WhatsApp (+61 402 472 262)",
     },
     footer: {
-      tagline: "Autonomous Margin Infrastructure Operating Across Western Australia & Nationally",
+      tagline: "Autonomous Margin Infrastructure",
       legalEntity:
-        "hAI Mate! Margin Infrastructure • Australian Registered Entity (Sydney, NSW • ABN Verified) • Serving Venues Across NSW, WA & Nationally",
+        "Australian Registered Entity (ABN Verified) • Sydney HQ & WA Regional Hub",
       disclaimer:
-        "hAI Mate! Margin Infrastructure operates with Sydney HQ and active on-the-ground presence in Perth & Western Australia (Cottesloe, Fremantle, Perth CBD & the South West), serving venues nationally.",
+        "Autonomous back-office engine auditing wholesale supplier spend, guarding roster margins, and staging accounts payable for Australian hospitality venues.",
       sovereignBadge:
         "Redundant Australian Cloud Operations • Continuous Automated Pipeline Monitoring • Zero Single-Point-of-Failure Architecture",
       philosophyTitle: "Our Philosophy",
@@ -847,11 +847,11 @@ export const translations = {
       whatsappBtn: "Écrire à Mallory sur WhatsApp (+61 402 472 262)",
     },
     footer: {
-      tagline: "Infrastructure Autonome de Marges Opérant en Australie-Occidentale & à l'Échelle Nationale",
+      tagline: "Infrastructure Autonome de Marges",
       legalEntity:
-        "hAI Mate! Infrastructure de Marges • Entité Enregistrée en Australie (Sydney, NSW • ABN Vérifié) • Au Service des Établissements en NSW, WA & à l'Échelle Nationale",
+        "Entité Enregistrée en Australie (ABN Vérifié) • Siège Sydney & Pôle Régional WA",
       disclaimer:
-        "hAI Mate! Infrastructure de Marges opère avec son siège à Sydney et une présence active sur le terrain à Perth & en Australie-Occidentale (Cottesloe, Fremantle, Perth CBD & le South West), au service des établissements à l'échelle nationale.",
+        "Moteur autonome de back-office auditant les dépenses fournisseurs, protégeant les ratios de masse salariale et préparant la comptabilité fournisseurs pour la restauration australienne.",
       sovereignBadge:
         "Opérations Cloud Australiennes Redondantes • Surveillance Continue des Pipelines Automatisés • Architecture Sans Point Défaillant Unique",
       philosophyTitle: "Notre Philosophie",
