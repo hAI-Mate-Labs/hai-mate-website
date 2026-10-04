@@ -396,7 +396,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
         </div>
 
         {/* Dual-Input Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8">
+        <div className="flex items-center justify-start sm:justify-center gap-2 sm:gap-2.5 mb-8 overflow-x-auto scrollbar-none pb-2 max-w-full px-1">
           {/* Tab 1: Seafood */}
           <button
             type="button"
@@ -756,6 +756,12 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
               {/* Parsed Output & Discrepancy Detection Table */}
               <div className="overflow-x-auto rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0B0F19] scrollbar-none shadow-2xs">
+                {/* Mobile Swipe Hint */}
+                <div className="sm:hidden flex items-center justify-between px-3.5 py-2 bg-zinc-50 dark:bg-[#151D2F]/70 border-b border-zinc-200 dark:border-[#232F48] text-[10px] font-mono text-zinc-500 dark:text-[#94A3B8]">
+                  <span>{language === "fr" ? "← Faites glisser pour voir les écarts →" : "← Swipe table to view variance rates →"}</span>
+                  <span className="text-[#0096A3] dark:text-[#00F2FE] font-bold">DOC: {current.docketNumber}</span>
+                </div>
+
                 <table className="w-full min-w-[560px] text-left border-collapse">
                   <thead>
                     <tr className="border-b border-zinc-200 dark:border-[#232F48] text-[11px] font-mono uppercase tracking-wider text-zinc-500 dark:text-[#94A3B8] bg-zinc-50/80 dark:bg-[#151D2F]/50">

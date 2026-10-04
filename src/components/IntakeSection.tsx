@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, MessageSquare, Copy, Check, Shield, ArrowRight } from "lucide-react";
+import { CheckCircle2, MessageSquare, Copy, Check, Shield, ArrowRight, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -24,11 +24,31 @@ export default function IntakeSection() {
     if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
+    // Persist inquiry locally
+    try {
+      const existing = JSON.parse(localStorage.getItem("haimate_intake_inquiries") || "[]");
+      existing.push({
+        ...formData,
+        submittedAt: new Date().toISOString(),
+      });
+      localStorage.setItem("haimate_intake_inquiries", JSON.stringify(existing));
+    } catch {}
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 600);
+    }, 450);
   };
+
+  const intakeWhatsAppHref = `https://wa.me/61402472262?text=${encodeURIComponent(
+    `Hi Mallory, I submitted an operational inquiry on haimate.com.au.\n\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Business Type: ${formData.businessType}\n• Operational Bottleneck: ${formData.bottleneck || "General margin audit & docket ingestion"}`
+  )}`;
+
+  const intakeEmailHref = `mailto:founder@haimate.com.au?subject=${encodeURIComponent(
+    `Operational Inquiry - ${formData.name} (${formData.businessType})`
+  )}&body=${encodeURIComponent(
+    `Hi Mallory,\n\nI submitted an inquiry on haimate.com.au:\n\nName: ${formData.name}\nEmail: ${formData.email}\nBusiness: ${formData.businessType}\nBottleneck: ${formData.bottleneck}\n\nLet's connect!`
+  )}`;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("founder@haimate.com.au");
@@ -75,11 +95,31 @@ export default function IntakeSection() {
                   </>
                 )}
               </p>
+              {/* Instant Direct Confirmation Channels */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5 max-w-md mx-auto">
+                <a
+                  href={intakeWhatsAppHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                >
+                  <MessageSquare className="w-4 h-4 shrink-0" />
+                  <span>{language === "fr" ? "Confirmer sur WhatsApp (1 Clic)" : "1-Tap Confirm on WhatsApp"}</span>
+                </a>
+                <a
+                  href={intakeEmailHref}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-white dark:bg-[#0B0F19] text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-[#232F48] hover:bg-zinc-100 dark:hover:bg-[#1E293B] font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <Mail className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC] shrink-0" />
+                  <span>{language === "fr" ? "Envoyer par Email" : "Send Details via Email"}</span>
+                </a>
+              </div>
+
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => setIsSubmitted(false)}
-                  className="px-5 py-2 rounded-full bg-white dark:bg-[#0B0F19] text-xs font-semibold text-zinc-800 dark:text-[#F8FAFC] border border-zinc-200 dark:border-[#232F48] hover:bg-zinc-100 dark:hover:bg-[#1E293B] cursor-pointer"
+                  className="px-5 py-2 rounded-full bg-zinc-100 dark:bg-[#0B0F19] text-xs font-semibold text-zinc-700 dark:text-[#F8FAFC] border border-zinc-200 dark:border-[#232F48] hover:bg-zinc-200 dark:hover:bg-[#1E293B] cursor-pointer"
                 >
                   {t.intake.submitAnother}
                 </button>

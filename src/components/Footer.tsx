@@ -83,8 +83,8 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/#solutions" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
-                  {t.nav.solutions}
+                <Link href="/#overview" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
+                  {t.nav.overview}
                 </Link>
               </li>
               <li>
@@ -105,6 +105,11 @@ export default function Footer() {
               <li>
                 <Link href="/#grants" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
                   {t.nav.grants}
+                </Link>
+              </li>
+              <li>
+                <Link href="/#faq" className="hover:text-[#0F172A] dark:hover:text-[#00F2FE] transition-colors">
+                  FAQ
                 </Link>
               </li>
               <li>

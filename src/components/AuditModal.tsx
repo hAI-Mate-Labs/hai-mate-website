@@ -56,17 +56,40 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     if (!formData.contactName || !formData.email || !formData.businessName) return;
 
     setIsSubmitting(true);
+    const newAuditId = `WA-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`;
+    setAuditId(newAuditId);
+
+    // Save lead locally
+    try {
+      const existing = JSON.parse(localStorage.getItem("haimate_audit_inquiries") || "[]");
+      existing.push({
+        ...formData,
+        id: newAuditId,
+        submittedAt: new Date().toISOString(),
+      });
+      localStorage.setItem("haimate_audit_inquiries", JSON.stringify(existing));
+    } catch {}
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      setAuditId(`WA-AUDIT-${Math.floor(1000 + Math.random() * 9000)}`);
-    }, 500);
+    }, 450);
   };
 
   const handleResetAndClose = () => {
     setIsSuccess(false);
     onClose();
   };
+
+  const auditWhatsAppHref = `https://wa.me/61402472262?text=${encodeURIComponent(
+    `Hi Mallory, I just submitted a 14-Day Diagnostic Audit request (${auditId || "NEW"}) for ${formData.businessName}.\n\n• Venue: ${formData.businessName}\n• Contact: ${formData.contactName}\n• Email: ${formData.email}\n• Phone: ${formData.phone || "N/A"}\n• Mode: ${formData.deliveryMode === "onsite" ? "On-Site (Sydney/Perth Metro)" : "National Cloud Intake"}\n• Stack: ${formData.selectedTech.join(", ")}\n• WA Grant Interest: ${formData.grantInterest ? "Yes (50% co-funding)" : "No"}`
+  )}`;
+
+  const auditEmailHref = `mailto:founder@haimate.com.au?subject=${encodeURIComponent(
+    `14-Day Diagnostic Audit Request [${auditId || "NEW"}] - ${formData.businessName}`
+  )}&body=${encodeURIComponent(
+    `Hi Mallory,\n\nPlease confirm our 14-Day Diagnostic Audit booking:\n\nVenue: ${formData.businessName}\nContact: ${formData.contactName}\nEmail: ${formData.email}\nPhone: ${formData.phone || "N/A"}\nDelivery Mode: ${formData.deliveryMode}\nSoftware Stack: ${formData.selectedTech.join(", ")}\nWA Grant Co-funding: ${formData.grantInterest ? "Yes" : "No"}\n\nThanks!`
+  )}`;
 
   const whatsappHref =
     "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.";
@@ -211,11 +234,31 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                 )}
               </p>
 
-              <div className="pt-3">
+              {/* Instant Direct Confirmation Channels */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5 max-w-md mx-auto">
+                <a
+                  href={auditWhatsAppHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                >
+                  <MessageSquare className="w-4 h-4 shrink-0" />
+                  <span>{language === "fr" ? "Confirmer sur WhatsApp (1 Clic)" : "1-Tap Confirm on WhatsApp"}</span>
+                </a>
+                <a
+                  href={auditEmailHref}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-zinc-100 dark:bg-[#0B0F19] text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-[#232F48] hover:bg-zinc-200 dark:hover:bg-[#1E293B] font-semibold text-xs transition-colors cursor-pointer whitespace-nowrap"
+                >
+                  <Mail className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC] shrink-0" />
+                  <span>{language === "fr" ? "Envoyer par Email" : "Send Confirmation Email"}</span>
+                </a>
+              </div>
+
+              <div className="pt-2">
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="px-6 py-2.5 rounded-full bg-[#0F172A] dark:bg-[#00BFCC] text-white dark:text-[#0F172A] font-semibold text-sm hover:bg-zinc-800 dark:hover:bg-[#00E5FF] cursor-pointer transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#0F172A] dark:bg-[#00BFCC] text-white dark:text-[#0F172A] font-semibold text-xs hover:bg-zinc-800 dark:hover:bg-[#00E5FF] cursor-pointer transition-colors"
                 >
                   {t.auditModal.closeReturn}
                 </button>

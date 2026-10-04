@@ -8,6 +8,7 @@ import DocketSimulator from "@/components/DocketSimulator";
 import GrantCallout from "@/components/GrantCallout";
 import UnifiedProcessTimeline from "@/components/UnifiedProcessTimeline";
 import CompactFounderCard from "@/components/CompactFounderCard";
+import FaqSection from "@/components/FaqSection";
 import IntakeSection from "@/components/IntakeSection";
 import Footer from "@/components/Footer";
 import AuditModal from "@/components/AuditModal";
@@ -56,7 +57,10 @@ export default function Home() {
         {/* 6. Direct Engineering Partnership Trust Card */}
         <CompactFounderCard onOpenAuditModal={() => handleOpenAuditModal()} />
 
-        {/* 7. Direct Booking Intake & WhatsApp Line */}
+        {/* 7. Frequently Asked Questions */}
+        <FaqSection onOpenAuditModal={() => handleOpenAuditModal()} />
+
+        {/* 8. Direct Booking Intake & WhatsApp Line */}
         <IntakeSection />
       </main>
 

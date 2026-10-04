@@ -4,17 +4,44 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hai-mate-labs.github.io/hai-mate-website"),
   title: "hAI Mate! | Autonomous Margin Infrastructure for Hospitality",
   description: "Opening up operational flow while keeping human judgment at the center. The autonomous back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB across WA and Australia.",
-  keywords: ["autonomous margin infrastructure", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "wholesale docket ingestion Perth WA"],
+  keywords: [
+    "autonomous margin infrastructure",
+    "hospitality automation Perth",
+    "wholesale docket ingestion Perth WA",
+    "human in the loop automation",
+    "Xero Lightspeed AI integration",
+    "hAI Mate",
+    "WA Local Capability Fund hospitality",
+    "restaurant invoice auditing Australia"
+  ],
   authors: [{ name: "hAI Mate!" }],
+  alternates: {
+    canonical: "https://hai-mate-labs.github.io/hai-mate-website/",
+  },
   openGraph: {
-    title: "hAI Mate! | Autonomous Margin Infrastructure",
-    description: "The autonomous back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB.",
+    title: "hAI Mate! | Autonomous Margin Infrastructure for Australian Hospitality",
+    description: "The private back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB.",
     url: "https://hai-mate-labs.github.io/hai-mate-website",
-    siteName: "hAI Mate!",
+    siteName: "hAI Mate! Margin Infrastructure",
     locale: "en_AU",
     type: "website",
+    images: [
+      {
+        url: "https://hai-mate-labs.github.io/hai-mate-website/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "hAI Mate! Autonomous Margin Infrastructure for Australian Hospitality",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "hAI Mate! | Autonomous Margin Infrastructure for Australian Hospitality",
+    description: "The private back-office engine that audits wholesale spend, guards labor margins, and stages accounts payable into Xero and MYOB.",
+    images: ["https://hai-mate-labs.github.io/hai-mate-website/og-image.png"],
   },
 };
 
@@ -60,7 +87,7 @@ export default function RootLayout({
               "url": "https://hai-mate-labs.github.io/hai-mate-website",
               "logo": "https://hai-mate-labs.github.io/hai-mate-website/favicon.ico",
               "description":
-                "Applied AI and agentic automation agency for hospitality groups, restaurants, bakeries, and pubs across Western Australia and nationally.",
+                "Autonomous margin infrastructure and private operational pipelines for Australian hospitality groups, restaurants, bakeries, and pubs across NSW, WA and nationally.",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Perth",
