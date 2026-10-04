@@ -323,7 +323,7 @@ export const translations = {
       title: "Direct Engineering Partnership • Sovereign Infrastructure with Direct Leadership Access",
       p1: "In hospitality, operational downtime is not an option. You do not need bloated agencies passing support requests through junior account coordinators or overseas ticketing queues. At hAI Mate!, our infrastructure is engineered directly by technical leadership. You get battle-tested, sovereign automation pipelines with direct founder-level SLA access via private Slack Connect and WhatsApp whenever adjustments are required.",
       quote:
-        "“In hospitality, operational downtime is not an option. You do not need bloated agencies passing support requests through junior account coordinators or overseas ticketing queues. At hAI Mate!, our infrastructure is engineered directly by technical leadership.”",
+        "“True hospitality happens on the floor and in the kitchen. Every minute a venue manager spends manually cross-checking dockets or wrestling spreadsheets at midnight is a minute stolen from their team and their guests.”",
       signature: "— Mallory Antomarchi, Founder & Applied AI Engineer",
       phoneLabel: "Direct Mobile & WhatsApp",
       humanSignoff: "1-Tap Mobile Governance",
@@ -770,7 +770,7 @@ export const translations = {
       title: "Partenariat d'Ingénierie Direct • Infrastructure Souveraine avec Accès Direct à la Direction",
       p1: "En restauration, les interruptions opérationnelles sont inacceptables. Vous n'avez pas besoin d'agences pléthoriques transmettant vos demandes à des coordinateurs débutants ou à des services clients délocalisés. Chez hAI Mate!, notre infrastructure est directement conçue par notre direction technique. Vous bénéficiez de pipelines d'automatisation souverains et éprouvés, avec un accès SLA direct au fondateur via un canal privé Slack Connect et WhatsApp pour tout ajustement.",
       quote:
-        "« En restauration, les interruptions opérationnelles sont inacceptables. Vous n'avez pas besoin d'agences pléthoriques. Chez hAI Mate!, notre infrastructure est directement conçue par notre direction technique. »",
+        "« L'essence de la restauration se joue en salle et en cuisine. Chaque minute qu'un gérant passe à vérifier des bons ou à remplir des tableurs à minuit est une minute volée à son équipe et à ses clients. »",
       signature: "— Mallory Antomarchi, Fondateur & Ingénieur en IA Appliquée",
       phoneLabel: "Mobile Direct & WhatsApp",
       humanSignoff: "Gouvernance Mobile en 1 Clic",

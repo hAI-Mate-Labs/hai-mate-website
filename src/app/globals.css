@@ -27,8 +27,11 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor targets clear of the sticky 80px navbar */
+  scroll-padding-top: 5.5rem;
   background-color: #FFFFFF;
   color: #0F172A;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -36,15 +39,26 @@ body {
   color: #0F172A;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
-  selection-background-color: #00BFCC;
-  selection-color: #FFFFFF;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Enforce logo color #0F172A across all headings and titles by default */
-h1, h2, h3, h4, h5, h6 {
-  color: #0F172A;
+/*
+ * Default heading colour lives in the base layer so that any utility class
+ * (e.g. text-white on a dark banner) always wins over it.
+ */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    color: #0F172A;
+  }
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    color: #F8FAFC;
+  }
 }
 
 html.dark,
@@ -53,97 +67,30 @@ html.dark body {
   color: #F8FAFC !important;
 }
 
-html.dark h1,
-html.dark h2,
-html.dark h3,
-html.dark h4,
-html.dark h5,
-html.dark h6 {
-  color: #F8FAFC !important;
-}
-
-/* Seamless #0F172A dark branding overrides */
-html.dark section,
-html.dark div.bg-white,
-html.dark main {
+/*
+ * Legacy dark-mode fallback (#0F172A brand navy, never pure black).
+ * Only applies to elements that do NOT declare their own `dark:` utilities,
+ * so dark-aware components keep full control of their surfaces and text.
+ */
+html.dark :is(section, main, div.bg-white):not([class*="dark:"]) {
   background-color: #0F172A;
   color: #F8FAFC;
 }
 
-html.dark div.bg-zinc-50,
-html.dark div.bg-zinc-50\/50,
-html.dark div.bg-zinc-50\/60,
-html.dark div.bg-zinc-50\/70,
-html.dark div.bg-zinc-50\/80 {
+html.dark :is(div.bg-zinc-50, div.bg-zinc-50\/50, div.bg-zinc-50\/60, div.bg-zinc-50\/70, div.bg-zinc-50\/80):not([class*="dark:"]) {
   background-color: #151D2F;
 }
 
-html.dark .border-zinc-100,
-html.dark .border-zinc-200,
-html.dark .border-zinc-200\/60,
-html.dark .border-zinc-200\/70,
-html.dark .border-zinc-200\/80,
-html.dark .border-zinc-200\/90 {
+html.dark :is(.border-zinc-100, .border-zinc-200, .border-zinc-200\/60, .border-zinc-200\/70, .border-zinc-200\/80, .border-zinc-200\/90):not([class*="dark:"]) {
   border-color: #232F48;
 }
 
-html.dark .text-zinc-600,
-html.dark .text-zinc-500,
-html.dark .text-zinc-400 {
+html.dark :is(.text-zinc-600, .text-zinc-500, .text-zinc-400):not([class*="dark:"]) {
   color: #94A3B8;
 }
 
-html.dark .text-zinc-900,
-html.dark .text-zinc-800,
-html.dark .text-zinc-700 {
+html.dark :is(.text-zinc-900, .text-zinc-800, .text-zinc-700, h1, h2, h3, h4, h5, h6):not([class*="dark:"]):not([style*="color"]) {
   color: #F8FAFC;
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not(.light),
-  html:not(.light) body {
-    background-color: #0F172A !important;
-    color: #F8FAFC !important;
-  }
-  html:not(.light) h1,
-  html:not(.light) h2,
-  html:not(.light) h3,
-  html:not(.light) h4,
-  html:not(.light) h5,
-  html:not(.light) h6 {
-    color: #F8FAFC !important;
-  }
-  html:not(.light) section,
-  html:not(.light) div.bg-white,
-  html:not(.light) main {
-    background-color: #0F172A;
-    color: #F8FAFC;
-  }
-  html:not(.light) div.bg-zinc-50,
-  html:not(.light) div.bg-zinc-50\/50,
-  html:not(.light) div.bg-zinc-50\/60,
-  html:not(.light) div.bg-zinc-50\/70,
-  html:not(.light) div.bg-zinc-50\/80 {
-    background-color: #151D2F;
-  }
-  html:not(.light) .border-zinc-100,
-  html:not(.light) .border-zinc-200,
-  html:not(.light) .border-zinc-200\/60,
-  html:not(.light) .border-zinc-200\/70,
-  html:not(.light) .border-zinc-200\/80,
-  html:not(.light) .border-zinc-200\/90 {
-    border-color: #232F48;
-  }
-  html:not(.light) .text-zinc-600,
-  html:not(.light) .text-zinc-500,
-  html:not(.light) .text-zinc-400 {
-    color: #94A3B8;
-  }
-  html:not(.light) .text-zinc-900,
-  html:not(.light) .text-zinc-800,
-  html:not(.light) .text-zinc-700 {
-    color: #F8FAFC;
-  }
 }
 
 @keyframes scanline {
@@ -186,6 +133,26 @@ html.dark .text-zinc-700 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #A1A1AA;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #232F48;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Horizontal chip rows that scroll without a visible bar */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* Print optimization for Executive Audit Dossier */

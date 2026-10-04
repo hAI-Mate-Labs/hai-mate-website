@@ -54,25 +54,25 @@ export default function SampleAuditModal({
         
         {/* Modal Container */}
         <div
-          className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-zinc-200 overflow-hidden my-auto max-h-[92vh] flex flex-col"
+          className="relative w-full max-w-4xl bg-white dark:bg-[#151D2F] rounded-3xl shadow-2xl border border-zinc-200 dark:border-[#232F48] overflow-hidden my-auto max-h-[92vh] flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header Bar */}
-          <div className="px-6 py-4 border-b border-zinc-100 flex items-center justify-between bg-zinc-50/70 shrink-0">
+          <div className="px-6 py-4 border-b border-zinc-100 dark:border-[#232F48] flex items-center justify-between bg-zinc-50/70 dark:bg-[#0F172A]/80 shrink-0">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-white border border-zinc-200/80 text-zinc-900 shadow-2xs">
-                <FileText className="w-4 h-4 text-[#0096A3]" />
+              <div className="p-2 rounded-xl bg-white dark:bg-[#151D2F] border border-zinc-200/80 dark:border-[#232F48] text-zinc-900 dark:text-white shadow-2xs">
+                <FileText className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC]" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-[#0F172A]">
+                  <span className="text-xs font-bold text-[#0F172A] dark:text-white">
                     {t.sampleAudit.modalTitle}
                   </span>
-                  <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                  <span className="text-[10px] font-bold text-amber-700 bg-amber-50 dark:bg-amber-950/40 dark:text-amber-300 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
                     {t.sampleAudit.badge}
                   </span>
                 </div>
-                <p className="text-[11px] text-zinc-500">
+                <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
                   {t.sampleAudit.modalSubtitle}
                 </p>
               </div>
@@ -82,17 +82,17 @@ export default function SampleAuditModal({
               <button
                 type="button"
                 onClick={handlePrint}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-semibold text-zinc-700 hover:text-zinc-950 hover:bg-zinc-50 shadow-2xs transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-[#0F172A] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold text-zinc-700 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-[#232F48] shadow-2xs transition-colors cursor-pointer"
                 title={t.sampleAudit.printBtn}
               >
-                <Printer className="w-3.5 h-3.5 text-[#0096A3]" />
+                <Printer className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00BFCC]" />
                 <span className="hidden sm:inline">{t.sampleAudit.printBtn}</span>
               </button>
 
               <Link
                 href="/sample-audit"
                 target="_blank"
-                className="p-2 text-zinc-400 hover:text-zinc-900 rounded-full hover:bg-zinc-100 transition-colors"
+                className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full hover:bg-zinc-100 dark:hover:bg-[#232F48] transition-colors"
                 title={t.sampleAudit.openStandalone}
               >
                 <ExternalLink className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function SampleAuditModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="p-2 text-zinc-400 hover:text-zinc-900 rounded-full hover:bg-zinc-100 transition-colors cursor-pointer"
+                className="p-2 text-zinc-400 hover:text-zinc-900 dark:hover:text-white rounded-full hover:bg-zinc-100 dark:hover:bg-[#232F48] transition-colors cursor-pointer"
                 aria-label={t.sampleAudit.closeAria}
               >
                 <X className="w-5 h-5" />
@@ -110,14 +110,14 @@ export default function SampleAuditModal({
           </div>
 
           {/* Tab Selector */}
-          <div className="px-6 py-2.5 border-b border-zinc-100 flex items-center gap-2 overflow-x-auto bg-white shrink-0 scrollbar-none">
+          <div className="px-6 py-2.5 border-b border-zinc-100 dark:border-[#232F48] flex items-center gap-2 overflow-x-auto bg-white dark:bg-[#151D2F] shrink-0 scrollbar-none">
             <button
               type="button"
               onClick={() => setActiveTab("overview")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "overview"
-                  ? "bg-[#0F172A] text-white shadow-xs"
-                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs dark:bg-[#00BFCC] dark:text-[#0F172A]"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-[#232F48]"
               }`}
             >
               {t.sampleAudit.tab1}
@@ -128,8 +128,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("heatmap")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "heatmap"
-                  ? "bg-[#0F172A] text-white shadow-xs"
-                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs dark:bg-[#00BFCC] dark:text-[#0F172A]"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-[#232F48]"
               }`}
             >
               {t.sampleAudit.tab2}
@@ -140,8 +140,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("priceCreep")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "priceCreep"
-                  ? "bg-[#0F172A] text-white shadow-xs"
-                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs dark:bg-[#00BFCC] dark:text-[#0F172A]"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-[#232F48]"
               }`}
             >
               {t.sampleAudit.tab3}
@@ -152,8 +152,8 @@ export default function SampleAuditModal({
               onClick={() => setActiveTab("grantRoi")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 activeTab === "grantRoi"
-                  ? "bg-[#0F172A] text-white shadow-xs"
-                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100"
+                  ? "bg-[#0F172A] text-white shadow-xs dark:bg-[#00BFCC] dark:text-[#0F172A]"
+                  : "text-zinc-600 hover:text-[#0F172A] hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-white dark:hover:bg-[#232F48]"
               }`}
             >
               {t.sampleAudit.tab4}
@@ -161,24 +161,24 @@ export default function SampleAuditModal({
           </div>
 
           {/* Scrollable Content Body */}
-          <div className="p-6 overflow-y-auto flex-1 space-y-6 text-zinc-800">
+          <div className="p-6 overflow-y-auto flex-1 space-y-6 text-zinc-800 dark:text-zinc-200">
             
             {/* TAB 1: OVERVIEW */}
             {activeTab === "overview" && (
               <div className="space-y-6">
-                <div className="p-5 rounded-2xl bg-zinc-50 border border-zinc-200/80 space-y-3">
+                <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-[#0F172A]/70 border border-zinc-200/80 dark:border-[#232F48] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                    <span className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                       {isFr ? "Synthèse Diagnostique de 14 Jours" : "14-Day Diagnostic Summary"}
                     </span>
-                    <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                    <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
                       {isFr ? "Systèmes Audités : Lightspeed POS + Xero + Deputy" : "Audited Stack: Lightspeed POS + Xero + Deputy"}
                     </span>
                   </div>
-                  <h3 className="text-xl font-extrabold text-[#0F172A]">
+                  <h3 className="text-xl font-extrabold text-[#0F172A] dark:text-white">
                     {isFr ? "Total des Pertes Annuelles Identifiées : 48 660 $ / an" : "Total Identified Annual Leakage: $48,660 / Year"}
                   </h3>
-                  <p className="text-sm text-zinc-600 leading-relaxed">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
                     {isFr
                       ? "Au cours de notre période d'observation de 14 jours, nous n'avons occasionné aucune interruption du service ni de la mise en place. Nous avons inspecté 45 bons de livraison de marée et primeurs, corrélé les ventes horaires avec la météo et analysé les réservations manquées en dehors des heures d'ouverture."
                       : "During our 14-day observation period, we observed zero disruption to kitchen prep or floor service. We reviewed 45 historical seafood and produce dockets, matched POS hourly sales against weather, and analyzed after-hours reservation drop-offs."}
@@ -187,42 +187,42 @@ export default function SampleAuditModal({
 
                 {/* 3 Metric Summary Boxes */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-white space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 block">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0F172A]/70 space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-400 block">
                       {isFr ? "Heures Admin Récupérées" : "Admin Hours Recovered"}
                     </span>
-                    <div className="text-2xl font-black text-[#0F172A]">
-                      12.0 Hrs <span className="text-xs font-normal text-zinc-500">{isFr ? "/ sem" : "/ week"}</span>
+                    <div className="text-2xl font-black text-[#0F172A] dark:text-white">
+                      12.0 Hrs <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400">{isFr ? "/ sem" : "/ week"}</span>
                     </div>
-                    <p className="text-xs text-zinc-600">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-300">
                       {isFr
                         ? "31 200 $/an en temps de direction réinvesti en salle plutôt qu'en tâches administratives."
                         : "$31,200/yr in recovered general manager time away from back-office paperwork."}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-red-200 bg-red-50/30 space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 block">
+                  <div className="p-4 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/30 dark:bg-red-950/20 space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400 block">
                       {isFr ? "Surfacturations Fournisseurs" : "Supplier Rate Overcharges"}
                     </span>
-                    <div className="text-2xl font-black text-red-600">
-                      $17,460 <span className="text-xs font-normal text-red-500">{isFr ? "/ an" : "/ year"}</span>
+                    <div className="text-2xl font-black text-red-600 dark:text-red-400">
+                      $17,460 <span className="text-xs font-normal text-red-500 dark:text-red-400/80">{isFr ? "/ an" : "/ year"}</span>
                     </div>
-                    <p className="text-xs text-zinc-600">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-300">
                       {isFr
                         ? "Dérive tarifaire non annoncée stoppée chez 3 fournisseurs sous contrat (marée, viandes, crèmerie)."
                         : "Caught unannounced price creep across 3 contracted suppliers (seafood, meats, dairy)."}
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-emerald-200 bg-emerald-50/30 space-y-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block">
+                  <div className="p-4 rounded-2xl border border-emerald-200 dark:border-emerald-900/40 bg-emerald-50/30 dark:bg-emerald-950/20 space-y-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 block">
                       {isFr ? "Prise en Charge Subvention WA" : "WA Grant Co-Funding"}
                     </span>
-                    <div className="text-2xl font-black text-emerald-700">
+                    <div className="text-2xl font-black text-emerald-700 dark:text-emerald-300">
                       50% ($11,000)
                     </div>
-                    <p className="text-xs text-zinc-600">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-300">
                       {isFr
                         ? "Co-financement Local Capability Fund (LCF) pré-cadré. Retour sur investissement net en 11,8 semaines."
                         : "Local Capability Fund (LCF) co-funding pre-scoped. Net payback in 11.8 weeks."}
@@ -231,7 +231,7 @@ export default function SampleAuditModal({
                 </div>
 
                 {/* Action Recommendation */}
-                <div className="p-4 rounded-2xl bg-[#0F172A] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="p-4 rounded-2xl bg-[#0F172A] dark:bg-[#151D2F] text-white border dark:border-[#232F48] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                   <div className="space-y-1">
                     <span className="text-xs font-bold text-[#00BFCC] block">
                       {isFr ? "Plan de Déploiement Recommandé" : "Recommended Implementation Path"}
@@ -245,7 +245,7 @@ export default function SampleAuditModal({
                   <button
                     type="button"
                     onClick={onBookAudit}
-                    className="px-4 py-2 rounded-full bg-white text-[#0F172A] font-bold text-xs hover:bg-zinc-100 transition-colors shrink-0 cursor-pointer"
+                    className="px-4 py-2 rounded-full bg-white dark:bg-[#00BFCC] text-[#0F172A] dark:text-[#0F172A] font-bold text-xs hover:bg-zinc-100 dark:hover:bg-[#00E5FF] transition-colors shrink-0 cursor-pointer"
                   >
                     {t.sampleAudit.bookAuditBtn}
                   </button>
@@ -257,12 +257,12 @@ export default function SampleAuditModal({
             {activeTab === "heatmap" && (
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-[#0F172A]">
+                  <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
                     {isFr
                       ? "Décomposition des Tâches Administratives Hebdomadaires"
                       : "Weekly Back-Office Paperwork Drag Breakdown"}
                   </h3>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
                     {isFr
                       ? "Temps perdu par la direction et le chef de cuisine sur un cycle typique du lundi au dimanche :"
                       : "Time lost by venue manager and head chef during a typical Monday to Sunday cycle:"}
@@ -270,88 +270,88 @@ export default function SampleAuditModal({
                 </div>
 
                 <div className="space-y-3">
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-zinc-50/50 dark:bg-[#0F172A]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#0F172A]">
+                        <span className="text-xs font-bold text-[#0F172A] dark:text-white">
                           {isFr
                             ? "1. Saisie des Lignes de Bons de Livraison & Contrôle des Prix"
                             : "1. Delivery Docket Line-Item Entry & Price Checks"}
                         </span>
-                        <span className="text-[10px] font-semibold text-red-700 bg-red-50 px-2 py-0.5 rounded-full border border-red-200">
+                        <span className="text-[10px] font-semibold text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/40 px-2.5 py-0.5 rounded-full border border-red-200 dark:border-red-800">
                           {isFr ? "Forte Friction" : "High Friction"}
                         </span>
                       </div>
-                      <p className="text-xs text-zinc-600">
+                      <p className="text-xs text-zinc-600 dark:text-zinc-300">
                         {isFr
                           ? "Saisie manuelle des bons papier tachés de 4 fournisseurs de marée et primeurs dans Xero tous les lundis matin."
                           : "Typing messy, oil-stained paper receipts from 4 produce and seafood suppliers into Xero bills every Monday morning."}
                       </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-base font-black text-[#0F172A]">5.5 hrs / wk</span>
-                      <span className="text-[11px] text-zinc-400 block">
+                      <span className="text-base font-black text-[#0F172A] dark:text-white">5.5 hrs / wk</span>
+                      <span className="text-[11px] text-zinc-400 dark:text-zinc-500 block">
                         {isFr ? "Coût : 14 300 $/an" : "$14,300/yr cost"}
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-zinc-50/50 dark:bg-[#0F172A]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#0F172A]">
+                        <span className="text-xs font-bold text-[#0F172A] dark:text-white">
                           {isFr
                             ? "2. Heures Majorées du Dimanche & Estimations Météo"
                             : "2. Sunday Penalty Rate Restructuring & Weather Guesswork"}
                         </span>
-                        <span className="text-[10px] font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                        <span className="text-[10px] font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
                           {isFr ? "Fuite de Marge" : "Margin Leakage"}
                         </span>
                       </div>
-                      <p className="text-xs text-zinc-600">
+                      <p className="text-xs text-zinc-600 dark:text-zinc-300">
                         {isFr
                           ? "Sur-effectif les mardis midis pluvieux et sous-effectif les weekends ensoleillés en bord de mer, causant une explosion des heures supplémentaires."
                           : "Floor overstaffed on rainy Tuesday lunches and understaffed on sunny beach weekends, causing overtime blowout."}
                       </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-base font-black text-[#0F172A]">2.5 hrs / wk</span>
-                      <span className="text-[11px] text-zinc-400 block">
+                      <span className="text-base font-black text-[#0F172A] dark:text-white">2.5 hrs / wk</span>
+                      <span className="text-[11px] text-zinc-400 dark:text-zinc-500 block">
                         {isFr ? "Coût : 6 500 $/an" : "$6,500/yr cost"}
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-zinc-50/50 dark:bg-[#0F172A]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#0F172A]">
+                        <span className="text-xs font-bold text-[#0F172A] dark:text-white">
                           {isFr
                             ? "3. Appels Manqués & Relances d'Acomptes pour Banquets"
                             : "3. Missed Table Calls & Group Function Deposit Chasing"}
                         </span>
-                        <span className="text-[10px] font-semibold text-zinc-700 bg-zinc-100 px-2 py-0.5 rounded-full">
+                        <span className="text-[10px] font-semibold text-zinc-700 dark:text-zinc-300 bg-zinc-100 dark:bg-[#151D2F] px-2.5 py-0.5 rounded-full border border-zinc-200 dark:border-[#232F48]">
                           {isFr ? "Chiffre Perdu" : "Lost Revenue"}
                         </span>
                       </div>
-                      <p className="text-xs text-zinc-600">
+                      <p className="text-xs text-zinc-600 dark:text-zinc-300">
                         {isFr
                           ? "Appels non pris pendant le rush du vendredi et samedi soir entraînant des pertes de réservations de grands groupes."
                           : "Unanswered calls during slammed Friday and Saturday dinner services leading to lost group bookings."}
                       </p>
                     </div>
                     <div className="text-right shrink-0">
-                      <span className="text-base font-black text-[#0F172A]">4.0 hrs / wk</span>
-                      <span className="text-[11px] text-zinc-400 block">
+                      <span className="text-base font-black text-[#0F172A] dark:text-white">4.0 hrs / wk</span>
+                      <span className="text-[11px] text-zinc-400 dark:text-zinc-500 block">
                         {isFr ? "Coût : 10 400 $/an" : "$10,400/yr cost"}
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#00BFCC]/10 border border-[#00BFCC]/30 flex items-center justify-between text-xs text-zinc-900 font-medium">
+                <div className="p-3.5 rounded-xl bg-[#00BFCC]/10 border border-[#00BFCC]/30 dark:bg-[#00BFCC]/15 dark:border-[#00BFCC]/30 flex items-center justify-between text-xs text-zinc-900 dark:text-zinc-100 font-medium">
                   <span>{isFr ? "Friction Administrative Totale Identifiée :" : "Total Identified Administrative Drag:"}</span>
-                  <span className="font-bold text-[#0F172A] text-sm">
+                  <span className="font-bold text-[#0F172A] dark:text-[#00BFCC] text-sm">
                     {isFr ? "12,0 Heures / Semaine (31 200 $ / An)" : "12.0 Hours / Week ($31,200 / Year)"}
                   </span>
                 </div>
@@ -362,94 +362,94 @@ export default function SampleAuditModal({
             {activeTab === "priceCreep" && (
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-[#0F172A]">
+                  <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
                     {isFr
                       ? "Anomalies & Surfacturations Fournisseurs Détectées"
                       : "Caught Supplier Discrepancies & Overcharges"}
                   </h3>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
                     {isFr
                       ? "Analyse ligne par ligne de 45 bons de livraison échantillonnés sur 60 jours :"
                       : "Line-item rate analysis from 45 delivery dockets sampled over 60 days:"}
                   </p>
                 </div>
 
-                <div className="border border-zinc-200 rounded-2xl overflow-hidden">
-                  <table className="w-full text-left text-xs">
-                    <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 uppercase tracking-wider font-semibold">
+                <div className="border border-zinc-200 dark:border-[#232F48] rounded-2xl overflow-x-auto">
+                  <table className="w-full text-left text-xs min-w-[500px]">
+                    <thead className="bg-zinc-50 dark:bg-[#0F172A]/80 border-b border-zinc-200 dark:border-[#232F48] text-zinc-500 dark:text-zinc-400 uppercase tracking-wider font-semibold">
                       <tr>
                         <th className="p-3">{isFr ? "Désignation" : "Item Description"}</th>
                         <th className="p-3">{isFr ? "Tarif Négocié" : "Agreed Rate"}</th>
-                        <th className="p-3 text-red-600">{isFr ? "Tarif Facturé" : "Billed Rate"}</th>
+                        <th className="p-3 text-red-600 dark:text-red-400">{isFr ? "Tarif Facturé" : "Billed Rate"}</th>
                         <th className="p-3">{isFr ? "Surcoût / Mois" : "Overcharge / Mo"}</th>
                         <th className="p-3 text-right">{isFr ? "Statut" : "Status"}</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-zinc-100">
+                    <tbody className="divide-y divide-zinc-100 dark:divide-[#232F48]">
                       <tr>
-                        <td className="p-3 font-medium text-zinc-900">
+                        <td className="p-3 font-medium text-zinc-900 dark:text-white">
                           {isFr ? "Filets de Barramundi Local (avec peau)" : "Local Barramundi Fillets (Skin-on)"}
-                          <span className="block text-[10px] text-zinc-400">
+                          <span className="block text-[10px] text-zinc-400 dark:text-zinc-500">
                             {isFr ? "Fournisseur : Grossiste Marée Océan" : "Supplier: Fresh Ocean Wholesalers"}
                           </span>
                         </td>
-                        <td className="p-3 text-zinc-600">$28.50 / kg</td>
-                        <td className="p-3 font-bold text-red-600">$31.00 / kg (+$2.50)</td>
-                        <td className="p-3 font-semibold text-zinc-950">$520 / mo</td>
+                        <td className="p-3 text-zinc-600 dark:text-zinc-300">$28.50 / kg</td>
+                        <td className="p-3 font-bold text-red-600 dark:text-red-400">$31.00 / kg (+$2.50)</td>
+                        <td className="p-3 font-semibold text-zinc-950 dark:text-zinc-200">$520 / mo</td>
                         <td className="p-3 text-right">
-                          <span className="px-2 py-0.5 rounded-full bg-red-50 text-red-700 font-bold text-[10px]">
+                          <span className="px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 font-bold text-[10px] border border-red-200 dark:border-red-800">
                             {isFr ? "Détecté" : "Caught"}
                           </span>
                         </td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium text-zinc-900">
+                        <td className="p-3 font-medium text-zinc-900 dark:text-white">
                           {isFr ? "Faux-Filet Black Angus Grain-Fed (YG)" : "Black Angus Grain-Fed Sirloin (YG)"}
-                          <span className="block text-[10px] text-zinc-400">
+                          <span className="block text-[10px] text-zinc-400 dark:text-zinc-500">
                             {isFr ? "Fournisseur : Viandes WA Prime" : "Supplier: WA Prime Wholesale"}
                           </span>
                         </td>
-                        <td className="p-3 text-zinc-600">$33.50 / kg</td>
-                        <td className="p-3 font-bold text-red-600">$36.50 / kg (+$3.00)</td>
-                        <td className="p-3 font-semibold text-zinc-950">$495 / mo</td>
+                        <td className="p-3 text-zinc-600 dark:text-zinc-300">$33.50 / kg</td>
+                        <td className="p-3 font-bold text-red-600 dark:text-red-400">$36.50 / kg (+$3.00)</td>
+                        <td className="p-3 font-semibold text-zinc-950 dark:text-zinc-200">$495 / mo</td>
                         <td className="p-3 text-right">
-                          <span className="px-2 py-0.5 rounded-full bg-red-50 text-red-700 font-bold text-[10px]">
+                          <span className="px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 font-bold text-[10px] border border-red-200 dark:border-red-800">
                             {isFr ? "Détecté" : "Caught"}
                           </span>
                         </td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium text-zinc-900">
+                        <td className="p-3 font-medium text-zinc-900 dark:text-white">
                           {isFr ? "Crème Entière Pâtissière (Bidons 2L)" : "Pure Dairy Whipping Cream (2L Jugs)"}
-                          <span className="block text-[10px] text-zinc-400">
+                          <span className="block text-[10px] text-zinc-400 dark:text-zinc-500">
                             {isFr ? "Fournisseur : Laiterie Heritage" : "Supplier: Heritage Mill Co"}
                           </span>
                         </td>
-                        <td className="p-3 text-zinc-600">$10.50 / jug</td>
-                        <td className="p-3 font-bold text-red-600">$11.80 / jug (+$1.30)</td>
-                        <td className="p-3 font-semibold text-zinc-950">$280 / mo</td>
+                        <td className="p-3 text-zinc-600 dark:text-zinc-300">$10.50 / jug</td>
+                        <td className="p-3 font-bold text-red-600 dark:text-red-400">$11.80 / jug (+$1.30)</td>
+                        <td className="p-3 font-semibold text-zinc-950 dark:text-zinc-200">$280 / mo</td>
                         <td className="p-3 text-right">
-                          <span className="px-2 py-0.5 rounded-full bg-red-50 text-red-700 font-bold text-[10px]">
+                          <span className="px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 font-bold text-[10px] border border-red-200 dark:border-red-800">
                             {isFr ? "Détecté" : "Caught"}
                           </span>
                         </td>
                       </tr>
                       <tr>
-                        <td className="p-3 font-medium text-zinc-900">
+                        <td className="p-3 font-medium text-zinc-900 dark:text-white">
                           {isFr ? "Fûts de Bière Artisanale (Remise Promo)" : "Single Malt Craft Kegs (Promotional Rebate)"}
-                          <span className="block text-[10px] text-zinc-400">
+                          <span className="block text-[10px] text-zinc-400 dark:text-zinc-500">
                             {isFr ? "Fournisseur : Brasserie Locale" : "Supplier: Local Brewery Dist"}
                           </span>
                         </td>
-                        <td className="p-3 text-zinc-600">
+                        <td className="p-3 text-zinc-600 dark:text-zinc-300">
                           {isFr ? "$290 / fût (après remise)" : "$290 / keg (after rebate)"}
                         </td>
-                        <td className="p-3 font-bold text-red-600">
+                        <td className="p-3 font-bold text-red-600 dark:text-red-400">
                           {isFr ? "$330 / fût (Remise oubliée)" : "$330 / keg (Rebate dropped)"}
                         </td>
-                        <td className="p-3 font-semibold text-zinc-950">$160 / mo</td>
+                        <td className="p-3 font-semibold text-zinc-950 dark:text-zinc-200">$160 / mo</td>
                         <td className="p-3 text-right">
-                          <span className="px-2 py-0.5 rounded-full bg-red-50 text-red-700 font-bold text-[10px]">
+                          <span className="px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 font-bold text-[10px] border border-red-200 dark:border-red-800">
                             {isFr ? "Détecté" : "Caught"}
                           </span>
                         </td>
@@ -458,18 +458,18 @@ export default function SampleAuditModal({
                   </table>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 flex items-center justify-between">
                   <div>
-                    <span className="text-xs font-bold text-red-900 block">
+                    <span className="text-xs font-bold text-red-900 dark:text-red-200 block">
                       {isFr ? "Surcoût Fournisseur Invisible Récupérable :" : "Net Unnoticed Supplier Creep Recoverable:"}
                     </span>
-                    <span className="text-[11px] text-red-700">
+                    <span className="text-[11px] text-red-700 dark:text-red-300">
                       {isFr
                         ? "Chaque livraison future sera vérifiée ligne par ligne par rapport aux tarifs négociés."
                         : "Every future delivery will be checked line-by-line against agreed contract prices."}
                     </span>
                   </div>
-                  <div className="text-xl font-black text-red-700">
+                  <div className="text-xl font-black text-red-700 dark:text-red-400">
                     $17,460 / {isFr ? "an" : "year"}
                   </div>
                 </div>
@@ -480,12 +480,12 @@ export default function SampleAuditModal({
             {activeTab === "grantRoi" && (
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-bold text-[#0F172A]">
+                  <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">
                     {isFr
                       ? "Cadrage Subvention Gouvernement du WA & Modèle Financier sur 3 Ans"
                       : "WA State Government Grant Scoping & 3-Year Financial Model"}
                   </h3>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">
                     {isFr
                       ? "Structure de co-financement du volet transformation digitale du Local Capability Fund (LCF) :"
                       : "Local Capability Fund (LCF) Digital Round matched co-funding structure:"}
@@ -493,46 +493,46 @@ export default function SampleAuditModal({
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-white space-y-3">
-                    <span className="text-xs font-bold text-[#0F172A] block border-b border-zinc-100 pb-2">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0F172A]/70 space-y-3">
+                    <span className="text-xs font-bold text-[#0F172A] dark:text-white block border-b border-zinc-100 dark:border-[#232F48] pb-2">
                       {isFr ? "Investissement d'Ingénierie" : "Implementation Investment"}
                     </span>
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-zinc-600">
+                        <span className="text-zinc-600 dark:text-zinc-400">
                           {isFr ? "Ingénierie Totale Cadrée :" : "Total Scoped Engineering:"}
                         </span>
-                        <span className="font-semibold text-zinc-950">$22,000</span>
+                        <span className="font-semibold text-zinc-950 dark:text-white">$22,000</span>
                       </div>
-                      <div className="flex justify-between text-emerald-700 font-semibold">
+                      <div className="flex justify-between text-emerald-700 dark:text-emerald-400 font-semibold">
                         <span>{isFr ? "Prise en charge Subvention WA 50% :" : "WA Gov 50% LCF Grant Rebate:"}</span>
                         <span>-$11,000</span>
                       </div>
-                      <div className="pt-2 border-t border-zinc-100 flex justify-between font-bold text-sm text-[#0F172A]">
+                      <div className="pt-2 border-t border-zinc-100 dark:border-[#232F48] flex justify-between font-bold text-sm text-[#0F172A] dark:text-white">
                         <span>{isFr ? "Investissement Net de l'Établissement :" : "Net Venue Investment:"}</span>
                         <span>$11,000</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-2xl border border-zinc-200 bg-white space-y-3">
-                    <span className="text-xs font-bold text-[#0F172A] block border-b border-zinc-100 pb-2">
+                  <div className="p-4 rounded-2xl border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0F172A]/70 space-y-3">
+                    <span className="text-xs font-bold text-[#0F172A] dark:text-white block border-b border-zinc-100 dark:border-[#232F48] pb-2">
                       {isFr ? "Retour sur Investissement" : "Payback & Returns"}
                     </span>
                     <div className="space-y-2 text-xs">
                       <div className="flex justify-between">
-                        <span className="text-zinc-600">
+                        <span className="text-zinc-600 dark:text-zinc-400">
                           {isFr ? "Heures Admin Récupérées :" : "Admin Hours Recovered:"}
                         </span>
-                        <span className="font-semibold text-zinc-950">$31,200 / {isFr ? "an" : "yr"}</span>
+                        <span className="font-semibold text-zinc-950 dark:text-white">$31,200 / {isFr ? "an" : "yr"}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-600">
+                        <span className="text-zinc-600 dark:text-zinc-400">
                           {isFr ? "Surfacturations Récupérées :" : "Supplier Overcharges Caught:"}
                         </span>
-                        <span className="font-semibold text-zinc-950">$17,460 / {isFr ? "an" : "yr"}</span>
+                        <span className="font-semibold text-zinc-950 dark:text-white">$17,460 / {isFr ? "an" : "yr"}</span>
                       </div>
-                      <div className="pt-2 border-t border-zinc-100 flex justify-between font-bold text-sm text-emerald-700">
+                      <div className="pt-2 border-t border-zinc-100 dark:border-[#232F48] flex justify-between font-bold text-sm text-emerald-700 dark:text-emerald-400">
                         <span>{isFr ? "Délai de Rentabilité :" : "Payback Speed:"}</span>
                         <span>{isFr ? "11,8 Semaines" : "11.8 Weeks"}</span>
                       </div>
@@ -541,17 +541,17 @@ export default function SampleAuditModal({
                 </div>
 
                 {/* Dossier status */}
-                <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-between text-xs">
+                <div className="p-4 rounded-2xl bg-zinc-50 dark:bg-[#0F172A]/60 border border-zinc-200 dark:border-[#232F48] flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
-                    <Landmark className="w-4 h-4 text-[#0096A3]" />
-                    <span className="text-zinc-700">
+                    <Landmark className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC]" />
+                    <span className="text-zinc-700 dark:text-zinc-300">
                       <strong>{isFr ? "Dossier de Candidature LCF : " : "LCF Scoping Dossier: "}</strong>
                       {isFr
                         ? "Schémas d'architecture, conformité prestataires et projections financières prêts au dépôt."
                         : "Architecture diagrams, vendor compliance, and financial projection ready for submission."}
                     </span>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold shrink-0">
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 font-bold shrink-0 border dark:border-emerald-800">
                     {isFr ? "Pré-Rempli" : "Pre-Filled"}
                   </span>
                 </div>
@@ -561,9 +561,9 @@ export default function SampleAuditModal({
           </div>
 
           {/* Modal Footer */}
-          <div className="p-4 sm:p-5 border-t border-zinc-100 bg-zinc-50/70 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
-            <div className="flex items-center gap-2 text-xs text-zinc-500">
-              <ShieldCheck className="w-4 h-4 text-[#0096A3]" />
+          <div className="p-4 sm:p-5 border-t border-zinc-100 dark:border-[#232F48] bg-zinc-50/70 dark:bg-[#0F172A]/80 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+            <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+              <ShieldCheck className="w-4 h-4 text-[#0096A3] dark:text-[#00BFCC]" />
               <span>{t.sampleAudit.guarantee}</span>
             </div>
 
@@ -571,19 +571,19 @@ export default function SampleAuditModal({
               <button
                 type="button"
                 onClick={handlePrint}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-zinc-200 bg-white text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition-colors w-full sm:w-auto cursor-pointer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full border border-zinc-200 dark:border-[#232F48] bg-white dark:bg-[#0F172A] text-xs font-bold text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-[#232F48] transition-colors w-full sm:w-auto cursor-pointer"
               >
-                <Printer className="w-3.5 h-3.5 text-[#0096A3]" />
+                <Printer className="w-3.5 h-3.5 text-[#0096A3] dark:text-[#00BFCC]" />
                 <span>{t.sampleAudit.printBtn}</span>
               </button>
 
               <button
                 type="button"
                 onClick={onBookAudit}
-                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0F172A] text-white text-xs font-bold hover:bg-zinc-800 transition-all shadow-xs w-full sm:w-auto cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#0F172A] dark:bg-[#00BFCC] text-white dark:text-[#0F172A] text-xs font-bold hover:bg-zinc-800 dark:hover:bg-[#00E5FF] transition-all shadow-xs w-full sm:w-auto cursor-pointer"
               >
                 <span>{t.sampleAudit.bookAuditBtn}</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC]" />
+                <ArrowRight className="w-3.5 h-3.5 text-[#00BFCC] dark:text-[#0F172A]" />
               </button>
             </div>
           </div>

@@ -73,11 +73,6 @@ export default function Footer() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
                 <span>{t.footer.sovereignBadge}</span>
               </div>
-              <p className="text-[11px] text-zinc-500 dark:text-[#94A3B8]">
-                {language === "en"
-                  ? "On-site diagnostic audits across Cottesloe, Fremantle, Perth CBD & the South West"
-                  : "Audits diagnostiques sur place à Cottesloe, Fremantle, Perth CBD & dans le South West"}
-              </p>
             </div>
           </div>
 
@@ -149,7 +144,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-zinc-100 dark:border-[#232F48] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 dark:text-[#94A3B8]">
           <div>
-            &copy; {new Date().getFullYear()} {t.footer.legalEntity}
+            &copy; {new Date().getFullYear()} hAI Mate! {language === "en" ? "All rights reserved." : "Tous droits réservés."}
           </div>
           <div className="flex items-center gap-2">
             <span>{language === "en" ? "Perth, WA & National Engagements" : "Interventions à Perth, dans le WA & à l'Échelle Nationale"}</span>

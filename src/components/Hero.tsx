@@ -162,46 +162,49 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
         <div className="mt-14 max-w-2xl mx-auto">
           
           {/* Switcher Pills */}
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-4 max-w-full px-2">
             <span className="text-xs text-zinc-400 dark:text-[#94A3B8] mr-1 hidden sm:inline">
               {language === "en" ? "See live example for:" : "Voir l'exemple en direct :"}
             </span>
-            <div className="inline-flex p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold">
+            <div className="inline-flex p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold max-w-full overflow-x-auto scrollbar-none">
               <button
                 type="button"
                 onClick={() => setSelectedVenue("restaurant")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedVenue === "restaurant"
                     ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
                     : "text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 }`}
               >
-                <Utensils className="w-3.5 h-3.5" />
-                <span>{language === "en" ? "Restaurant / Bistro" : "Restaurant / Bistrot"}</span>
+                <Utensils className="w-3.5 h-3.5 shrink-0" />
+                <span>Restaurant</span>
+                <span className="hidden sm:inline">{language === "en" ? " / Bistro" : " / Bistrot"}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedVenue("bakery")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedVenue === "bakery"
                     ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
                     : "text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 }`}
               >
-                <Croissant className="w-3.5 h-3.5" />
-                <span>{language === "en" ? "Bakery & Kitchen" : "Boulangerie & Fournil"}</span>
+                <Croissant className="w-3.5 h-3.5 shrink-0" />
+                <span>{language === "en" ? "Bakery" : "Boulangerie"}</span>
+                <span className="hidden sm:inline">{language === "en" ? " & Kitchen" : " & Fournil"}</span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedVenue("pub")}
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedVenue === "pub"
                     ? "bg-white dark:bg-[#00F2FE] text-[#0F172A] dark:text-[#0B0F19] shadow-xs font-bold"
                     : "text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                 }`}
               >
-                <Beer className="w-3.5 h-3.5" />
-                <span>{language === "en" ? "Pub & Brewery" : "Pub & Brasserie"}</span>
+                <Beer className="w-3.5 h-3.5 shrink-0" />
+                <span>Pub</span>
+                <span className="hidden sm:inline">{language === "en" ? " & Brewery" : " & Brasserie"}</span>
               </button>
             </div>
           </div>
@@ -289,18 +292,18 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                 </p>
 
                 {/* Interactive Button Badge: "Approved by Venue Manager (0.4s)" */}
-                <div className="pl-6 flex items-center gap-3">
+                <div className="pl-0 sm:pl-6 flex flex-wrap items-center gap-2 sm:gap-3">
                   <button
                     type="button"
                     onClick={handleApprove}
                     disabled={approving}
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                    className={`inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                       isApproved
                         ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 shadow-xs"
                         : "bg-[#0F172A] dark:bg-[#00F2FE] text-white dark:text-[#0B0F19] hover:bg-zinc-800 dark:hover:bg-[#38bdf8] shadow-sm"
                     }`}
                   >
-                    <CheckCircle2 className="w-4 h-4 text-[#00BFCC] dark:text-[#0B0F19]" />
+                    <CheckCircle2 className="w-4 h-4 text-[#00BFCC] dark:text-[#0B0F19] shrink-0" />
                     <span>
                       {approving
                         ? language === "en" ? "Verifying..." : "Vérification..."
@@ -314,7 +317,7 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="text-xs text-zinc-400 hover:text-zinc-700 dark:hover:text-[#F8FAFC] flex items-center gap-1 cursor-pointer"
+                      className="text-xs text-zinc-400 hover:text-zinc-700 dark:hover:text-[#F8FAFC] flex items-center gap-1 cursor-pointer py-1"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                       {language === "en" ? "Reset" : "Réinitialiser"}

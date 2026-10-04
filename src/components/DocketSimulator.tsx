@@ -395,47 +395,50 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
         </div>
 
         {/* Dual-Input Selector Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8">
           {/* Tab 1: Seafood */}
           <button
             type="button"
             onClick={() => handleSwitchTab("seafood")}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "seafood"
                 ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
                 : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span>{t.tabSeafood}</span>
+            <FileText className="w-3.5 h-3.5 shrink-0" />
+            <span className="sm:hidden">{language === "en" ? "Seafood" : "Marée"}</span>
+            <span className="hidden sm:inline">{t.tabSeafood}</span>
           </button>
 
           {/* Tab 2: Butcher & Poultry */}
           <button
             type="button"
             onClick={() => handleSwitchTab("meat")}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "meat"
                 ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
                 : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span>{t.tabMeat}</span>
+            <FileText className="w-3.5 h-3.5 shrink-0" />
+            <span className="sm:hidden">{language === "en" ? "Butcher" : "Boucherie"}</span>
+            <span className="hidden sm:inline">{t.tabMeat}</span>
           </button>
 
           {/* Tab 3: Local Farm Produce */}
           <button
             type="button"
             onClick={() => handleSwitchTab("produce")}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "produce"
                 ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
                 : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span>{t.tabProduce}</span>
+            <FileText className="w-3.5 h-3.5 shrink-0" />
+            <span className="sm:hidden">{language === "en" ? "Produce" : "Primeurs"}</span>
+            <span className="hidden sm:inline">{t.tabProduce}</span>
           </button>
 
           {/* Tab 4: Custom File Dropzone & Camera */}
@@ -449,14 +452,15 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                 startScanSequence();
               }
             }}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
               activeDocket === "custom"
                 ? "bg-[#00F2FE] text-[#0B0F19] shadow-[0_0_15px_rgba(0,242,254,0.35)]"
                 : "bg-[#151D2F] text-[#94A3B8] border border-[#232F48] hover:border-[#00F2FE]/50 hover:text-[#F8FAFC]"
             }`}
           >
-            <Camera className="w-3.5 h-3.5" />
-            <span>{t.tabCustom}</span>
+            <Camera className="w-3.5 h-3.5 shrink-0" />
+            <span className="sm:hidden">{language === "en" ? "Drop Photo" : "Photo"}</span>
+            <span className="hidden sm:inline">{t.tabCustom}</span>
             {customFile && (
               <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
             )}
@@ -736,8 +740,8 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
               )}
 
               {/* Parsed Output & Discrepancy Detection Table */}
-              <div className="overflow-x-auto rounded-2xl border border-[#232F48] bg-[#0B0F19]">
-                <table className="w-full text-left border-collapse">
+              <div className="overflow-x-auto rounded-2xl border border-[#232F48] bg-[#0B0F19] scrollbar-none">
+                <table className="w-full min-w-[560px] text-left border-collapse">
                   <thead>
                     <tr className="border-b border-[#232F48] text-[11px] font-mono uppercase tracking-wider text-[#94A3B8] bg-[#151D2F]/50">
                       <th className="py-3 px-4 sm:px-5 font-semibold">

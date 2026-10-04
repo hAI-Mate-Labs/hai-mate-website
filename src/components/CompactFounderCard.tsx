@@ -106,12 +106,12 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                   </div>
                   <div>
                     <span className="text-xs font-bold text-[#0F172A] dark:text-[#F8FAFC] block">
-                      {language === "en" ? "Sovereign Continuity" : "Continuité Souveraine"}
+                      {language === "en" ? "Direct Service SLA" : "SLA Direct en Service"}
                     </span>
                     <p className="text-[11px] text-zinc-500 dark:text-[#94A3B8] leading-tight">
                       {language === "en"
-                        ? "Redundant Australian Cloud Operations • Continuous Automated Pipeline Monitoring • Zero Single-Point-of-Failure Architecture"
-                        : "Opérations Cloud Australiennes Redondantes • Surveillance Continue des Pipelines Automatisés • Architecture Sans Point Défaillant Unique"}
+                        ? "Private Slack Connect channel & WhatsApp priority for immediate pipeline adjustments during service."
+                        : "Canal privé Slack Connect & priorité WhatsApp pour tout ajustement immédiat pendant le service."}
                     </p>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
 
               <div className="flex items-center gap-3">
                 <a
-                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
+                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 text-xs font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors"

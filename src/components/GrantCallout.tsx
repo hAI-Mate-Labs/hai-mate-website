@@ -95,28 +95,30 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 </div>
 
                 {/* Stream Switcher */}
-                <div className="inline-flex p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold">
+                <div className="inline-flex p-1 rounded-full bg-zinc-100 dark:bg-[#151D2F] border border-zinc-200 dark:border-[#232F48] text-xs font-semibold max-w-full">
                   <button
                     type="button"
                     onClick={() => handleStreamChange(1)}
-                    className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap ${
                       selectedStream === 1
                         ? "bg-[#0F172A] text-white dark:bg-[#00F2FE] dark:text-[#0B0F19] shadow-xs font-bold"
                         : "text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                     }`}
                   >
-                    {language === "en" ? "Stream 1: Single Venue (Max $25k)" : "Volet 1 : Établissement Unique (Max 25k$)"}
+                    <span className="sm:hidden">{language === "en" ? "Stream 1 ($25k)" : "Volet 1 (25k$)"}</span>
+                    <span className="hidden sm:inline">{language === "en" ? "Stream 1: Single Venue (Max $25k)" : "Volet 1 : Établissement Unique (Max 25k$)"}</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => handleStreamChange(2)}
-                    className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer ${
+                    className={`px-3 sm:px-3.5 py-1.5 rounded-full transition-all cursor-pointer whitespace-nowrap ${
                       selectedStream === 2
                         ? "bg-[#0F172A] text-white dark:bg-[#00F2FE] dark:text-[#0B0F19] shadow-xs font-bold"
                         : "text-zinc-600 dark:text-[#94A3B8] hover:text-[#0F172A] dark:hover:text-[#F8FAFC]"
                     }`}
                   >
-                    {language === "en" ? "Stream 2: Group (Max $50k)" : "Volet 2 : Groupe Multi-Sites (Max 50k$)"}
+                    <span className="sm:hidden">{language === "en" ? "Stream 2 ($50k)" : "Volet 2 (50k$)"}</span>
+                    <span className="hidden sm:inline">{language === "en" ? "Stream 2: Group (Max $50k)" : "Volet 2 : Groupe Multi-Sites (Max 50k$)"}</span>
                   </button>
                 </div>
               </div>

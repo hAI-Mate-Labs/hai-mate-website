@@ -223,7 +223,7 @@ export default function MalloAssistant({
           label: "Chat with Mallory on WhatsApp",
           onClick: () => {
             window.open(
-              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
               "_blank",
               "noopener,noreferrer"
             );
@@ -263,7 +263,7 @@ export default function MalloAssistant({
         label: "WhatsApp Mallory (0402 472 262)",
         onClick: () => {
           window.open(
-            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
+            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
             "_blank",
             "noopener,noreferrer"
           );
@@ -482,7 +482,7 @@ export default function MalloAssistant({
             Strict Non-Training Guarantee
           </span>
           <a
-            href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
+            href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-600 hover:text-[#0F172A] font-semibold"

@@ -197,16 +197,6 @@ export default function UnifiedProcessTimeline({
                   <div className="text-xs font-semibold text-zinc-900 dark:text-[#F8FAFC] bg-zinc-50 dark:bg-[#0B0F19] p-2.5 rounded-xl border border-zinc-100 dark:border-[#232F48]">
                     {s.deliverable}
                   </div>
-                  {s.step === "01" && onOpenSampleAuditModal && (
-                    <button
-                      type="button"
-                      onClick={onOpenSampleAuditModal}
-                      className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#0096A3] dark:text-[#00F2FE] hover:text-[#00818c] bg-[#00BFCC]/10 hover:bg-[#00BFCC]/20 py-2 rounded-xl transition-colors cursor-pointer"
-                    >
-                      <FileText className="w-3.5 h-3.5" />
-                      <span>{language === "en" ? "Inspect Sample Report Teardown →" : "Consulter l'Exemple de Rapport Exécutif →"}</span>
-                    </button>
-                  )}
                 </div>
               </div>
             );
