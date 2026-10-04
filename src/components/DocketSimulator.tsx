@@ -240,7 +240,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
   const annualizedImpact = totalOvercharge * 52;
 
-  // Execute the autonomous 2.5-second scan sequence
+  // Execute the autonomous 3.0-second scan sequence
   const startScanSequence = () => {
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
@@ -250,17 +250,21 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
 
     const step2Timer = setTimeout(() => {
       setScanStep(2);
-    }, 850);
+    }, 750);
 
     const step3Timer = setTimeout(() => {
       setScanStep(3);
-    }, 1700);
+    }, 1500);
+
+    const step4Timer = setTimeout(() => {
+      setScanStep(4);
+    }, 2250);
 
     const finishTimer = setTimeout(() => {
       setScanState("scanned");
-    }, 2500);
+    }, 3000);
 
-    timeoutsRef.current = [step2Timer, step3Timer, finishTimer];
+    timeoutsRef.current = [step2Timer, step3Timer, step4Timer, finishTimer];
   };
 
   const handleSwitchTab = (type: DocketType) => {
@@ -567,7 +571,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/40 border border-[#00F2FE]/40 text-xs font-mono text-[#00F2FE] cursor-pointer"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00F2FE]" />
-                    Run 2.5s Scan
+                    Run 3.0s Scan
                   </button>
                 )}
 
@@ -596,7 +600,7 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <button
                     type="button"
                     onClick={handleReset}
-                    title="Re-run 2.5s Scan Sequence"
+                    title="Re-run 3.0s Scan Sequence"
                     className="p-1.5 rounded-lg bg-[#0B0F19] border border-[#232F48] text-[#94A3B8] hover:text-[#00F2FE] hover:border-[#00F2FE]/50 transition-colors cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
@@ -670,10 +674,10 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-[#00F2FE] font-bold flex items-center gap-2">
                       <RefreshCw className="w-3.5 h-3.5 animate-spin text-[#00F2FE]" />
-                      Autonomous 2.5s Scan Pipeline Executing...
+                      Autonomous 3.0s Scan Pipeline Executing...
                     </span>
                     <span className="text-[#94A3B8]">
-                      {scanStep === 1 ? "33%" : scanStep === 2 ? "66%" : "99%"}
+                      {scanStep === 1 ? "25%" : scanStep === 2 ? "50%" : scanStep === 3 ? "75%" : "100%"}
                     </span>
                   </div>
 
@@ -682,13 +686,13 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                     <div
                       className="h-full bg-[#00F2FE] transition-all duration-700 ease-out shadow-[0_0_10px_#00F2FE]"
                       style={{
-                        width: scanStep === 1 ? "33%" : scanStep === 2 ? "66%" : "100%",
+                        width: scanStep === 1 ? "25%" : scanStep === 2 ? "50%" : scanStep === 3 ? "75%" : "100%",
                       }}
                     />
                   </div>
 
-                  {/* 3 Step Indicators */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1 font-mono text-[11px]">
+                  {/* 4 Step Indicators */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 pt-1 font-mono text-[11px]">
                     <div
                       className={`flex items-center gap-2 p-2 rounded-lg border ${
                         scanStep >= 1
@@ -697,11 +701,11 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       }`}
                     >
                       {scanStep > 1 ? (
-                        <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
+                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
                       )}
-                      <span>{t.stepExtracting}</span>
+                      <span className="truncate">{t.stepExtracting}</span>
                     </div>
 
                     <div
@@ -712,13 +716,13 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                       }`}
                     >
                       {scanStep > 2 ? (
-                        <Check className="w-3.5 h-3.5 text-[#00F2FE]" />
+                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
                       ) : scanStep === 2 ? (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#232F48]" />
+                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
                       )}
-                      <span>{t.stepComparing}</span>
+                      <span className="truncate">{t.stepComparing}</span>
                     </div>
 
                     <div
@@ -728,12 +732,29 @@ export default function DocketSimulator({ onOpenAuditModal }: DocketSimulatorPro
                           : "border-[#232F48] text-[#94A3B8]"
                       }`}
                     >
-                      {scanStep === 3 ? (
-                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse" />
+                      {scanStep > 3 ? (
+                        <Check className="w-3.5 h-3.5 text-[#00F2FE] shrink-0" />
+                      ) : scanStep === 3 ? (
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
                       ) : (
-                        <span className="w-2 h-2 rounded-full bg-[#232F48]" />
+                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
                       )}
-                      <span>{t.stepDetecting}</span>
+                      <span className="truncate">{t.stepDetecting}</span>
+                    </div>
+
+                    <div
+                      className={`flex items-center gap-2 p-2 rounded-lg border ${
+                        scanStep >= 4
+                          ? "bg-[#151D2F] border-[#00F2FE]/40 text-[#00F2FE]"
+                          : "border-[#232F48] text-[#94A3B8]"
+                      }`}
+                    >
+                      {scanStep === 4 ? (
+                        <span className="w-2 h-2 rounded-full bg-[#00F2FE] animate-pulse shrink-0" />
+                      ) : (
+                        <span className="w-2 h-2 rounded-full bg-[#232F48] shrink-0" />
+                      )}
+                      <span className="truncate">{t.stepFormatting}</span>
                     </div>
                   </div>
                 </div>

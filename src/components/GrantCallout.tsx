@@ -250,8 +250,8 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   <ShieldCheck className="w-4 h-4 text-amber-700 dark:text-amber-400 shrink-0" />
                   <span>
                     {language === "en"
-                      ? "LCF Matched Grant Eligibility & Scoping Architecture"
-                      : "Éligibilité au Co-Financement LCF & Dossier de Cadrage"}
+                      ? "LCF Matched Grant Eligibility & Scoping Architecture (WA Venues)"
+                      : "Éligibilité au Co-Financement LCF & Dossier de Cadrage (Établissements du WA)"}
                   </span>
                 </div>
                 <p className="leading-relaxed text-amber-900/90 dark:text-amber-200/90 font-normal">
@@ -267,14 +267,37 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                 </p>
               </div>
 
+              {/* Federal Tech Investment Boost & ATO Instant Asset Write-Off (NSW & National Venues) */}
+              <div className="rounded-2xl bg-cyan-50/80 dark:bg-cyan-950/20 border border-cyan-200/90 dark:border-cyan-500/30 p-4 text-xs text-cyan-950 dark:text-cyan-200 space-y-1.5 shadow-2xs transition-colors duration-200">
+                <div className="flex items-center gap-2 font-bold text-cyan-900 dark:text-cyan-300">
+                  <Landmark className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE] shrink-0" />
+                  <span>
+                    {language === "en"
+                      ? "National & NSW Venues: Federal Tech Investment Boost & ATO Write-Off"
+                      : "Établissements en NSW & à l'Échelle Nationale : Déduction Fiscale Fédérale & Amortissement ATO"}
+                  </span>
+                </div>
+                <p className="leading-relaxed text-cyan-900/90 dark:text-cyan-200/90 font-normal">
+                  {language === "en" ? (
+                    <>
+                      <strong>Federal Tax Framework:</strong> For hospitality venues operating outside Western Australia (Sydney, Melbourne, Brisbane), our applied automation scoping and infrastructure qualify under the <strong>Federal Small Business Technology Investment Boost</strong> provisions and the <strong>ATO Instant Asset Write-Off</strong> framework. This allows qualifying SMEs to write off and deduct up to 100% of approved digital and operational infrastructure expenditures.
+                    </>
+                  ) : (
+                    <>
+                      <strong>Cadre Fiscal Fédéral :</strong> Pour les établissements opérant en dehors de l'Australie-Occidentale (Sydney, Melbourne, Brisbane), nos prestations d'ingénierie et d'infrastructures d'automatisation sont éligibles aux dispositifs fédéraux du <strong>Small Business Technology Investment Boost</strong> et au cadre d'<strong>amortissement immédiat de l'ATO (Instant Asset Write-Off)</strong>. Les PME éligibles peuvent déduire jusqu'à 100% des investissements technologiques et opérationnels approuvés.
+                    </>
+                  )}
+                </p>
+              </div>
+
               {/* Action Strip */}
               <div className="pt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-600 dark:text-[#94A3B8] font-medium">
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> {language === "en" ? "Operating in WA" : "Activité en WA"}
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> {language === "en" ? "WA LCF 50% Matched" : "Co-financement WA LCF 50%"}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> {language === "en" ? "Active ABN" : "Numéro d'entreprise actif"}
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> {language === "en" ? "NSW / ATO Tax Write-Off" : "Amortissement ATO NSW/National"}
                   </span>
                   <span className="flex items-center gap-1.5">
                     <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> {language === "en" ? "<200 Employees" : "< 200 Salariés"}

@@ -23,6 +23,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
     selectedTech: ["Lightspeed", "Xero"] as string[],
     grantInterest: true,
     workflowFocus: initialSolution || "14-Day Diagnostic Readiness Audit",
+    deliveryMode: "onsite" as "onsite" | "cloud",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,7 +69,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
   };
 
   const whatsappHref =
-    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.";
+    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
@@ -284,6 +285,47 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-white dark:bg-[#0F172A] border border-zinc-200 dark:border-[#232F48] text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-zinc-950 dark:focus:border-[#00BFCC] text-sm shadow-2xs"
                   />
+                </div>
+              </div>
+
+              {/* Audit Delivery Mode: On-Site vs National Cloud */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-zinc-700 dark:text-zinc-300">
+                  {language === "en" ? "Diagnostic Audit Delivery Mode" : "Modalité d'Exécution de l'Audit"}
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, deliveryMode: "onsite" })}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      formData.deliveryMode === "onsite"
+                        ? "bg-[#0F172A] text-white border-[#0F172A] dark:bg-[#00BFCC] dark:text-[#0F172A] dark:border-[#00BFCC]"
+                        : "bg-zinc-50 dark:bg-[#0F172A] border-zinc-200 dark:border-[#232F48] text-zinc-700 dark:text-zinc-300 hover:border-zinc-300"
+                    }`}
+                  >
+                    <span className="block text-xs font-bold">
+                      {language === "en" ? "📍 On-Site Prep Walk-Through" : "📍 Visite Matinale Sur Place"}
+                    </span>
+                    <span className="text-[10px] opacity-80 block mt-0.5">
+                      {language === "en" ? "Greater Sydney & Perth Metro" : "Sydney & Métropole de Perth"}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, deliveryMode: "cloud" })}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                      formData.deliveryMode === "cloud"
+                        ? "bg-[#0F172A] text-white border-[#0F172A] dark:bg-[#00BFCC] dark:text-[#0F172A] dark:border-[#00BFCC]"
+                        : "bg-zinc-50 dark:bg-[#0F172A] border-zinc-200 dark:border-[#232F48] text-zinc-700 dark:text-zinc-300 hover:border-zinc-300"
+                    }`}
+                  >
+                    <span className="block text-xs font-bold">
+                      {language === "en" ? "☁️ National Cloud Intake" : "☁️ Intégration Cloud Nationale"}
+                    </span>
+                    <span className="text-[10px] opacity-80 block mt-0.5">
+                      {language === "en" ? "Read-Only POS/Xero OAuth" : "OAuth POS & Xero en lecture"}
+                    </span>
+                  </button>
                 </div>
               </div>
 

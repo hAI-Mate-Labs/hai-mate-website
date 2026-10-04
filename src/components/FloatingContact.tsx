@@ -301,7 +301,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
           label: language === "en" ? "Chat with Mallory on WhatsApp" : "Discuter avec Mallory sur WhatsApp",
           onClick: () => {
             window.open(
-              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
               "_blank",
               "noopener,noreferrer"
             );
@@ -354,7 +354,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
         label: "WhatsApp (+61 402 472 262)",
         onClick: () => {
           window.open(
-            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin.",
             "_blank",
             "noopener,noreferrer"
           );
@@ -662,7 +662,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   </button>
 
                   <a
-                    href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
+                    href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20and%20want%20to%20streamline%20our%20dockets%20and%20back-office%20admin."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition-colors group"

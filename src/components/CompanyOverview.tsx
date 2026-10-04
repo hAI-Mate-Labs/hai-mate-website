@@ -252,9 +252,9 @@ export default function CompanyOverview({ onOpenAuditModal }: CompanyOverviewPro
 
         </div>
 
-        {/* Platform Defensibility & Future Scale Blocks */}
+        {/* Venture-Scale Platform Architecture • The 3 Horizons */}
         <div className="mt-8 rounded-3xl bg-white dark:bg-[#151D2F] border border-zinc-200/90 dark:border-[#232F48] p-7 sm:p-9 shadow-xs transition-colors duration-200">
-          <div className="max-w-2xl mb-6">
+          <div className="max-w-3xl mb-6">
             <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0096A3] dark:text-[#00F2FE] block mb-1">
               {c.offer.defensibilityTitle}
             </span>
@@ -263,48 +263,70 @@ export default function CompanyOverview({ onOpenAuditModal }: CompanyOverviewPro
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* 1. Wholesale Benchmark Network */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Horizon 1: The Wedge */}
             <div className="p-6 rounded-2xl bg-zinc-50/80 dark:bg-[#0B0F19] border border-zinc-200/80 dark:border-[#232F48] flex flex-col justify-between hover:border-[#00BFCC]/40 transition-colors">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0096A3] dark:text-[#00F2FE] bg-[#00BFCC]/10 px-2.5 py-1 rounded-full border border-[#00BFCC]/20">
-                    {c.offer.benchmarkNetwork.tag}
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-800 dark:text-[#00F2FE] bg-[#00BFCC]/10 px-2.5 py-1 rounded-full border border-[#00BFCC]/20">
+                    {c.offer.horizon1?.tag ?? "HORIZON 1 • THE WEDGELOCK"}
                   </span>
-                  <Network className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE]" />
+                  <Layers className="w-4 h-4 text-[#0096A3] dark:text-[#00F2FE]" />
                 </div>
                 <h4 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
-                  {c.offer.benchmarkNetwork.title}
+                  {c.offer.horizon1?.title ?? "Autonomous Operational Conduits"}
                 </h4>
                 <p className="text-xs text-zinc-600 dark:text-[#94A3B8] leading-relaxed font-normal">
-                  {c.offer.benchmarkNetwork.desc}
+                  {c.offer.horizon1?.desc ?? "Real-time till/docket parsing, Dynamic Wage Guard, and 1-tap mobile manager approvals staging draft bills directly into Xero/MYOB with 100% human-in-the-loop governance."}
                 </p>
               </div>
               <div className="pt-4 mt-4 border-t border-zinc-200/60 dark:border-[#232F48] flex items-center justify-between text-[11px] text-zinc-500 dark:text-[#94A3B8] font-medium">
-                <span>{language === "en" ? "Data Moat • Continuous Ingestion" : "Moat Données • Ingestion Continue"}</span>
-                <span className="text-[#0096A3] dark:text-[#00F2FE] font-semibold">{language === "en" ? "Active Defense" : "Défense Active"}</span>
+                <span>{language === "en" ? "Operational Wedge" : "Verrou Opérationnel"}</span>
+                <span className="text-[#0096A3] dark:text-[#00F2FE] font-semibold">{language === "en" ? "Live Today" : "Actif Aujourd'hui"}</span>
               </div>
             </div>
 
-            {/* 2. One-Tap Accounts Payable */}
+            {/* Horizon 2: The Data Moat */}
             <div className="p-6 rounded-2xl bg-zinc-50/80 dark:bg-[#0B0F19] border border-zinc-200/80 dark:border-[#232F48] flex flex-col justify-between hover:border-[#00BFCC]/40 transition-colors">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-                    {c.offer.instantSettlement.tag}
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">
+                    {c.offer.horizon2?.tag ?? "HORIZON 2 • THE DATA MOAT"}
+                  </span>
+                  <Network className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                </div>
+                <h4 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
+                  {c.offer.horizon2?.title ?? "Proprietary Supplier Price Guard"}
+                </h4>
+                <p className="text-xs text-zinc-600 dark:text-[#94A3B8] leading-relaxed font-normal">
+                  {c.offer.horizon2?.desc ?? "Cross-Venue Intelligence: Anonymous, localized line-item benchmarking that flags when your venue is being charged above the regional average for seafood, meat, dairy, or fresh produce."}
+                </p>
+              </div>
+              <div className="pt-4 mt-4 border-t border-zinc-200/60 dark:border-[#232F48] flex items-center justify-between text-[11px] text-zinc-500 dark:text-[#94A3B8] font-medium">
+                <span>{language === "en" ? "Data Moat • Cross-Venue" : "Moat Données • Inter-Sites"}</span>
+                <span className="text-amber-600 dark:text-amber-400 font-semibold">{language === "en" ? "Active Defense" : "Défense Active"}</span>
+              </div>
+            </div>
+
+            {/* Horizon 3: The Embedded Fintech Multiplier */}
+            <div className="p-6 rounded-2xl bg-zinc-50/80 dark:bg-[#0B0F19] border border-zinc-200/80 dark:border-[#232F48] flex flex-col justify-between hover:border-[#00BFCC]/40 transition-colors">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                    {c.offer.horizon3?.tag ?? "HORIZON 3 • FINTECH MULTIPLIER"}
                   </span>
                   <CreditCard className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 </div>
                 <h4 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">
-                  {c.offer.instantSettlement.title}
+                  {c.offer.horizon3?.title ?? "Autonomous B2B Accounts Payable"}
                 </h4>
                 <p className="text-xs text-zinc-600 dark:text-[#94A3B8] leading-relaxed font-normal">
-                  {c.offer.instantSettlement.desc}
+                  {c.offer.horizon3?.desc ?? "Embedded Fintech Network: Verified 1-tap draft bill approval today; direct wholesale payment settlement, automated vendor reconciliations, and supplier credit rails tomorrow."}
                 </p>
               </div>
               <div className="pt-4 mt-4 border-t border-zinc-200/60 dark:border-[#232F48] flex items-center justify-between text-[11px] text-zinc-500 dark:text-[#94A3B8] font-medium">
-                <span>{language === "en" ? "Fintech Multiple Ready • B2B Settlement" : "Prêt Fintech • Règlement B2B"}</span>
-                <span className="text-emerald-700 dark:text-emerald-400 font-semibold">{language === "en" ? "Instant Execution" : "Exécution Immédiate"}</span>
+                <span>{language === "en" ? "Fintech Multiplier" : "Multiplicateur Fintech"}</span>
+                <span className="text-emerald-700 dark:text-emerald-400 font-semibold">{language === "en" ? "Instant Rails" : "Rails Directs"}</span>
               </div>
             </div>
           </div>

@@ -33,25 +33,25 @@ export default function UnifiedProcessTimeline({
       step: "01",
       duration: language === "en" ? "Days 1–14" : "Jours 1 à 14",
       tag: language === "en" ? "Flexible 14-Day Audit" : "Audit Diagnostique Flexible",
-      title: language === "en" ? "Digital Intake & Perth On-Site Audits" : "Intégration Numérique & Audits sur Place à Perth",
+      title: language === "en" ? "On-Site Audits (Sydney & Perth) • Cloud Nationally" : "Audits sur Place (Sydney & Perth) • Cloud National",
       description:
         language === "en"
-          ? "Default remote intake via read-only OAuth connections to Lightspeed, Square & Xero, paired with a secure drag-and-drop link for 15–20 delivery dockets. Plus in-person morning prep audits across Perth."
-          : "Intégration numérique sans friction via connexions OAuth en lecture seule (Lightspeed, Square, Xero) avec dépôt sécurisé de 15 à 20 bons. Et visites matinales sur place à Perth.",
+          ? "Default remote intake via read-only OAuth connections to Lightspeed, Square & Xero, paired with in-person morning prep audits across Greater Sydney and Perth Metro / South West."
+          : "Intégration numérique sans friction via connexions OAuth en lecture seule (Lightspeed, Square, Xero) avec visites matinales sur place à Sydney et sur la métropole de Perth.",
       icon: Clock,
       bullets:
         language === "en"
           ? [
               "Zero-friction digital intake via read-only OAuth (Lightspeed, Square, Xero)",
               "Secure drag-and-drop link for 15–20 delivery dockets & price agreements",
-              "In Perth? On-site morning prep audits and manager walk-throughs available across Perth Metro (Cottesloe, Fremantle, CBD, Subiaco) and the South West",
-              "Pre-filled WA Government 50% matched co-funding grant application package",
+              "In-person morning prep inspections across Greater Sydney & Perth Metro (Cottesloe, Fremantle, CBD, Subiaco) and the South West",
+              "Pre-filled WA Government 50% matched co-funding grant application package & Federal tax write-off scoping",
             ]
           : [
               "Intégration numérique sans friction via OAuth en lecture seule (Lightspeed, Square, Xero)",
               "Lien de dépôt sécurisé pour 15 à 20 bons de livraison et accords tarifaires",
-              "À Perth ? Audits sur place pendant la mise en place matinale disponibles sur toute la métropole de Perth (Cottesloe, Fremantle, CBD, Subiaco) et le South West",
-              "Dossier de subvention d'État WA (50% de prise en charge) pré-rempli",
+              "Audits sur place pendant la mise en place matinale à Sydney & sur la métropole de Perth (Cottesloe, Fremantle, CBD, Subiaco) et le South West",
+              "Dossier de subvention WA (50% de prise en charge) & cadrage de déduction fiscale fédérale",
             ],
       deliverable:
         language === "en"
@@ -243,7 +243,7 @@ export default function UnifiedProcessTimeline({
                   </>
                 ) : (
                   <>
-                    Si notre audit diagnostique de 14 jours n'identifie pas au minimum <strong>3x sa valeur en heures administratives récupérables ou surfacturations fournisseurs</strong>, vous payez <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">0 $</span>. Zéro engagement. Aucune action automatisée ne s'exécute sans votre validation en 1 clic.
+                    Si notre audit diagnostique de 14 jours n&apos;identifie pas au minimum <strong>3x sa valeur en heures administratives récupérables ou surfacturations fournisseurs</strong>, vous payez <span className="font-bold text-[#0F172A] dark:text-[#F8FAFC]">0 $</span>. Zéro engagement. Aucune action automatisée ne s&apos;exécute sans votre validation en 1 clic.
                   </>
                 )}
               </p>

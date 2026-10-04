@@ -153,8 +153,8 @@ export default function Hero({ onOpenAuditModal }: HeroProps) {
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             {language === "en"
-              ? "50% WA Government co-funding"
-              : "50% subventionné par l'État du WA"}
+              ? "50% WA Government co-funding + Federal Tax Boost"
+              : "50% subventionné par l'État du WA + Déduction Fiscale"}
           </span>
         </div>
 
