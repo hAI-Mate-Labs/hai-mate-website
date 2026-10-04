@@ -108,9 +108,9 @@ export default function FounderClient() {
             {/* Poetic Subheadline */}
             <p className="mt-7 text-lg sm:text-xl text-zinc-600 max-w-2xl mx-auto leading-relaxed font-normal">
               {lang === "en" ? (
-                "A 10-year journey from the Mediterranean coast of France to Sydney and Western Australia. Driven by a simple, radical conviction: that artificial intelligence exists to liberate human time for the things that truly matter."
+                "A 10-year journey from the Mediterranean coast of France to Western Australia. Driven by a simple, radical conviction: that artificial intelligence exists to liberate human time for the things that truly matter."
               ) : (
-                "Un voyage de 10 ans depuis la Côte d'Azur (Villefranche-sur-Mer) jusqu'à Sydney et l'Australie-Occidentale. Porté par une conviction radicale : l'intelligence artificielle doit libérer le temps humain pour ce qui compte vraiment."
+                "Un voyage de 10 ans depuis la Côte d'Azur (Villefranche-sur-Mer) jusqu'à l'Australie-Occidentale. Porté par une conviction radicale : l'intelligence artificielle doit libérer le temps humain pour ce qui compte vraiment."
               )}
             </p>
 
@@ -125,7 +125,7 @@ export default function FounderClient() {
                 <ArrowRight className="w-4 h-4 ml-2 text-[#00BFCC] transition-transform group-hover:translate-x-1" />
               </button>
               <a
-                href="https://wa.me/61402472262?text=Bonjour%20Mallory,%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l'automatisation%20pour%20mon%20%C3%A9tablissement."
+                href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-medium rounded-full bg-emerald-50 text-emerald-950 border border-emerald-200 hover:bg-emerald-100 transition-all shadow-2xs"
@@ -142,7 +142,7 @@ export default function FounderClient() {
               </span>
               <span className="hidden sm:inline text-zinc-300">•</span>
               <span className="flex items-center gap-1.5">
-                <Compass className="w-3.5 h-3.5 text-[#0096A3]" /> {lang === "en" ? "Based in Sydney, NSW" : "Basé à Sydney, NSW"}
+                <Compass className="w-3.5 h-3.5 text-[#0096A3]" /> {lang === "en" ? "Operating on-the-ground in Perth & WA" : "Opérant sur le terrain à Perth & dans le WA"}
               </span>
               <span className="hidden sm:inline text-zinc-300">•</span>
               <span className="flex items-center gap-1.5">
@@ -264,9 +264,9 @@ export default function FounderClient() {
                   </p>
                   <p>
                     That is why I created <strong className="font-semibold text-[#0F172A]">hAI Mate!</strong> as an applied
-                    solo practice registered in Sydney. I didn’t want to build an ivory tower agency with
+                    AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally. I didn’t want to build an ivory tower agency with
                     account managers and sales reps. I wanted to sit directly across the table from venue
-                    owners, understand their till systems, look at their supplier dockets, and build systems
+                    owners across WA dining hubs—from Cottesloe and Fremantle to Perth CBD and the South West—understand their till systems, look at their supplier dockets, and build systems
                     that quietly reclaim 4 to 8 hours of their life every single week.
                   </p>
                 </>
@@ -286,9 +286,9 @@ export default function FounderClient() {
                   </p>
                   <p>
                     C'est ainsi qu'est né <strong className="font-semibold text-[#0F172A]">hAI Mate!</strong>, sous forme
-                    d'une pratique solo dédiée enregistrée à Sydney. Je ne voulais pas créer une agence
+                    d'une pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale. Je ne voulais pas créer une agence
                     tentaculaire avec des intermédiaires. Je voulais m'asseoir directement en face des
-                    propriétaires, comprendre leurs caisses enregistreuses, examiner leurs dockets de livraison
+                    propriétaires dans les pôles gastronomiques du WA—de Cottesloe et Fremantle au Perth CBD et au South West—comprendre leurs caisses enregistreuses, examiner leurs dockets de livraison
                     et concevoir des automatisations silencieuses qui leur redonnent 4 à 8 heures par semaine.
                   </p>
                 </>
@@ -528,9 +528,9 @@ export default function FounderClient() {
                 </h2>
                 <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
                   {lang === "en" ? (
-                    "Whether you operate an artisan bakery in Mount Lawley, a seafood bistro in Cottesloe, or a venue in Sydney, I would love to hear your story. No sales presentations, no obligation—just an honest conversation between operators."
+                    "Whether you operate an artisan bakery in Mount Lawley, a seafood bistro in Cottesloe or Fremantle, a venue in Perth CBD or the South West, or a group nationally, I would love to hear your story. No sales presentations, no obligation—just an honest conversation between operators."
                   ) : (
-                    "Que vous dirigiez une boulangerie artisanale, un bistrot côtier ou plusieurs établissements, je serais ravi d'échanger avec vous. Sans présentation commerciale artificielle—une simple discussion directe entre professionnels du terrain."
+                    "Que vous dirigiez une boulangerie artisanale à Mount Lawley, un bistrot côtier à Cottesloe ou Fremantle, un établissement dans le Perth CBD ou le South West, ou un groupe à l'échelle nationale, je serais ravi d'échanger avec vous. Sans présentation commerciale artificielle—une simple discussion directe entre professionnels du terrain."
                   )}
                 </p>
               </div>
@@ -540,7 +540,7 @@ export default function FounderClient() {
                 
                 {/* WhatsApp Channel */}
                 <a
-                  href="https://wa.me/61402472262?text=Bonjour%20Mallory,%20je%20souhaite%20%C3%A9changer%20sur%20l'automatisation%20pour%20mon%20%C3%A9tablissement."
+                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors flex items-center gap-3.5 group"
@@ -584,7 +584,7 @@ export default function FounderClient() {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <div className="font-mono text-[11px] text-zinc-400">
-                  Mallory Antomarchi • Solo Trader • Sydney, NSW • French / English Bilingual
+                  Mallory Antomarchi • Applied AI Automation Practice • Perth & WA • French / English Bilingual
                 </div>
               </div>
 

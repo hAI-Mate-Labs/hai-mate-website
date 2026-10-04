@@ -4,7 +4,7 @@ import FounderClient from "./FounderClient";
 export const metadata: Metadata = {
   title: "The Founder • Mallory Antomarchi | hAI Mate!",
   description:
-    "Meet Mallory Antomarchi, founder of hAI Mate! A 10-year journey from the Mediterranean coast of France to Sydney and WA, dedicated to using applied AI to liberate human time for the things that truly matter.",
+    "Meet Mallory Antomarchi, founder of hAI Mate! A 10-year journey from the Mediterranean coast of France to Western Australia, dedicated to using applied AI to liberate human time for the things that truly matter.",
   openGraph: {
     title: "The Founder • Mallory Antomarchi | hAI Mate!",
     description:

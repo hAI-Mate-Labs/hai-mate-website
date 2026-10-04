@@ -295,18 +295,15 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
       return {
         text:
           language === "en"
-            ? "hAI Mate! was founded by Mallory Antomarchi, an independent solo practitioner blending European hospitality standards with Silicon-grade AI pipelines. Based in WA and registered as a Solo Trader in Sydney, NSW. You deal directly with Mallory on 0402 472 262—no junior ticket queues."
-            : "hAI Mate! a été fondé par Mallory Antomarchi, praticien indépendant alliant les standards de l'hospitalité européenne à une ingénierie d'IA rigoureuse. Basé dans le WA et enregistré comme Solo Trader à Sydney, NSW. Vous échangez directement avec Mallory au 0402 472 262—aucun intermédiaire ni ticket d'attente.",
+            ? "hAI Mate! was founded by Mallory Antomarchi, an applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally. You deal directly with Mallory on 0402 472 262—no junior ticket queues."
+            : "hAI Mate! a été fondé par Mallory Antomarchi, une pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale. Vous échangez directement avec Mallory au 0402 472 262—aucun intermédiaire ni ticket d'attente.",
         action: {
           label: language === "en" ? "Chat with Mallory on WhatsApp" : "Discuter avec Mallory sur WhatsApp",
           onClick: () => {
             window.open(
-              `https://wa.me/61402472262?text=${encodeURIComponent(
-                language === "en"
-                  ? "Hi Mallory, I have a question about hAI Mate."
-                  : "Bonjour Mallory, j'ai une question sur hAI Mate."
-              )}`,
-              "_blank"
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+              "_blank",
+              "noopener,noreferrer"
             );
           },
           icon: MessageSquare,
@@ -357,12 +354,9 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
         label: "WhatsApp (+61 402 472 262)",
         onClick: () => {
           window.open(
-            `https://wa.me/61402472262?text=${encodeURIComponent(
-              language === "en"
-                ? "Hi Mallory, I'd like to discuss automation for my venue."
-                : "Bonjour Mallory, je souhaite échanger sur l'automatisation de mon établissement."
-            )}`,
-            "_blank"
+            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+            "_blank",
+            "noopener,noreferrer"
           );
         },
         icon: MessageSquare,
@@ -638,8 +632,8 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     </h4>
                     <p className="text-[11px] text-zinc-500">
                       {language === "en"
-                        ? "Founder & Applied AI Engineer • Sydney NSW & WA"
-                        : "Fondateur & Ingénieur IA Appliquée • Sydney NSW & WA"}
+                        ? "Founder & Applied AI Engineer • Perth & WA"
+                        : "Fondateur & Ingénieur IA Appliquée • Perth & WA"}
                     </p>
                   </div>
                 </div>
@@ -668,11 +662,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   </button>
 
                   <a
-                    href={`https://wa.me/61402472262?text=${encodeURIComponent(
-                      language === "en"
-                        ? "Hi Mallory, I'm a venue operator interested in applied automation for my business."
-                        : "Bonjour Mallory, je gère un établissement et je souhaite échanger sur l'automatisation pour mon activité."
-                    )}`}
+                    href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-between p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 text-xs font-semibold hover:bg-emerald-100 transition-colors group"
@@ -685,7 +675,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                   </a>
 
                   <a
-                    href="tel:0402472262"
+                    href="tel:+61402472262"
                     className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-medium hover:bg-zinc-100 transition-colors"
                   >
                     <span className="flex items-center gap-2">
@@ -697,14 +687,14 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                     </span>
                   </a>
 
-                  <a
-                    href="mailto:founder@haimate.com.au?subject=Quick%20Hospitality%20Question"
-                    className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-medium hover:bg-zinc-100 transition-colors"
-                  >
-                    <span className="flex items-center gap-2">
+                  <div className="w-full flex items-center justify-between p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-800 text-xs font-medium">
+                    <a
+                      href="mailto:founder@haimate.com.au?subject=Quick%20Hospitality%20Question"
+                      className="flex items-center gap-2 hover:text-[#0096A3] transition-colors"
+                    >
                       <Mail className="w-3.5 h-3.5 text-zinc-600" />
-                      founder@haimate.com.au
-                    </span>
+                      <span>founder@haimate.com.au</span>
+                    </a>
                     <button
                       type="button"
                       onClick={handleCopyEmail}
@@ -716,7 +706,7 @@ export default function FloatingContact({ onOpenAuditModal }: FloatingContactPro
                         language === "en" ? "Copy" : "Copier"
                       )}
                     </button>
-                  </a>
+                  </div>
                 </div>
               </div>
 

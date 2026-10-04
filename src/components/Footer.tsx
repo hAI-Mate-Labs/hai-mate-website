@@ -67,10 +67,14 @@ export default function Footer() {
 
             <div className="text-xs text-zinc-500 space-y-1 pt-1">
               <p className="font-medium text-zinc-700">
-                {language === "en" ? "Solo Trader • Registered in Sydney, NSW" : "Artisan Indépendant (Solo Trader) • Enregistré à Sydney, NSW"}
+                {language === "en"
+                  ? "Applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally"
+                  : "Pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale"}
               </p>
               <p>
-                {language === "en" ? "Operating across Western Australia & Nationally" : "Activité en Australie-Occidentale & à l'Échelle Nationale"}
+                {language === "en"
+                  ? "On-site diagnostic audits across Cottesloe, Fremantle, Perth CBD & the South West"
+                  : "Audits diagnostiques sur place à Cottesloe, Fremantle, Perth CBD & dans le South West"}
               </p>
             </div>
           </div>
@@ -143,10 +147,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-14 pt-8 border-t border-zinc-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
           <div>
-            &copy; {new Date().getFullYear()} hAI Mate! {language === "en" ? "Solo Trader. Registered in Sydney, NSW." : "Solo Trader. Enregistré à Sydney, NSW."}
+            &copy; {new Date().getFullYear()} hAI Mate! {language === "en" ? "Operating on-the-ground in Perth & WA, serving venues nationally." : "Opérant sur le terrain à Perth & dans le WA, au service des établissements à l'échelle nationale."}
           </div>
           <div className="flex items-center gap-2">
-            <span>{language === "en" ? "Western Australia & National Engagements" : "Interventions en Australie-Occidentale & Nationales"}</span>
+            <span>{language === "en" ? "Perth, WA & National Engagements" : "Interventions à Perth, dans le WA & à l'Échelle Nationale"}</span>
             <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
           </div>
         </div>

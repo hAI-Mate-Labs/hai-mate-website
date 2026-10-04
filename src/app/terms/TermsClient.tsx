@@ -91,8 +91,7 @@ export default function TermsClient() {
               </h2>
               <p>
                 These Terms of Service ("Terms") constitute a legally binding agreement between{" "}
-                <strong>Mallory Antomarchi</strong> trading as <strong>hAI Mate!</strong> (ABN registered,
-                Sydney, NSW, Australia) and the client entity or individual venue operator ("Client", "you",
+                <strong>Mallory Antomarchi</strong> trading as <strong>hAI Mate!</strong> (applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally) and the client entity or individual venue operator ("Client", "you",
                 or "your") engaging our diagnostic readiness audits, pipeline integrations, or managed support services.
               </p>
             </div>
@@ -266,7 +265,7 @@ export default function TermsClient() {
                 <p>Mallory Antomarchi (t/a hAI Mate!)</p>
                 <p>Email: <a href="mailto:founder@haimate.com.au" className="text-[#0096A3] hover:underline">founder@haimate.com.au</a></p>
                 <p>Phone: +61 402 472 262</p>
-                <p>Sydney, NSW, Australia</p>
+                <p>Perth, Western Australia, Australia</p>
               </div>
             </div>
 

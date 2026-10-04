@@ -30,9 +30,8 @@ export default function SampleAuditPage() {
 
   const isFr = language === "fr";
 
-  const whatsappHref = isFr
-    ? "https://wa.me/61402472262?text=Bonjour%20Mallory,%20j'ai%20consult%C3%A9%20l'exemple%20d'audit%20et%20souhaite%20en%20discuter%20pour%20mon%20%C3%A9tablissement."
-    : "https://wa.me/61402472262?text=Hi%20Mallory,%20I%20reviewed%20the%20sample%20audit%20report%20and%20want%20to%20discuss%20an%20audit%20for%20my%20venue.";
+  const whatsappHref =
+    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.";
 
   return (
     <div className="min-h-screen bg-zinc-50/50 text-zinc-900 font-sans antialiased">

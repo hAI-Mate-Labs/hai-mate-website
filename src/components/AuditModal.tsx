@@ -67,9 +67,7 @@ export default function AuditModal({ isOpen, onClose, initialSolution }: AuditMo
   };
 
   const whatsappHref =
-    language === "fr"
-      ? "https://wa.me/61402472262?text=Bonjour%20Mallory,%20je%20souhaite%20r%C3%A9server%20un%20audit%20diagnostique%20de%2014%20jours%20pour%20mon%20%C3%A9tablissement."
-      : "https://wa.me/61402472262?text=Hi%20Mallory,%20I'm%20interested%20in%20a%2014-day%20readiness%20audit%20for%20my%20venue.";
+    "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">

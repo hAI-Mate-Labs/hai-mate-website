@@ -5,7 +5,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 export const metadata: Metadata = {
   title: "hAI Mate! | Applied AI & Automation Agency",
   description: "Opening up operational flow while keeping human judgment at the center. Applied AI and agentic workflows for hospitality groups and growing SMEs across WA and Australia.",
-  keywords: ["applied AI WA", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "Sydney registered sole trader"],
+  keywords: ["applied AI WA", "hospitality automation Perth", "human in the loop automation", "Xero Lightspeed AI integration", "hAI Mate", "applied AI Perth WA"],
   authors: [{ name: "hAI Mate!" }],
   openGraph: {
     title: "hAI Mate! | Applied Automation Agency",
@@ -42,8 +42,8 @@ export default function RootLayout({
                 "Applied AI and agentic automation agency for hospitality groups, restaurants, bakeries, and pubs across Western Australia and nationally.",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Sydney",
-                "addressRegion": "NSW",
+                "addressLocality": "Perth",
+                "addressRegion": "WA",
                 "addressCountry": "AU",
               },
               "founder": {
@@ -53,8 +53,6 @@ export default function RootLayout({
               "areaServed": [
                 "Western Australia",
                 "Perth",
-                "New South Wales",
-                "Sydney",
                 "Australia",
               ],
               "priceRange": "$$",

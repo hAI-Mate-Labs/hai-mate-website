@@ -53,7 +53,7 @@ export default function PrivacyClient() {
             <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-500 pt-2 border-t border-zinc-100">
               <span>Last Updated: October 2026</span>
               <span>•</span>
-              <span>Solo Trader Registered in Sydney, NSW</span>
+              <span>Applied AI Automation Practice • Perth & WA</span>
               <span>•</span>
               <span className="text-[#0096A3] font-semibold">Strict Non-Training Guarantee</span>
             </div>
@@ -110,12 +110,12 @@ export default function PrivacyClient() {
               <p>
                 This Privacy Policy is issued by <strong>Mallory Antomarchi</strong>, trading as{" "}
                 <strong>hAI Mate!</strong> (referred to herein as "hAI Mate!", "we", "us", or "our"),
-                a registered Australian Solo Trader based in Sydney, NSW, operating across Western Australia
-                and nationally.
+                an applied AI automation practice operating on-the-ground in Perth & Western Australia,
+                serving venues nationally.
               </p>
               <div className="p-4 rounded-2xl bg-zinc-50 border border-zinc-200/80 text-xs sm:text-sm font-mono space-y-1 text-zinc-800">
                 <p><strong>Entity Name:</strong> Mallory Antomarchi (t/a hAI Mate!)</p>
-                <p><strong>Principal Place of Business:</strong> Sydney, New South Wales, Australia</p>
+                <p><strong>Principal Place of Business:</strong> Perth, Western Australia, Australia</p>
                 <p><strong>Primary Privacy Contact:</strong> privacy@haimate.com.au / founder@haimate.com.au</p>
                 <p><strong>Direct Phone:</strong> +61 402 472 262</p>
               </div>
@@ -221,7 +221,7 @@ export default function PrivacyClient() {
               </h2>
               <p>
                 All data is encrypted in transit using <strong>TLS 1.3</strong> and at rest using <strong>AES-256</strong>.
-                Our cloud infrastructure is hosted primarily in Australian sovereign data centres (Sydney, AWS/Google Cloud),
+                Our cloud infrastructure is hosted primarily in Australian sovereign data centres (AWS/Google Cloud Australia regions),
                 ensuring complete compliance with Australian data sovereignty laws.
               </p>
               <p>
@@ -302,7 +302,7 @@ export default function PrivacyClient() {
                 <p>Mallory Antomarchi (Founder &amp; Data Protection Lead)</p>
                 <p>Email: <a href="mailto:privacy@haimate.com.au" className="text-[#0096A3] hover:underline">privacy@haimate.com.au</a> / <a href="mailto:founder@haimate.com.au" className="text-[#0096A3] hover:underline">founder@haimate.com.au</a></p>
                 <p>Phone: +61 402 472 262</p>
-                <p>Sydney, NSW, Australia</p>
+                <p>Perth, Western Australia, Australia</p>
               </div>
             </div>
 

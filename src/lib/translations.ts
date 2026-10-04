@@ -15,7 +15,7 @@ export const translations = {
       book14DayReview: "Book 14-Day Venue Review",
     },
     hero: {
-      badge: "Applied AI for Hospitality • WA Venues & Kitchens",
+      badge: "Applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally",
       titleStart: "Less Paperwork.",
       titleAccent: "More Hospitality.",
       subtitle:
@@ -309,11 +309,11 @@ export const translations = {
     },
     founderCard: {
       badge: "Direct Practitioner Partnership",
-      location: "Solo Trader Registered in Sydney, NSW • Serving WA Venues",
+      location: "Applied AI Automation Practice • Operating on-the-ground in Perth & WA, Serving Venues Nationally",
       title: "You Deal Directly With the Founder. No Account Managers. No Ticket Queues.",
-      p1: "In hospitality, every minute between lunch and dinner service counts. You don’t need an agency pitching senior directors only to hand your venue over to junior coordinators or overseas support desks.",
+      p1: "In hospitality, every minute between lunch and dinner service counts. Operating on-the-ground across WA dining hubs (Cottesloe, Fremantle, Perth CBD, South West), you don’t need an agency pitching senior directors only to hand your venue over to junior coordinators or overseas support desks.",
       quote:
-        "“When we start your 14-day audit, I am the one walking your venue floor, reviewing your dockets, and tuning your workflows. You get battle-tested automation backed by my personal phone number whenever you need adjustments.”",
+        "“When we start your 14-day audit, I am the one walking your venue floor across Perth and WA dining hubs, reviewing your dockets, and tuning your workflows. You get battle-tested automation backed by my personal phone number whenever you need adjustments.”",
       signature: "— Mallory Antomarchi, Founder & Applied AI Engineer",
       phoneLabel: "Direct Mobile & WhatsApp",
       humanSignoff: "100% Human Sign-Off",
@@ -346,9 +346,9 @@ export const translations = {
       whatsappBtn: "Message Mallory on WhatsApp (+61 402 472 262)",
     },
     footer: {
-      tagline: "Applied Automation Agency for Australian Hospitality",
+      tagline: "Applied AI Automation Practice Operating in Perth & WA, Serving Venues Nationally",
       disclaimer:
-        "hAI Mate! is an applied solo practice registered in Sydney, NSW, serving hospitality groups and growing venues across Western Australia and nationally.",
+        "hAI Mate! is an applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally. On-site diagnostic audits delivered across Cottesloe, Fremantle, Perth CBD & the South West.",
       philosophyTitle: "Our Philosophy",
       philosophyQuote:
         "“Technology should quietly serve the human craft—never displace it. We build conduits through back-office friction so operators can focus on what only humans can do.”",
@@ -448,7 +448,7 @@ export const translations = {
       book14DayReview: "Réserver un Audit (14 Jours)",
     },
     hero: {
-      badge: "IA Appliquée pour la Restauration • Établissements du WA",
+      badge: "Pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale",
       titleStart: "Moins de Paperasse.",
       titleAccent: "Plus d'Hospitalité.",
       subtitle:
@@ -742,11 +742,11 @@ export const translations = {
     },
     founderCard: {
       badge: "Partenariat Direct avec le Praticien",
-      location: "Solo Trader Enregistré à Sydney, NSW • Desservant les Établissements du WA",
+      location: "Pratique d'Automatisation IA Appliquée • Sur le terrain à Perth & dans le WA, au Service des Établissements à l'Échelle Nationale",
       title: "Vous Échangez Directement avec le Fondateur. Aucun Intermédiaire Commercial.",
-      p1: "En restauration, chaque minute entre le coup de feu de midi et du soir est précieuse. Vous n'avez pas le temps pour des agences qui envoient des directeurs de vente pour ensuite vous confier à des stagiaires.",
+      p1: "En restauration, chaque minute entre les services du midi et du soir compte. Présent directement sur le terrain à travers les pôles gastronomiques du WA (Cottesloe, Fremantle, Perth CBD, South West), vous ne traitez pas avec des directeurs de vente qui vous confient ensuite à des stagiaires.",
       quote:
-        "« Lorsque nous débutons votre audit de 14 jours, c'est moi personnellement qui viens dans votre établissement, inspecte vos bons et ajuste vos automatisations. Vous bénéficiez d'une technologie éprouvée soutenue par mon numéro direct. »",
+        "« Lorsque nous débutons votre audit de 14 jours, c'est moi personnellement qui viens dans votre établissement à travers les pôles du WA, inspecte vos bons et ajuste vos automatisations. Vous bénéficiez d'une technologie éprouvée soutenue par mon numéro direct. »",
       signature: "— Mallory Antomarchi, Fondateur & Ingénieur en IA Appliquée",
       phoneLabel: "Mobile Direct & WhatsApp",
       humanSignoff: "Validation Humaine à 100%",
@@ -779,9 +779,9 @@ export const translations = {
       whatsappBtn: "Écrire à Mallory sur WhatsApp (+61 402 472 262)",
     },
     footer: {
-      tagline: "Agence d'Automatisation Appliquée pour la Restauration en Australie",
+      tagline: "Pratique d'Automatisation IA Appliquée à Perth & dans le WA, au Service des Établissements à l'Échelle Nationale",
       disclaimer:
-        "hAI Mate! est une pratique solo appliquée enregistrée à Sydney, NSW, au service des restaurants, boulangeries et groupes d'hospitalité en Australie-Occidentale et à l'échelle nationale.",
+        "hAI Mate! est une pratique d'automatisation IA appliquée opérant sur le terrain à Perth & en Australie-Occidentale, au service des établissements à l'échelle nationale. Audits diagnostiques sur place à Cottesloe, Fremantle, Perth CBD & dans le South West.",
       philosophyTitle: "Notre Philosophie",
       philosophyQuote:
         "« La technologie doit silencieusement servir le savoir-faire humain—jamais le remplacer. Nous créons des conduits à travers la friction administrative pour que les restaurateurs puissent se concentrer sur ce que seuls les humains savent faire. »",

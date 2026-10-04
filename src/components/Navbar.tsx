@@ -116,7 +116,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
             </div>
 
             <a
-              href="tel:0402472262"
+              href="tel:+61402472262"
               className="hidden 2xl:inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900 transition-colors pr-1 whitespace-nowrap shrink-0"
             >
               <Phone className="w-3.5 h-3.5 text-[#0096A3]" />
@@ -212,7 +212,7 @@ export default function Navbar({ onOpenAuditModal }: NavbarProps) {
 
           <div className="pt-2 border-t border-zinc-100 space-y-2">
             <a
-              href="tel:0402472262"
+              href="tel:+61402472262"
               className="flex items-center justify-center gap-2 py-2.5 rounded-full bg-zinc-50 border border-zinc-200 text-xs font-bold text-zinc-800"
             >
               <Phone className="w-3.5 h-3.5 text-[#0096A3]" />

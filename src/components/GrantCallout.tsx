@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Landmark, ArrowRight, Check, DollarSign, Calculator, Clock, Sparkles } from "lucide-react";
+import { Landmark, ArrowRight, Check, DollarSign, Calculator, Clock, Sparkles, ShieldCheck } from "lucide-react";
 import ApertureLogo from "./ApertureLogo";
 import { useLanguage } from "@/context/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -207,6 +207,29 @@ export default function GrantCallout({ onOpenAuditModal }: GrantCalloutProps) {
                   </p>
                 </div>
 
+              </div>
+
+              {/* LCF Client Eligibility & Engineering Blueprint Note */}
+              <div className="rounded-2xl bg-amber-50/80 border border-amber-200/90 p-4 text-xs text-amber-950 space-y-1.5 shadow-2xs">
+                <div className="flex items-center gap-2 font-bold text-amber-900">
+                  <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0" />
+                  <span>
+                    {language === "en"
+                      ? "LCF Matched Grant Eligibility & Scoping Architecture"
+                      : "Éligibilité au Co-Financement LCF & Dossier de Cadrage"}
+                  </span>
+                </div>
+                <p className="leading-relaxed text-amber-900/90 font-normal">
+                  {language === "en" ? (
+                    <>
+                      <strong>Eligibility Note:</strong> The 50% matched co-funding rebate applies directly to eligible Western Australian client entities holding an <strong>active WA ABN</strong>, registered for <strong>GST</strong>, and employing <strong>&lt;200 staff</strong>. <strong>hAI Mate!</strong> acts as your specialized digital engineering provider, delivering complete technical scoping, architecture blueprints, and ROI documentation required for your grant application.
+                    </>
+                  ) : (
+                    <>
+                      <strong>Note d'éligibilité :</strong> La subvention de co-financement à hauteur de 50% s'applique directement aux entités clientes d'Australie-Occidentale éligibles détenant un <strong>ABN actif dans le WA</strong>, immatriculées à la <strong>GST</strong>, et comptant <strong>moins de 200 salariés</strong>. <strong>hAI Mate!</strong> intervient comme votre prestataire expert d'ingénierie numérique, vous fournissant le cadrage technique complet, les plans d'architecture et les dossiers de ROI requis pour votre candidature.
+                    </>
+                  )}
+                </p>
               </div>
 
               {/* Action Strip */}

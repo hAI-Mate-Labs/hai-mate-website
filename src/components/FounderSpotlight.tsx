@@ -38,7 +38,7 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
                 In the hospitality world, your time is your most precious asset. You don’t need an agency passing your questions between account managers, junior developers, or overseas support tickets.
               </p>
               <p>
-                As an independent solo practitioner, I work directly with you. When we start a 14-day audit, I am the one walking your venue floor, reviewing your dockets, and configuring your workflows. Every conduit is tailored specifically to your venue’s unique till, suppliers, and menu rules.
+                As an independent solo practitioner, I work directly with you. When we start a 14-day audit, I am the one walking your venue floor across WA dining hubs (Cottesloe, Fremantle, Perth CBD, South West), reviewing your dockets, and configuring your workflows. Every conduit is tailored specifically to your venue’s unique till, suppliers, and menu rules.
               </p>
               <p className="text-[#0F172A] font-semibold border-l-2 border-[#00BFCC] pl-4 italic">
                 “You get reliable, proven automation built to do the heavy lifting in the background, backed by my personal phone number whenever you need adjustments.”
@@ -62,9 +62,9 @@ export default function FounderSpotlight({ onOpenAuditModal }: FounderSpotlightP
               </div>
 
               <div className="p-4 rounded-2xl bg-zinc-50/70 border border-zinc-100 space-y-1">
-                <span className="text-xs font-bold text-[#0F172A] block">Australian Registered</span>
+                <span className="text-xs font-bold text-[#0F172A] block">On-The-Ground in WA</span>
                 <p className="text-xs text-zinc-500">
-                  Solo Trader registered in Sydney, NSW • Working with venues across WA &amp; Australia.
+                  Applied AI automation practice operating on-the-ground in Perth & WA, serving venues nationally.
                 </p>
               </div>
             </div>

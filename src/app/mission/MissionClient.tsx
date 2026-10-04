@@ -485,8 +485,8 @@ export default function MissionClient() {
                   </h3>
                   <p className="text-xs text-zinc-500">
                     {language === "en"
-                      ? "Personal note from the Founder • Registered in Sydney, NSW"
-                      : "Note personnelle du Fondateur • Enregistré à Sydney, NSW"}
+                      ? "Personal note from the Founder • Operating on-the-ground in Perth & WA"
+                      : "Note personnelle du Fondateur • Opérant sur le terrain à Perth & dans le WA"}
                   </p>
                 </div>
               </div>
@@ -548,7 +548,7 @@ export default function MissionClient() {
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-zinc-400 font-mono">
-                  <span>{language === "en" ? "Sydney HQ • Serving WA & Australia" : "Siège à Sydney • Au service du WA & de l'Australie"}</span>
+                  <span>{language === "en" ? "Perth, WA • Serving Venues Nationally" : "Perth, WA • Au service des établissements à l'échelle nationale"}</span>
                   <span className="w-1.5 h-1.5 rounded-full bg-[#00BFCC]" />
                 </div>
               </div>

@@ -603,8 +603,8 @@ export default function SampleAuditModal({
               </h1>
               <p style={{ fontSize: "11px", color: "#52525B", margin: "2px 0 0 0" }}>
                 {isFr
-                  ? "Pratique Solo Indépendante • Enregistrée à Sydney, NSW • Au service de la Restauration en Australie"
-                  : "Independent Solo Practitioner • Registered in Sydney, NSW • Serving WA Venues"}
+                  ? "Pratique d'Automatisation IA Appliquée • Sur le terrain à Perth & dans le WA • Au service des établissements à l'échelle nationale"
+                  : "Applied AI Automation Practice • Operating on-the-ground in Perth & WA • Serving Venues Nationally"}
               </p>
             </div>
             <div style={{ textAlign: "right" }}>

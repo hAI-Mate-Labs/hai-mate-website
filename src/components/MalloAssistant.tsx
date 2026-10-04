@@ -218,11 +218,15 @@ export default function MalloAssistant({
       q.includes("sydney")
     ) {
       return {
-        text: "hAI Mate! was founded by Mallory Antomarchi, an independent solo practitioner blending European hospitality standards with Silicon-grade AI pipelines. Based in WA and registered as a Solo Trader in Sydney, NSW. You deal directly with Mallory on 0402 472 262—no junior ticket queues.",
+        text: "hAI Mate! was founded by Mallory Antomarchi, an applied AI automation practice operating on-the-ground in Perth & Western Australia, serving venues nationally. You deal directly with Mallory on 0402 472 262—no junior ticket queues.",
         action: {
           label: "Chat with Mallory on WhatsApp",
           onClick: () => {
-            window.open("https://wa.me/61402472262?text=Hi%20Mallory,%20I%20have%20a%20question%20about%20hAI%20Mate.", "_blank");
+            window.open(
+              "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+              "_blank",
+              "noopener,noreferrer"
+            );
           },
           icon: MessageSquare,
         },
@@ -258,7 +262,11 @@ export default function MalloAssistant({
       action: {
         label: "WhatsApp Mallory (0402 472 262)",
         onClick: () => {
-          window.open("https://wa.me/61402472262?text=Hi%20Mallory,%20I'd%20like%20to%20discuss%20automation%20for%20my%20venue.", "_blank");
+          window.open(
+            "https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin.",
+            "_blank",
+            "noopener,noreferrer"
+          );
         },
         icon: MessageSquare,
       },
@@ -474,7 +482,7 @@ export default function MalloAssistant({
             Strict Non-Training Guarantee
           </span>
           <a
-            href="https://wa.me/61402472262"
+            href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
             target="_blank"
             rel="noopener noreferrer"
             className="text-zinc-600 hover:text-[#0F172A] font-semibold"

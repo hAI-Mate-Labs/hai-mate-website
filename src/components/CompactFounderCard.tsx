@@ -68,7 +68,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
                   <div>
                     <span className="text-xs font-bold text-[#0F172A] block">{t.founderCard.phoneLabel}</span>
                     <a
-                      href="tel:0402472262"
+                      href="tel:+61402472262"
                       className="text-xs font-semibold text-[#0096A3] hover:underline"
                     >
                       0402 472 262
@@ -117,11 +117,7 @@ export default function CompactFounderCard({ onOpenAuditModal }: CompactFounderC
 
               <div className="flex items-center gap-3">
                 <a
-                  href={`https://wa.me/61402472262?text=${encodeURIComponent(
-                    language === "en"
-                      ? "Hi Mallory, I run a venue in WA and want to chat about automating dockets and admin."
-                      : "Bonjour Mallory, je gère un établissement dans le WA et souhaite échanger sur l'automatisation des bons et de l'administratif."
-                  )}`}
+                  href="https://wa.me/61402472262?text=Hi%20Mallory%2C%20I%20run%20a%20venue%20in%20WA%20and%20want%20to%20chat%20about%20automating%20dockets%20and%20admin."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold hover:bg-emerald-100 transition-colors"
